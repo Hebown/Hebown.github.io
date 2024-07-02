@@ -6,15 +6,15 @@
   
   <title>小白的git初学经历 | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="首先谈谈对git的理解：git是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。这个时候，有一个git就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。当然，git的功能远超于此，上面只是一个我自己的感受。 git支持分">
+  <meta name="description" content="首先谈谈对git的理解：git是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。这个时候，有一个git就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。当然，git的功能远超于此，上面只是一个我自己的感受。以下内容来源于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小白的git初学经历">
 <meta property="og:url" content="https://hebown.github.io/2024/07/02/git/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="首先谈谈对git的理解：git是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。这个时候，有一个git就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。当然，git的功能远超于此，上面只是一个我自己的感受。 git支持分">
+<meta property="og:description" content="首先谈谈对git的理解：git是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。这个时候，有一个git就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。当然，git的功能远超于此，上面只是一个我自己的感受。以下内容来源于">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-07-02T09:08:27.646Z">
-<meta property="article:modified_time" content="2024-07-02T09:15:26.402Z">
+<meta property="article:modified_time" content="2024-07-02T09:56:19.947Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="git beginner">
 <meta name="twitter:card" content="summary">
@@ -100,11 +100,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="首先谈谈对git的理解："><a href="#首先谈谈对git的理解：" class="headerlink" title="首先谈谈对git的理解："></a>首先谈谈对<code>git</code>的理解：</h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。</p>
-<p><code>git</code>支持分支管理，就是说，你可以从源代码的库中“复制”出自己的一份代码，对自己的这份代码进行修改。如果你确认好了新代码比源代码要更好，那么就可以将这份新代码与源代码“合并”(merge)，否则也不会犯了上面的错误。这在多人共同编写代码的时候尤为重要。</p>
+        <h2 id="首先谈谈对git的理解："><a href="#首先谈谈对git的理解：" class="headerlink" title="首先谈谈对git的理解："></a>首先谈谈对<code>git</code>的理解：</h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
+<hr>
+<ol>
+<li><p><strong>版本控制系统</strong>：Git是一个分布式版本控制系统，不仅仅是为了方便程序员维护和更改代码，还可以跟踪代码的历史记录，允许多人协作开发，管理不同版本的代码。</p>
+</li>
+<li><p><strong>回滚和撤销更改</strong>：Git的一个主要功能是可以轻松地回滚到之前的代码状态，特别是在发现错误或者不正确的更改时，这样可以避免对项目造成不必要的破坏。</p>
+</li>
+<li><p><strong>分支管理</strong>：分支允许开发者在不影响主干稳定版本的情况下开展工作。通过合并（merge）或者重整（rebase），可以将不同的分支整合到一起，确保代码的整洁和稳定性。</p>
+</li>
+<li><p><strong>工作流程</strong>：Git的工作流程通常包括工作目录（Working Directory）、暂存区（Staging Area）和版本库（Repository）。工作目录是你实际操作和修改代码的地方，暂存区用来准备提交到版本库的更改，版本库则保存着项目的完整历史记录和所有版本的代码。</p>
+</li>
+</ol>
+<hr>
 <h2 id="其次总括一下git的工作流程："><a href="#其次总括一下git的工作流程：" class="headerlink" title="其次总括一下git的工作流程："></a>其次总括一下<code>git</code>的工作流程：</h2><p><code>git</code>的基本工作原理包括三个主要区域：</p>
 <ul>
-<li>工作目录：包含实际项目文件的工作区域。<code>git</code>是管理这个工作项目的，相当于基于这个project 整体之上建立了一个系统来帮助程序员更好地管理。</li>
+<li>工作目录：实际操作和修改代码的地方。<code>git</code>是管理这个工作项目的，相当于基于这个project 整体之上建立了一个系统来帮助程序员更好地管理。</li>
 <li>版本库： 这个库一般被认为是经过仔细审查和测试的稳定版本，可以直接投入使用或或者部署到生产环境的内容。这部分内容最好不要多次改动，保障客户端的正常使用。</li>
 <li>暂存区： 这个区域试介于版本库和工作目录之间的区域。像之前说的，当你在工作目录中完成了自己的代码修改之后，就需要进行审查和测试，只有经过审查和测试的代码才可以上传到版本库中。也就是说，这是你试错的地方。</li>
 </ul>
@@ -174,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cly471wyt0000gor84vg3f4br" data-title="小白的git初学经历" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cly48ih9d00009gr86w0480rw" data-title="小白的git初学经历" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
