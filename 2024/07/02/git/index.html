@@ -6,15 +6,15 @@
   
   <title>小白的Git初学经历 | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="首先谈谈对git的理解：git是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。这个时候，有一个git就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。当然，git的功能远超于此，上面只是一个我自己的感受。以下内容来源于">
+  <meta name="description" content="简单记录自己学习git体系的经历">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小白的Git初学经历">
 <meta property="og:url" content="https://hebown.github.io/2024/07/02/git/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="首先谈谈对git的理解：git是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。这个时候，有一个git就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。当然，git的功能远超于此，上面只是一个我自己的感受。以下内容来源于">
+<meta property="og:description" content="简单记录自己学习git体系的经历">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-02T09:08:27.646Z">
-<meta property="article:modified_time" content="2024-07-02T09:56:19.947Z">
+<meta property="article:modified_time" content="2024-07-06T02:10:10.989Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="git beginner">
 <meta name="twitter:card" content="summary">
@@ -45,6 +45,28 @@
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
+  <script>
+      // 设置博客上线的起始日期
+      const blogStartDate = new Date('2024-06-30'); // 替换为你的博客上线日期
+
+      function updateBlogExistenceTime() {
+          const now = new Date();
+          const diff = now - blogStartDate;
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((diff / (1000 * 60)) % 60);
+          const seconds = Math.floor((diff / 1000) % 60);
+
+          document.getElementById('blog-existence-time').innerText = `这个小小的世界已存在 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      }
+
+      // 每秒更新一次
+      setInterval(updateBlogExistenceTime, 1000);
+      // 初始调用
+      updateBlogExistenceTime();
+  </script>
+
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -77,6 +99,7 @@
       </div>
     </div>
   </div>
+
 </header>
 
       <div class="outer">
@@ -102,7 +125,10 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="首先谈谈对git的理解："><a href="#首先谈谈对git的理解：" class="headerlink" title="首先谈谈对git的理解："></a>首先谈谈对<code>git</code>的理解：</h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
+        <p>这篇博客用来记录自己学习git体系的经历.</p>
+<span id="more"></span>
+
+<h2 id="首先谈谈对git的理解："><a href="#首先谈谈对git的理解：" class="headerlink" title="首先谈谈对git的理解："></a>首先谈谈对<code>git</code>的理解：</h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
 <hr>
 <ol>
 <li><p><strong>版本控制系统</strong>：Git是一个分布式版本控制系统，不仅仅是为了方便程序员维护和更改代码，还可以跟踪代码的历史记录，允许多人协作开发，管理不同版本的代码。</p>
@@ -187,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cly6ui04000036kr8gy8bc33h" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cly9ikmxz0000s0r89qv8f2ea" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -246,7 +272,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-beginner/" rel="tag">git beginner</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-beginner/" rel="tag">git beginner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode-math/" rel="tag">ode math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics-thoughts/" rel="tag">physics, thoughts</a></li></ul>
     </div>
   </div>
 
@@ -256,7 +282,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a>
+      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a> <a href="/tags/ode-math/" style="font-size: 10px;">ode math</a> <a href="/tags/physics-thoughts/" style="font-size: 10px;">physics, thoughts</a>
     </div>
   </div>
 
@@ -276,6 +302,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/">Ode学习log</a>
+          </li>
         
           <li>
             <a href="/2024/07/04/normal-physics-note/">Normal Physics Note</a>

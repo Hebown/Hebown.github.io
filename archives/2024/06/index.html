@@ -43,6 +43,28 @@
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
+  <script>
+      // 设置博客上线的起始日期
+      const blogStartDate = new Date('2024-06-30'); // 替换为你的博客上线日期
+
+      function updateBlogExistenceTime() {
+          const now = new Date();
+          const diff = now - blogStartDate;
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((diff / (1000 * 60)) % 60);
+          const seconds = Math.floor((diff / 1000) % 60);
+
+          document.getElementById('blog-existence-time').innerText = `这个小小的世界已存在 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      }
+
+      // 每秒更新一次
+      setInterval(updateBlogExistenceTime, 1000);
+      // 初始调用
+      updateBlogExistenceTime();
+  </script>
+
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -75,6 +97,7 @@
       </div>
     </div>
   </div>
+
 </header>
 
       <div class="outer">
@@ -143,7 +166,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-beginner/" rel="tag">git beginner</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-beginner/" rel="tag">git beginner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode-math/" rel="tag">ode math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics-thoughts/" rel="tag">physics, thoughts</a></li></ul>
     </div>
   </div>
 
@@ -153,7 +176,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a>
+      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a> <a href="/tags/ode-math/" style="font-size: 10px;">ode math</a> <a href="/tags/physics-thoughts/" style="font-size: 10px;">physics, thoughts</a>
     </div>
   </div>
 
@@ -173,6 +196,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/">Ode学习log</a>
+          </li>
         
           <li>
             <a href="/2024/07/04/normal-physics-note/">Normal Physics Note</a>

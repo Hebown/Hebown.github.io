@@ -155,6 +155,28 @@ mjx-container[display="true"] + br {
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
+  <script>
+      // 设置博客上线的起始日期
+      const blogStartDate = new Date('2024-06-30'); // 替换为你的博客上线日期
+
+      function updateBlogExistenceTime() {
+          const now = new Date();
+          const diff = now - blogStartDate;
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((diff / (1000 * 60)) % 60);
+          const seconds = Math.floor((diff / 1000) % 60);
+
+          document.getElementById('blog-existence-time').innerText = `这个小小的世界已存在 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      }
+
+      // 每秒更新一次
+      setInterval(updateBlogExistenceTime, 1000);
+      // 初始调用
+      updateBlogExistenceTime();
+  </script>
+
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -187,12 +209,78 @@ mjx-container[display="true"] + br {
       </div>
     </div>
   </div>
+
 </header>
 
       <div class="outer">
         <section id="main">
   
-    <article id="post-normal-physics-note" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="draft-ode简明学习log" class="h-entry article article-type-draft" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" class="article-date">
+  <time class="dt-published" datetime="2024-07-05T00:45:31.000Z" itemprop="datePublished">2024-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/">Ode学习log</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>博主又来开天坑了。</p>
+<p>这篇博客主要作为自己学习<code>ode</code>的一个<code>学习log</code>，旨在写一些自己学习数学过程中的一些思考和感想。</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#-----more----">
+        
+          <p class="article-more-link">
+            <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" data-id="cly9ikmy70007s0r82wus0q4b" data-title="Ode学习log" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ode-math/" rel="tag">ode math</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+  
+    <article id="draft-normal-physics-note" class="h-entry article article-type-draft" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/07/04/normal-physics-note/" class="article-date">
   <time class="dt-published" datetime="2024-07-04T05:00:22.000Z" itemprop="datePublished">2024-07-04</time>
@@ -214,14 +302,23 @@ mjx-container[display="true"] + br {
     
     <div class="e-content article-entry" itemprop="articleBody">
       
+        <p>这是<code>普通物理学 Ⅱ(H)</code>的录播笔记，笔者由于暑假想看看大物，但是看大物书非常痛苦，于是决定自己看看普通物理学的上课内容，感觉曹超老师讲的也很不错，就这么定了。</p>
+<p>涵盖内容：从电学出发的系列内容。</p>
+<p>注意：本笔记重点在于思考，而非繁杂的公式推导；给出的一些理解不一定是非常合理的，往往只是我的一些想法，如果你有更好的理解，欢迎向我分享。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/04/normal-physics-note/#more">Read More</a>
+          </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/04/normal-physics-note/" data-id="cly6ui03u00016kr8g4yvb9jt" data-title="Normal Physics Note" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/04/normal-physics-note/" data-id="cly9ikmy70006s0r85u882haa" data-title="Normal Physics Note" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/physics-thoughts/" rel="tag">physics, thoughts</a></li></ul>
+
     </footer>
   </div>
   
@@ -267,92 +364,16 @@ mjx-container[display="true"] + br {
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="首先谈谈对git的理解："><a href="#首先谈谈对git的理解：" class="headerlink" title="首先谈谈对git的理解："></a>首先谈谈对<code>git</code>的理解：</h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
-<hr>
-<ol>
-<li><p><strong>版本控制系统</strong>：Git是一个分布式版本控制系统，不仅仅是为了方便程序员维护和更改代码，还可以跟踪代码的历史记录，允许多人协作开发，管理不同版本的代码。</p>
-</li>
-<li><p><strong>回滚和撤销更改</strong>：Git的一个主要功能是可以轻松地回滚到之前的代码状态，特别是在发现错误或者不正确的更改时，这样可以避免对项目造成不必要的破坏。</p>
-</li>
-<li><p><strong>分支管理</strong>：分支允许开发者在不影响主干稳定版本的情况下开展工作。通过合并（merge）或者重整（rebase），可以将不同的分支整合到一起，确保代码的整洁和稳定性。</p>
-</li>
-<li><p><strong>工作流程</strong>：Git的工作流程通常包括工作目录（Working Directory）、暂存区（Staging Area）和版本库（Repository）。工作目录是你实际操作和修改代码的地方，暂存区用来准备提交到版本库的更改，版本库则保存着项目的完整历史记录和所有版本的代码。</p>
-</li>
-</ol>
-<hr>
-<h2 id="其次总括一下git的工作流程："><a href="#其次总括一下git的工作流程：" class="headerlink" title="其次总括一下git的工作流程："></a>其次总括一下<code>git</code>的工作流程：</h2><p><code>git</code>的基本工作原理包括三个主要区域：</p>
-<ul>
-<li>工作目录：实际操作和修改代码的地方。<code>git</code>是管理这个工作项目的，相当于基于这个project 整体之上建立了一个系统来帮助程序员更好地管理。</li>
-<li>版本库： 这个库一般被认为是经过仔细审查和测试的稳定版本，可以直接投入使用或或者部署到生产环境的内容。这部分内容最好不要多次改动，保障客户端的正常使用。</li>
-<li>暂存区： 这个区域试介于版本库和工作目录之间的区域。像之前说的，当你在工作目录中完成了自己的代码修改之后，就需要进行审查和测试，只有经过审查和测试的代码才可以上传到版本库中。也就是说，这是你试错的地方。</li>
-</ul>
-<p>接下来我们来看看<code>git</code>的基本操作和工作流：</p>
-<h2 id="基本操作和工作流："><a href="#基本操作和工作流：" class="headerlink" title="基本操作和工作流："></a>基本操作和工作流：</h2><ol>
-<li><p>创建仓库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化新的 Git 仓库</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者将已有项目初始化为 Git 仓库</span></span><br><span class="line">git init path\to\your\project <span class="comment">#这是windows的地址写法。 </span></span><br></pre></td></tr></table></figure></li>
-<li><p>添加文件到暂存区：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment"># 显示当前工作目录中被修改但尚未添加到暂存区的文件列表</span></span><br><span class="line">git add file.txt <span class="comment"># 根据上述 status 的显示结果确定要添加到暂存区的文件或者目录</span></span><br><span class="line">git add project1\folder</span><br><span class="line">git add . <span class="comment"># 添加所有修改的文件和新文件（不包括被删除的文件）</span></span><br><span class="line"></span><br><span class="line">git status <span class="comment"># 确认已经提交到暂存区</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提交到版本库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Commit message&quot;</span> <span class="comment"># 提交的时候需要给出修改的部分信息，比如修改细节，改动内容之类的，方便管理。</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="远程仓库操作："><a href="#远程仓库操作：" class="headerlink" title="远程仓库操作："></a>远程仓库操作：</h2><p>连接远程仓库是为了实现项目的远程备份、团队协作和跨设备的同步，也就是使用一个平台进行共享之类的。常见的远程仓库位于<code>github</code>\ <code>gitlab</code>\ <code>bitbucket</code>上。</p>
-<ol>
-<li><p>连接远程仓库：<br>首先在github上创建一个仓库，这个仓库就是你在当前平台上用来托管的仓库。<br>我有一个个人仓库<a target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.git%EF%BC%8C%E5%AD%98%E6%94%BE%E7%9A%84%E6%98%AF%E6%88%91%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D%E3%80%82">https://github.com/Hebown/Hebown.git，存放的是我的个人介绍。</a><br>这里我们就可以利用这个，将本地仓库连接到这个仓库中；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/Hebown/Hebown.git</span><br><span class="line"><span class="comment"># 这里origin是远程仓库的别名，你也可以使用任何合适的名字来代表远程仓库，例如PROFILE</span></span><br><span class="line"><span class="comment"># git remote add PROFILE https://github.com/Hebown/Hebown.git</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>克隆远程仓库：<br>上述内容是将本地内容上传到平台上，当然也可以将平台内容下载到本地.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Hebown/Hebown.git my-project <span class="comment"># 指定clone的文件位置是my-project.</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>push 和 pull:<br>一旦本地仓库与远程仓库关联成功，你可以使用<code>git push</code>命令将本地的提交推送到远程仓库，使用<code>git pull</code>命令从远程仓库拉去最新的更新到本地。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master <span class="comment"># origin是远程仓库的别名，master是主分支的名称（或者是main）</span></span><br><span class="line">git pull origin master <span class="comment"># 从远程仓库拉取内容，保证远程和本地仓库同步</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="分支管理和代码合并："><a href="#分支管理和代码合并：" class="headerlink" title="分支管理和代码合并："></a>分支管理和代码合并：</h2><p>分支(branch)是<code>git</code>中非常关键的概念，它允许开发开发者在不影响主线的情况下进行并行开发和试验性工作。</p>
-<p>创建一个新的分支，意味着创建了一个和父级分支完全相同的副本，包括文件、代码修改、提交记录等等内容。<br>我的理解是，相当于你继承了别人的工作，那么这个工作的内容和你的工具什么的必然全部都是相同的。</p>
-<p>以下是分支的操作方法：</p>
-<ol>
-<li><p>创建分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch feature-branch <span class="comment"># 在当前提交的基础上创建一个`feature-branch`的新分支，但不会自动切换到当前分支上</span></span><br></pre></td></tr></table></figure></li>
-<li><p>切换分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature-branch</span><br><span class="line"><span class="comment"># 或者,你的git版本是2.23以上的，可以使用 git switch feature-branch</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 你还可以一次性创建并切换到新分支，如下所示，(对于 checkout)使用 -b 参数</span></span><br><span class="line">git checkout -b new-feature-branch</span><br><span class="line"><span class="comment"># (对于 switch)使用 -c 参数: git switch -c new-feature-branch</span></span><br></pre></td></tr></table></figure></li>
-<li><p>查看分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-<p>这条命令会展示本地所有分支及当前所在的分支(当前所在分支会有一个*)</p>
-</li>
-<li><p>合并分支：<br>首先切换到接受更改的目标分支（通常是主分支），然后执行合并命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br><span class="line">git merge feature-branch</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>(合并是依照一个模板来进行合并的，所以如果分支之间都做出了改变，那么合并的时候<code>git</code>就不知道依照哪一个来进行合并，导致合并冲突)</p>
-<ol start="5">
-<li>删除分支：</li>
-</ol>
-<p>如下所示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d feature-branch <span class="comment"># 删除本地的分支</span></span><br><span class="line">git push origin --delete feature-branch <span class="comment"># 删除远程仓库分支</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="其他主题："><a href="#其他主题：" class="headerlink" title="其他主题："></a>其他主题：</h2><h3 id="处理代码冲突："><a href="#处理代码冲突：" class="headerlink" title="处理代码冲突："></a>处理代码冲突：</h3><p>当两个分支都中的同一文件的同一部分时候，<code>git</code>不能自动合并这些修改，需要手动解决冲突。</p>
-<h2 id="git工具链和hook："><a href="#git工具链和hook：" class="headerlink" title="git工具链和hook："></a>git工具链和hook：</h2><p>git 提供了很多的工具和hooks,所谓hook，我认为可以理解成在完成某项工作之后，与之相关联的流程，比如代码检测、自动化测试、格式化、发送通知等等。</p>
-<p>以下是一些内容：</p>
-<h4 id="常见的-Git-工具和钩子包括："><a href="#常见的-Git-工具和钩子包括：" class="headerlink" title="常见的 Git 工具和钩子包括："></a>常见的 Git 工具和钩子包括：</h4><ul>
-<li><p><strong>Git 命令别名：</strong><br>可以通过配置 Git 别名来简化常用命令，提高工作效率。例如，将 <code>git status</code> 设置为 <code>git st</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Git 扩展（git-extras）：</strong><br>Git 扩展提供了许多额外的命令和功能，使得 Git 更强大和便捷。你可以通过安装和配置 Git 扩展来扩展 Git 的功能。</p>
-</li>
-<li><p><strong>Git 钩子（Git hooks）：</strong><br>Git 钩子是在特定 Git 操作时自动执行的脚本。常见的 Git 钩子包括：</p>
-<ul>
-<li><code>pre-commit</code>：在提交前执行，用于执行代码格式化、静态分析等。</li>
-<li><code>post-commit</code>：在提交后执行，用于发送通知、执行自动化测试等。</li>
-<li><code>pre-push</code>：在推送前执行，用于进行代码检查、测试等。</li>
-<li><code>post-checkout</code> 和 <code>post-merge</code>：在切换分支或合并后执行，用于更新依赖、清理缓存等。</li>
-</ul>
-<p>你可以在 <code>.git/hooks/</code> 目录下找到这些钩子的模板，并根据需要编写和配置自定义的钩子脚本。</p>
-</li>
-</ul>
-
+        <p>这篇博客用来记录自己学习git体系的经历.</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/02/git/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cly6ui04000036kr8gy8bc33h" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cly9ikmxz0000s0r89qv8f2ea" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -403,66 +424,39 @@ mjx-container[display="true"] + br {
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>这篇文章是来讲述一下，如何创建一个属于自己的(较为简单的)博客。<br>也是自己创建博客过程中的经历和感想。</p>
-<p>首先说明，我的电脑是windows的。</p>
-<p>好的，我们现在开始：</p>
-<h3 id="part0：什么是博客-blog"><a href="#part0：什么是博客-blog" class="headerlink" title="part0：什么是博客(blog):"></a>part0：什么是博客(blog):</h3><p>就我的理解而言，博客是一个用来展示自己生活/记录学习经历/分享有用知识的平台，里面包含了很多文章。虽然有点像朋友圈，但是往往会更加有条理。</p>
-<h3 id="part1：我实现博客的原理："><a href="#part1：我实现博客的原理：" class="headerlink" title="part1：我实现博客的原理："></a>part1：我实现博客的原理：</h3><p>我的博客是以静态网页的形式存在的。所谓静态网页，就是说，这些内容是已经提前写好的了，就好像正常的网页一样，你发出申请（点击链接）的时候，服务端返回给你有关这个网页的资源，通过browser解析，然后就可以显示出来博客的界面了。因此我们可以撰写这样的一个网站，然后托管在服务器上，我们要做的只是更新网站的具体内容。</p>
-<p>当然，这么做对于缺少web基本技术的同学来说还是太过于抽象。幸好这样的需求不止我们有，我们的前人已经做出了不少工作，因而我们只需要用轮子即可。</p>
-<p>这样的<code>轮子</code>，我们称之为<code>框架</code>。常见的框架有很多，比如这个博客所用的<code>hexo</code>，还有Gatsby等等。这些框架存在的意义，就是简化了<code>接口</code>，使得我们能够更加简便的完成自己的工作。</p>
-<p>鉴于我使用的是<code>hexo</code>，就讲讲这个</p>
-<h3 id="part2：初识hexo："><a href="#part2：初识hexo：" class="headerlink" title="part2：初识hexo："></a>part2：初识<code>hexo</code>：</h3><p>gpt是这么说的：</p>
-<blockquote>
-<p><code>hexo</code> 是一款基于<code>node.js</code>开发的静态博客框架，它使用 Markdown（或其他渲染引擎）解析文章，通过几条命令即可生成静态网页并发布，非常适合开发者、博客作者和技术爱好者使用。</p>
-</blockquote>
-<p>这么看起来还是挺绕的，让我来<code>breakdown</code>一下：</p>
-<ol>
-<li><code>hexo</code> 是一款基于<code>node.js</code>开发的静态博客框架:<ul>
-<li>这句话是说：如果你想使用hexo，你需要下载<code>node.js</code>作为其运行的环境。对于<code>node.js</code>，暂时不需要知道更多的细节。<del>我之后也许会写点有关于这个东西的博客</del></li>
+        <!-- toc -->
+
+<ul>
+<li><a href="#part0-------blog--">part0：什么是博客(blog):</a></li>
+<li><a href="#part1----------">part1：我实现博客的原理：</a></li>
+<li><a href="#part2----hexo--">part2：初识<code>hexo</code>：</a></li>
+<li><a href="#part3---hexo-----">part3: <code>hexo</code>怎么用：</a><ul>
+<li><a href="#1------">1. 框架准备:</a></li>
+<li><a href="#2----------">2. 修改网站基本内容：</a><ul>
+<li><a href="#1------theme--">1. 找个主题(theme):</a></li>
+<li><a href="#2-----">2. 找个家:</a></li>
+<li><a href="#3-----">3. 改文件:</a></li>
 </ul>
 </li>
-<li>它使用 Markdown（或其他渲染引擎）解析文章:<ul>
-<li>这是<code>hexo</code>的一大优势，<code>md</code>是大家喜闻乐见的写文章的方式，这句话就是说，在<code>hexo</code>中写博客，你只需要写<code>md</code>文档，<code>hexo</code>会根据你的文件来进行解析，生成能够在网络上展示的文章。</li>
+<li><a href="#3------">3. 系列操作:</a><ul>
+<li><a href="#4------">4. 后面没了：</a></li>
 </ul>
 </li>
-<li>通过几条命令即可生成静态网页并发布，非常适合开发者、博客作者和技术爱好者使用:<ul>
-<li>这句话是说，<code>hexo</code>生成静态网页只需要输入一些命令即可完成静态网页的生成和发布。</li>
 </ul>
 </li>
-</ol>
-<p>有了以上概念，我们就可以开始着手建立自己的博客了。</p>
-<h3 id="part3-hexo怎么用："><a href="#part3-hexo怎么用：" class="headerlink" title="part3: hexo怎么用："></a>part3: <code>hexo</code>怎么用：</h3><h4 id="1-框架准备"><a href="#1-框架准备" class="headerlink" title="1. 框架准备:"></a>1. 框架准备:</h4><p>首先确保你已经下载好了node.js，并且将命令所在的文件夹添加到环境变量之中。</p>
-<p>在你的<code>cmd</code>中的输入</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure>
-<p>来检测是否已经配置好环境。</p>
-<p>node.js下的npm包管理系统为我们提供了简便的文件管理操作，一般来说，安装好了node.js后npm也安装好了。</p>
-<p>然后，我们输入以下命令来安装hexo</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</ul>
+<!-- tocstop -->
 
-<p>安装好了之后，我们需要一个新的文件夹来存放自己的博客。hexo只是一个工具，还是需要建立在文件系统之上的。</p>
-<p>使用如下命令来创建自己的博客文件夹：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br></pre></td></tr></table></figure>
-
-<p>然后进行hexo的初始化，这会在当前文件夹建立hexo框架：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install </span><br></pre></td></tr></table></figure>
-<p>后面的<code>npm install</code>是用来安装hexo依赖的，<del>这一点我不是很清楚</del></p>
-<p>做完以上内容后，我们的网站框架就已经有了，但是我们还需要做出一些个性化的操作：</p>
-<h4 id="2-修改网站基本内容："><a href="#2-修改网站基本内容：" class="headerlink" title="2. 修改网站基本内容："></a>2. 修改网站基本内容：</h4><p>在这一步之前，我们先来做一点其他的准备工作。</p>
-<h5 id="1-找个主题-theme"><a href="#1-找个主题-theme" class="headerlink" title="1. 找个主题(theme):"></a>1. 找个主题(theme):</h5><p>虽然我们已经有了基本的框架，但是如果不去下载已经存在的主题的话，我们的界面布局就需要自己去编写，这是一件比较难的事情，因而我们选择偷个懒。</p>
-<p>这里我使用的是<code>landscape</code>，也算是一个比较简单的主题。</p>
-<p>使用的命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hexojs/hexo-theme-landscape.git themes/landscape</span><br></pre></td></tr></table></figure>
-
-<p>有了这个主题之后，我们就可以开始编写我们的网站基本内容了。</p>
-<p>修改网站的基本内容，只需要打开_config.yml文件进行编写,这里由于我已经把vscode的exe文件所在的文件夹放到了环境变量之中，我只需要使用</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code _config.yml</span><br></pre></td></tr></table></figure>
-<p>就可以使用vscode打开这个文件进行编写。</p>
-<p>然后，在你的文件中找到Site,url我们需要修改的内容是这些：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hebown's</span> <span class="string">small</span> <span class="string">world</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">'tech and life'</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">"This is Hebown's small world, where he will put his thoughts and experiences down."</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">Hexo,</span> <span class="string">blog,</span> <span class="string">tech,</span> <span class="string">life</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Hebown</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">''</span></span><br></pre></td></tr></table></figure>
+<p>这篇文章是来讲述一下，如何创建一个属于自己的(较为简单的)博客。<br>也是自己创建博客过程中的经历和感想。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/06/30/how-to-make-your-own-blog/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/" data-id="cly6ui03z00026kr85n9nhl8o" data-title="How to Make Your Own Blog?" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/" data-id="cly9ikmy50003s0r8080507pa" data-title="How to Make Your Own Blog?" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -491,73 +485,12 @@ mjx-container[display="true"] + br {
 
 
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/06/30/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-06-30T08:53:43.500Z" itemprop="datePublished">2024-06-30</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/06/30/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/06/30/hello-world/" data-id="cly6ui03q00006kr8aj3lfp9z" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
 
 </section>
         
@@ -570,7 +503,7 @@ mjx-container[display="true"] + br {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-beginner/" rel="tag">git beginner</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-beginner/" rel="tag">git beginner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode-math/" rel="tag">ode math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics-thoughts/" rel="tag">physics, thoughts</a></li></ul>
     </div>
   </div>
 
@@ -580,7 +513,7 @@ mjx-container[display="true"] + br {
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a>
+      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a> <a href="/tags/ode-math/" style="font-size: 10px;">ode math</a> <a href="/tags/physics-thoughts/" style="font-size: 10px;">physics, thoughts</a>
     </div>
   </div>
 
@@ -600,6 +533,10 @@ mjx-container[display="true"] + br {
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/">Ode学习log</a>
+          </li>
         
           <li>
             <a href="/2024/07/04/normal-physics-note/">Normal Physics Note</a>
