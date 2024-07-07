@@ -14,7 +14,7 @@
 <meta property="og:description" content="简单记录自己学习git体系的经历">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-02T09:08:27.646Z">
-<meta property="article:modified_time" content="2024-07-06T02:10:10.989Z">
+<meta property="article:modified_time" content="2024-07-07T02:47:55.961Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="git beginner">
 <meta name="twitter:card" content="summary">
@@ -124,9 +124,28 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>这篇博客用来记录自己学习git体系的经历.</p>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#shou-xian-tan-tan-dui-git-de-li-jie">首先谈谈对<code>git</code>的理解：</a></li>
+<li><a href="#qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng">其次总括一下<code>git</code>的工作流程：</a></li>
+<li><a href="#ji-ben-cao-zuo-he-gong-zuo-liu">基本操作和工作流：</a></li>
+<li><a href="#yuan-cheng-cang-ku-cao-zuo">远程仓库操作：</a></li>
+<li><a href="#fen-zhi-guan-li-he-dai-ma-he-bing">分支管理和代码合并：</a></li>
+<li><a href="#qi-ta-zhu-ti">其他主题：</a><ul>
+<li><a href="#chu-li-dai-ma-chong-tu">处理代码冲突：</a></li>
+</ul>
+</li>
+<li><a href="#git-gong-ju-lian-he-hook">git工具链和hook：</a></li>
+</ul>
+<!-- tocstop -->
+
+</div>
 <span id="more"></span>
 
-<h2 id="首先谈谈对git的理解："><a href="#首先谈谈对git的理解：" class="headerlink" title="首先谈谈对git的理解："></a>首先谈谈对<code>git</code>的理解：</h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
+<h2><span id="shou-xian-tan-tan-dui-git-de-li-jie">首先谈谈对<code>git</code>的理解：</span><a href="#shou-xian-tan-tan-dui-git-de-li-jie" class="header-anchor">#</a></h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
 <hr>
 <ol>
 <li><p><strong>版本控制系统</strong>：Git是一个分布式版本控制系统，不仅仅是为了方便程序员维护和更改代码，还可以跟踪代码的历史记录，允许多人协作开发，管理不同版本的代码。</p>
@@ -139,14 +158,14 @@
 </li>
 </ol>
 <hr>
-<h2 id="其次总括一下git的工作流程："><a href="#其次总括一下git的工作流程：" class="headerlink" title="其次总括一下git的工作流程："></a>其次总括一下<code>git</code>的工作流程：</h2><p><code>git</code>的基本工作原理包括三个主要区域：</p>
+<h2><span id="qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng">其次总括一下<code>git</code>的工作流程：</span><a href="#qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng" class="header-anchor">#</a></h2><p><code>git</code>的基本工作原理包括三个主要区域：</p>
 <ul>
 <li>工作目录：实际操作和修改代码的地方。<code>git</code>是管理这个工作项目的，相当于基于这个project 整体之上建立了一个系统来帮助程序员更好地管理。</li>
 <li>版本库： 这个库一般被认为是经过仔细审查和测试的稳定版本，可以直接投入使用或或者部署到生产环境的内容。这部分内容最好不要多次改动，保障客户端的正常使用。</li>
 <li>暂存区： 这个区域试介于版本库和工作目录之间的区域。像之前说的，当你在工作目录中完成了自己的代码修改之后，就需要进行审查和测试，只有经过审查和测试的代码才可以上传到版本库中。也就是说，这是你试错的地方。</li>
 </ul>
 <p>接下来我们来看看<code>git</code>的基本操作和工作流：</p>
-<h2 id="基本操作和工作流："><a href="#基本操作和工作流：" class="headerlink" title="基本操作和工作流："></a>基本操作和工作流：</h2><ol>
+<h2><span id="ji-ben-cao-zuo-he-gong-zuo-liu">基本操作和工作流：</span><a href="#ji-ben-cao-zuo-he-gong-zuo-liu" class="header-anchor">#</a></h2><ol>
 <li><p>创建仓库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化新的 Git 仓库</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者将已有项目初始化为 Git 仓库</span></span><br><span class="line">git init path\to\your\project <span class="comment">#这是windows的地址写法。 </span></span><br></pre></td></tr></table></figure></li>
 <li><p>添加文件到暂存区：</p>
@@ -155,7 +174,7 @@
 <li><p>提交到版本库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Commit message&quot;</span> <span class="comment"># 提交的时候需要给出修改的部分信息，比如修改细节，改动内容之类的，方便管理。</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="远程仓库操作："><a href="#远程仓库操作：" class="headerlink" title="远程仓库操作："></a>远程仓库操作：</h2><p>连接远程仓库是为了实现项目的远程备份、团队协作和跨设备的同步，也就是使用一个平台进行共享之类的。常见的远程仓库位于<code>github</code>\ <code>gitlab</code>\ <code>bitbucket</code>上。</p>
+<h2><span id="yuan-cheng-cang-ku-cao-zuo">远程仓库操作：</span><a href="#yuan-cheng-cang-ku-cao-zuo" class="header-anchor">#</a></h2><p>连接远程仓库是为了实现项目的远程备份、团队协作和跨设备的同步，也就是使用一个平台进行共享之类的。常见的远程仓库位于<code>github</code>\ <code>gitlab</code>\ <code>bitbucket</code>上。</p>
 <ol>
 <li><p>连接远程仓库：<br>首先在github上创建一个仓库，这个仓库就是你在当前平台上用来托管的仓库。<br>我有一个个人仓库<a target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.git%EF%BC%8C%E5%AD%98%E6%94%BE%E7%9A%84%E6%98%AF%E6%88%91%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D%E3%80%82">https://github.com/Hebown/Hebown.git，存放的是我的个人介绍。</a><br>这里我们就可以利用这个，将本地仓库连接到这个仓库中；</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/Hebown/Hebown.git</span><br><span class="line"><span class="comment"># 这里origin是远程仓库的别名，你也可以使用任何合适的名字来代表远程仓库，例如PROFILE</span></span><br><span class="line"><span class="comment"># git remote add PROFILE https://github.com/Hebown/Hebown.git</span></span><br></pre></td></tr></table></figure>
@@ -166,7 +185,7 @@
 <li><p>push 和 pull:<br>一旦本地仓库与远程仓库关联成功，你可以使用<code>git push</code>命令将本地的提交推送到远程仓库，使用<code>git pull</code>命令从远程仓库拉去最新的更新到本地。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master <span class="comment"># origin是远程仓库的别名，master是主分支的名称（或者是main）</span></span><br><span class="line">git pull origin master <span class="comment"># 从远程仓库拉取内容，保证远程和本地仓库同步</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="分支管理和代码合并："><a href="#分支管理和代码合并：" class="headerlink" title="分支管理和代码合并："></a>分支管理和代码合并：</h2><p>分支(branch)是<code>git</code>中非常关键的概念，它允许开发开发者在不影响主线的情况下进行并行开发和试验性工作。</p>
+<h2><span id="fen-zhi-guan-li-he-dai-ma-he-bing">分支管理和代码合并：</span><a href="#fen-zhi-guan-li-he-dai-ma-he-bing" class="header-anchor">#</a></h2><p>分支(branch)是<code>git</code>中非常关键的概念，它允许开发开发者在不影响主线的情况下进行并行开发和试验性工作。</p>
 <p>创建一个新的分支，意味着创建了一个和父级分支完全相同的副本，包括文件、代码修改、提交记录等等内容。<br>我的理解是，相当于你继承了别人的工作，那么这个工作的内容和你的工具什么的必然全部都是相同的。</p>
 <p>以下是分支的操作方法：</p>
 <ol>
@@ -188,10 +207,10 @@
 <p>如下所示：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d feature-branch <span class="comment"># 删除本地的分支</span></span><br><span class="line">git push origin --delete feature-branch <span class="comment"># 删除远程仓库分支</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="其他主题："><a href="#其他主题：" class="headerlink" title="其他主题："></a>其他主题：</h2><h3 id="处理代码冲突："><a href="#处理代码冲突：" class="headerlink" title="处理代码冲突："></a>处理代码冲突：</h3><p>当两个分支都中的同一文件的同一部分时候，<code>git</code>不能自动合并这些修改，需要手动解决冲突。</p>
-<h2 id="git工具链和hook："><a href="#git工具链和hook：" class="headerlink" title="git工具链和hook："></a>git工具链和hook：</h2><p>git 提供了很多的工具和hooks,所谓hook，我认为可以理解成在完成某项工作之后，与之相关联的流程，比如代码检测、自动化测试、格式化、发送通知等等。</p>
+<h2><span id="qi-ta-zhu-ti">其他主题：</span><a href="#qi-ta-zhu-ti" class="header-anchor">#</a></h2><h3><span id="chu-li-dai-ma-chong-tu">处理代码冲突：</span><a href="#chu-li-dai-ma-chong-tu" class="header-anchor">#</a></h3><p>当两个分支都中的同一文件的同一部分时候，<code>git</code>不能自动合并这些修改，需要手动解决冲突。</p>
+<h2><span id="git-gong-ju-lian-he-hook">git工具链和hook：</span><a href="#git-gong-ju-lian-he-hook" class="header-anchor">#</a></h2><p>git 提供了很多的工具和hooks,所谓hook，我认为可以理解成在完成某项工作之后，与之相关联的流程，比如代码检测、自动化测试、格式化、发送通知等等。</p>
 <p>以下是一些内容：</p>
-<h4 id="常见的-Git-工具和钩子包括："><a href="#常见的-Git-工具和钩子包括：" class="headerlink" title="常见的 Git 工具和钩子包括："></a>常见的 Git 工具和钩子包括：</h4><ul>
+<h4><span id="chang-jian-de-git-gong-ju-he-gou-zi-bao-gua">常见的 Git 工具和钩子包括：</span><a href="#chang-jian-de-git-gong-ju-he-gou-zi-bao-gua" class="header-anchor">#</a></h4><ul>
 <li><p><strong>Git 命令别名：</strong><br>可以通过配置 Git 别名来简化常用命令，提高工作效率。例如，将 <code>git status</code> 设置为 <code>git st</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
 </li>
@@ -211,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="clya473xi0000ysr85yzu4gid" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="clyayhgsj00016or81s93dkg5" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
