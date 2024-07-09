@@ -6,15 +6,15 @@
   
   <title>About-Web | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript">
+  <meta name="description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript： 变量： 注释： 运算符： 条件： 函数： 事件：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="About-Web">
 <meta property="og:url" content="https://hebown.github.io/2024/07/08/about-web/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript">
+<meta property="og:description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript： 变量： 注释： 运算符： 条件： 函数： 事件：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-08T00:32:14.000Z">
-<meta property="article:modified_time" content="2024-07-08T00:37:09.682Z">
+<meta property="article:modified_time" content="2024-07-08T08:42:16.021Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="web">
 <meta property="article:tag" content="log">
@@ -135,18 +135,34 @@
 <li><a href="#basic-knowledge">basic-knowledge:</a></li>
 <li><a href="#html">html</a></li>
 <li><a href="#css">css</a></li>
-<li><a href="#javascript">javascript</a></li>
+<li><a href="#javascript">javascript：</a><ul>
+<li><a href="#bian-liang">变量：</a></li>
+<li><a href="#zhu-shi">注释：</a></li>
+<li><a href="#yun-suan-fu">运算符：</a></li>
+<li><a href="#tiao-jian">条件：</a></li>
+<li><a href="#han-shu">函数：</a></li>
+<li><a href="#shi-jian">事件：</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
 </div>
 <span id="more"></span>
 
-<h1><span id="basic-knowledge">basic-knowledge:</span><a href="#basic-knowledge" class="header-anchor">#</a></h1><h1><span id="html">html</span><a href="#html" class="header-anchor">#</a></h1><h1><span id="css">css</span><a href="#css" class="header-anchor">#</a></h1><h1><span id="javascript">javascript</span><a href="#javascript" class="header-anchor">#</a></h1>
+<h1><span id="basic-knowledge">basic-knowledge:</span><a href="#basic-knowledge" class="header-anchor">#</a></h1><p>web，就我的感觉而言，是一种展示资源、提供交互的技术和协定。只有我们使用相同的理解方式和表达方式，才能有效交流。html规定了资源的组织形式，将想要传输的内容结构化；css给出了展示资源的具体细节，增强表现力；js则是由静态转为动态的关键一步，通过所谓“事件”来实现交互。</p>
+<h1><span id="html">html</span><a href="#html" class="header-anchor">#</a></h1><h1><span id="css">css</span><a href="#css" class="header-anchor">#</a></h1><h1><span id="javascript">javascript：</span><a href="#javascript" class="header-anchor">#</a></h1><h2><span id="bian-liang">变量：</span><a href="#bian-liang" class="header-anchor">#</a></h2><p>js支持字符串，数字，布尔值，数组(但其实更像元组)，和对象。js中一切皆对象，一切皆可存储在变量中访问。</p>
+<h2><span id="zhu-shi">注释：</span><a href="#zhu-shi" class="header-anchor">#</a></h2><p>等于C语言</p>
+<h2><span id="yun-suan-fu">运算符：</span><a href="#yun-suan-fu" class="header-anchor">#</a></h2><p>除了(不)等于用(<code>!==</code>)<code>===</code>表示，其他暂时和C语言无异</p>
+<h2><span id="tiao-jian">条件：</span><a href="#tiao-jian" class="header-anchor">#</a></h2><p>等于C语言</p>
+<h2><span id="han-shu">函数：</span><a href="#han-shu" class="header-anchor">#</a></h2><p>类似于变量命名，包含的是操作，比如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1,num2</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> res=num1+num2;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="shi-jian">事件：</span><a href="#shi-jian" class="header-anchor">#</a></h2><p>表示网站接受到的行为(可以是用户的行为，也可以是网站之间的)</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/08/about-web/" data-id="clycpuuaf0000ksr8godc4wbz" data-title="About-Web" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/08/about-web/" data-id="clyefn48p00007wr85mq84jbg" data-title="About-Web" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -157,6 +173,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2024/07/08/python-class/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Python-Class
+        
+      </div>
+    </a>
   
   
     <a href="/2024/07/06/python-io/" id="article-nav-older" class="article-nav-link-wrap">
@@ -206,7 +231,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics-thoughts/" style="font-size: 10px;">physics, thoughts</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/git-beginner/" style="font-size: 10px;">git beginner</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics-thoughts/" style="font-size: 10px;">physics, thoughts</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -229,6 +254,10 @@
       <ul>
         
           <li>
+            <a href="/2024/07/08/python-class/">Python-Class</a>
+          </li>
+        
+          <li>
             <a href="/2024/07/08/about-web/">About-Web</a>
           </li>
         
@@ -242,10 +271,6 @@
         
           <li>
             <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/">Ode学习log</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/04/normal-physics-note/">Normal Physics Note</a>
           </li>
         
       </ul>
