@@ -7,15 +7,15 @@
   
   <title>About-Web | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript： 变量： 注释： 运算符： 条件： 函数： 事件：">
+  <meta name="description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript： 变量： 注释： 运算符： 条件： 循环： 函数： 数据类型： 对象： 列表： 事件：   jsx: react：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="About-Web">
 <meta property="og:url" content="https://hebown.github.io/2024/07/08/about-web/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript： 变量： 注释： 运算符： 条件： 函数： 事件：">
+<meta property="og:description" content="这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，因为这个教程已经很好了，不必再花时间重新整理。 而且这个教程的翻译做的也很不错。 权当记录自己的随想。      basic-knowledge: html css javascript： 变量： 注释： 运算符： 条件： 循环： 函数： 数据类型： 对象： 列表： 事件：   jsx: react：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-08T00:32:14.000Z">
-<meta property="article:modified_time" content="2024-07-08T08:42:16.021Z">
+<meta property="article:modified_time" content="2024-07-19T00:46:54.832Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="web">
 <meta property="article:tag" content="log">
@@ -35,6 +35,10 @@
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
   
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css">
+
   
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -65,8 +69,14 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
+          <a class="main-nav-link" href="/about">About</a>
+        
       </nav>
       <nav id="sub-nav">
+        
+          
+            <a class="nav-icon" target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.github.io"><span class="fa fa-github"></span></a>
+          
         
         
           <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
@@ -121,10 +131,16 @@
 <li><a href="#zhu-shi">注释：</a></li>
 <li><a href="#yun-suan-fu">运算符：</a></li>
 <li><a href="#tiao-jian">条件：</a></li>
+<li><a href="#xun-huan">循环：</a></li>
 <li><a href="#han-shu">函数：</a></li>
+<li><a href="#shu-ju-lei-xing">数据类型：</a></li>
+<li><a href="#dui-xiang">对象：</a></li>
+<li><a href="#lie-biao">列表：</a></li>
 <li><a href="#shi-jian">事件：</a></li>
 </ul>
 </li>
+<li><a href="#jsx">jsx:</a></li>
+<li><a href="#react">react：</a></li>
 </ul>
 <!-- tocstop -->
 
@@ -132,18 +148,29 @@
 <span id="more"></span>
 
 <h1><span id="basic-knowledge">basic-knowledge:</span><a href="#basic-knowledge" class="header-anchor">#</a></h1><p>web，就我的感觉而言，是一种展示资源、提供交互的技术和协定。只有我们使用相同的理解方式和表达方式，才能有效交流。html规定了资源的组织形式，将想要传输的内容结构化；css给出了展示资源的具体细节，增强表现力；js则是由静态转为动态的关键一步，通过所谓“事件”来实现交互。</p>
-<h1><span id="html">html</span><a href="#html" class="header-anchor">#</a></h1><h1><span id="css">css</span><a href="#css" class="header-anchor">#</a></h1><h1><span id="javascript">javascript：</span><a href="#javascript" class="header-anchor">#</a></h1><h2><span id="bian-liang">变量：</span><a href="#bian-liang" class="header-anchor">#</a></h2><p>js支持字符串，数字，布尔值，数组(但其实更像元组)，和对象。js中一切皆对象，一切皆可存储在变量中访问。</p>
+<h1><span id="html">html</span><a href="#html" class="header-anchor">#</a></h1><h1><span id="css">css</span><a href="#css" class="header-anchor">#</a></h1><h1><span id="javascript">javascript：</span><a href="#javascript" class="header-anchor">#</a></h1><p>主要包括 基本语法&#x2F;dom&#x2F;bom；<br>dom就是你有了对文档内的元素的控制权。<br>例如document.getElementById(elementId)<br>例如document.getElementByClassName(ClassName)<br>最好不要背，学会查</p>
+<h2><span id="bian-liang">变量：</span><a href="#bian-liang" class="header-anchor">#</a></h2><p>js支持字符串，数字，布尔值，数组(但其实更像元组)，和对象。js中一切皆对象，一切皆可存储在变量中访问。<br>注意var和let的区别，let比较接近以前学习的变量声明。</p>
 <h2><span id="zhu-shi">注释：</span><a href="#zhu-shi" class="header-anchor">#</a></h2><p>等于C语言</p>
 <h2><span id="yun-suan-fu">运算符：</span><a href="#yun-suan-fu" class="header-anchor">#</a></h2><p>除了(不)等于用(<code>!==</code>)<code>===</code>表示，其他暂时和C语言无异</p>
 <h2><span id="tiao-jian">条件：</span><a href="#tiao-jian" class="header-anchor">#</a></h2><p>等于C语言</p>
+<h2><span id="xun-huan">循环：</span><a href="#xun-huan" class="header-anchor">#</a></h2><p>等于cpp？<br>有最简单的for(int i&#x3D;0)，也有python那种for i in arr;还有foreach(迭代对象内置的迭代函数) 和for of(用在迭代对象中，比如新增的map和set)</p>
 <h2><span id="han-shu">函数：</span><a href="#han-shu" class="header-anchor">#</a></h2><p>类似于变量命名，包含的是操作，比如</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1,num2</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> res=num1+num2;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="shu-ju-lei-xing">数据类型：</span><a href="#shu-ju-lei-xing" class="header-anchor">#</a></h2><p>值类型和引用类型，除了object都是值类型。</p>
+<h2><span id="dui-xiang">对象：</span><a href="#dui-xiang" class="header-anchor">#</a></h2><p>js中一切皆对象。</p>
+<p>花括号扩起，类似于字典；</p>
+<h2><span id="lie-biao">列表：</span><a href="#lie-biao" class="header-anchor">#</a></h2><p>方括号扩起，类似于列表;</p>
 <h2><span id="shi-jian">事件：</span><a href="#shi-jian" class="header-anchor">#</a></h2><p>表示网站接受到的行为(可以是用户的行为，也可以是网站之间的)</p>
+<h1><span id="jsx">jsx:</span><a href="#jsx" class="header-anchor">#</a></h1><p>jsx是js的扩展，其目的是方便动态对html的修改。现在动态修改比静态修改丰富太多，从以前的面向网站转向了面向动作设计。</p>
+<p>这点好处被用在了react中。</p>
+<h1><span id="react">react：</span><a href="#react" class="header-anchor">#</a></h1><p>js的框架，是用来帮助模块化构建ui界面的。使用jsx作为具体的流程描述规则。</p>
+<p>最终react会在你给出的root下创建react文件相对应的应用。</p>
+<p>echarts，d3，使用npm就可以拿下来。<br>ui组件：material ui，ant design；</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/08/about-web/" data-id="clyp4vyyt0001ygr8fgj16raw" data-title="About-Web" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/08/about-web/" data-id="clzaptkbl0001q8r86aik9tiq" data-title="About-Web" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -202,7 +229,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/courses/" rel="tag">courses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-visualization/" rel="tag">data-visualization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/" rel="tag">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/courses/" rel="tag">courses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-visualization/" rel="tag">data-visualization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dataProcessing/" rel="tag">dataProcessing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/" rel="tag">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
     </div>
   </div>
 
@@ -212,7 +239,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/courses/" style="font-size: 10px;">courses</a> <a href="/tags/data-visualization/" style="font-size: 10px;">data-visualization</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/courses/" style="font-size: 10px;">courses</a> <a href="/tags/data-visualization/" style="font-size: 10px;">data-visualization</a> <a href="/tags/dataProcessing/" style="font-size: 10px;">dataProcessing</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -235,23 +262,23 @@
       <ul>
         
           <li>
+            <a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/">Hexo从入门到入土</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/19/python/">Python &amp; Data</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/17/vue/">Vue3</a>
+          </li>
+        
+          <li>
             <a href="/2024/07/16/tableau/">Tableau</a>
           </li>
         
           <li>
             <a href="/2024/07/15/Data-Visualization-Note/">Data-Visualization-Note</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/11/vim/">Vim</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/">从GNU Make到cmake</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/08/python-class/">Python-Class</a>
           </li>
         
       </ul>
@@ -279,6 +306,8 @@
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
   
 </nav>
     

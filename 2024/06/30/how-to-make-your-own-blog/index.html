@@ -15,9 +15,9 @@
 <meta property="og:description" content="part0：什么是博客(blog): part1：我实现博客的原理： part2：初识hexo： part3: hexo怎么用： 1. 框架准备: 2. 修改网站基本内容： 1. 找个主题(theme): 2. 找个家: 3. 改文件:   3. 系列操作: 4. 后面没了：     7&#x2F;11更改：      这篇文章是来讲述一下，如何创建一个属于自己的(较为简单的)博客。也是自己创建博">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-30T09:03:06.000Z">
-<meta property="article:modified_time" content="2024-07-16T06:26:33.467Z">
+<meta property="article:modified_time" content="2024-07-31T04:04:59.096Z">
 <meta property="article:author" content="Hebown">
-<meta property="article:tag" content="blog with hexo">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hebown's small world" type="application/atom+xml">
@@ -34,6 +34,10 @@
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
   
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css">
+
   
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -176,8 +180,14 @@ mjx-container[display="true"] + br {
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
+          <a class="main-nav-link" href="/about">About</a>
+        
       </nav>
       <nav id="sub-nav">
+        
+          
+            <a class="nav-icon" target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.github.io"><span class="fa fa-github"></span></a>
+          
         
         
           <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
@@ -293,6 +303,9 @@ mjx-container[display="true"] + br {
 <p>然而我比较懒，于是只用了给定的默认主题<code>landscape</code></p>
 <p>一般来说hexo会自动安装好这个包的，如果这个主题包没有下载，那么使用如下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hexojs/hexo-theme-landscape.git themes/landscape</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，这个命令使用了<code>git</code>，如果你的电脑没有<code>git</code>，请安装。如果你想对git有一个初步的理解，可以我的参照这篇<a href="./git.md">博客</a></p>
+</blockquote>
 <h3><span id="2-zhao-ge-jia">2. 找个家:</span><a href="#2-zhao-ge-jia" class="header-anchor">#</a></h3><p>有了这个主题之后，我们还需要为我们的网站找一个安身立命之所。</p>
 <blockquote>
 <p>我觉得，hexo实现博客的原理是准备一个静态的网页供浏览，如果我们不找托管平台的话，我们就需要自己准备服务器，接入互联网，这是比较麻烦的。</p>
@@ -319,11 +332,11 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/" data-id="clyp4vyyx0005ygr8h0ra5z4n" data-title="How to Make Your Own Blog?" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/" data-id="clzaptkbp0007q8r80t011hql" data-title="How to Make Your Own Blog?" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
 
     </footer>
   </div>
@@ -378,7 +391,7 @@ mjx-container[display="true"] + br {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-with-hexo/" rel="tag">blog with hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/courses/" rel="tag">courses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-visualization/" rel="tag">data-visualization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/" rel="tag">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/courses/" rel="tag">courses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-visualization/" rel="tag">data-visualization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dataProcessing/" rel="tag">dataProcessing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/" rel="tag">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
     </div>
   </div>
 
@@ -388,7 +401,7 @@ mjx-container[display="true"] + br {
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog-with-hexo/" style="font-size: 10px;">blog with hexo</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/courses/" style="font-size: 10px;">courses</a> <a href="/tags/data-visualization/" style="font-size: 10px;">data-visualization</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/courses/" style="font-size: 10px;">courses</a> <a href="/tags/data-visualization/" style="font-size: 10px;">data-visualization</a> <a href="/tags/dataProcessing/" style="font-size: 10px;">dataProcessing</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -411,23 +424,23 @@ mjx-container[display="true"] + br {
       <ul>
         
           <li>
+            <a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/">Hexo从入门到入土</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/19/python/">Python &amp; Data</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/17/vue/">Vue3</a>
+          </li>
+        
+          <li>
             <a href="/2024/07/16/tableau/">Tableau</a>
           </li>
         
           <li>
             <a href="/2024/07/15/Data-Visualization-Note/">Data-Visualization-Note</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/11/vim/">Vim</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/">从GNU Make到cmake</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/08/python-class/">Python-Class</a>
           </li>
         
       </ul>
@@ -455,6 +468,8 @@ mjx-container[display="true"] + br {
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
   
 </nav>
     
