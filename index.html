@@ -111,15 +111,18 @@
 <p>以下是一些博客的阅读技巧：</p>
 <ul>
 <li>上方<code>home</code>旁的<code>archives</code>列出了我的博客的目录；</li>
-<li>标签&#x2F;标签云记录了我的博客的主要内容，你可以点击你想了解的内容来进行搜索和筛选。</li>
+<li>标签/标签云记录了我的博客的主要内容，你可以点击你想了解的内容来进行搜索和筛选。</li>
 </ul>
-<h2><span id="tian-wan-liao-de-keng">填完了的坑：</span><a href="#tian-wan-liao-de-keng" class="header-anchor">#</a></h2><ul>
+<h2><span id="tian-wan-liao-de-keng">填完了的坑：</span><a href="#tian-wan-liao-de-keng" class="header-anchor">#</a></h2>
+<ul>
 <li><a href="./tableau.md">tableau学习log</a></li>
 <li><a href="./git.md">小白的<code>git</code>初识经历</a></li>
 <li><a href="./how-to-make-your-own-blog.md">如何建立一个你自己的博客</a></li>
 <li><a href="./vim.md">vim的初识</a></li>
+<li><a href>ode学习log</a></li>
 </ul>
-<h2><span id="huan-zai-nu-li-tian-de-keng">还在努力填的坑：</span><a href="#huan-zai-nu-li-tian-de-keng" class="header-anchor">#</a></h2><ul>
+<h2><span id="huan-zai-nu-li-tian-de-keng">还在努力填的坑：</span><a href="#huan-zai-nu-li-tian-de-keng" class="header-anchor">#</a></h2>
+<ul>
 <li><a href="./about-web.md">关于web的随笔</a></li>
 <li><a href="./hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.md">为hexo博客增添更多的内容</a></li>
 </ul>
@@ -128,11 +131,174 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/06/intro/" data-id="clzj98iy10008igr85xqwbeqr" data-title="你好" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/06/intro/" data-id="clzpco3pe000ekgr8bcmohwp6" data-title="你好" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/intro/" rel="tag">intro</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+  
+    <article id="post-deeplearn" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/08/10/deeplearn/" class="article-date">
+  <time class="dt-published" datetime="2024-08-10T04:07:56.000Z" itemprop="datePublished">2024-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/10/deeplearn/">Deeplearn</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文是<code>深度学习入门-基于python的理论与实现</code>这本书的读书笔记。</p>
+<div class="tocStart"></div>
+<!-- toc -->
+<ul>
+<li><a href="#ji-chu-python-zhi-shi">基础python知识：</a></li>
+<li><a href="#gan-zhi-ji-perceptron">感知机(<code>perceptron</code>)：</a>
+<ul>
+<li><a href="#yi-xie-jian-dan-de-li-zi-luo-ji-men">一些简单的例子(逻辑门)：</a></li>
+<li><a href="#yi-ban-xing-shi">一般形式：</a></li>
+<li><a href="#yi-ge-fan-li">一个反例：</a></li>
+</ul>
+</li>
+<li><a href="#shen-jing-wang-luo">神经网络：</a>
+<ul>
+<li><a href="#yi-ge-li-zi">一个例子：</a></li>
+<li><a href="#ji-huo-han-shu">激活函数：</a></li>
+<li><a href="#shi-yong-ju-zhen-lai-shi-xian-shen-jing-wang-luo">使用矩阵来实现神经网络：</a></li>
+<li><a href="#zui-zhong-shi-xian">最终实现：</a></li>
+<li><a href="#dui-shu-chu-ceng-de-she-ji">对输出层的设计：</a></li>
+<li><a href="#shou-xie-shu-zi-shi-bie">手写数字识别:</a></li>
+</ul>
+</li>
+<li><a href="#shen-jing-wang-luo-de-xue-xi">神经网络的学习:</a>
+<ul>
+<li><a href="#cong-shu-ju-zhong-xue-xi">从数据中学习：</a></li>
+<li><a href="#sun-shi-han-shu">损失函数：</a></li>
+<li><a href="#shu-zhi-wei-fen">数值微分：</a></li>
+<li><a href="#ti-du">梯度：</a></li>
+<li><a href="#shen-jing-wang-luo-de-ti-du">神经网络的梯度：</a></li>
+</ul>
+</li>
+<li><a href="#wu-chai-fan-xiang-chuan-bo-fa">误差反向传播法：</a></li>
+</ul>
+<!-- tocstop -->
+<div class="tocEnd"></div>
+        
+          <p class="article-more-link">
+            <a href="/2024/08/10/deeplearn/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/08/10/deeplearn/" data-id="clzpco3pa0004kgr8dnxy08fj" data-title="Deeplearn" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep-learning/" rel="tag">deep-learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+  
+    <article id="post-requests" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/08/09/requests/" class="article-date">
+  <time class="dt-published" datetime="2024-08-09T08:33:05.000Z" itemprop="datePublished">2024-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/09/requests/">Requests</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>对<a target="_blank" rel="noopener" href="https://requests.readthedocs.io/projects/cn/zh-cn/latest/user/quickstart.html">官方文档</a>的学习。</p>
+<div class="tocStart"></div>
+<!-- toc -->
+<ul>
+<li><a href="#chu-shi-requests">初识requests:</a></li>
+</ul>
+<!-- tocstop -->
+<div class="tocEnd"></div>
+        
+          <p class="article-more-link">
+            <a href="/2024/08/09/requests/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/08/09/requests/" data-id="clzpco3pi000okgr8d0foch3v" data-title="Requests" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-lib/" rel="tag">python-lib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/requests/" rel="tag">requests</a></li></ul>
 
     </footer>
   </div>
@@ -182,11 +348,10 @@
       
         <p>本文主要记录一些使用过程中对语法的理解。</p>
 <div class="tocStart"></div>
-
 <!-- toc -->
-
 <ul>
-<li><a href="#lambda-biao-da-shi">lambda表达式：</a><ul>
+<li><a href="#lambda-biao-da-shi">lambda表达式：</a>
+<ul>
 <li><a href="#lambda-biao-da-shi-de-ji-ben-yu-fa">Lambda 表达式的基本语法</a></li>
 <li><a href="#shi-li">示例</a></li>
 <li><a href="#bu-huo-fang-shi">捕获方式</a></li>
@@ -196,7 +361,6 @@
 </li>
 </ul>
 <!-- tocstop -->
-
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -206,161 +370,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" data-id="clzj98ixx0001igr8cihhcsr9" data-title="Cpp札记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" data-id="clzpco3p20000kgr8502tbfer" data-title="Cpp札记" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-  
-    <article id="post-cpp-useful-operations" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="article-meta">
-    <a href="/2024/08/06/cpp-useful-operations/" class="article-date">
-  <time class="dt-published" datetime="2024-08-06T02:25:59.000Z" itemprop="datePublished">2024-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/08/06/cpp-useful-operations/">Cpp-Useful-Operations</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>本博客用来记录基础且好用的cpp功能。</p>
-<div class="tocStart"></div>
-
-<!-- toc -->
-
-<ul>
-<li><a href="#zi-fu-chuan">字符串:</a><ul>
-<li><a href="#1-chuang-jian-he-chu-shi-hua-zi-fu-chuan">1. 创建和初始化字符串</a></li>
-<li><a href="#2-huo-qu-zi-fu-chuan-chang-du">2. 获取字符串长度</a></li>
-<li><a href="#3-fang-wen-he-xiu-gai-zi-fu">3. 访问和修改字符</a></li>
-<li><a href="#4-pin-jie-zi-fu-chuan">4. 拼接字符串</a></li>
-<li><a href="#5-zi-zi-fu-chuan">5. 子字符串</a></li>
-<li><a href="#6-cha-zhao-zi-fu-huo-zi-zi-fu-chuan">6. 查找字符或子字符串</a></li>
-<li><a href="#7-ti-huan-zi-zi-fu-chuan">7. 替换子字符串</a></li>
-<li><a href="#8-cha-ru-he-shan-chu-zi-fu">8. 插入和删除字符</a></li>
-<li><a href="#9-bi-jiao-zi-fu-chuan">9. 比较字符串</a></li>
-<li><a href="#10-zhuan-huan-wei-c-zi-fu-chuan">10. 转换为 C 字符串</a></li>
-<li><a href="#11-die-dai-zi-fu-chuan">11. 迭代字符串</a></li>
-<li><a href="#12-zhuan-huan-da-xiao-xie">12. 转换大小写</a></li>
-<li><a href="#13-qu-chu-kong-bai-zi-fu">13. 去除空白字符</a></li>
-</ul>
-</li>
-<li><a href="#pai-xu">排序：</a><ul>
-<li><a href="#c-zhong-de-std-sort">C++中的<code>std::sort</code>:</a></li>
-</ul>
-</li>
-<li><a href="#io">io:</a><ul>
-<li><a href="#zi-fu-chuan">字符串：</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<div class="tocEnd"></div>
-        
-          <p class="article-more-link">
-            <a href="/2024/08/06/cpp-useful-operations/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/06/cpp-useful-operations/" data-id="clzj98ixz0003igr835m58f6m" data-title="Cpp-Useful-Operations" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basicTools/" rel="tag">basicTools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-  
-    <article id="post-moreJs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="article-meta">
-    <a href="/2024/08/02/moreJs/" class="article-date">
-  <time class="dt-published" datetime="2024-08-02T10:31:43.095Z" itemprop="datePublished">2024-08-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/08/02/moreJs/">进一步了解Js</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/02/moreJs/" data-id="clzj98iy6000qigr83iiscckt" data-title="进一步了解Js" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
 
     </footer>
   </div>
@@ -418,7 +432,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/basicTools/" rel="tag">basicTools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dataProcessing/" rel="tag">dataProcessing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frame/" rel="tag">frame</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/basicTools/" rel="tag">basicTools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dataProcessing/" rel="tag">dataProcessing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deep-learning/" rel="tag">deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frame/" rel="tag">frame</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-lib/" rel="tag">python-lib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/" rel="tag">requests</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
     </div>
   </div>
 
@@ -428,7 +442,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 13.33px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 13.33px;">dataProcessing</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 13.33px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 13.33px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -451,6 +465,14 @@
       <ul>
         
           <li>
+            <a href="/2024/08/10/deeplearn/">Deeplearn</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/09/requests/">Requests</a>
+          </li>
+        
+          <li>
             <a href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/">Cpp札记</a>
           </li>
         
@@ -460,14 +482,6 @@
         
           <li>
             <a href="/2024/08/02/moreJs/">进一步了解Js</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/">Hexo从入门到入土</a>
-          </li>
-        
-          <li>
-            <a href="/2024/07/19/python/">Python &amp; Data</a>
           </li>
         
       </ul>
