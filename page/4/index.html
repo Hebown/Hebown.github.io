@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
   <meta charset="utf-8">
   
   
@@ -18,8 +17,6 @@
 <meta property="article:tag" content="Hexo, blog, tech, life">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hebown's small world" type="application/atom+xml">
-  
   
     <link rel="shortcut icon" href="/favicon.png">
   
@@ -33,16 +30,17 @@
 
   
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
+<body class="light-mode not-index">
   <div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
-
+  
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -68,16 +66,50 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+        <a class="nav-icon"><span class="fa fa-sun" id="changeButton"></span></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
       </div>
     </div>
   </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      // Toggle between 'fa- sun' and 'fa-moon' when the button is clicked
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
 
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    // Save the user's theme preference in localStorage
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  
 </header>
 
       <div class="outer">
@@ -107,20 +139,19 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <div class="tocStart"></div>
+
 <!-- toc -->
+
 <ul>
 <li><a href="#zong-jie-wo-de-shu-ju-ke-shi-hua-zhe-xue">总结我的数据可视化哲学：</a></li>
 <li><a href="#tableau-jie-shao">tableau介绍：</a></li>
 <li><a href="#an-zhuang-jiao-cheng">安装教程：</a></li>
-<li><a href="#kai-shi-xue-xi">开始学习：</a>
-<ul>
-<li><a href="#shu-ju-lian-jie">数据连接：</a>
-<ul>
+<li><a href="#kai-shi-xue-xi">开始学习：</a><ul>
+<li><a href="#shu-ju-lian-jie">数据连接：</a><ul>
 <li><a href="#shu-ju-chu-li">数据处理：</a></li>
 </ul>
 </li>
-<li><a href="#shu-ju-ke-shi-hua">数据可视化：</a>
-<ul>
+<li><a href="#shu-ju-ke-shi-hua">数据可视化：</a><ul>
 <li><a href="#shu-ju-lei-xing">数据类型：</a></li>
 <li><a href="#ying-she-de-gui-ze">映射的规则：</a></li>
 </ul>
@@ -129,6 +160,7 @@
 </li>
 </ul>
 <!-- tocstop -->
+
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -138,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/16/tableau/" data-id="cm06kc9xq000tw0r810r93tt8" data-title="Tableau" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/16/tableau/" data-id="cm09d8lvw000zror853rm2jwd" data-title="Tableau" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -164,6 +196,8 @@
         crossorigin="anonymous"
         async>
 </script>
+
+
 
 
   
@@ -192,13 +226,16 @@
       
         <p>这篇博客来学习vim。</p>
 <div class="tocStart"></div>
+
 <!-- toc -->
+
 <ul>
 <li><a href="#huan-jing">环境：</a></li>
 <li><a href="#wo-dui-vim-hao-chu-de-li-jie">我对vim好处的理解：</a></li>
 <li><a href="#vim-jie-gou">vim结构：</a></li>
 </ul>
 <!-- tocstop -->
+
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -208,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/11/vim/" data-id="cm06kc9xr000xw0r8eu7l2slv" data-title="Vim" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/11/vim/" data-id="cm09d8lvw000vror8e3666e4q" data-title="Vim" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -236,6 +273,8 @@
 </script>
 
 
+
+
   
     <article id="post-从json到cmake" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
@@ -260,24 +299,20 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>想了想还是开始学这个，反正时间充裕。<br>
-我的目标包括：</p>
+        <p>想了想还是开始学这个，反正时间充裕。<br>我的目标包括：</p>
 <ul>
 <li>学会makefile的基本概念和操作；</li>
-<li>学会cmake的基本概念和操作。</li>
+<li>学会cmake的基本概念和操作。<div class="tocStart"></div></li>
 </ul>
-<div class="tocStart"></div>
 <!-- toc -->
+
 <ul>
-<li><a href="#gnu-make">GNU make：</a>
-<ul>
-<li><a href="#jie-shao-makefile">介绍makefile：</a>
-<ul>
+<li><a href="#gnu-make">GNU make：</a><ul>
+<li><a href="#jie-shao-makefile">介绍makefile：</a><ul>
 <li><a href="#chong-wen-cheng-xu-bian-yi-lian-jie">重温程序编译链接：</a></li>
 </ul>
 </li>
-<li><a href="#chu-shi-makefile">初识makefile：</a>
-<ul>
+<li><a href="#chu-shi-makefile">初识makefile：</a><ul>
 <li><a href="#yi-ge-li-zi">一个例子：</a></li>
 <li><a href="#shi-yong-bian-liang">使用变量：</a></li>
 <li><a href="#make-zi-dong-tui-dao">make自动推导：</a></li>
@@ -286,8 +321,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#cmake">Cmake：</a>
-<ul>
+<li><a href="#cmake">Cmake：</a><ul>
 <li><a href="#1-sha-shi-cmake">1. 啥是Cmake:</a></li>
 <li><a href="#2-cmake-neng-gan-sha">2. cmake能干啥：</a></li>
 <li><a href="#3-cmake-de-ji-ben-jie-gou">3. cmake的基本结构：</a></li>
@@ -296,6 +330,7 @@
 </li>
 </ul>
 <!-- tocstop -->
+
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -305,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" data-id="cm06kc9y00028w0r870jj6nky" data-title="从GNU Make到cmake" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" data-id="cm09d8lw2002aror87ks0a6iq" data-title="从GNU Make到cmake" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -331,6 +366,8 @@
         crossorigin="anonymous"
         async>
 </script>
+
+
 
 
   
@@ -359,7 +396,9 @@
       
         <p>这篇博客学习python的面向对象，博主的目的是学习其语法。</p>
 <div class="tocStart"></div>
+
 <!-- toc -->
+
 <ul>
 <li><a href="#0-qian-yan">0. 前言：</a></li>
 <li><a href="#1-lei-de-ji-ben-cao-zuo">1. 类的基本操作：</a></li>
@@ -368,6 +407,7 @@
 <li><a href="#yi-xie-bie-de-yong-fa">一些别的用法：</a></li>
 </ul>
 <!-- tocstop -->
+
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -377,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/08/python-class/" data-id="cm06kc9xo000mw0r8fv0u68k6" data-title="Python-Class" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/08/python-class/" data-id="cm09d8lvt000lror8elxuhz16" data-title="Python-Class" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -405,6 +445,8 @@
 </script>
 
 
+
+
   
 
 
@@ -428,21 +470,13 @@
         data-lang="zh-CN"
         crossorigin="anonymous"
         async>
-</script></section>
+</script>
+
+</section>
         
           <aside id="sidebar">
   
     
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Complex-Analysis/" rel="tag">Complex-Analysis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algos/" rel="tag">algos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basicTools/" rel="tag">basicTools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dataProcessing/" rel="tag">dataProcessing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deep-learning/" rel="tag">deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frame/" rel="tag">frame</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-lib/" rel="tag">python-lib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/" rel="tag">requests</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sketch/" rel="tag">sketch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-    </div>
-  </div>
-
 
   
     

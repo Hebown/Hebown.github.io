@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
   <meta charset="utf-8">
   
   
@@ -18,8 +17,6 @@
 <meta property="article:tag" content="Hexo, blog, tech, life">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hebown's small world" type="application/atom+xml">
-  
   
     <link rel="shortcut icon" href="/favicon.png">
   
@@ -33,6 +30,7 @@
 
   
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
@@ -149,12 +147,12 @@ mjx-container[display="true"] + br {
 }
 </style></head>
 
-<body>
+<body class="light-mode index">
   <div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
-
+  
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -180,16 +178,50 @@ mjx-container[display="true"] + br {
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+        <a class="nav-icon"><span class="fa fa-sun" id="changeButton"></span></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
       </div>
     </div>
   </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      // Toggle between 'fa- sun' and 'fa-moon' when the button is clicked
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
 
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    // Save the user's theme preference in localStorage
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  
 </header>
 
       <div class="outer">
@@ -223,98 +255,49 @@ mjx-container[display="true"] + br {
 <p>以下是一些博客的阅读技巧：</p>
 <ul>
 <li>上方<code>home</code>旁的<code>archives</code>列出了我的博客的目录；</li>
-<li>标签/标签云记录了我的博客的主要内容，你可以点击你想了解的内容来进行搜索和筛选。</li>
+<li>标签&#x2F;标签云记录了我的博客的主要内容，你可以点击你想了解的内容来进行搜索和筛选。</li>
+<li>顶部右上方的小太阳&#x2F;小月亮可以切换黑白模式。</li>
 </ul>
-<h2><span id="tian-wan-liao-de-keng">填完了的坑：</span><a href="#tian-wan-liao-de-keng" class="header-anchor">#</a></h2>
-<ul>
-<li>
-<a href="/2024/07/16/tableau/" title="tableau">tableau-log</a> 
-</li>
-<li>
-<a href="/2024/06/30/how-to-make-your-own-blog/" title="how to make your own blog?">如何使用hexo建立你的博客</a>
-</li>
-<li>
-<a href="/2024/07/02/git/" title="小白的git初学经历">小白的git初学经历</a>
-</li>
-<li>
-<a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" title="ode学习log">ode学习log</a>
-</li>
-<li>
-<a href="/2024/07/11/vim/" title="vim">vim的初识</a>
-</li>
-<li>
-<a href="/2024/08/10/deeplearn/" title="deeplearn">深度学习掠影</a>
-</li>
+<h2><span id="tian-wan-liao-de-keng">填完了的坑：</span><a href="#tian-wan-liao-de-keng" class="header-anchor">#</a></h2><ul>
+<li><a href="/2024/07/16/tableau/" title="tableau">tableau-log</a> </li>
+<li><a href="/2024/06/30/how-to-make-your-own-blog/" title="how to make your own blog?">如何使用hexo建立你的博客</a></li>
+<li><a href="/2024/07/02/git/" title="小白的git初学经历">小白的git初学经历</a></li>
+<li><a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" title="ode学习log">ode学习log</a></li>
+<li><a href="/2024/07/11/vim/" title="vim">vim的初识</a></li>
+<li><a href="/2024/08/10/deeplearn/" title="deeplearn">深度学习掠影</a></li>
 </ul>
-<h2><span id="huan-zai-nu-li-tian-de-keng">还在努力填的坑：</span><a href="#huan-zai-nu-li-tian-de-keng" class="header-anchor">#</a></h2>
-<ul>
-<li>
-<a href="/2024/07/08/about-web/" title="about-web">关于web的随笔</a>
-</li>
-<li>
-<a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" title="hexo从入门到入土">hexo从入门到入土</a>
-</li>
-<li>
-<a href="/2024/08/02/moreJs/" title="进一步了解js">多看点js</a>
-</li>
-<li>
-<a href="/2024/08/09/requests/" title="requests">Requests</a>
-</li>
-<li>
-<a href="/2024/07/19/python/" title="python &amp; data">python-data</a>
-</li>
+<h2><span id="huan-zai-nu-li-tian-de-keng">还在努力填的坑：</span><a href="#huan-zai-nu-li-tian-de-keng" class="header-anchor">#</a></h2><ul>
+<li><a href="/2024/07/08/about-web/" title="about-web">关于web的随笔</a></li>
+<li><a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" title="hexo从入门到入土">hexo从入门到入土</a></li>
+<li><a href="/2024/08/02/moreJs/" title="进一步了解js">多看点js</a></li>
+<li><a href="/2024/08/09/requests/" title="requests">Requests</a></li>
+<li><a href="/2024/07/19/python/" title="python &amp; data">python-data</a></li>
 </ul>
-<h2><span id="chang-qi-sui-bi">长期随笔：</span><a href="#chang-qi-sui-bi" class="header-anchor">#</a></h2>
-<ul>
-<li>
-<a href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" title="cpp札记">cpp札记</a>
-</li>
-<li>
-<a href="/2024/08/06/cpp-useful-operations/" title="cpp-useful-operations">cpp-useful-operations</a>
-</li>
-<li>
-<a href="/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" title="算法随想录">算法随想录</a>
-</li>
+<h2><span id="chang-qi-sui-bi">长期随笔：</span><a href="#chang-qi-sui-bi" class="header-anchor">#</a></h2><ul>
+<li><a href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" title="cpp札记">cpp札记</a></li>
+<li><a href="/2024/08/06/cpp-useful-operations/" title="cpp-useful-operations">cpp-useful-operations</a></li>
+<li><a href="/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" title="算法随想录">算法随想录</a></li>
 </ul>
-<h2><span id="shu-li-mo-kuai">数理模块：</span><a href="#shu-li-mo-kuai" class="header-anchor">#</a></h2>
-<ul>
-<li>
-<a href="/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" title="复变函数掠影">复变函数掠影</a>
-</li>
-<li>
-<a href="/2024/07/04/normal-physics-note/" title="normal physics note">normal physics note</a>
-</li>
-<li>
-<a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" title="ode学习log">ode学习log</a>
-</li>
+<h2><span id="shu-li-mo-kuai">数理模块：</span><a href="#shu-li-mo-kuai" class="header-anchor">#</a></h2><ul>
+<li><a href="/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" title="复变函数掠影">复变函数掠影</a></li>
+<li><a href="/2024/07/04/normal-physics-note/" title="normal physics note">normal physics note</a></li>
+<li><a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" title="ode学习log">ode学习log</a></li>
 </ul>
-<h2><span id="ji-qi-xue-xi">机器学习：</span><a href="#ji-qi-xue-xi" class="header-anchor">#</a></h2>
-<ul>
-<li>
-<a href="/2024/08/16/ml/" title="ml">ml</a>
-</li>
+<h2><span id="ji-qi-xue-xi">机器学习：</span><a href="#ji-qi-xue-xi" class="header-anchor">#</a></h2><ul>
+<li><a href="/2024/08/16/ml/" title="ml">ml</a></li>
 </ul>
-<h2><span id="qi-ta-wen-zhang">其他文章：</span><a href="#qi-ta-wen-zhang" class="header-anchor">#</a></h2>
-<ul>
-<li>
-<a href="/2024/06/30/hello-world/" title="Hello World">Hello World</a>
-</li>
-<li>
-<a href="/2024/07/08/python-class/" title="python-class">python-class</a>
-</li>
-<li>
-<a href="/2024/07/16/tableau/" title="tableau">tableau</a>
-</li>
-<li>
-<a href="/2024/07/17/vue/" title="vue3">vue3</a>
-</li>
+<h2><span id="qi-ta-wen-zhang">其他文章：</span><a href="#qi-ta-wen-zhang" class="header-anchor">#</a></h2><ul>
+<li><a href="/2024/06/30/hello-world/" title="Hello World">Hello World</a></li>
+<li><a href="/2024/07/08/python-class/" title="python-class">python-class</a></li>
+<li><a href="/2024/07/16/tableau/" title="tableau">tableau</a></li>
+<li><a href="/2024/07/17/vue/" title="vue3">vue3</a></li>
 </ul>
-<p>如果你喜欢我的博客，欢迎star/comment我的博客<a target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.github.io">repo</a></p>
+<p>如果你喜欢我的博客，欢迎star&#x2F;comment我的博客<a target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.github.io">repo</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/06/intro/" data-id="cm06kc9xi000cw0r88f8h4fxe" data-title="你好" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/06/intro/" data-id="cm09d8lvq000aror88zfpgm6l" data-title="你好" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -340,6 +323,8 @@ mjx-container[display="true"] + br {
         crossorigin="anonymous"
         async>
 </script>
+
+
 
 
   
@@ -368,25 +353,25 @@ mjx-container[display="true"] + br {
       
         <p>本文记录平时遇到的算法的自然推理过程。</p>
 <div class="tocStart"></div>
+
 <!-- toc -->
+
 <ul>
-<li><a href="#shu-lun-suan-fa">数论算法：</a>
-<ul>
-<li><a href="#ou-la-shai">欧拉筛：</a>
-<ul>
+<li><a href="#shu-lun-suan-fa">数论算法：</a><ul>
+<li><a href="#ou-la-shai">欧拉筛：</a><ul>
 <li><a href="#wei-shi-me-hui-you-chong-fu-shai-chu-de-wen-ti">为什么会有重复筛除的问题？</a></li>
 <li><a href="#ou-la-shai-de-he-xin-si-lu">欧拉筛的核心思路</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#dp">DP:</a>
-<ul>
+<li><a href="#dp">DP:</a><ul>
 <li><a href="#bei-bao-wen-ti">背包问题：</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
+
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -396,7 +381,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" data-id="cm06kc9y10029w0r8hlzj6me0" data-title="算法随想录" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" data-id="cm09d8lw2002bror85g9feiq5" data-title="算法随想录" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -422,6 +407,8 @@ mjx-container[display="true"] + br {
         crossorigin="anonymous"
         async>
 </script>
+
+
 
 
   
@@ -450,10 +437,11 @@ mjx-container[display="true"] + br {
       
         <p>本文是<code>机器学习实战：基于Scikit-Learn\Keras和TensorFlow</code>的读书笔记。</p>
 <div class="tocStart"></div>
+
 <!-- toc -->
+
 <ul>
-<li><a href="#di-yi-zhang-ji-qi-xue-xi-de-ji-chu-zhi-shi">第一章 机器学习的基础知识：</a>
-<ul>
+<li><a href="#di-yi-zhang-ji-qi-xue-xi-de-ji-chu-zhi-shi">第一章 机器学习的基础知识：</a><ul>
 <li><a href="#shi-me-shi-ji-qi-xue-xi">什么是机器学习：</a></li>
 <li><a href="#wei-shi-me-shi-yong-ji-qi-xue-xi">为什么使用机器学习：</a></li>
 <li><a href="#shi-li">示例：</a></li>
@@ -464,6 +452,7 @@ mjx-container[display="true"] + br {
 <li><a href="#di-er-zhang-duan-dao-duan-de-ji-qi-xue-xi-xiang-mu">第二章 端到端的机器学习项目：</a></li>
 </ul>
 <!-- tocstop -->
+
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -473,7 +462,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/16/ml/" data-id="cm06kc9xk000fw0r89vrc7o33" data-title="Ml" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/16/ml/" data-id="cm09d8lvs000fror873uah5sv" data-title="Ml" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -499,6 +488,8 @@ mjx-container[display="true"] + br {
         crossorigin="anonymous"
         async>
 </script>
+
+
 
 
   
@@ -528,28 +519,28 @@ mjx-container[display="true"] + br {
         <p>作者闲的没事瞎写的。</p>
 <p>教材标准：复变函数与拉普拉斯变换</p>
 <div class="tocStart"></div>
+
 <!-- toc -->
+
 <ul>
 <li><a href="#qian-tan-si-lu">浅谈思路：</a></li>
 <li><a href="#di-yi-zhang-fu-shu-de-yu-bei-zhi-shi">第一章 复数的预备知识：</a></li>
-<li><a href="#di-er-zhang-jie-xi-han-shu">第二章 解析函数：</a>
-<ul>
+<li><a href="#di-er-zhang-jie-xi-han-shu">第二章 解析函数：</a><ul>
 <li><a href="#yi-ge-hen-you-qi-fa-xing-de-xi-ti">一个很有启发性的习题：</a></li>
 </ul>
 </li>
 <li><a href="#di-san-zhang-fu-bian-han-shu-ji-fen">第三章 复变函数积分：</a></li>
-<li><a href="#di-si-zhang-tai-le-ji-shu-he-luo-lang-ji-shu">第四章 泰勒级数和洛朗级数：</a>
-<ul>
+<li><a href="#di-si-zhang-tai-le-ji-shu-he-luo-lang-ji-shu">第四章 泰勒级数和洛朗级数：</a><ul>
 <li><a href="#yi-xie-ming-cheng">一些名称：</a></li>
 </ul>
 </li>
-<li><a href="#di-wu-zhang-liu-shu-ding-li">第五章 留数定理：</a>
-<ul>
+<li><a href="#di-wu-zhang-liu-shu-ding-li">第五章 留数定理：</a><ul>
 <li><a href="#ying-yong">应用：</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
+
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -559,7 +550,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" data-id="cm06kc9y2002bw0r8eu4f6gwu" data-title="复变函数掠影" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" data-id="cm09d8lvx0012ror812cz70qz" data-title="复变函数掠影" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -587,6 +578,8 @@ mjx-container[display="true"] + br {
 </script>
 
 
+
+
   
 
 
@@ -610,21 +603,13 @@ mjx-container[display="true"] + br {
         data-lang="zh-CN"
         crossorigin="anonymous"
         async>
-</script></section>
+</script>
+
+</section>
         
           <aside id="sidebar">
   
     
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Complex-Analysis/" rel="tag">Complex-Analysis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algos/" rel="tag">algos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basicTools/" rel="tag">basicTools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dataProcessing/" rel="tag">dataProcessing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deep-learning/" rel="tag">deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frame/" rel="tag">frame</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intro/" rel="tag">intro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ml/" rel="tag">ml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ode/" rel="tag">ode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physics/" rel="tag">physics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-lib/" rel="tag">python-lib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/requests/" rel="tag">requests</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sketch/" rel="tag">sketch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thoughts/" rel="tag">thoughts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-    </div>
-  </div>
-
 
   
     
