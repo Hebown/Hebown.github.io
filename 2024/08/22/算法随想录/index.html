@@ -8,12 +8,12 @@
   
   <title>算法随想录 | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文记录平时遇到的算法的自然推理过程。      数论算法： 欧拉筛： 为什么会有重复筛除的问题？ 欧拉筛的核心思路     DP: 背包问题：">
+  <meta name="description" content="本文记录平时遇到的算法的自然推理过程。    数论算法：  欧拉筛：  为什么会有重复筛除的问题？ 欧拉筛的核心思路     DP:  背包问题：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法随想录">
 <meta property="og:url" content="https://hebown.github.io/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="本文记录平时遇到的算法的自然推理过程。      数论算法： 欧拉筛： 为什么会有重复筛除的问题？ 欧拉筛的核心思路     DP: 背包问题：">
+<meta property="og:description" content="本文记录平时遇到的算法的自然推理过程。    数论算法：  欧拉筛：  为什么会有重复筛除的问题？ 欧拉筛的核心思路     DP:  背包问题：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-22T01:11:33.000Z">
 <meta property="article:modified_time" content="2024-08-26T08:44:44.008Z">
@@ -147,6 +147,38 @@
     });
 
   </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
 </header>
 
       <div class="outer">
@@ -174,43 +206,47 @@
       
         <p>本文记录平时遇到的算法的自然推理过程。</p>
 <div class="toc">
-
 <!-- toc -->
-
 <ul>
-<li><a href="#shu-lun-suan-fa">数论算法：</a><ul>
-<li><a href="#ou-la-shai">欧拉筛：</a><ul>
+<li><a href="#shu-lun-suan-fa">数论算法：</a>
+<ul>
+<li><a href="#ou-la-shai">欧拉筛：</a>
+<ul>
 <li><a href="#wei-shi-me-hui-you-chong-fu-shai-chu-de-wen-ti">为什么会有重复筛除的问题？</a></li>
 <li><a href="#ou-la-shai-de-he-xin-si-lu">欧拉筛的核心思路</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#dp">DP:</a><ul>
+<li><a href="#dp">DP:</a>
+<ul>
 <li><a href="#bei-bao-wen-ti">背包问题：</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
-
 </div>
 <span id="more"></span>
-
-<h1><span id="shu-lun-suan-fa">数论算法：</span><a href="#shu-lun-suan-fa" class="header-anchor">#</a></h1><h2><span id="ou-la-shai">欧拉筛：</span><a href="#ou-la-shai" class="header-anchor">#</a></h2><p>欧拉筛是对<strong>埃氏筛</strong>的改进，其目的是解决 <strong>合数因拥有多个质因子而被重复筛除</strong> 的问题。以下是详细分析：</p>
-<h3><span id="wei-shi-me-hui-you-chong-fu-shai-chu-de-wen-ti">为什么会有重复筛除的问题？</span><a href="#wei-shi-me-hui-you-chong-fu-shai-chu-de-wen-ti" class="header-anchor">#</a></h3><p>在埃氏筛中，我们从小到大枚举质数，并将每个质数的若干倍数（通常是自然数的倍数，不包括0和1）标记为合数。质数的定义是 <strong>不能被比它小的数（除了1）整除的数</strong>，因此，只要将 <strong>比当前数小的所有数的倍数筛选出来</strong>，我们就可以确定这个数是否为质数。</p>
-<p>然而，合数通常可以分解为多个质因子的乘积。例如，$12 &#x3D; 3 \times 4 &#x3D; 2 \times 6$，这种情况导致某些合数会被重复标记。这种重复标记的问题出现的原因在于，当我们使用“质数乘以倍数”的筛选模式时，<strong>倍数中的最小质因子可能比当前质数还要小</strong>，意味着这个数已经在之前被更小的质数标记为合数了，因此，这些倍数不需要再次迭代筛选。</p>
-<h3><span id="ou-la-shai-de-he-xin-si-lu">欧拉筛的核心思路</span><a href="#ou-la-shai-de-he-xin-si-lu" class="header-anchor">#</a></h3><p>欧拉筛的核心思想是从埃氏筛的 <strong>迭代质数倍数</strong> 模式转变为 <strong>迭代必要的倍数</strong>。在埃氏筛中，我们的筛选过程类似如下代码：</p>
+<h1><span id="shu-lun-suan-fa">数论算法：</span><a href="#shu-lun-suan-fa" class="header-anchor">#</a></h1>
+<h2><span id="ou-la-shai">欧拉筛：</span><a href="#ou-la-shai" class="header-anchor">#</a></h2>
+<p>欧拉筛是对<strong>埃氏筛</strong>的改进，其目的是解决 <strong>合数因拥有多个质因子而被重复筛除</strong> 的问题。以下是详细分析：</p>
+<h3><span id="wei-shi-me-hui-you-chong-fu-shai-chu-de-wen-ti">为什么会有重复筛除的问题？</span><a href="#wei-shi-me-hui-you-chong-fu-shai-chu-de-wen-ti" class="header-anchor">#</a></h3>
+<p>在埃氏筛中，我们从小到大枚举质数，并将每个质数的若干倍数（通常是自然数的倍数，不包括0和1）标记为合数。质数的定义是 <strong>不能被比它小的数（除了1）整除的数</strong>，因此，只要将 <strong>比当前数小的所有数的倍数筛选出来</strong>，我们就可以确定这个数是否为质数。</p>
+<p>然而，合数通常可以分解为多个质因子的乘积。例如，$12 = 3 \times 4 = 2 \times 6$，这种情况导致某些合数会被重复标记。这种重复标记的问题出现的原因在于，当我们使用“质数乘以倍数”的筛选模式时，<strong>倍数中的最小质因子可能比当前质数还要小</strong>，意味着这个数已经在之前被更小的质数标记为合数了，因此，这些倍数不需要再次迭代筛选。</p>
+<h3><span id="ou-la-shai-de-he-xin-si-lu">欧拉筛的核心思路</span><a href="#ou-la-shai-de-he-xin-si-lu" class="header-anchor">#</a></h3>
+<p>欧拉筛的核心思想是从埃氏筛的 <strong>迭代质数倍数</strong> 模式转变为 <strong>迭代必要的倍数</strong>。在埃氏筛中，我们的筛选过程类似如下代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>; i&lt;n; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(primes[i])&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i*i; j&lt;n; j+=i)&#123;</span><br><span class="line">            primes[j] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>如果我们直接按上述逻辑修改埃氏筛，会发现很难判断当前倍数<code>j</code>是否包含比当前质数更小的质因子。而且，对于由 <strong>倍数组成的数集</strong> 来说，不同质数的筛选本质上并没有区别。因此，我们需要引入一种机制，记录并保存已经筛选过的较小 <strong>质数集</strong>，并且改变循环顺序，将迭代的倍数作为外层循环，提高效率。</p>
 <p>通过这种方法，欧拉筛在减少重复标记合数的同时，大大提高了算法的效率。</p>
-<h1><span id="dp">DP:</span><a href="#dp" class="header-anchor">#</a></h1><h2><span id="bei-bao-wen-ti">背包问题：</span><a href="#bei-bao-wen-ti" class="header-anchor">#</a></h2><p>$f[i][j]$来记录背包内最多的价值，状态转移方程为$f[i][j]&#x3D;\max(f[i-1][j],f[i-1][j-v[i]]+w[i])$</p>
+<h1><span id="dp">DP:</span><a href="#dp" class="header-anchor">#</a></h1>
+<h2><span id="bei-bao-wen-ti">背包问题：</span><a href="#bei-bao-wen-ti" class="header-anchor">#</a></h2>
+<p>$f[i][j]$来记录背包内最多的价值，状态转移方程为$f[i][j]=\max(f[i-1][j],f[i-1][j-v[i]]+w[i])$</p>
 <p>我的感觉就是分类，找到一个划分之后分情况讨论，就和<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1044">栈那道题</a>是一样的。你用不同的划分得到的递推都不一样。栈这道题就是 <strong>对什么时候pop(1)进行讨论</strong> ，直接就能得到递推式。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" data-id="cm0c1k456001wm0r8fuzhb5cy" data-title="算法随想录" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" data-id="cm0c2s8g4001k0wr8hd7x2t0h" data-title="算法随想录" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

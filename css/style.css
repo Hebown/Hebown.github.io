@@ -627,12 +627,13 @@ body.dark-mode .widget-title {
   letter-spacing: 2px;
 }
 #subtitle {
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 550;
   letter-spacing: 1px;
 }
 #subtitle-wrap {
-  margin-top: 16px;
+  margin-top: 18px;
 }
 #main-nav {
   float: left;

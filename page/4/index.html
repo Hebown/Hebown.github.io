@@ -144,6 +144,38 @@
     });
 
   </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
 </header>
 
       <div class="outer">
@@ -172,19 +204,20 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <div class="tocStart"></div>
-
 <!-- toc -->
-
 <ul>
 <li><a href="#zong-jie-wo-de-shu-ju-ke-shi-hua-zhe-xue">总结我的数据可视化哲学：</a></li>
 <li><a href="#tableau-jie-shao">tableau介绍：</a></li>
 <li><a href="#an-zhuang-jiao-cheng">安装教程：</a></li>
-<li><a href="#kai-shi-xue-xi">开始学习：</a><ul>
-<li><a href="#shu-ju-lian-jie">数据连接：</a><ul>
+<li><a href="#kai-shi-xue-xi">开始学习：</a>
+<ul>
+<li><a href="#shu-ju-lian-jie">数据连接：</a>
+<ul>
 <li><a href="#shu-ju-chu-li">数据处理：</a></li>
 </ul>
 </li>
-<li><a href="#shu-ju-ke-shi-hua">数据可视化：</a><ul>
+<li><a href="#shu-ju-ke-shi-hua">数据可视化：</a>
+<ul>
 <li><a href="#shu-ju-lei-xing">数据类型：</a></li>
 <li><a href="#ying-she-de-gui-ze">映射的规则：</a></li>
 </ul>
@@ -193,7 +226,6 @@
 </li>
 </ul>
 <!-- tocstop -->
-
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -203,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/16/tableau/" data-id="cm0c1k457001ym0r8dn9sadf8" data-title="Tableau" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/16/tableau/" data-id="cm0c2s8g2001d0wr8fo3bctue" data-title="Tableau" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -241,16 +273,13 @@
       
         <p>这篇博客来学习vim。</p>
 <div class="tocStart"></div>
-
 <!-- toc -->
-
 <ul>
 <li><a href="#huan-jing">环境：</a></li>
 <li><a href="#wo-dui-vim-hao-chu-de-li-jie">我对vim好处的理解：</a></li>
 <li><a href="#vim-jie-gou">vim结构：</a></li>
 </ul>
 <!-- tocstop -->
-
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -260,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/11/vim/" data-id="cm0c1k454001pm0r8014daw78" data-title="Vim" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/11/vim/" data-id="cm0c2s8g1001b0wr84bv27b4d" data-title="Vim" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -296,20 +325,24 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>想了想还是开始学这个，反正时间充裕。<br>我的目标包括：</p>
+        <p>想了想还是开始学这个，反正时间充裕。<br>
+我的目标包括：</p>
 <ul>
 <li>学会makefile的基本概念和操作；</li>
-<li>学会cmake的基本概念和操作。<div class="tocStart"></div></li>
+<li>学会cmake的基本概念和操作。</li>
 </ul>
+<div class="tocStart"></div>
 <!-- toc -->
-
 <ul>
-<li><a href="#gnu-make">GNU make：</a><ul>
-<li><a href="#jie-shao-makefile">介绍makefile：</a><ul>
+<li><a href="#gnu-make">GNU make：</a>
+<ul>
+<li><a href="#jie-shao-makefile">介绍makefile：</a>
+<ul>
 <li><a href="#chong-wen-cheng-xu-bian-yi-lian-jie">重温程序编译链接：</a></li>
 </ul>
 </li>
-<li><a href="#chu-shi-makefile">初识makefile：</a><ul>
+<li><a href="#chu-shi-makefile">初识makefile：</a>
+<ul>
 <li><a href="#yi-ge-li-zi">一个例子：</a></li>
 <li><a href="#shi-yong-bian-liang">使用变量：</a></li>
 <li><a href="#make-zi-dong-tui-dao">make自动推导：</a></li>
@@ -318,7 +351,8 @@
 </li>
 </ul>
 </li>
-<li><a href="#cmake">Cmake：</a><ul>
+<li><a href="#cmake">Cmake：</a>
+<ul>
 <li><a href="#1-sha-shi-cmake">1. 啥是Cmake:</a></li>
 <li><a href="#2-cmake-neng-gan-sha">2. cmake能干啥：</a></li>
 <li><a href="#3-cmake-de-ji-ben-jie-gou">3. cmake的基本结构：</a></li>
@@ -327,7 +361,6 @@
 </li>
 </ul>
 <!-- tocstop -->
-
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -337,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" data-id="cm0c1k4580021m0r81i73cxgf" data-title="从GNU Make到cmake" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" data-id="cm0c2s8g3001i0wr8fsdkfhb9" data-title="从GNU Make到cmake" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -375,9 +408,7 @@
       
         <p>这篇博客学习python的面向对象，博主的目的是学习其语法。</p>
 <div class="tocStart"></div>
-
 <!-- toc -->
-
 <ul>
 <li><a href="#0-qian-yan">0. 前言：</a></li>
 <li><a href="#1-lei-de-ji-ben-cao-zuo">1. 类的基本操作：</a></li>
@@ -386,7 +417,6 @@
 <li><a href="#yi-xie-bie-de-yong-fa">一些别的用法：</a></li>
 </ul>
 <!-- tocstop -->
-
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
@@ -396,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/08/python-class/" data-id="cm0c1k44v000km0r8691uey4a" data-title="Python-Class" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/08/python-class/" data-id="cm0c2s8fz00110wr855325ecr" data-title="Python-Class" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
