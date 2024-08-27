@@ -133,10 +133,10 @@ body.light-mode {
   background-size: cover;
 }
 body.light-mode #banner {
-  background: -webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/dark-back.jpg");
-  background: -moz-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/dark-back.jpg");
-  background: -ms-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/dark-back.jpg");
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/dark-back.jpg");
+  background: -webkit-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/banner.jpg");
+  background: -moz-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/banner.jpg");
+  background: -ms-linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/banner.jpg");
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("./images/banner.jpg");
 }
 body.light-mode .article-inner {
   background-color: rgba(255,255,255,0.801);
@@ -168,10 +168,10 @@ body.dark-mode #page-nav {
   background-color: #292929;
 }
 body.dark-mode #banner {
-  background: -webkit-linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/dark-back.jpg");
-  background: -moz-linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/dark-back.jpg");
-  background: -ms-linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/dark-back.jpg");
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/dark-back.jpg");
+  background: -webkit-linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/banner.jpg");
+  background: -moz-linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/banner.jpg");
+  background: -ms-linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/banner.jpg");
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./images/banner.jpg");
 }
 body.dark-mode #header-title.inner {
   color: #0a0a0a;
@@ -307,6 +307,60 @@ body.dark-mode .widget-title {
     float: left;
     width: 73.33333333333333%;
     margin: 0 0.833333333333333%;
+  }
+}
+#header-inner {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between; /* 根据需要调整对齐方式 */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: relative;
+}
+#main-nav,
+#sub-nav {
+  position: fixed; /* 使其悬浮在页面上 */
+  top: 0;
+  z-index: 1000; /* 确保导航栏在其他元素之上 */
+}
+#main-nav {
+  left: 30; /* 主导航栏靠左 */
+}
+#sub-nav {
+  right: 30; /* 子导航栏靠右 */
+}
+@media (max-width: 768px) {
+  #main-nav,
+  #sub-nav {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+  #main-nav {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1; /* 根据需要调整顺序 */
+  }
+  #sub-nav {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+    top: auto; /* 重置顶部位置 */
   }
 }
 .article-date,
@@ -461,8 +515,86 @@ body.dark-mode .widget-title {
   position: relative;
 }
 #header-inner {
+  margin: 0;
+  height: 60px;
+  position: fixed; /* 固定在视口顶部 */
+  top: 0; /* 距离顶部 0 */
+  left: 0; /* 距离左侧 0 */
+  width: 100%; /* 使其宽度占满屏幕 */
+  z-index: 1000; /* 确保在其他元素之上 */
+  background-color: rgba(0,0,0,0.4);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between; /* 主导航和子导航在两侧 */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center; /* 垂直居中 */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; /* 确保内边距和边框包含在宽度内 */
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+#text-block {
+  width: 100%; /* 使容器宽度占满 */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex; /* 使用 flex 布局 */
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between; /* 主导航和子导航在两侧 */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center; /* 垂直居中 */
+}
+#main-nav {
   position: relative;
-  overflow: hidden;
+  padding-left: 25px; /* 左边距，根据需要调整 */
+  padding-right: 25px; /* 右边距，根据需要调整 */
+}
+#sub-nav {
+  position: relative;
+  padding-left: 25px; /* 左边距，根据需要调整 */
+  padding-right: 25px; /* 右边距，根据需要调整 */
+}
+@media (max-width: 768px) {
+  #header-inner {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; /* 在小屏幕上将导航栏垂直排列 */
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start; /* 垂直排列时靠左对齐 */
+    padding: 5px; /* 内边距调整 */
+  }
+  #main-nav,
+  #sub-nav {
+    width: 100%; /* 宽度占满 */
+    padding: 10px; /* 内边距，根据需要调整 */
+  }
 }
 #banner {
   position: absolute;
@@ -470,8 +602,9 @@ body.dark-mode .widget-title {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("images/banner.jpg") center #000;
+  background: url("images/banner.jpg") center center #000;
   background-size: cover;
+  background-position: center;
   z-index: -1;
 }
 #header-title {

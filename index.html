@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   
   
   <title>Hebown&#39;s small world</title>
@@ -152,19 +154,8 @@ mjx-container[display="true"] + br {
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
-  
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hebown&#39;s small world</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">tech and life</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
+  <div id="header-inner" class="inner">
+    <div id="text-block">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
         
@@ -179,12 +170,25 @@ mjx-container[display="true"] + br {
         
         
         
-        <a class="nav-icon"><span class="fa fa-sun" id="changeButton"></span></a>
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
       </div>
     </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">世界即是沙漠 而爱则是绿洲</a>
+        </h2>
+      
+    </div>
+    
   </div>
   <script>
     const changeButton = document.getElementById('changeButton');
@@ -221,14 +225,42 @@ mjx-container[display="true"] + br {
       }
     });
   </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
   
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    let threshold=60;
+
+    headerInner.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
 </header>
 
       <div class="outer">
         <section id="main">
   
     <article id="post-intro" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
   <div class="article-meta">
     <a href="/2024/07/06/intro/" class="article-date">
   <time class="dt-published" datetime="2024-07-06T02:43:38.000Z" itemprop="datePublished">2024-07-06</time>
@@ -297,7 +329,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/06/intro/" data-id="cm09d8lvq000aror88zfpgm6l" data-title="你好" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/06/intro/" data-id="cm0c0y4gd000an4r81o6cgo4v" data-title="你好" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -308,28 +340,10 @@ mjx-container[display="true"] + br {
   
 </article>
 
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
 
   
     <article id="post-算法随想录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
   <div class="article-meta">
     <a href="/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" class="article-date">
   <time class="dt-published" datetime="2024-08-22T01:11:33.000Z" itemprop="datePublished">2024-08-22</time>
@@ -381,7 +395,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" data-id="cm09d8lw2002bror85g9feiq5" data-title="算法随想录" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" data-id="cm0c0y4gs001kn4r82nn5gg0c" data-title="算法随想录" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -392,28 +406,10 @@ mjx-container[display="true"] + br {
   
 </article>
 
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
 
   
     <article id="post-ml" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
   <div class="article-meta">
     <a href="/2024/08/16/ml/" class="article-date">
   <time class="dt-published" datetime="2024-08-16T08:09:21.000Z" itemprop="datePublished">2024-08-16</time>
@@ -462,7 +458,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/16/ml/" data-id="cm09d8lvs000fror873uah5sv" data-title="Ml" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/16/ml/" data-id="cm0c0y4gn000xn4r8e9n7dbvh" data-title="Ml" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -473,28 +469,10 @@ mjx-container[display="true"] + br {
   
 </article>
 
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
 
   
     <article id="post-复变函数掠影" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
   <div class="article-meta">
     <a href="/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" class="article-date">
   <time class="dt-published" datetime="2024-08-13T12:22:38.000Z" itemprop="datePublished">2024-08-13</time>
@@ -536,6 +514,7 @@ mjx-container[display="true"] + br {
 </li>
 <li><a href="#di-wu-zhang-liu-shu-ding-li">第五章 留数定理：</a><ul>
 <li><a href="#ying-yong">应用：</a></li>
+<li><a href="#zong-de-gan-shou">总的感受：</a></li>
 </ul>
 </li>
 </ul>
@@ -550,7 +529,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" data-id="cm09d8lvx0012ror812cz70qz" data-title="复变函数掠影" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" data-id="cm0c0y4gy002gn4r80144glv4" data-title="复变函数掠影" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -560,23 +539,6 @@ mjx-container[display="true"] + br {
   </div>
   
 </article>
-
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
 
 
 
@@ -588,24 +550,8 @@ mjx-container[display="true"] + br {
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
 
-
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
 </section>
+        
         
           <aside id="sidebar">
   
@@ -628,7 +574,6 @@ mjx-container[display="true"] + br {
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
     </div>
   </div>
-
 
 
   
@@ -665,6 +610,21 @@ mjx-container[display="true"] + br {
   
 </aside>
         
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
       </div>
       <footer id="footer">
   
@@ -706,8 +666,10 @@ mjx-container[display="true"] + br {
 
 
 
-
-
   </div>
+
 </body>
+
+
 </html>
+
