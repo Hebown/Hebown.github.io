@@ -326,7 +326,6 @@ body.dark-mode .widget-title {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  position: relative;
 }
 #main-nav,
 #sub-nav {
