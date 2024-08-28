@@ -8,15 +8,15 @@
   
   <title>进一步了解Js | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="This is Hebown&#39;s small world, where he will put his thoughts and experiences down.">
+  <meta name="description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进一步了解Js">
 <meta property="og:url" content="https://hebown.github.io/2024/08/02/moreJs/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="This is Hebown&#39;s small world, where he will put his thoughts and experiences down.">
+<meta property="og:description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-02T10:31:43.095Z">
-<meta property="article:modified_time" content="2024-08-02T10:39:10.833Z">
+<meta property="article:modified_time" content="2024-08-28T03:08:35.707Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary">
@@ -127,7 +127,7 @@
       }
       lastScrollY = window.scrollY;
     });
-
+    
     headerInner.addEventListener('mouseenter',()=>{
       headerInner.style.top='0';
     });
@@ -203,11 +203,122 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>本文作为系统学习<code>js</code>的笔记。主要参考了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">这篇文档</a>中的内容。</p>
+<!--toc -->
+<span id="more"></span>
+
+<h1><span id="shi-me-shi-javascript">什么是javascript？</span><a href="#shi-me-shi-javascript" class="header-anchor">#</a></h1><p>js是</p>
+<ul>
+<li>一门脚本语言：js 可以作为用来编写 <strong>自动执行某些任务</strong> 或 <strong>控制其他对象</strong> 的脚本的 <strong>语言</strong>。</li>
+<li>一门 <strong>面向对象的语言</strong>；</li>
+<li>一门 <strong>跨平台的语言</strong>：在浏览器中，JavaScript 可以改变网页（DOM）的外观与样式。同样地，在服务器上，Node.js 中的 JavaScript 可以对浏览器上编写的代码发出的客户端请求做出响应。</li>
+</ul>
+<p>但js和java没有必然的联系。<del>最初好像是创始者蹭java的热度？</del></p>
+<p>此外，js也有规范：<strong>ECMAScript</strong>规范。</p>
+<h1><span id="kai-shi-zheng-shi-de-zong-jie">开始正式的总结：</span><a href="#kai-shi-zheng-shi-de-zong-jie" class="header-anchor">#</a></h1><p>推荐使用 <strong>严格模式</strong> 。也即在代码开头加一句<code>&quot;use strict&quot;;</code></p>
+<h2><span id="yu-fa-he-shu-ju-lei-xing">语法和数据类型：</span><a href="#yu-fa-he-shu-ju-lei-xing" class="header-anchor">#</a></h2><p>js是</p>
+<ul>
+<li>大小写敏感的；</li>
+<li>使用unicode字符集的：可以支持法文等等，你甚至可以写<code>const 按钮 = document.getElementById(&#39;certain-button&#39;);</code>，不过保留字都是英文的，这样反而不方便。</li>
+</ul>
+<h3><span id="zhu-shi">注释：</span><a href="#zhu-shi" class="header-anchor">#</a></h3><p>支持</p>
+<ul>
+<li><strong>单行注释</strong>：<code>// 这是一段单行注释</code>；</li>
+<li><strong>多行注释</strong>：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    这是多行注释</span></span><br><span class="line"><span class="comment">    这是多行注</span></span><br><span class="line"><span class="comment">    这是多行</span></span><br><span class="line"><span class="comment">    这是多</span></span><br><span class="line"><span class="comment">    这是</span></span><br><span class="line"><span class="comment">    这</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+并且不能 <strong>嵌套注释</strong>；</li>
+</ul>
+<h3><span id="sheng-ming-yu-bian-liang">声明与变量：</span><a href="#sheng-ming-yu-bian-liang" class="header-anchor">#</a></h3><p>支持</p>
+<ul>
+<li><strong>var</strong>：声明一个变量，可选初始化一个值；</li>
+<li><strong>let</strong>：声明一个块作用域的局部变量，可选初始化一个值；</li>
+<li><strong>const</strong>：声明一个块作用域的只读常量。</li>
+</ul>
+<p>同时也可以像 <strong>python</strong> 那样直接赋值，例如 <code>x = 42</code>，但这（如果在函数外声明的话）是一个全局变量，容易造成混乱（在严格模式下会产生错误）。</p>
+<p>支持 <strong>解构赋值</strong>。</p>
+<h4><span id="bian-liang-zhi">变量值：</span><a href="#bian-liang-zhi" class="header-anchor">#</a></h4><p><code>var</code>或<code>let</code>声明的变量，如果没有赋初始值，则其值为<code>undefined</code>。</p>
+<p>如果访问一个未声明的变量会导致抛出 <code>ReferenceError</code> 异常.</p>
+<p>可以使用<code>input === undefined</code>来判断某个变量是否已经赋值。特别的，<code>undefined</code>在布尔类型环境中会被当做<code>false</code>；在数值类型环境中会被当作<code>NaN</code>；</p>
+<blockquote>
+<p>而与之对应的<code>null</code>变量在数值类型环境中会被当作 <code>0</code> 来对待，而布尔类型环境中会被当作 <code>false</code>。</p>
+</blockquote>
+<h4><span id="bian-liang-de-zuo-yong-yu">变量的作用域：</span><a href="#bian-liang-de-zuo-yong-yu" class="header-anchor">#</a></h4><ul>
+<li>函数之外声明的变量叫做 <strong>全局变量</strong>，可以被任何其他代码访问（但需要一定方法）；</li>
+<li>函数内部声明的变量叫做 <strong>局部变量</strong>，只能在当前函数的内部访问。</li>
+</ul>
+<blockquote>
+<p>事实上，全局变量是 <strong>全局对象</strong> 的属性。在网页中，默认的全局对象是<code>window</code>。</p>
+</blockquote>
+<h4><span id="bian-liang-ti-sheng">变量提升：</span><a href="#bian-liang-ti-sheng" class="header-anchor">#</a></h4><p>你可以先使用变量，稍后再声明变量；同时注意，每个函数都有独立的作用域，即使函数内部使用了相同名称的变量，还是会创建一个新的变量。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 例子 1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x === <span class="literal">undefined</span>); <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 例子 2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// will return a value of undefined</span></span><br><span class="line"><span class="keyword">var</span> myvar = <span class="string">&quot;my value&quot;</span>;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(myvar); <span class="comment">// undefined</span></span><br><span class="line">  <span class="keyword">var</span> myvar = <span class="string">&quot;local value&quot;</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对于函数（在js中也是一种变量）而言，只有函数声明会被提升，而函数表达式不会。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 函数声明 */</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">foo</span>(); <span class="comment">// &quot;bar&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bar&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数表达式 */</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">baz</span>(); <span class="comment">// 类型错误：baz 不是一个函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baz = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bar2&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="chang-liang">常量：</span><a href="#chang-liang" class="header-anchor">#</a></h4><p>可以使用<code>const</code>创建一个只读的常量。必须赋初值。作用域和<code>let</code>变量相同。</p>
+<p>然而，<strong>对象</strong>或<strong>数组</strong> 被赋值为常量却不受保护。</p>
+<h3><span id="shu-ju-lei-xing">数据类型：</span><a href="#shu-ju-lei-xing" class="header-anchor">#</a></h3><p>七种基本数据类型：</p>
+<ul>
+<li><strong>boolean</strong></li>
+<li><strong>null</strong></li>
+<li><strong>undefined</strong></li>
+<li><strong>Number</strong>：整数或者浮点数，js中没有专门的 <strong>int</strong> 或者 <strong>float</strong>；</li>
+<li><strong>BigInt</strong>：任意精度的整数，可以安全地存储和操作大整数。</li>
+<li><strong>String</strong></li>
+<li><strong>Symbol</strong>:其实例唯一且不可改变的数据类型；</li>
+</ul>
+<p>和 <strong>对象</strong>。</p>
+<h4><span id="shu-ju-lei-xing-de-zhuan-huan">数据类型的转换：</span><a href="#shu-ju-lei-xing-de-zhuan-huan" class="header-anchor">#</a></h4><p>js是一门<strong>动态类型语言</strong>，因此声明变量的时候可以不必指定数据类型，在代码执行的时候会根据需要进行自动转换。</p>
+<blockquote>
+<p>在包含的数字和字符串的表达式中使用加法运算符（+），JavaScript 会把数字转换成字符串。在涉及其他运算符时，JavaScript 语言不会把数字变为字符串。前者会被解释为<code>strcat</code>；</p>
+</blockquote>
+<p>使用</p>
+<ul>
+<li><code>parseInt()</code></li>
+<li><code>parseFloat()</code></li>
+</ul>
+<p>来将字符串转换数字，但这个转换比较抽象。</p>
+<p>或者也可以使用 <strong>一元加法运算符</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;1.1&quot;</span> + <span class="string">&quot;1.1&quot;</span> = <span class="string">&quot;1.11.1&quot;</span></span><br><span class="line">(+<span class="string">&quot;1.1&quot;</span>) + (+<span class="string">&quot;1.1&quot;</span>) = <span class="number">2.2</span></span><br><span class="line"><span class="comment">// 注意：加入括号为清楚起见，不是必需的。</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="zi-mian-liang">字面量：</span><a href="#zi-mian-liang" class="header-anchor">#</a></h3><blockquote>
+<p>在 JavaScript 中，你可以使用各种字面量。这些字面量是脚本中按字面意思给出的固定的值，而不是变量。</p>
+</blockquote>
+<p>常见的有：</p>
+<ul>
+<li>数组字面量</li>
+<li>布尔字面量</li>
+<li>数字字面量</li>
+<li>对象字面量</li>
+<li>RegExp 字面量</li>
+<li>字符串字面量</li>
+</ul>
+<h4><span id="shu-zu">数组：</span><a href="#shu-zu" class="header-anchor">#</a></h4><blockquote>
+<p>数组字面值是一个封闭在方括号对 ([]) 中的包含有零个或多个表达式的列表，其中每个表达式代表数组的一个元素。</p>
+</blockquote>
+<p>例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> coffees = [<span class="string">&quot;French Roast&quot;</span>, <span class="string">&quot;Colombian&quot;</span>, <span class="string">&quot;Kona&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">length</span>); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a[<span class="number">0</span>]); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>这里的数组字面值也是一种 <strong>对象初始化器</strong>；此外，你不必列举数组字面值中的所有元素，可以 <strong>连写两个逗号</strong> 来产生一个没有指定的元素，初始值为<code>undefined</code>；同时，（只有）元素列表的结尾的逗号将会被忽略。</p>
+<p>建议将缺失元素直接写成<code>undefined</code>，提高代码清晰度。</p>
+<p>数组字面值具有类似变量那样的作用域。</p>
+<h4><span id="bu-er">布尔：</span><a href="#bu-er" class="header-anchor">#</a></h4><p>布尔对象是对布尔类型的包装。布尔类型包括<code>true</code>&#x2F;<code>false</code>；</p>
+<h4><span id="shu-zi">数字：</span><a href="#shu-zi" class="header-anchor">#</a></h4><p>多种基数的 <strong>整数字面量</strong> 和以10为基数的 <strong>浮点数字面量</strong>；<br>其形式完全类似于 C语言。</p>
+<h4><span id="dui-xiang">对象：</span><a href="#dui-xiang" class="header-anchor">#</a></h4><p>封闭在花括号对中的一个对象的零个或多个 <strong>键值对</strong> 的列表。</p>
+<p>合法属性名可以使用<code>.</code>来获取；非法属性名则要使用 <strong>方括号表示法</strong> ，其实也就是使用字符串作为下标。</p>
+<p>一些比较新的特性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="comment">// 设定对象的原型为 `theProtoObj`</span></span><br><span class="line">  <span class="attr">__proto__</span>: theProtoObj,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 属性 `handler` 的值来自外部同名变量 `handler`</span></span><br><span class="line">  handler,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 对象方法 `toString`，调用 `super.toString()` 来获取父类的 `toString` 结果</span></span><br><span class="line">  <span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;d &quot;</span> + <span class="variable language_">super</span>.<span class="title function_">toString</span>();</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 动态计算属性名 `prop_42`，其值为 `42`</span></span><br><span class="line">  [<span class="string">&quot;prop_&quot;</span> + (<span class="function">() =&gt;</span> <span class="number">42</span>)()]: <span class="number">42</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="regexp">RegExp:</span><a href="#regexp" class="header-anchor">#</a></h4><p><code>regular-expression</code>，也即常说的 <strong>正则表达式</strong> ，是字符被 <strong>正斜杠</strong> 围起来的表达式，类如<code>var re=/ab+c/;</code></p>
+<h4><span id="zi-fu-chuan-zi-mian-liang">字符串字面量：</span><a href="#zi-fu-chuan-zi-mian-liang" class="header-anchor">#</a></h4><p>使用<code>&#39;&#39;</code>&#x2F;<code>&quot;&quot;</code>括起来的字面量。</p>
+<p>在<code>ES2015</code>中还提供了一种 <strong>模板字面量</strong> ，可以帮你构造字符串，类似于 <strong>字符串插值</strong>。</p>
+<blockquote>
+<p>除此之外，你可以在通过模板字符串前添加一个 tag 来自定义模板字符串的解析过程，这可以用来防止注入攻击，或者用来建立基于字符串的高级数据抽象。</p>
+</blockquote>
+<p>例如：</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/02/moreJs/" data-id="cm0ccc1is000evsr835eyb7lj" data-title="进一步了解Js" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/02/moreJs/" data-id="cm0da16lg000hcgr87rbnbmu1" data-title="进一步了解Js" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
