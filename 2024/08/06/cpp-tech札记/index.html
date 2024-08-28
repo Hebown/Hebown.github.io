@@ -8,15 +8,15 @@
   
   <title>Cpp札记 | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文主要记录一些使用过程中对语法的理解。      lambda表达式： Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）">
+  <meta name="description" content="本文主要记录一些使用过程中对语法的理解。      lambda表达式： Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）   cin: 1. cin的基本规则 2. cin的常见问题 3. 其他输入方法 4. 注意事项 5. 总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cpp札记">
 <meta property="og:url" content="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="本文主要记录一些使用过程中对语法的理解。      lambda表达式： Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）">
+<meta property="og:description" content="本文主要记录一些使用过程中对语法的理解。      lambda表达式： Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）   cin: 1. cin的基本规则 2. cin的常见问题 3. 其他输入方法 4. 注意事项 5. 总结">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-06T08:19:26.000Z">
-<meta property="article:modified_time" content="2024-08-06T14:41:46.861Z">
+<meta property="article:modified_time" content="2024-08-28T09:04:33.113Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="cpp">
 <meta name="twitter:card" content="summary">
@@ -217,6 +217,14 @@
 <li><a href="#bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru">捕获所有外部变量（C++14 引入）</a></li>
 </ul>
 </li>
+<li><a href="#cin">cin:</a><ul>
+<li><a href="#1-cin-de-ji-ben-gui-ze">1. <strong><code>cin</code>的基本规则</strong></a></li>
+<li><a href="#2-cin-de-chang-jian-wen-ti">2. <strong><code>cin</code>的常见问题</strong></a></li>
+<li><a href="#3-qi-ta-shu-ru-fang-fa">3. <strong>其他输入方法</strong></a></li>
+<li><a href="#4-zhu-yi-shi-xiang">4. <strong>注意事项</strong></a></li>
+<li><a href="#5-zong-jie">5. <strong>总结</strong></a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
@@ -263,10 +271,71 @@
 
 <h3><span id="bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru">捕获所有外部变量（C++14 引入）</span><a href="#bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru" class="header-anchor">#</a></h3><p>在 C++14 中，可以使用 <code>[=]</code> 或 <code>[&amp;]</code> 捕获所有外部变量，或者使用 <code>[*this]</code> 捕获当前对象：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; numbers = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="type">int</span> factor = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 捕获所有外部变量（按值捕获）</span></span><br><span class="line">    <span class="keyword">auto</span> multiply = [=](<span class="type">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> n * factor;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n : numbers) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="built_in">multiply</span>(n) &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="cin">cin:</span><a href="#cin" class="header-anchor">#</a></h2><p>在C++中，<code>cin</code>是标准输入流，用于从控制台读取输入数据。理解<code>cin</code>的使用规则以及其他输入方法的细节，对写出健壮的C++程序至关重要。下面将详细讲解<code>cin</code>的规则以及其他常用的输入方法。</p>
+<h3><span id="1-cin-de-ji-ben-gui-ze">1. <strong><code>cin</code>的基本规则</strong></span><a href="#1-cin-de-ji-ben-gui-ze" class="header-anchor">#</a></h3><ul>
+<li><p><strong>按空白字符分割输入：</strong> <code>cin</code>会自动跳过空白字符（如空格、换行符、制表符），并将输入内容按空白字符分割。每次读取的内容是一个“词”（word），即一段不包含空白字符的连续字符序列。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a, b;</span><br><span class="line">cin &gt;&gt; a &gt;&gt; b;</span><br></pre></td></tr></table></figure>
+
+<p>如果输入为 <code>3 4</code>，则 <code>a</code> 得到 <code>3</code>，<code>b</code> 得到 <code>4</code>。</p>
+</li>
+<li><p><strong>处理换行符：</strong> 当用户按下<code>Enter</code>键后，输入结束。<code>cin</code>会处理到换行符前的输入，换行符本身会被保留在输入缓冲区中。</p>
+</li>
+<li><p><strong>读取字符串：</strong> 当用 <code>cin &gt;&gt;</code> 读取字符串时，<code>cin</code>会读取直到第一个空白字符为止的内容。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">cin &gt;&gt; str;</span><br></pre></td></tr></table></figure>
+
+<p>如果输入为 <code>Hello World</code>，则 <code>str</code> 得到 <code>Hello</code>，<code>World</code> 会留在输入缓冲区。</p>
+</li>
+</ul>
+<h3><span id="2-cin-de-chang-jian-wen-ti">2. <strong><code>cin</code>的常见问题</strong></span><a href="#2-cin-de-chang-jian-wen-ti" class="header-anchor">#</a></h3><ul>
+<li><p><strong>处理剩余的输入：</strong> 如果读取整数、浮点数或字符后输入缓冲区中还有未处理的内容（如换行符），可能会影响后续的输入操作。可以使用 <code>cin.ignore()</code> 或 <code>cin.get()</code> 来清空缓冲区。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br><span class="line">cin &gt;&gt; x;</span><br><span class="line">cin.<span class="built_in">ignore</span>(); <span class="comment">// 忽略缓冲区中剩余的字符，通常是换行符</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>输入验证：</strong> <code>cin</code>不会自动验证输入的有效性。若输入的类型不匹配，<code>cin</code>会进入错误状态，无法继续读取输入，必须清除错误状态并清空输入缓冲区。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> num;</span><br><span class="line">cin &gt;&gt; num;</span><br><span class="line"><span class="keyword">if</span> (cin.<span class="built_in">fail</span>()) &#123; <span class="comment">// 检查是否发生错误</span></span><br><span class="line">    cin.<span class="built_in">clear</span>(); <span class="comment">// 清除错误状态</span></span><br><span class="line">    cin.<span class="built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>); <span class="comment">// 丢弃当前行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="3-qi-ta-shu-ru-fang-fa">3. <strong>其他输入方法</strong></span><a href="#3-qi-ta-shu-ru-fang-fa" class="header-anchor">#</a></h3><ul>
+<li><p><strong><code>cin.get()</code>：</strong> 读取单个字符，包括空白字符。常用于读取字符或者处理输入缓冲区中的换行符。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> ch;</span><br><span class="line">cin.<span class="built_in">get</span>(ch);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>读取一行字符：</strong> 可以使用 <code>cin.getline()</code> 读取一整行输入，包括空格。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> line[<span class="number">100</span>];</span><br><span class="line">cin.<span class="built_in">getline</span>(line, <span class="number">100</span>); <span class="comment">// 从输入读取最多100个字符，遇到换行符结束</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>getline(cin, string)</code>：</strong> 读取一行输入并存入字符串对象<code>string</code>中，读取直到换行符。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string line;</span><br><span class="line"><span class="built_in">getline</span>(cin, line);</span><br></pre></td></tr></table></figure>
+
+<p>与<code>cin &gt;&gt;</code>相比，<code>getline</code>不会忽略空格，适用于读取整行的输入。</p>
+</li>
+<li><p><strong><code>scanf</code>：</strong> C语言的输入函数，提供了更灵活的格式化输入控制。常用于精确控制输入格式。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a, b;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>scanf</code>时需要特别注意匹配输入的格式符。</p>
+</li>
+<li><p><strong><code>fgets</code>：</strong> C语言函数，读取一行输入并存储在字符数组中，常用于读取较长或者包含空格的输入。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line"><span class="built_in">fgets</span>(buffer, <span class="number">100</span>, stdin); <span class="comment">// 从标准输入读取最多100个字符</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="4-zhu-yi-shi-xiang">4. <strong>注意事项</strong></span><a href="#4-zhu-yi-shi-xiang" class="header-anchor">#</a></h3><ul>
+<li><p><strong>混用<code>cin</code>和<code>getline</code>：</strong> 在使用<code>cin</code>读取数据后再用<code>getline</code>读取字符串时，可能需要先调用<code>cin.ignore()</code>来清除输入缓冲区中残留的换行符。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> num;</span><br><span class="line">cin &gt;&gt; num;</span><br><span class="line">cin.<span class="built_in">ignore</span>(); <span class="comment">// 清除换行符</span></span><br><span class="line">string line;</span><br><span class="line"><span class="built_in">getline</span>(cin, line); <span class="comment">// 现在可以正确读取整行输入</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>处理输入错误</strong>：当<code>cin</code>遇到类型不匹配时，会进入错误状态，必须调用<code>cin.clear()</code>清除错误状态并使用<code>cin.ignore()</code>清除缓冲区中的无效输入。</p>
+</li>
+<li><p><strong>使用循环读取输入：</strong> 在某些情况下，可以使用循环不断读取输入，直到遇到特定条件（如EOF或特定字符）为止。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string input;</span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">getline</span>(cin, input)) &#123;</span><br><span class="line">    <span class="comment">// 处理每一行输入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="5-zong-jie">5. <strong>总结</strong></span><a href="#5-zong-jie" class="header-anchor">#</a></h3><ul>
+<li><strong><code>cin</code>主要用于基本的格式化输入</strong>，而<code>getline</code>适用于读取整行文本。使用<code>cin.get()</code>或<code>cin.ignore()</code>可以处理输入缓冲区中的字符和换行符。</li>
+<li>**<code>scanf</code>和<code>fgets</code>**是C语言中的输入方法，提供了更加灵活的输入控制，但在C++中通常优先使用<code>cin</code>和<code>getline</code>。</li>
+<li><strong>混合使用输入方法时</strong>，需要注意缓冲区的管理，避免意外的行为。</li>
+</ul>
+<p>通过理解这些输入方法及其细节，可以更好地处理用户输入，写出更加健壮和高效的C++程序。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" data-id="cm0dd7q1r00032wr8d9wu3w4d" data-title="Cpp札记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" data-id="cm0dtosd600011gr84x5s4ib1" data-title="Cpp札记" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
