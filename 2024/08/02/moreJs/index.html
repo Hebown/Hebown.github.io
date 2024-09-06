@@ -8,15 +8,15 @@
   
   <title>进一步了解Js | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。">
+  <meta name="description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。      什么是javascript？ 开始正式的总结： 语法和数据类型： 注释： 声明与变量： 数据类型： 字面量： 1. 基本的模板字面量字符串创建 2. 多行字符串 3. 字符串插值 (String Interpolation) 4. 标签模板 (Tagged Templates) 标签模板函数的工作原理 总结   流程控制与错误处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进一步了解Js">
 <meta property="og:url" content="https://hebown.github.io/2024/08/02/moreJs/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。">
+<meta property="og:description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。      什么是javascript？ 开始正式的总结： 语法和数据类型： 注释： 声明与变量： 数据类型： 字面量： 1. 基本的模板字面量字符串创建 2. 多行字符串 3. 字符串插值 (String Interpolation) 4. 标签模板 (Tagged Templates) 标签模板函数的工作原理 总结   流程控制与错误处理">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-02T10:31:43.095Z">
-<meta property="article:modified_time" content="2024-08-28T09:14:49.955Z">
+<meta property="article:modified_time" content="2024-08-30T08:02:03.157Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary">
@@ -54,6 +54,8 @@
           <a class="main-nav-link" href="/archives">Archives</a>
         
           <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
         
       </nav>
       <nav id="sub-nav">
@@ -204,7 +206,43 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>本文作为系统学习<code>js</code>的笔记。主要参考了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">这篇文档</a>中的内容。</p>
-<!--toc -->
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#shi-me-shi-javascript">什么是javascript？</a></li>
+<li><a href="#kai-shi-zheng-shi-de-zong-jie">开始正式的总结：</a><ul>
+<li><a href="#yu-fa-he-shu-ju-lei-xing">语法和数据类型：</a><ul>
+<li><a href="#zhu-shi">注释：</a></li>
+<li><a href="#sheng-ming-yu-bian-liang">声明与变量：</a></li>
+<li><a href="#shu-ju-lei-xing">数据类型：</a></li>
+<li><a href="#zi-mian-liang">字面量：</a></li>
+<li><a href="#1-ji-ben-de-mo-ban-zi-mian-liang-zi-fu-chuan-chuang-jian">1. 基本的模板字面量字符串创建</a></li>
+<li><a href="#2-duo-xing-zi-fu-chuan">2. 多行字符串</a></li>
+<li><a href="#3-zi-fu-chuan-cha-zhi-string-interpolation">3. 字符串插值 (String Interpolation)</a></li>
+<li><a href="#4-biao-qian-mo-ban-tagged-templates">4. 标签模板 (Tagged Templates)</a></li>
+<li><a href="#biao-qian-mo-ban-han-shu-de-gong-zuo-yuan-li">标签模板函数的工作原理</a></li>
+<li><a href="#zong-jie">总结</a></li>
+</ul>
+</li>
+<li><a href="#liu-cheng-kong-zhi-yu-cuo-wu-chu-li">流程控制与错误处理：</a><ul>
+<li><a href="#if">if：</a></li>
+<li><a href="#switch">switch：</a></li>
+<li><a href="#yi-chang">异常：</a></li>
+</ul>
+</li>
+<li><a href="#xun-huan-yu-die-dai">循环与迭代：</a><ul>
+<li><a href="#label"><code>label</code>：</a></li>
+<li><a href="#for-in"><code>for...in</code>:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+</div>
 <span id="more"></span>
 
 <h1><span id="shi-me-shi-javascript">什么是javascript？</span><a href="#shi-me-shi-javascript" class="header-anchor">#</a></h1><p>js是</p>
@@ -314,7 +352,7 @@
 <p>除此之外，你可以在通过模板字符串前添加一个 tag 来自定义模板字符串的解析过程，这可以用来防止注入攻击，或者用来建立基于字符串的高级数据抽象。</p>
 </blockquote>
 <p>例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Basic literal string creation</span></span><br><span class="line"><span class="title class_">In</span> <span class="title class_">JavaScript</span> <span class="string">&#x27;\n&#x27;</span> is a line-feed. <span class="comment">// Multiline strings</span></span><br><span class="line"><span class="title class_">In</span> <span class="title class_">JavaScript</span> <span class="variable language_">this</span> is</span><br><span class="line"> not legal.;</span><br><span class="line"></span><br><span class="line"><span class="comment">// String interpolation</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">  time = <span class="string">&quot;today&quot;</span>;</span><br><span class="line"><span class="title class_">Hello</span> $&#123;name&#125;, how are you $&#123;time&#125;?;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Construct an HTTP request prefix is used to interpret the replacements and construction</span></span><br><span class="line"><span class="title class_">POSThttp</span>:<span class="comment">//foo.org/bar?a=$&#123;a&#125;&amp;b=$&#123;b&#125;</span></span><br><span class="line">     <span class="title class_">Content</span>-<span class="title class_">Type</span>: application/json</span><br><span class="line">     X-<span class="title class_">Credentials</span>: $&#123;credentials&#125;</span><br><span class="line">     &#123; <span class="string">&quot;foo&quot;</span>: $&#123;foo&#125;,</span><br><span class="line">       <span class="string">&quot;bar&quot;</span>: $&#123;bar&#125;&#125;(myOnReadyStateChangeHandler);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Basic literal string creation</span></span><br><span class="line"><span class="string">`In JavaScript &#x27;\n&#x27; is a line-feed.`</span> <span class="comment">// Multiline strings</span></span><br><span class="line"><span class="string">`In JavaScript this is</span></span><br><span class="line"><span class="string"> not legal.`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// String interpolation</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">  time = <span class="string">&quot;today&quot;</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Construct an HTTP request prefix is used to interpret the replacements and construction</span></span><br><span class="line"><span class="variable constant_">POST</span><span class="string">`http://foo.org/bar?a=<span class="subst">$&#123;a&#125;</span>&amp;b=<span class="subst">$&#123;b&#125;</span></span></span><br><span class="line"><span class="string">     Content-Type: application/json</span></span><br><span class="line"><span class="string">     X-Credentials: <span class="subst">$&#123;credentials&#125;</span></span></span><br><span class="line"><span class="string">     &#123; &quot;foo&quot;: <span class="subst">$&#123;foo&#125;</span>,</span></span><br><span class="line"><span class="string">       &quot;bar&quot;: <span class="subst">$&#123;bar&#125;</span>&#125;(myOnReadyStateChangeHandler)`</span>;</span><br></pre></td></tr></table></figure>
 
 
       <div class="expand-container">
@@ -325,8 +363,8 @@
             }
         </script>
 
-        <button class="expand-button" onclick="toggleExpand('expand-gqh2sz104')">对上述代码的解释</button>
-        <div id="expand-gqh2sz104" class="expand-content" style="display:none;">
+        <button class="expand-button" onclick="toggleExpand('expand-bk72ds1jt')">对上述代码的解释</button>
+        <div id="expand-bk72ds1jt" class="expand-content" style="display:none;">
           <p>这段代码展示了 ES6 中的模板字面量（Template Literals）在 JavaScript 中的使用方式。模板字面量提供了一种更加灵活的字符串创建方式，包括多行字符串、字符串插值（String Interpolation），以及用于构建复杂字符串的标签模板（Tagged Templates）。下面详细解释每一部分：</p>
 <h3><span id="1-ji-ben-de-mo-ban-zi-mian-liang-zi-fu-chuan-chuang-jian">1. 基本的模板字面量字符串创建</span><a href="#1-ji-ben-de-mo-ban-zi-mian-liang-zi-fu-chuan-chuang-jian" class="header-anchor">#</a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`In JavaScript &#x27;\n&#x27; is a line-feed.`</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -366,10 +404,35 @@
       </div>
     
 
+
+<h4><span id="zi-fu-chuan">字符串：</span><a href="#zi-fu-chuan" class="header-anchor">#</a></h4><p>略</p>
+<h2><span id="liu-cheng-kong-zhi-yu-cuo-wu-chu-li">流程控制与错误处理：</span><a href="#liu-cheng-kong-zhi-yu-cuo-wu-chu-li" class="header-anchor">#</a></h2><p>最基本的语句是用于组合语句的 <strong>语句块</strong> 。该块由一对大括号<code>&#123;&#125;</code>界定；</p>
+<p>块语句不会特别产生一个作用域，如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(x); </span><br></pre></td></tr></table></figure>
+<p>输出结果是 <strong>2</strong>，因为括号内声明的变量和之前的变量在同一个作用域内。并且还因为js<strong>允许重复声明变量</strong>，后声明的变量会覆盖之前声明的。</p>
+<h3><span id="if">if：</span><a href="#if" class="header-anchor">#</a></h3><p>形式和C语言相同。</p>
+<p>这些值：</p>
+<ul>
+<li>false</li>
+<li>undefined</li>
+<li>null</li>
+<li>0</li>
+<li>NaN</li>
+<li>“”</li>
+</ul>
+<p>作为判断条件的时候视为<code>false</code>。其他为真。</p>
+<p>不要混淆布尔值和<code>Boolean</code>对象。</p>
+<h3><span id="switch">switch：</span><a href="#switch" class="header-anchor">#</a></h3><p>和C语言完全相同。</p>
+<h3><span id="yi-chang">异常：</span><a href="#yi-chang" class="header-anchor">#</a></h3><h2><span id="xun-huan-yu-die-dai">循环与迭代：</span><a href="#xun-huan-yu-die-dai" class="header-anchor">#</a></h2><p>支持和C语言形式上完全相同的<code>for</code>,<code>while</code>,<code>do</code>,<code>break</code>,<code>continue</code>;以及新的<code>label</code>,<code>for...in</code> and <code>for...of</code>。</p>
+<h3><span id="label"><code>label</code>：</span><a href="#label" class="header-anchor">#</a></h3><p><code>label</code>语法相当于<code>goto</code>的语法糖。方便进行多层循环的控制。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="attr">outPoint</span>: <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span> outPoint; <span class="comment">// 在 i = 5，j = 5 时，跳出所有循环，</span></span><br><span class="line">      <span class="comment">// 返回到整个 outPoint 下方，继续执行</span></span><br><span class="line">    &#125;</span><br><span class="line">    num++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(num); <span class="comment">// 输出 55</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="attr">outPoint</span>: <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span>) &#123;</span><br><span class="line">      <span class="keyword">continue</span> outPoint;</span><br><span class="line">    &#125;</span><br><span class="line">    num++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(num); <span class="comment">// 95</span></span><br></pre></td></tr></table></figure>
+
+<p>注意这里的<code>break</code> and <code>continue</code>的用法，其可以对某循环直接操作。</p>
+<h3><span id="for-in"><code>for...in</code>:</span><a href="#for-in" class="header-anchor">#</a></h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/02/moreJs/" data-id="cm0dtosdc000h1gr8dird8oj6" data-title="进一步了解Js" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/02/moreJs/" data-id="cm0q3l8ve000i18r8bb149qcs" data-title="进一步了解Js" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -404,7 +467,6 @@
 
 </section>
         
-        
           <aside id="sidebar">
   
     
@@ -414,7 +476,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 13.33px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 13.33px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 13.33px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 13.33px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 13.33px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -423,7 +485,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
     </div>
   </div>
 
@@ -436,6 +498,14 @@
       <ul>
         
           <li>
+            <a href="/2024/09/03/programming-python/">Programming-Python</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/30/%E5%B7%A6%E5%8F%B3%E6%B5%81%E4%B9%8B/">参差荇菜，左右流之。</a>
+          </li>
+        
+          <li>
             <a href="/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/">算法随想录</a>
           </li>
         
@@ -445,14 +515,6 @@
         
           <li>
             <a href="/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/">复变函数掠影</a>
-          </li>
-        
-          <li>
-            <a href="/2024/08/10/deeplearn/">Deeplearn</a>
-          </li>
-        
-          <li>
-            <a href="/2024/08/09/requests/">Requests</a>
           </li>
         
       </ul>
@@ -499,6 +561,8 @@
   
     <a href="/null" class="mobile-nav-link">Log</a>
   
+    <a href="/About" class="mobile-nav-link">About</a>
+  
 </nav>
     
 
@@ -522,7 +586,5 @@
   </div>
 
 </body>
-
-
 </html>
 
