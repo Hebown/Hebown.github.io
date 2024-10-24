@@ -137,7 +137,7 @@
     
     let threshold=60;
 
-    headerInner.addEventListener('mousemove',(e)=>{
+    window.addEventListener('mousemove',(e)=>{
       if(e.clientY<threshold){
         headerInner.style.top='0';
       }else{
@@ -183,10 +183,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-从json到cmake" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/06/30/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-06-30T08:53:43.500Z" itemprop="datePublished">2024-06-30</time>
+    <a href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" class="article-date">
+  <time class="dt-published" datetime="2024-07-09T13:27:01.000Z" itemprop="datePublished">2024-07-09</time>
 </a>
     
   </div>
@@ -197,7 +197,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/06/30/hello-world/">Hello World</a>
+      <a class="p-name article-title" href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/">从GNU Make到cmake</a>
     </h1>
   
 
@@ -205,27 +205,260 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <p>想了想还是开始学这个，反正时间充裕。<br>我的目标包括：</p>
+<ul>
+<li>学会makefile的基本概念和操作；</li>
+<li>学会cmake的基本概念和操作。<div class="tocStart"></div></li>
+</ul>
+<!-- toc -->
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="#gnu-make">GNU make：</a><ul>
+<li><a href="#jie-shao-makefile">介绍makefile：</a><ul>
+<li><a href="#chong-wen-cheng-xu-bian-yi-lian-jie">重温程序编译链接：</a></li>
+</ul>
+</li>
+<li><a href="#chu-shi-makefile">初识makefile：</a><ul>
+<li><a href="#yi-ge-li-zi">一个例子：</a></li>
+<li><a href="#shi-yong-bian-liang">使用变量：</a></li>
+<li><a href="#make-zi-dong-tui-dao">make自动推导：</a></li>
+<li><a href="#a-href-https-seisman-github-io-how-to-write-makefile-introduction-html-id6-qing-kong-de-gui-ze-a"><a target="_blank" rel="noopener" href="https://seisman.github.io/how-to-write-makefile/introduction.html#id6">清空的规则</a>：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#cmake">Cmake：</a><ul>
+<li><a href="#1-sha-shi-cmake">1. 啥是Cmake:</a></li>
+<li><a href="#2-cmake-neng-gan-sha">2. cmake能干啥：</a></li>
+<li><a href="#3-cmake-de-ji-ben-jie-gou">3. cmake的基本结构：</a></li>
+<li><a href="#4-gou-jian">4. 构建：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<div class="tocEnd"></div>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/06/30/hello-world/" data-id="cm0q3l8va000818r85m132ud5" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" data-id="cm2mzprx80019lor8gsb73mlq" data-title="从GNU Make到cmake" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-python-class" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/08/python-class/" class="article-date">
+  <time class="dt-published" datetime="2024-07-08T13:49:34.000Z" itemprop="datePublished">2024-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/08/python-class/">Python-Class</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这篇博客学习python的面向对象，博主的目的是学习其语法。</p>
+<div class="tocStart"></div>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#0-qian-yan">0. 前言：</a></li>
+<li><a href="#1-lei-de-ji-ben-cao-zuo">1. 类的基本操作：</a></li>
+<li><a href="#feng-zhuang">封装：</a></li>
+<li><a href="#ji-cheng-he-duo-tai">继承和多态：</a></li>
+<li><a href="#yi-xie-bie-de-yong-fa">一些别的用法：</a></li>
+</ul>
+<!-- tocstop -->
+
+<div class="tocEnd"></div>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/08/python-class/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/07/08/python-class/" data-id="cm2mzprx6000xlor8f8goddz2" data-title="Python-Class" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-about-web" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/08/about-web/" class="article-date">
+  <time class="dt-published" datetime="2024-07-08T00:32:14.000Z" itemprop="datePublished">2024-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/08/about-web/">About-Web</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，一方面因为这个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn">教程</a>已经很好了，不必再花时间重新整理，另一方面作为一个提要也是不错的</p>
+<p>而且这个教程的翻译做的也很不错。</p>
+<p>权当记录自己的随想。</p>
+<div class="tocStart"></div>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#log">log：</a></li>
+<li><a href="#basic-knowledge">basic-knowledge:</a></li>
+<li><a href="#web-ji-ben-gong-ju">web 基本工具：</a><ul>
+<li><a href="#html">html</a></li>
+<li><a href="#css">css</a></li>
+<li><a href="#javascript">javascript：</a></li>
+<li><a href="#bian-liang">变量：</a><ul>
+<li><a href="#zhu-shi">注释：</a></li>
+<li><a href="#yun-suan-fu">运算符：</a></li>
+<li><a href="#tiao-jian">条件：</a></li>
+<li><a href="#xun-huan">循环：</a></li>
+<li><a href="#han-shu">函数：</a></li>
+<li><a href="#shu-ju-lei-xing">数据类型：</a></li>
+<li><a href="#dui-xiang">对象：</a></li>
+<li><a href="#lie-biao">列表：</a></li>
+<li><a href="#shi-jian">事件：</a></li>
+</ul>
+</li>
+<li><a href="#jsx">jsx:</a></li>
+<li><a href="#react">react：</a></li>
+</ul>
+</li>
+<li><a href="#wang-luo-jie-gou-li-jie">网络结构理解：</a><ul>
+<li><a href="#wang-luo-mo-xing">网络模型：</a><ul>
+<li><a href="#tcp-ip">TCP&#x2F;IP：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<div class="tocEnd"></div>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/08/about-web/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/07/08/about-web/" data-id="cm2mzprwu0002lor85fdw4dza" data-title="About-Web" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-python-io" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/06/python-io/" class="article-date">
+  <time class="dt-published" datetime="2024-07-06T03:45:54.000Z" itemprop="datePublished">2024-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/06/python-io/">Python_io Log</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这篇博客是作为自己学习python_io功能的记录博客。</p>
+<p>我所学习的io内容包括：基本io&#x2F;文件操作&#x2F;流操作&#x2F;网络通信&#x2F;序列化与反序列化&#x2F;错误处理和异常&#x2F;格式化输出&#x2F;安全性和最佳实践。</p>
+<div class="tocStart"></div>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#ji-ben-io">基本io：</a></li>
+<li><a href="#wen-jian-io">文件io:</a><ul>
+<li><a href="#da-kai-he-guan-bi-wen-jian">打开和关闭文件：</a></li>
+<li><a href="#du-qu-he-xie-ru-wen-jian">读取和写入文件：</a></li>
+</ul>
+</li>
+<li><a href="#xu-lie-hua-he-fan-xu-lie-hua">序列化和反序列化：</a></li>
+<li><a href="#wang-luo-tong-xin">网络通信：</a></li>
+</ul>
+<!-- tocstop -->
+
+<div class="tocEnd"></div>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/06/python-io/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/07/06/python-io/" data-id="cm2mzprx70011lor824n069ga" data-title="Python_io Log" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
     </footer>
   </div>
   
@@ -238,7 +471,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -252,7 +485,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 13.33px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 13.33px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 13.33px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/problems/" style="font-size: 10px;">problems</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -261,7 +494,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
     </div>
   </div>
 
@@ -274,23 +507,23 @@
       <ul>
         
           <li>
-            <a href="/2024/09/03/programming-python/">Programming-Python</a>
+            <a href="/2024/10/24/%E6%90%AD%E5%BB%BAgdb%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/">在`Vscode`中简单使用`gdb`</a>
           </li>
         
           <li>
-            <a href="/2024/08/30/%E5%B7%A6%E5%8F%B3%E6%B5%81%E4%B9%8B/">参差荇菜，左右流之。</a>
+            <a href="/2024/10/18/%E7%AE%97%E6%B3%95%E5%9C%A8%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">算法在游戏中的应用</a>
           </li>
         
           <li>
-            <a href="/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/">算法随想录</a>
+            <a href="/2024/10/07/%E5%8E%A6%E9%97%A8%E5%9B%9E%E5%BF%86/">厦门回忆</a>
           </li>
         
           <li>
-            <a href="/2024/08/16/ml/">Ml</a>
+            <a href="/2024/09/29/practices-and-thoughts/">Practices-and-Thoughts</a>
           </li>
         
           <li>
-            <a href="/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/">复变函数掠影</a>
+            <a href="/2024/09/12/%E7%8E%B0%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%A4%96%E4%BA%A4/">现代中国外交</a>
           </li>
         
       </ul>

@@ -35,7 +35,119 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body class="light-mode not-index">
   <div id="container">
@@ -137,7 +249,7 @@
     
     let threshold=60;
 
-    headerInner.addEventListener('mousemove',(e)=>{
+    window.addEventListener('mousemove',(e)=>{
       if(e.clientY<threshold){
         headerInner.style.top='0';
       }else{
@@ -183,10 +295,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-从json到cmake" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-cpp-tech札记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" class="article-date">
-  <time class="dt-published" datetime="2024-07-09T13:27:01.000Z" itemprop="datePublished">2024-07-09</time>
+    <a href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-08-06T08:19:26.000Z" itemprop="datePublished">2024-08-06</time>
 </a>
     
   </div>
@@ -197,7 +309,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/">从GNU Make到cmake</a>
+      <a class="p-name article-title" href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/">Cpp札记</a>
     </h1>
   
 
@@ -205,52 +317,46 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>想了想还是开始学这个，反正时间充裕。<br>我的目标包括：</p>
-<ul>
-<li>学会makefile的基本概念和操作；</li>
-<li>学会cmake的基本概念和操作。<div class="tocStart"></div></li>
-</ul>
+        <p>本文主要记录一些使用过程中对语法的理解。</p>
+<div class="tocStart"></div>
+
 <!-- toc -->
 
 <ul>
-<li><a href="#gnu-make">GNU make：</a><ul>
-<li><a href="#jie-shao-makefile">介绍makefile：</a><ul>
-<li><a href="#chong-wen-cheng-xu-bian-yi-lian-jie">重温程序编译链接：</a></li>
+<li><a href="#lambda-biao-da-shi">lambda表达式：</a><ul>
+<li><a href="#lambda-biao-da-shi-de-ji-ben-yu-fa">Lambda 表达式的基本语法</a></li>
+<li><a href="#shi-li">示例</a></li>
+<li><a href="#bu-huo-fang-shi">捕获方式</a></li>
+<li><a href="#han-shu-bi-bao">函数闭包</a></li>
+<li><a href="#bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru">捕获所有外部变量（C++14 引入）</a></li>
 </ul>
 </li>
-<li><a href="#chu-shi-makefile">初识makefile：</a><ul>
-<li><a href="#yi-ge-li-zi">一个例子：</a></li>
-<li><a href="#shi-yong-bian-liang">使用变量：</a></li>
-<li><a href="#make-zi-dong-tui-dao">make自动推导：</a></li>
-<li><a href="#a-href-https-seisman-github-io-how-to-write-makefile-introduction-html-id6-qing-kong-de-gui-ze-a"><a target="_blank" rel="noopener" href="https://seisman.github.io/how-to-write-makefile/introduction.html#id6">清空的规则</a>：</a></li>
+<li><a href="#cin">cin:</a><ul>
+<li><a href="#1-cin-de-ji-ben-gui-ze">1. <strong><code>cin</code>的基本规则</strong></a></li>
+<li><a href="#2-cin-de-chang-jian-wen-ti">2. <strong><code>cin</code>的常见问题</strong></a></li>
+<li><a href="#3-qi-ta-shu-ru-fang-fa">3. <strong>其他输入方法</strong></a></li>
+<li><a href="#4-zhu-yi-shi-xiang">4. <strong>注意事项</strong></a></li>
+<li><a href="#5-zong-jie">5. <strong>总结</strong></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#cmake">Cmake：</a><ul>
-<li><a href="#1-sha-shi-cmake">1. 啥是Cmake:</a></li>
-<li><a href="#2-cmake-neng-gan-sha">2. cmake能干啥：</a></li>
-<li><a href="#3-cmake-de-ji-ben-jie-gou">3. cmake的基本结构：</a></li>
-<li><a href="#4-gou-jian">4. 构建：</a></li>
-</ul>
-</li>
+<li><a href="#stl-shi-yong-ru-men">stl实用入门：</a></li>
 </ul>
 <!-- tocstop -->
 
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
-            <a href="/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/#more">Read More</a>
+            <a href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/09/%E4%BB%8Ejson%E5%88%B0cmake/" data-id="cm0q3l8vq001v18r839mt7b5s" data-title="从GNU Make到cmake" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" data-id="cm2mzprww0004lor84z821q52" data-title="Cpp札记" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li></ul>
 
     </footer>
   </div>
@@ -260,10 +366,10 @@
 
 
   
-    <article id="post-python-class" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-cpp-useful-operations" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/07/08/python-class/" class="article-date">
-  <time class="dt-published" datetime="2024-07-08T13:49:34.000Z" itemprop="datePublished">2024-07-08</time>
+    <a href="/2024/08/06/cpp-useful-operations/" class="article-date">
+  <time class="dt-published" datetime="2024-08-06T02:25:59.000Z" itemprop="datePublished">2024-08-06</time>
 </a>
     
   </div>
@@ -274,7 +380,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/08/python-class/">Python-Class</a>
+      <a class="p-name article-title" href="/2024/08/06/cpp-useful-operations/">Cpp-Useful-Operations</a>
     </h1>
   
 
@@ -282,34 +388,61 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>这篇博客学习python的面向对象，博主的目的是学习其语法。</p>
+        <p>本博客用来记录基础且好用的cpp功能。</p>
 <div class="tocStart"></div>
 
 <!-- toc -->
 
 <ul>
-<li><a href="#0-qian-yan">0. 前言：</a></li>
-<li><a href="#1-lei-de-ji-ben-cao-zuo">1. 类的基本操作：</a></li>
-<li><a href="#feng-zhuang">封装：</a></li>
-<li><a href="#ji-cheng-he-duo-tai">继承和多态：</a></li>
-<li><a href="#yi-xie-bie-de-yong-fa">一些别的用法：</a></li>
+<li><a href="#zi-fu-chuan">字符串:</a><ul>
+<li><a href="#1-chuang-jian-he-chu-shi-hua-zi-fu-chuan">1. 创建和初始化字符串</a></li>
+<li><a href="#2-huo-qu-zi-fu-chuan-chang-du">2. 获取字符串长度</a></li>
+<li><a href="#3-fang-wen-he-xiu-gai-zi-fu">3. 访问和修改字符</a></li>
+<li><a href="#4-pin-jie-zi-fu-chuan">4. 拼接字符串</a></li>
+<li><a href="#5-zi-zi-fu-chuan">5. 子字符串</a></li>
+<li><a href="#6-cha-zhao-zi-fu-huo-zi-zi-fu-chuan">6. 查找字符或子字符串</a></li>
+<li><a href="#7-ti-huan-zi-zi-fu-chuan">7. 替换子字符串</a></li>
+<li><a href="#8-cha-ru-he-shan-chu-zi-fu">8. 插入和删除字符</a></li>
+<li><a href="#9-bi-jiao-zi-fu-chuan">9. 比较字符串</a></li>
+<li><a href="#10-zhuan-huan-wei-c-zi-fu-chuan">10. 转换为 C 字符串</a></li>
+<li><a href="#11-die-dai-zi-fu-chuan">11. 迭代字符串</a></li>
+<li><a href="#12-zhuan-huan-da-xiao-xie">12. 转换大小写</a></li>
+<li><a href="#13-qu-chu-kong-bai-zi-fu">13. 去除空白字符</a></li>
+</ul>
+</li>
+<li><a href="#pai-xu">排序：</a><ul>
+<li><a href="#c-zhong-de-std-sort">C++中的<code>std::sort</code>:</a></li>
+</ul>
+</li>
+<li><a href="#io">io:</a><ul>
+<li><a href="#zi-fu-chuan">字符串：</a></li>
+</ul>
+</li>
+<li><a href="#fan-xing-suan-fa">泛型算法：</a><ul>
+<li><a href="#zi-ding-yi">自定义：</a></li>
+</ul>
+</li>
+<li><a href="#qi-ta">其他：</a><ul>
+<li><a href="#chuan-can-xiao-ji-qiao">传参小技巧：</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
-            <a href="/2024/07/08/python-class/#more">Read More</a>
+            <a href="/2024/08/06/cpp-useful-operations/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/08/python-class/" data-id="cm0q3l8vj001g18r8127pdwgi" data-title="Python-Class" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/06/cpp-useful-operations/" data-id="cm2mzprwy0008lor85filgvrj" data-title="Cpp-Useful-Operations" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basicTools/" rel="tag">basicTools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li></ul>
 
     </footer>
   </div>
@@ -319,10 +452,10 @@
 
 
   
-    <article id="post-about-web" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-moreJs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/07/08/about-web/" class="article-date">
-  <time class="dt-published" datetime="2024-07-08T00:32:14.000Z" itemprop="datePublished">2024-07-08</time>
+    <a href="/2024/08/02/moreJs/" class="article-date">
+  <time class="dt-published" datetime="2024-08-02T10:31:43.095Z" itemprop="datePublished">2024-08-02</time>
 </a>
     
   </div>
@@ -333,7 +466,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/08/about-web/">About-Web</a>
+      <a class="p-name article-title" href="/2024/08/02/moreJs/">进一步了解Js</a>
     </h1>
   
 
@@ -341,39 +474,36 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>这篇博客是博主随便看看网络相关知识的随想页，不会对内容做很多的介绍，一方面因为这个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn">教程</a>已经很好了，不必再花时间重新整理，另一方面作为一个提要也是不错的</p>
-<p>而且这个教程的翻译做的也很不错。</p>
-<p>权当记录自己的随想。</p>
+        <p>本文作为系统学习<code>js</code>的笔记。主要参考了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">这篇文档</a>中的内容。</p>
 <div class="tocStart"></div>
 
 <!-- toc -->
 
 <ul>
-<li><a href="#log">log：</a></li>
-<li><a href="#basic-knowledge">basic-knowledge:</a></li>
-<li><a href="#web-ji-ben-gong-ju">web 基本工具：</a><ul>
-<li><a href="#html">html</a></li>
-<li><a href="#css">css</a></li>
-<li><a href="#javascript">javascript：</a></li>
-<li><a href="#bian-liang">变量：</a><ul>
+<li><a href="#shi-me-shi-javascript">什么是javascript？</a></li>
+<li><a href="#kai-shi-zheng-shi-de-zong-jie">开始正式的总结：</a><ul>
+<li><a href="#yu-fa-he-shu-ju-lei-xing">语法和数据类型：</a><ul>
 <li><a href="#zhu-shi">注释：</a></li>
-<li><a href="#yun-suan-fu">运算符：</a></li>
-<li><a href="#tiao-jian">条件：</a></li>
-<li><a href="#xun-huan">循环：</a></li>
-<li><a href="#han-shu">函数：</a></li>
+<li><a href="#sheng-ming-yu-bian-liang">声明与变量：</a></li>
 <li><a href="#shu-ju-lei-xing">数据类型：</a></li>
-<li><a href="#dui-xiang">对象：</a></li>
-<li><a href="#lie-biao">列表：</a></li>
-<li><a href="#shi-jian">事件：</a></li>
+<li><a href="#zi-mian-liang">字面量：</a></li>
+<li><a href="#1-ji-ben-de-mo-ban-zi-mian-liang-zi-fu-chuan-chuang-jian">1. 基本的模板字面量字符串创建</a></li>
+<li><a href="#2-duo-xing-zi-fu-chuan">2. 多行字符串</a></li>
+<li><a href="#3-zi-fu-chuan-cha-zhi-string-interpolation">3. 字符串插值 (String Interpolation)</a></li>
+<li><a href="#4-biao-qian-mo-ban-tagged-templates">4. 标签模板 (Tagged Templates)</a></li>
+<li><a href="#biao-qian-mo-ban-han-shu-de-gong-zuo-yuan-li">标签模板函数的工作原理</a></li>
+<li><a href="#zong-jie">总结</a></li>
 </ul>
 </li>
-<li><a href="#jsx">jsx:</a></li>
-<li><a href="#react">react：</a></li>
+<li><a href="#liu-cheng-kong-zhi-yu-cuo-wu-chu-li">流程控制与错误处理：</a><ul>
+<li><a href="#if">if：</a></li>
+<li><a href="#switch">switch：</a></li>
+<li><a href="#yi-chang">异常：</a></li>
 </ul>
 </li>
-<li><a href="#wang-luo-jie-gou-li-jie">网络结构理解：</a><ul>
-<li><a href="#wang-luo-mo-xing">网络模型：</a><ul>
-<li><a href="#tcp-ip">TCP&#x2F;IP：</a></li>
+<li><a href="#xun-huan-yu-die-dai">循环与迭代：</a><ul>
+<li><a href="#label"><code>label</code>：</a></li>
+<li><a href="#for-in"><code>for...in</code>:</a></li>
 </ul>
 </li>
 </ul>
@@ -384,17 +514,17 @@
 <div class="tocEnd"></div>
         
           <p class="article-more-link">
-            <a href="/2024/07/08/about-web/#more">Read More</a>
+            <a href="/2024/08/02/moreJs/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/08/about-web/" data-id="cm0q3l8v5000118r85cfs2oad" data-title="About-Web" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/02/moreJs/" data-id="cm2mzprx3000olor837sq5y6u" data-title="进一步了解Js" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
 
     </footer>
   </div>
@@ -404,10 +534,10 @@
 
 
   
-    <article id="post-python-io" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="draft-hexo从入门到入土" class="h-entry article article-type-draft" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/07/06/python-io/" class="article-date">
-  <time class="dt-published" datetime="2024-07-06T03:45:54.000Z" itemprop="datePublished">2024-07-06</time>
+    <a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" class="article-date">
+  <time class="dt-published" datetime="2024-07-31T03:43:58.980Z" itemprop="datePublished">2024-07-31</time>
 </a>
     
   </div>
@@ -418,7 +548,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/06/python-io/">Python_io Log</a>
+      <a class="p-name article-title" href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/">Hexo从入门到入土</a>
     </h1>
   
 
@@ -426,38 +556,21 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>这篇博客是作为自己学习python_io功能的记录博客。</p>
-<p>我所学习的io内容包括：基本io&#x2F;文件操作&#x2F;流操作&#x2F;网络通信&#x2F;序列化与反序列化&#x2F;错误处理和异常&#x2F;格式化输出&#x2F;安全性和最佳实践。</p>
-<div class="tocStart"></div>
-
-<!-- toc -->
-
-<ul>
-<li><a href="#ji-ben-io">基本io：</a></li>
-<li><a href="#wen-jian-io">文件io:</a><ul>
-<li><a href="#da-kai-he-guan-bi-wen-jian">打开和关闭文件：</a></li>
-<li><a href="#du-qu-he-xie-ru-wen-jian">读取和写入文件：</a></li>
-</ul>
-</li>
-<li><a href="#xu-lie-hua-he-fan-xu-lie-hua">序列化和反序列化：</a></li>
-<li><a href="#wang-luo-tong-xin">网络通信：</a></li>
-</ul>
-<!-- tocstop -->
-
-<div class="tocEnd"></div>
+        <p>本文作为前篇<a href="./how-to-make-your-own-blog.md">入门博客</a>的续集，将继续探索hexo框架为我们diy博客所提供的<code>工具和功能</code>。</p>
+<p>主要阅读材料/引用来源:<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs">hexo文档</a>，下文使用<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs">1</a>来引用。</p>
         
           <p class="article-more-link">
-            <a href="/2024/07/06/python-io/#more">Read More</a>
+            <a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/06/python-io/" data-id="cm0q3l8vk001j18r8688v5cz7" data-title="Python_io Log" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" data-id="cm2mzprx2000jlor82bmreizu" data-title="Hexo从入门到入土" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
 
     </footer>
   </div>
@@ -471,7 +584,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -485,7 +598,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 13.33px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 13.33px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 13.33px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/problems/" style="font-size: 10px;">problems</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -494,7 +607,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
     </div>
   </div>
 
@@ -507,23 +620,23 @@
       <ul>
         
           <li>
-            <a href="/2024/09/03/programming-python/">Programming-Python</a>
+            <a href="/2024/10/24/%E6%90%AD%E5%BB%BAgdb%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/">在`Vscode`中简单使用`gdb`</a>
           </li>
         
           <li>
-            <a href="/2024/08/30/%E5%B7%A6%E5%8F%B3%E6%B5%81%E4%B9%8B/">参差荇菜，左右流之。</a>
+            <a href="/2024/10/18/%E7%AE%97%E6%B3%95%E5%9C%A8%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">算法在游戏中的应用</a>
           </li>
         
           <li>
-            <a href="/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/">算法随想录</a>
+            <a href="/2024/10/07/%E5%8E%A6%E9%97%A8%E5%9B%9E%E5%BF%86/">厦门回忆</a>
           </li>
         
           <li>
-            <a href="/2024/08/16/ml/">Ml</a>
+            <a href="/2024/09/29/practices-and-thoughts/">Practices-and-Thoughts</a>
           </li>
         
           <li>
-            <a href="/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/">复变函数掠影</a>
+            <a href="/2024/09/12/%E7%8E%B0%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%A4%96%E4%BA%A4/">现代中国外交</a>
           </li>
         
       </ul>
