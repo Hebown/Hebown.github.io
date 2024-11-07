@@ -6,20 +6,23 @@
 
   
   
-  <title>你好 | Hebown&#39;s small world</title>
+  <title>计算机组成设计 | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="欢迎来到 Hebown 的小世界！在这里，我将记录自己学习和探索感兴趣领域的历程，并与你分享我的感受。 以下是一些博客的阅读技巧：  上方home旁的archives列出了我的博客的目录； 标签&#x2F;标签云记录了我的博客的主要内容，你可以点击你想了解的内容来进行搜索和筛选。 顶部右上方的小太阳&#x2F;小月亮可以切换黑白模式。  填完了的坑：# tableau-log  如何使用hexo建">
+  <meta name="description" content="本文作为计组的学习记录。 绪论：#之前学习的 数字逻辑设计 课程，简单介绍了计算机组成相关部件的设计，比如组合电路设计，时序电路设计。这些模块都很简单，比如加法器，选择器，编码器，解码器。而计算机组成这门课，就要利用这些简单的模块，设计计算机中更加复杂的元件，比如处理器，处理系统等等。最重要的是设计简单的 RISC（精简指令集）**-CPU核**。涉及到ALU、单周期流水线CPU和简单的系统。 之">
 <meta property="og:type" content="article">
-<meta property="og:title" content="你好">
-<meta property="og:url" content="https://hebown.github.io/2024/07/06/intro/index.html">
+<meta property="og:title" content="计算机组成设计">
+<meta property="og:url" content="https://hebown.github.io/2024/09/19/coNote/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="欢迎来到 Hebown 的小世界！在这里，我将记录自己学习和探索感兴趣领域的历程，并与你分享我的感受。 以下是一些博客的阅读技巧：  上方home旁的archives列出了我的博客的目录； 标签&#x2F;标签云记录了我的博客的主要内容，你可以点击你想了解的内容来进行搜索和筛选。 顶部右上方的小太阳&#x2F;小月亮可以切换黑白模式。  填完了的坑：# tableau-log  如何使用hexo建">
+<meta property="og:description" content="本文作为计组的学习记录。 绪论：#之前学习的 数字逻辑设计 课程，简单介绍了计算机组成相关部件的设计，比如组合电路设计，时序电路设计。这些模块都很简单，比如加法器，选择器，编码器，解码器。而计算机组成这门课，就要利用这些简单的模块，设计计算机中更加复杂的元件，比如处理器，处理系统等等。最重要的是设计简单的 RISC（精简指令集）**-CPU核**。涉及到ALU、单周期流水线CPU和简单的系统。 之">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-06T02:43:38.000Z">
-<meta property="article:modified_time" content="2024-08-27T12:16:38.596Z">
+<meta property="og:image" content="https://hebown.github.io/coNote/image.png">
+<meta property="article:published_time" content="2024-09-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-06T12:14:24.137Z">
 <meta property="article:author" content="Hebown">
-<meta property="article:tag" content="intro">
+<meta property="article:tag" content="log">
+<meta property="article:tag" content="major">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hebown.github.io/coNote/image.png">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -181,10 +184,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-intro" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-coNote" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/07/06/intro/" class="article-date">
-  <time class="dt-published" datetime="2024-07-06T02:43:38.000Z" itemprop="datePublished">2024-07-06</time>
+    <a href="/2024/09/19/coNote/" class="article-date">
+  <time class="dt-published" datetime="2024-09-18T16:00:00.000Z" itemprop="datePublished">2024-09-19</time>
 </a>
     
   </div>
@@ -195,7 +198,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      你好
+      计算机组成设计
     </h1>
   
 
@@ -203,57 +206,85 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>欢迎来到 <code>Hebown</code> 的小世界！在这里，我将记录自己学习和探索感兴趣领域的历程，并与你分享我的感受。</p>
-<p>以下是一些博客的阅读技巧：</p>
+        <p>本文作为计组的学习记录。</p>
+<h2><span id="xu-lun">绪论：</span><a href="#xu-lun" class="header-anchor">#</a></h2><p>之前学习的 <strong>数字逻辑设计</strong> 课程，简单介绍了计算机组成相关部件的设计，比如组合电路设计，时序电路设计。这些模块都很简单，比如加法器，选择器，编码器，解码器。而计算机组成这门课，就要利用这些简单的模块，设计计算机中更加复杂的元件，比如处理器，处理系统等等。最重要的是设计简单的 <strong>RISC</strong>（<strong>精简指令集</strong>）**-CPU核**。涉及到ALU、单周期流水线CPU和简单的系统。</p>
+<p>之后我们还会学到另外一门课 <strong>计算机体系结构</strong>，那里我们会学到有关处理器的更高级的技术（比如如何优化性能）。</p>
+<p>实验一般很难在课上做完。</p>
+<h2><span id="jiao-cai-nei-rong">教材内容：</span><a href="#jiao-cai-nei-rong" class="header-anchor">#</a></h2><h3><span id="di-yi-zhang-yin-yan">第一章 引言：</span><a href="#di-yi-zhang-yin-yan" class="header-anchor">#</a></h3><p>这一章内容介绍什么是计算机，以及计算机中相关的内容。</p>
+<p>计算机在二十世纪中叶开始迅速发展，从非电子，到电子管、晶体管、集成电路、大规模集成微处理器的出现，都引起了计算机发展的一个高潮。</p>
 <ul>
-<li>上方<code>home</code>旁的<code>archives</code>列出了我的博客的目录；</li>
-<li>标签&#x2F;标签云记录了我的博客的主要内容，你可以点击你想了解的内容来进行搜索和筛选。</li>
-<li>顶部右上方的小太阳&#x2F;小月亮可以切换黑白模式。</li>
+<li>早期计数方式很原始；</li>
+<li>后来帕斯卡发明了机械式计数器；</li>
+<li>再后来，图灵提出了图灵机模型，指出计算的过程和算法可以公式化表示；</li>
+<li>第一台电子计算设备；</li>
+<li>第一台计算机ENIAC（通用指令集、十进制，可编程、图灵完全）；</li>
+<li>冯诺依曼（计算与存储分离-&gt;编程的产生）（现在还有存算一体，因为计算性能很高，但是访存太费劲）（数据和指令放在一个存储器）；</li>
+<li>晶体管代替电子管，减小体积，速度加快。以前靠卡片进行编程，这段时间就出现了汇编。</li>
+<li>集成电路代替晶体管，出现操作系统-时分复用。 </li>
+<li>微处理器替代集成电路；</li>
+<li>便携电脑与平板电脑的原型设计；首台现代个人电脑。</li>
+<li>1982年个人电脑开始兴起，IBM PC，内含inter芯片和微软DOS系统；1984年乔布斯发明了MACOS（with GUI），之前的操作系统是没有GUI的。</li>
+<li>RISC（精简指令集计算机）&#x2F;CISC（复杂指令集计算机）；前者指令执行使用尽量少的时钟周期、指令编码长度定长等等，这些都是为了提高cpu性能的。</li>
 </ul>
-<h2><span id="tian-wan-liao-de-keng">填完了的坑：</span><a href="#tian-wan-liao-de-keng" class="header-anchor">#</a></h2><ul>
-<li><a href="/2024/07/16/tableau/" title="tableau">tableau-log</a> </li>
-<li><a href="/2024/06/30/how-to-make-your-own-blog/" title="how to make your own blog?">如何使用hexo建立你的博客</a></li>
-<li><a href="/2024/07/02/git/" title="小白的git初学经历">小白的git初学经历</a></li>
-<li><a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" title="ode学习log">ode学习log</a></li>
-<li><a href="/2024/07/11/vim/" title="vim">vim的初识</a></li>
-<li><a href="/2024/08/10/deeplearn/" title="deeplearn">深度学习掠影</a></li>
+<p>计算机发展受芯片的约束，关于芯片发展的规律有一个 <strong>摩尔定律</strong>：集成电路单位面积上可容纳的晶体管，约每两年会翻一番。</p>
+<p>计算机的类别：</p>
+<ul>
+<li>个人电脑：通用性，性价比较高；</li>
+<li>服务器电脑：基于网络的，容量大，用作若干功能的代理，比如计算。</li>
+<li>超级计算机：高精度&#x2F;科学计算需求。</li>
+<li>嵌入式计算机：作为系统中的一部分存在，比如电瓶车中驱动的芯片（两三块钱）。</li>
+<li>个人移动设备：</li>
+<li>云计算。</li>
 </ul>
-<h2><span id="huan-zai-nu-li-tian-de-keng">还在努力填的坑：</span><a href="#huan-zai-nu-li-tian-de-keng" class="header-anchor">#</a></h2><ul>
-<li><a href="/2024/07/08/about-web/" title="about-web">关于web的随笔</a></li>
-<li><a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" title="hexo从入门到入土">hexo从入门到入土</a></li>
-<li><a href="/2024/08/02/moreJs/" title="进一步了解js">多看点js</a></li>
-<li><a href="/2024/08/09/requests/" title="requests">Requests</a></li>
-<li><a href="/2024/07/19/python/" title="python &amp; data">python-data</a></li>
+<p>之后的计算机会是什么样子呢？</p>
+<hr>
+<p>计算机组成：</p>
+<ul>
+<li>硬件：<ul>
+<li>cpu:<ul>
+<li>controler:</li>
+<li>datapath:</li>
 </ul>
-<h2><span id="chang-qi-sui-bi">长期随笔：</span><a href="#chang-qi-sui-bi" class="header-anchor">#</a></h2><ul>
-<li><a href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" title="cpp札记">cpp札记</a></li>
-<li><a href="/2024/08/06/cpp-useful-operations/" title="cpp-useful-operations">cpp-useful-operations</a></li>
-<li><a href="/2024/08/22/%E7%AE%97%E6%B3%95%E9%9A%8F%E6%83%B3%E5%BD%95/" title="算法随想录">算法随想录</a></li>
+</li>
+<li>memory:</li>
+<li>i&#x2F;o interface:</li>
 </ul>
-<h2><span id="shu-li-mo-kuai">数理模块：</span><a href="#shu-li-mo-kuai" class="header-anchor">#</a></h2><ul>
-<li><a href="/2024/08/13/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E6%8E%A0%E5%BD%B1/" title="复变函数掠影">复变函数掠影</a></li>
-<li><a href="/2024/07/04/normal-physics-note/" title="normal physics note">normal physics note</a></li>
-<li><a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" title="ode学习log">ode学习log</a></li>
+</li>
+<li>软件<ul>
+<li>系统软件：操作系统&#x2F;编译器&#x2F;驱动（专为某些硬件设计的软件）；</li>
+<li>应用软件：各类app；</li>
 </ul>
-<h2><span id="ji-qi-xue-xi">机器学习：</span><a href="#ji-qi-xue-xi" class="header-anchor">#</a></h2><ul>
-<li><a href="/2024/08/16/ml/" title="ml">ml</a></li>
+</li>
 </ul>
-<h2><span id="qi-ta-wen-zhang">其他文章：</span><a href="#qi-ta-wen-zhang" class="header-anchor">#</a></h2><ul>
-<li><a href="/2024/06/30/hello-world/" title="Hello World">Hello World</a></li>
-<li><a href="/2024/07/08/python-class/" title="python-class">python-class</a></li>
-<li><a href="/2024/07/16/tableau/" title="tableau">tableau</a></li>
-<li><a href="/2024/07/17/vue/" title="vue3">vue3</a></li>
+<p>下面是一个框架：<br><img src="/./coNote/image.png" alt="alt text"></p>
+<h4><span id="ru-he-gou-jian-yi-ge-chu-li-qi">如何构建一个处理器：</span><a href="#ru-he-gou-jian-yi-ge-chu-li-qi" class="header-anchor">#</a></h4><p>构建一个处理器，实际上就是将集成电路&#x2F;芯片 进一步集成的过程。</p>
+<p>单晶硅-晶圆-带有功能的晶圆（网格化）-去掉坏的得到 裸片-封装成为芯片-测试</p>
+<p>早期的芯片设计就是用晶体管搭 积木；后面出现了hdl；芯片上的连线是需要设计的，这就是版图（layout）设计；然后使用掩膜板来成型。</p>
+<h3><span id="di-er-zhang-zhi-ling">第二章 指令</span><a href="#di-er-zhang-zhi-ling" class="header-anchor">#</a></h3><p>指令 是一堆声明，让机器能够做什么。</p>
+<p>指令的意义，就是将机器内部的实现隐藏起来，而对外界暴露出了固定的、可以实现无穷多种功能的接口。这种接口就是指令。</p>
+<p>指令集就是一堆指令的集合；</p>
+<p>指令结构就是 <strong>指令的结构</strong>，指令由哪些部分组成。</p>
+<p>risc-v指令集的指令特点是:</p>
+<ul>
+<li>每条指令只对应一个操作；</li>
+<li>逻辑简单，指令形状规则</li>
 </ul>
-<p>如果你喜欢我的博客，欢迎star&#x2F;comment我的博客<a target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.github.io">repo</a></p>
+<p>比如我们在高级语言中写下：<br><code>f=(a+b)-(c+d)</code>，那么在底层实现上，就要使用计算部件对这些内容进行处理。</p>
+<h2><span id="di-si-zhang-chu-li-qi">第四章 处理器</span><a href="#di-si-zhang-chu-li-qi" class="header-anchor">#</a></h2><p>cpu组成：</p>
+<ul>
+<li>控制单元：阀门，控制数据流向；</li>
+<li>数据通路：河床，数据流的载体；</li>
+</ul>
+<h2><span id="shi-yan-ke">实验课：</span><a href="#shi-yan-ke" class="header-anchor">#</a></h2><p>实验为我们准备了一个测试平台soc，我们可以写好自己的组件，然后放到这个平台上检测是否正常运行。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/06/intro/" data-id="cm377jmp1000jwwr84oisg81q" data-title="你好" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/09/19/coNote/" data-id="cm377jmoi0004wwr83tfn3c3n" data-title="计算机组成设计" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/intro/" rel="tag">intro</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/major/" rel="tag">major</a></li></ul>
 
     </footer>
   </div>
@@ -261,19 +292,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2024/07/06/python-io/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/09/29/practices-and-thoughts/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
-          Python_io Log
+          Practices-and-Thoughts
         
       </div>
     </a>
   
   
-    <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/09/12/%E7%8E%B0%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%A4%96%E4%BA%A4/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">Ode学习log</div>
+      <div class="article-nav-title">现代中国外交</div>
     </a>
   
 </nav>
