@@ -16,8 +16,10 @@
 <meta property="og:description" content="本文作为计组的学习记录。 绪论：#之前学习的 数字逻辑设计 课程，简单介绍了计算机组成相关部件的设计，比如组合电路设计，时序电路设计。这些模块都很简单，比如加法器，选择器，编码器，解码器。而计算机组成这门课，就要利用这些简单的模块，设计计算机中更加复杂的元件，比如处理器，处理系统等等。最重要的是设计简单的 RISC（精简指令集）**-CPU核**。涉及到ALU、单周期流水线CPU和简单的系统。 之">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hebown.github.io/coNote/image.png">
+<meta property="og:image" content="https://hebown.github.io/coNote/image2.png">
+<meta property="og:image" content="https://hebown.github.io/coNote/ins-structure.png">
 <meta property="article:published_time" content="2024-09-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-06T12:14:24.137Z">
+<meta property="article:modified_time" content="2024-11-17T05:26:39.982Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="log">
 <meta property="article:tag" content="major">
@@ -270,6 +272,33 @@
 <li>逻辑简单，指令形状规则</li>
 </ul>
 <p>比如我们在高级语言中写下：<br><code>f=(a+b)-(c+d)</code>，那么在底层实现上，就要使用计算部件对这些内容进行处理。</p>
+<h4><span id="ji-cun-qi">寄存器</span><a href="#ji-cun-qi" class="header-anchor">#</a></h4><p>我们先来看看寄存器，这些寄存器是供各种数字计算需要而设计的。<br><img src="/./coNote/image2.png" alt="alt text"><br>简单而言：</p>
+<ul>
+<li>0寄存器；</li>
+<li>四个结构寄存器（返回指针、栈顶指针、全局变量指针、进程指针）</li>
+<li>中间变量寄存器（5-7，28-31）</li>
+<li>保留寄存器（函数调用前后保持不变的）（8-9,18-27）一共12个</li>
+<li>传参寄存器（传入和传出）(10-17)一共八个</li>
+</ul>
+<h4><span id="shu-cong-na-li-lai-cun-chu-qi">数从哪里来？存储器：</span><a href="#shu-cong-na-li-lai-cun-chu-qi" class="header-anchor">#</a></h4><p>为了获取数，我们需要加载&#x2F;存储指令，这就是lw,sw等等指令的来源；由于risc-v指令集的位宽是64位，因而所有的指令都是按doubleword来讲的。</p>
+<p>risc-v的存储有以下特性：</p>
+<ul>
+<li>内存是以字节编码的，只能访问整字节数据，而不能是更小的位数。</li>
+<li>小（低）端存储：低位放在低地址。大端反之，大端比较符合我们的读数习惯，小端比较符合我们的访存习惯</li>
+<li>不要求字节对齐，但一般都要字节对齐。<ul>
+<li>有很多指令集都同时支持大小端。</li>
+</ul>
+</li>
+</ul>
+<p>接下来我们就来讲内存相关的指令。其实也就是ld&#x2F;sd&#x2F;lw&#x2F;sw，其形式为：<code>ld rs offset(base)/sd rd offset(base)</code></p>
+<h4><span id="wei-chang-shu-er-she-ji-de-zhi-ling-immediate">为常数而设计的指令：immediate</span><a href="#wei-chang-shu-er-she-ji-de-zhi-ling-immediate" class="header-anchor">#</a></h4><p>例如偏移地址的计算。所谓 <strong>立即数</strong>以我的理解就是非存储形式的、直接使用的数，而不是放在寄存器或内存中。</p>
+<h4><span id="wei-cao-zuo-zhi-ling-shi-xian">位操作指令实现：</span><a href="#wei-cao-zuo-zhi-ling-shi-xian" class="header-anchor">#</a></h4><p>I-format下的指令，因为移位操作最多移64位，从而imm可以压缩到6位，最后留下一部分func6供判断。</p>
+<p>主要的指令有<code>sll/srl/slli/srli/and/or/xor</code>，<code>xor</code>可以实现<code>not</code>的功能。</p>
+<p>或者当移位的立即数就在寄存器中时，也有<code>srl x5 x6 x7</code></p>
+<h4><span id="liu-cheng-kong-zhi">流程控制：</span><a href="#liu-cheng-kong-zhi" class="header-anchor">#</a></h4><p><code>beq rs1 rs2 L</code>，若相等跳转到L，因而可能需要</p>
+<h4><span id="zhi-ling-bian-ma">指令编码：</span><a href="#zhi-ling-bian-ma" class="header-anchor">#</a></h4><p>参照下面这个图：<br><img src="/./coNote/ins-structure.png" alt="alt text"><br>最基本的指令结构就是r型指令；</p>
+<p>I型指令既可以是addi也可以是ld指令，都涉及两个寄存器和一个立即数。这个立即数是2’complement，有符号数。</p>
+<p>但store指令没有rd，因为要往存储器中存，从而将imm的rd改为imm的低五位。 </p>
 <h2><span id="di-si-zhang-chu-li-qi">第四章 处理器</span><a href="#di-si-zhang-chu-li-qi" class="header-anchor">#</a></h2><p>cpu组成：</p>
 <ul>
 <li>控制单元：阀门，控制数据流向；</li>
@@ -280,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/09/19/coNote/" data-id="cm377jmoi0004wwr83tfn3c3n" data-title="计算机组成设计" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/09/19/coNote/" data-id="cm3llxveq0002tcr8br8s4c7a" data-title="计算机组成设计" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -292,19 +321,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2024/09/29/practices-and-thoughts/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/10/07/%E5%8E%A6%E9%97%A8%E5%9B%9E%E5%BF%86/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
-          Practices-and-Thoughts
+          厦门回忆
         
       </div>
     </a>
   
   
-    <a href="/2024/09/12/%E7%8E%B0%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%A4%96%E4%BA%A4/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/09/12/Probability-Theory/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">现代中国外交</div>
+      <div class="article-nav-title">Probability-Theory</div>
     </a>
   
 </nav>
@@ -324,7 +353,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/problems/" style="font-size: 10px;">problems</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -333,7 +362,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
     </div>
   </div>
 
@@ -346,6 +375,10 @@
       <ul>
         
           <li>
+            <a href="/2024/11/10/modelsim/">复活吧我的Xsim， 但变成了Vscode+modelsim的形状力</a>
+          </li>
+        
+          <li>
             <a href="/2024/10/24/%E6%90%AD%E5%BB%BAgdb%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/">在`Vscode`中简单使用`gdb`</a>
           </li>
         
@@ -355,10 +388,6 @@
         
           <li>
             <a href="/2024/10/07/%E5%8E%A6%E9%97%A8%E5%9B%9E%E5%BF%86/">厦门回忆</a>
-          </li>
-        
-          <li>
-            <a href="/2024/09/29/practices-and-thoughts/">Practices-and-Thoughts</a>
           </li>
         
           <li>

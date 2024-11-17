@@ -8,21 +8,21 @@
   
   <title>Probability-Theory | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文作为概统学习的提要。      第一节课 频率： 概率公式：   第二节课： 条件概率：   第三节课： 独立性： 随机变量：">
+  <meta name="description" content="本文作为概统学习的提要。      第一章 概率论的基本概念： 样本空间、随机事件 基本概念； 事件的相互关系   频率与概率： 等可能概型： 条件概率： 事件的独立性与独立试验：   第二章 随机变量及其概率分布： 随机变量： 离散型随机变量： 随机变量的概率分布函数： 连续型随机变量 随机变量函数的分布：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probability-Theory">
 <meta property="og:url" content="https://hebown.github.io/2024/09/12/Probability-Theory/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="本文作为概统学习的提要。      第一节课 频率： 概率公式：   第二节课： 条件概率：   第三节课： 独立性： 随机变量：">
+<meta property="og:description" content="本文作为概统学习的提要。      第一章 概率论的基本概念： 样本空间、随机事件 基本概念； 事件的相互关系   频率与概率： 等可能概型： 条件概率： 事件的独立性与独立试验：   第二章 随机变量及其概率分布： 随机变量： 离散型随机变量： 随机变量的概率分布函数： 连续型随机变量 随机变量函数的分布：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hebown.github.io/Probability-Theory%5Cimage1.png">
+<meta property="og:image" content="https://hebown.github.io/Probability-Theory/%E7%AD%89%E4%BB%B7%E4%BA%8B%E4%BB%B6.png">
 <meta property="article:published_time" content="2024-09-12T02:01:36.000Z">
-<meta property="article:modified_time" content="2024-09-28T14:42:25.478Z">
+<meta property="article:modified_time" content="2024-11-17T12:54:57.566Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="math">
 <meta property="article:tag" content="log">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hebown.github.io/Probability-Theory%5Cimage1.png">
+<meta name="twitter:image" content="https://hebown.github.io/Probability-Theory/%E7%AD%89%E4%BB%B7%E4%BA%8B%E4%BB%B6.png">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -212,18 +212,24 @@
 <!-- toc -->
 
 <ul>
-<li><a href="#di-yi-jie-ke">第一节课</a><ul>
-<li><a href="#pin-lu">频率：</a></li>
-<li><a href="#gai-lu-gong-shi">概率公式：</a></li>
+<li><a href="#di-yi-zhang-gai-lu-lun-de-ji-ben-gai-nian">第一章 概率论的基本概念：</a><ul>
+<li><a href="#yang-ben-kong-jian-sui-ji-shi-jian">样本空间、随机事件</a><ul>
+<li><a href="#ji-ben-gai-nian">基本概念；</a></li>
+<li><a href="#shi-jian-de-xiang-hu-guan-xi">事件的相互关系</a></li>
 </ul>
 </li>
-<li><a href="#di-er-jie-ke">第二节课：</a><ul>
+<li><a href="#pin-lu-yu-gai-lu">频率与概率：</a></li>
+<li><a href="#deng-ke-neng-gai-xing">等可能概型：</a></li>
 <li><a href="#tiao-jian-gai-lu">条件概率：</a></li>
+<li><a href="#shi-jian-de-du-li-xing-yu-du-li-shi-yan">事件的独立性与独立试验：</a></li>
 </ul>
 </li>
-<li><a href="#di-san-jie-ke">第三节课：</a><ul>
-<li><a href="#du-li-xing">独立性：</a></li>
+<li><a href="#di-er-zhang-sui-ji-bian-liang-ji-qi-gai-lu-fen-bu">第二章 随机变量及其概率分布：</a><ul>
 <li><a href="#sui-ji-bian-liang">随机变量：</a></li>
+<li><a href="#chi-san-xing-sui-ji-bian-liang">离散型随机变量：</a></li>
+<li><a href="#sui-ji-bian-liang-de-gai-lu-fen-bu-han-shu">随机变量的概率分布函数：</a></li>
+<li><a href="#lian-xu-xing-sui-ji-bian-liang">连续型随机变量</a></li>
+<li><a href="#sui-ji-bian-liang-han-shu-de-fen-bu">随机变量函数的分布：</a></li>
 </ul>
 </li>
 </ul>
@@ -233,51 +239,185 @@
 <span id="more"></span>
 
 <p>授课教师为 <strong>郑志浩</strong> 老师。</p>
-<h2><span id="di-yi-jie-ke">第一节课</span><a href="#di-yi-jie-ke" class="header-anchor">#</a></h2><p>概率论是研究不确定现象的理论。</p>
-<p>不确定现象分为：</p>
-<ul>
-<li>个别现象：大量重复实验后结果分布不出现规律性</li>
-<li>随机现象：个别实验中结果呈现不确定性，（具有统计规律性）</li>
+<h1><span id="di-yi-zhang-gai-lu-lun-de-ji-ben-gai-nian">第一章 概率论的基本概念：</span><a href="#di-yi-zhang-gai-lu-lun-de-ji-ben-gai-nian" class="header-anchor">#</a></h1><h2><span id="yang-ben-kong-jian-sui-ji-shi-jian">样本空间、随机事件</span><a href="#yang-ben-kong-jian-sui-ji-shi-jian" class="header-anchor">#</a></h2><h3><span id="ji-ben-gai-nian">基本概念；</span><a href="#ji-ben-gai-nian" class="header-anchor">#</a></h3><ul>
+<li><strong>必然现象</strong>：一定条件下必然发生的现象称为 </li>
+<li><strong>随机现象</strong>：<ul>
+<li>不止一种可能结果；</li>
+<li>个别试验中无法预知哪个结果会发生；</li>
+<li>大量重复试验中其结果发生呈现一定规律性的现象；</li>
 </ul>
-<p>我们喜欢研究随机现象及其隐含的统计规律，它很有用，而且历来的数学家发现了很多这样的统计规律，例如泊松分布、正态分布等等。</p>
-<p>依照现实生活，数学家抽象出了随机现象的实验模型：</p>
-<ul>
-<li>可以在相同条件下重复进行</li>
-<li>事先知道可能出现的结果</li>
-<li>但在某一次具体的实验之前，并不能知道准确的结果。</li>
+</li>
+<li><strong>随机试验</strong>：对随机现象进行观察、记录或试验；<ul>
+<li>可以在相同的条件下重复进行；</li>
+<li>每次试验可能出现的结果是不确定的，但能事先知道试验的所有可能的结果；</li>
+<li>每次试验前不能阈值哪一个结果会发生；</li>
 </ul>
-<p>我们称这样的一次实验为 <strong>随机试验</strong> ， 可能出现的所有结果组成了这次随机试验的 <strong>样本空间</strong>。样本空间中的每一个元素称为 <strong>样本点</strong>；样本空间的子集称为 <strong>随机事件</strong>，简称为 <strong>事件</strong>；特别的只有一个样本点的事件称为 <strong>基本事件</strong>。</p>
-<p><strong>样本空间和随机事件的本质是集合</strong>。</p>
-<p>样本空间可以是离散的，也可以是连续的，比如记录三月份内某城市下雨的总天数，或者记录某产品的使用寿命。若样本空间可数，就称之为 <strong>离散模型</strong>；若样本空间连续，就称之为 <strong>连续模型</strong>。 之后还会讲到 <strong>既不离散也不连续的模型</strong>。</p>
-<p>在一次试验完成的时候，当试验出现的结果属于某一事件是，就成为该 <strong>事件发生</strong>。 这和离散中的推理是反过来的。可以理解为条件更宽泛的更容易发生。事件的基本逻辑关系是或，而不是与。特别的，如果我们将样本空间视为一个事件，那么在任何一次试验中，该事件必然会发生，故而称其为 <strong>必然事件</strong>；与之对应的空集被称为 <strong>不可能事件</strong>。</p>
-<p>使用集合中的交并可以获得更多的事件。比如明天不下雨&#x2F;不下雪可以用或&#x2F;与来表示为 <strong>明天不下雨或不下雪&#x2F;明天不下雨且不下雪</strong>。</p>
-<p>若事件$A\cap B&#x3D;\empty$，则说明二者不可能同时发生，称其为 <strong>互斥</strong>。</p>
-<p>若$A\cup B$还组成了样本空间，则称之为对立事件。</p>
-<p>拓展写法为$\bigcup_{i&#x3D;1}^nA_i$</p>
-<p>除此以外还有 <strong>逆事件</strong>，<strong>差事件</strong>。实际上就是集合运算。</p>
-<p>还有 <strong>串联系统</strong>、<strong>并联系统</strong>。</p>
-<h3><span id="pin-lu">频率：</span><a href="#pin-lu" class="header-anchor">#</a></h3><p>引入事件的频率和概率可以对随机事件发生的可能性进行定量分析。</p>
-<p>$n$次试验中某事件$A$发生的次数称为 <strong>频次</strong>，定义频次和试验总数的比率为 <strong>频率</strong>，记为$f_n(A)$，显然$0\leq f_n(A)\leq 1$</p>
-<p>试验次数趋向于无穷大后，频率近似为概率。这种收敛和极限的收敛是不一样的，称之为依概率收敛。</p>
-<h3><span id="gai-lu-gong-shi">概率公式：</span><a href="#gai-lu-gong-shi" class="header-anchor">#</a></h3><p>基于分划推出了很多公式。</p>
-<h2><span id="di-er-jie-ke">第二节课：</span><a href="#di-er-jie-ke" class="header-anchor">#</a></h2><p>从古典概型到条件概率。</p>
-<h3><span id="tiao-jian-gai-lu">条件概率：</span><a href="#tiao-jian-gai-lu" class="header-anchor">#</a></h3><p>$$B|A$$表示在条件A下B事件发生。</p>
-<p>核心公式$$P(AB)&#x3D;P(A)\cdot P(B|A)$$使用这个公式既可以计算条件概率，也可以计算非条件概率。知二推一。同时还可以得到$$P(A)P(B|A)&#x3D;P(B)P(A|B)$$</p>
-<h2><span id="di-san-jie-ke">第三节课：</span><a href="#di-san-jie-ke" class="header-anchor">#</a></h2><h3><span id="du-li-xing">独立性：</span><a href="#du-li-xing" class="header-anchor">#</a></h3><p>即为$$P(AB)&#x3D;P(A)P(B)$$</p>
-<p>两两独立不能保证更高组合事件发生也是独立。也即没有递推性。</p>
-<p>独立说明什么，给定的条件并不能限制我们想要研究的对象的定义域，也即$$P(A|B)&#x3D;\frac{P(AB)}{P(B)}$$</p>
-<p>扩展到若干个事件的集合，我们可以得出 这若干个事件独立的充要条件是 <strong>任意事件组合的概率等于各个事件概率的乘积</strong>。</p>
-<p>这其中有一种非常重要的题型，就是电路正常工作问题：<br><img src="/Probability-Theory%5Cimage1.png"></p>
-<p>如果正面解决，必然是枚举这几个元件的状态，一共是$5!$种，不过我们可以枚举的有特殊性点，比方说对于$1,4$都不工作的时候这个元件必然是不可能正常工作的，</p>
-<h3><span id="sui-ji-bian-liang">随机变量：</span><a href="#sui-ji-bian-liang" class="header-anchor">#</a></h3><p>生活中我们用自然语言来描述随机试验的结果，但这和严谨性相悖。</p>
-<p>于是我们引入一种实值单值函数，称之为随机变量，即是 <strong>根据随机试验结果而定的量</strong></p>
-<p>随机变量有连续型的和离散型的。</p>
-<h4><span id="chi-san-xing-sui-ji-bian-liang">离散型随机变量：</span><a href="#chi-san-xing-sui-ji-bian-liang" class="header-anchor">#</a></h4><p>概率分布律：称$$P{X&#x3D;x_k}&#x3D;p_k$$为$X$的概率分布列&#x2F;律。</p>
+</li>
+<li><strong>样本空间</strong>：随机试验所有可能结果构成的集合；</li>
+<li><strong>样本点</strong>：样本空间中的任意一个元素；</li>
+<li><strong>随机事件</strong>&#x2F;<strong>事件</strong>：样本空间的任意子集，也即样本点的组合；<ul>
+<li>特别的，只含有一个样本点的事件称为 <strong>随机事件</strong>；</li>
+</ul>
+</li>
+<li><strong>事件发生</strong>：某一实验的结果(即样本点)属于某一事件，就称该事件发生；<ul>
+<li><blockquote>
+<p>所以事件发生的基本逻辑是或，而不是与；</p>
+</blockquote>
+</li>
+<li><strong>必然事件</strong>：在任意一次试验中必然会发生的事件称为必然事件。例如样本空间S代表的事件；</li>
+<li><strong>不可能事件</strong>：任何实验中出现的结果都不会属于该集合，例如空集。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="shi-jian-de-xiang-hu-guan-xi">事件的相互关系</span><a href="#shi-jian-de-xiang-hu-guan-xi" class="header-anchor">#</a></h3><p>事件的相互关系本质上是集合的相互关系，因此下面只简单地列出事件之间的关系及其定义。</p>
+<ol>
+<li>事件的包含和相等；</li>
+<li>事件的和&#x2F;或与积&#x2F;与；</li>
+<li><strong>事件的互斥</strong>:事件$A$和事件$B$的积事件是空集。</li>
+<li><strong>逆&#x2F;对立事件</strong>：$A\cap B&#x3D;\emptyset , A\cup B&#x3D;S$，其中$S$是整个样本空间，并记$B&#x3D;\bar{A} or A^c$</li>
+<li><strong>差事件</strong>：$A-B &#x3D; A\cap \bar{B}$，也即从事件$A$中减去事件$B$;</li>
+<li><strong>串联&#x2F;并联系统</strong>：一个系统损坏&#x2F;不损坏，系统就损坏&#x2F;不损坏；</li>
+</ol>
+<h2><span id="pin-lu-yu-gai-lu">频率与概率：</span><a href="#pin-lu-yu-gai-lu" class="header-anchor">#</a></h2><p>对事件发生可能性进行定量分析。</p>
+<ul>
+<li><strong>频率</strong>：重复试验$n$次，某事件$A$发生了$n_A$次，则记$f_n(A)&#x3D;f\frac{n_A}{n}$为$A$在这$n$次实验中发生的频率。<ul>
+<li><strong>频率的性质</strong>：$f_n(A)\in [0,1]$，$f_n(S)&#x3D;1$，$A\cap B&#x3D;\emptyset \Rightarrow f_n(A\cup B)&#x3D;f_n(A)+f_n(B)$;</li>
+<li><blockquote>
+<p>第三个性质可以推广至多个 <strong>两两互不相容的事件</strong>。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>概率</strong>：称当试验次数$n$充分大时$f_n(A)$的稳定值$p$为事件$A$的概率。<ul>
+<li>概率必然满足三条公理：非负性，规范性，可列可加性；</li>
+<li><strong>推论</strong>：<ol>
+<li>若$A\supset B$，则有$P(A-B)&#x3D;P(A)-P(B)$，从而$P(A)\ge P(B)$;</li>
+<li>容斥原理；简单来说就是，并集等于其中一个集，加上剩余的部分，剩余的部分等于另外一个集减去公共的部分。如果公共的部分是由多个交集构成的</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2><span id="deng-ke-neng-gai-xing">等可能概型：</span><a href="#deng-ke-neng-gai-xing" class="header-anchor">#</a></h2><p>样本空间中样本点出现的可能性相等，例如抛硬币实验。</p>
+<ul>
+<li><strong>等可能概型&#x2F;古典概型</strong>：满足<ol>
+<li>样本空间样本点有限；</li>
+<li>出现每一个样本点的概率相等；<br>  的试验。从而推得等可能概型中，任意事件的概率等于 <strong>该事件包含的样本点数&#x2F;样本总点数</strong>；</li>
+</ol>
+</li>
+</ul>
+<h2><span id="tiao-jian-gai-lu">条件概率：</span><a href="#tiao-jian-gai-lu" class="header-anchor">#</a></h2><p>事件B发生时，A发生的概率。</p>
+<p>本质为研究的样本空间的转移。</p>
+<ul>
+<li><strong>条件概率</strong>：$P(A|B)&#x3D;\frac{P(AB)}{P(B)}$；<ul>
+<li><blockquote>
+<p>可视为在缩小的样本空间中对事件的概率度量。</p>
+</blockquote>
+</li>
+<li>条件概率当然满足基本的概率的性质。虽然我们转移了样本空间，但是没有改变本质。</li>
+</ul>
+</li>
+<li><strong>乘法公式</strong>：两个事件积事件的概率等于一个事件的概率乘以在这个事件发生的条件下另一个事件的条件概率。<ul>
+<li>由于条件概率也是概率，所以条件概率也有乘法公式。</li>
+</ul>
+</li>
+<li><strong>全概率公式</strong>：直接计算某一事件概率较难的时候，可以分类讨论。用公式来描述就是$P(A)&#x3D;P(AB)+P(A\bar{B})$。<ul>
+<li><p><strong>划分&#x2F;完备事件组</strong>：由一个样本空间划分成的两两互斥的事件组。严谨的说就是设$B_i$为某试验(样本空间为$S$)的一组事件，那么</p>
+<ul>
+<li>$B_iB_j&#x3D;\emptyset$；</li>
+<li>$\bigcup_{i&#x3D;1}^n B_i&#x3D;S$;</li>
+</ul>
+<p>有了上面这个定义，我们就可以给出全概率公式；</p>
+</li>
+<li><p><strong>全概率公式</strong>：设$B_i$为某样本空间$S$的一个划分，那么$P(A)&#x3D;\sum_{i&#x3D;1}^nP(B_i)P(AB_i)$</p>
+</li>
+<li><p><strong>贝叶斯公式</strong>：将条件概率公式使用全概率公式替换；</p>
+<ul>
+<li><blockquote>
+<p>若将事件$A$视为试验结果，划分$B_i$视为导致$A$发生的种种原因，则贝叶斯公式可以 <strong>由果导因</strong>。比如书上的<code>例 1.4.6</code>;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><span id="shi-jian-de-du-li-xing-yu-du-li-shi-yan">事件的独立性与独立试验：</span><a href="#shi-jian-de-du-li-xing-yu-du-li-shi-yan" class="header-anchor">#</a></h2><p>事件的独立性，就是说（设甲乙事件相互独立）甲事件发生不发生，对乙事件没什么影响。从概率论的角度来说，甲事件发生不发生，都不会使乙事件的概率增加或减少。也就是$$P(A|B)&#x3D;P(A)$$这意味着$P(AB)&#x3D;P(A)P(B)$，也就是虽然我们换了一个样本空间去观察（甲事件发生&#x2F;不发生），被观察的事件在这个样本空间中所占的比例还是不变。</p>
+<blockquote>
+<p>从组合？的角度去理解，既然两件事是相互独立的，那么两时共同发生的概率就由分步乘法原理得到，应为$P(A)P(B)$。</p>
+</blockquote>
+<ul>
+<li><strong>两两独立</strong>：任选两事件均独立；</li>
+<li><strong>相互独立</strong>：任选任意多个事件均独立。</li>
+</ul>
+<h1><span id="di-er-zhang-sui-ji-bian-liang-ji-qi-gai-lu-fen-bu">第二章 随机变量及其概率分布：</span><a href="#di-er-zhang-sui-ji-bian-liang-ji-qi-gai-lu-fen-bu" class="header-anchor">#</a></h1><blockquote>
+<p>为了更有效地用数学方法描述随机试验的结果, 人们将随机试验的结果数量化, 引入随机变量的概念, 并研究随机变量的概率分布.</p>
+</blockquote>
+<h2><span id="sui-ji-bian-liang">随机变量：</span><a href="#sui-ji-bian-liang" class="header-anchor">#</a></h2><p>随机试验的结果分为 <strong>示数型&#x2F;示性型</strong>。前者结果可使用数来表示，而后者则稍微困难一点，比如硬币朝上的一面是？明天的天气是？为了能够使用更多的数学方法来描述与研究随机现象，人们往往会将示性型的结果数量化，也就是 <strong>将随机试验的记过对应到数</strong>，这种实值函数称为 <strong>随机变量</strong>，也就是 <strong>随随机试验结果而变的量</strong>。</p>
+<h2><span id="chi-san-xing-sui-ji-bian-liang">离散型随机变量：</span><a href="#chi-san-xing-sui-ji-bian-liang" class="header-anchor">#</a></h2><ul>
+<li><strong>离散型随机变量</strong>：称那些所有可能取值为有限个&#x2F;可列个（后者则是离散数学中提到的 <strong>可数</strong>）的随机变量为离散型随机变量。<ul>
+<li><strong>离散型随机变量的概率分布律&#x2F;列</strong>:若$X$为离散型随机变量，可能取值为$x_k$，那么称$P{X&#x3D;x_k}&#x3D;p_k,k&#x3D;1,2,…$为$X$的 <strong>概率分布律&#x2F;列</strong>，简称为 <strong>分布律&#x2F;列</strong>；<blockquote>
+<p>此分布律满足正定性和规范性。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>一些重要的离散性随机变量：<ul>
+<li><strong>0-1分布</strong>：可用$X\sim 0-1(p)$表示，或者$X\sim B(1,p)$</li>
+<li><strong>二项分布</strong>：$X\sim B(n,p)$，相应的试验称为 <strong>$n$重伯努利试验</strong>；</li>
+<li><strong>泊松分布</strong>:$X\sim P(\lambda)$，$e^x$的泰勒展开。</li>
+<li><strong>帕斯卡分布&#x2F;负二项分布</strong>：直至$A$发生$r$次所需要的（伯努利）试验次数。记为$NB(r,p)$,其计算方法为，前$k-1$次事件中，发生了$r-1$该事件，且第$k$次该事件也发生。</li>
+</ul>
+</li>
+</ul>
+<h2><span id="sui-ji-bian-liang-de-gai-lu-fen-bu-han-shu">随机变量的概率分布函数：</span><a href="#sui-ji-bian-liang-de-gai-lu-fen-bu-han-shu" class="header-anchor">#</a></h2><p>实际上有许多随机变量的取值是不可列的，比如距离、身高等等。</p>
+<blockquote>
+<p>事实上，我们也不关心这类量取某一定值的概率，而是关系其落在某些区域的可能性大小…下面我们引入概率分布函数的概念。</p>
+</blockquote>
+<ul>
+<li><strong>概率分布函数</strong>：$F(x)&#x3D;P{X\le x}$称为随机变量$X$的概率分布函数，简称为分布函数。其有如下性质：<ul>
+<li>单调不减</li>
+<li>$F(-\infty)&#x3D;0,F(+\infty)&#x3D;1$；</li>
+<li>$0\le F(x)\le 1$；</li>
+<li>右连续；</li>
+</ul>
+</li>
+</ul>
+<h2><span id="lian-xu-xing-sui-ji-bian-liang">连续型随机变量</span><a href="#lian-xu-xing-sui-ji-bian-liang" class="header-anchor">#</a></h2><p>相对于离散型随机变量而言。</p>
+<ul>
+<li><strong>连续型随机变量</strong>：若存在非负的实值函数$f(x)$使得$F(x)&#x3D;\int_{-\infty}^xf(t)dt$，则称$X$为连续性随机变量，称$f(x)$为 <strong>概率密度函数</strong> ，简称为 <strong>密度函数</strong>。<ul>
+<li><blockquote>
+<p>$f(x)$本身不是概率，而是概率的密度，反映了在某一点附近概率的集中程度。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>一些重要的连续型随机变量</strong>：<ul>
+<li><strong>均匀分布</strong>:$f(x)&#x3D;\frac{1}{b-a}(x\in (a,b))$，记作$X\sim U(a,b)$</li>
+<li><strong>正态分布</strong>:$f(x)&#x3D;\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$，简称$X$为 <strong>正态变量</strong>，记为$X\sim N(\mu,\sigma^2)$<ul>
+<li><strong>标准正态分布</strong>:$\mu &#x3D;0,\sigma&#x3D;1$</li>
+</ul>
+</li>
+<li><strong>指数分布</strong>：满足$P(X&gt;x+y)&#x3D;P(X&gt;x)P(X&gt;y)$的分布，标准式为$f(x)&#x3D;\lambda e^{-\lambda x}(x&gt;0)$，记作$X\sim E(\lambda)$</li>
+</ul>
+</li>
+<li><strong>其他的连续型随机变量</strong>：<ul>
+<li><strong>$\Gamma$分布</strong>：其详细意义参考 gamma分布和泊松分布的关系。</li>
+<li><strong>二参数威布尔分布</strong>；</li>
+<li><strong>beta分布</strong>：与二项分布类似。</li>
+</ul>
+</li>
+</ul>
+<h2><span id="sui-ji-bian-liang-han-shu-de-fen-bu">随机变量函数的分布：</span><a href="#sui-ji-bian-liang-han-shu-de-fen-bu" class="header-anchor">#</a></h2><p>根据随机变量的分布，求这一变量的函数分布。(即已知$X,g$，求$Y&#x3D;g(X)$)</p>
+<blockquote>
+<p>总之，求随机变量函数的分布问题实际上就是找等价事件问题。</p>
+</blockquote>
+<p>例：<br><img src="/./Probability-Theory/%E7%AD%89%E4%BB%B7%E4%BA%8B%E4%BB%B6.png" alt="alt text"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/09/12/Probability-Theory/" data-id="cm377jmoa0001wwr87fqsaqgo" data-title="Probability-Theory" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/09/12/Probability-Theory/" data-id="cm3llxvep0001tcr81ctl5uph" data-title="Probability-Theory" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -289,11 +429,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2024/09/12/%E7%8E%B0%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%A4%96%E4%BA%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/09/19/coNote/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
-          现代中国外交
+          计算机组成设计
         
       </div>
     </a>
@@ -321,7 +461,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/frame/" style="font-size: 10px;">frame</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/problems/" style="font-size: 10px;">problems</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -330,7 +470,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
     </div>
   </div>
 
@@ -343,6 +483,10 @@
       <ul>
         
           <li>
+            <a href="/2024/11/10/modelsim/">复活吧我的Xsim， 但变成了Vscode+modelsim的形状力</a>
+          </li>
+        
+          <li>
             <a href="/2024/10/24/%E6%90%AD%E5%BB%BAgdb%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/">在`Vscode`中简单使用`gdb`</a>
           </li>
         
@@ -352,10 +496,6 @@
         
           <li>
             <a href="/2024/10/07/%E5%8E%A6%E9%97%A8%E5%9B%9E%E5%BF%86/">厦门回忆</a>
-          </li>
-        
-          <li>
-            <a href="/2024/09/29/practices-and-thoughts/">Practices-and-Thoughts</a>
           </li>
         
           <li>
