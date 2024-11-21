@@ -8,16 +8,16 @@
   
   <title>Probability-Theory | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文作为概统学习的提要。      第一章 概率论的基本概念： 样本空间、随机事件 基本概念； 事件的相互关系   频率与概率： 等可能概型： 条件概率： 事件的独立性与独立试验：   第二章 随机变量及其概率分布： 随机变量： 离散型随机变量： 随机变量的概率分布函数： 连续型随机变量 随机变量函数的分布：">
+  <meta name="description" content="本文作为概统学习的提要。      第一章 概率论的基本概念： 样本空间、随机事件 基本概念； 事件的相互关系   频率与概率： 等可能概型： 条件概率： 事件的独立性与独立试验：   第二章 随机变量及其概率分布： 随机变量： 离散型随机变量： 随机变量的概率分布函数： 连续型随机变量 随机变量函数的分布：   第三章 多维随机变量及其分布 二维离散型随机变量：   第四章 随机变量的数字特征">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probability-Theory">
 <meta property="og:url" content="https://hebown.github.io/2024/09/12/Probability-Theory/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="本文作为概统学习的提要。      第一章 概率论的基本概念： 样本空间、随机事件 基本概念； 事件的相互关系   频率与概率： 等可能概型： 条件概率： 事件的独立性与独立试验：   第二章 随机变量及其概率分布： 随机变量： 离散型随机变量： 随机变量的概率分布函数： 连续型随机变量 随机变量函数的分布：">
+<meta property="og:description" content="本文作为概统学习的提要。      第一章 概率论的基本概念： 样本空间、随机事件 基本概念； 事件的相互关系   频率与概率： 等可能概型： 条件概率： 事件的独立性与独立试验：   第二章 随机变量及其概率分布： 随机变量： 离散型随机变量： 随机变量的概率分布函数： 连续型随机变量 随机变量函数的分布：   第三章 多维随机变量及其分布 二维离散型随机变量：   第四章 随机变量的数字特征">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hebown.github.io/Probability-Theory/%E7%AD%89%E4%BB%B7%E4%BA%8B%E4%BB%B6.png">
 <meta property="article:published_time" content="2024-09-12T02:01:36.000Z">
-<meta property="article:modified_time" content="2024-11-17T12:54:57.566Z">
+<meta property="article:modified_time" content="2024-11-21T07:13:36.181Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="math">
 <meta property="article:tag" content="log">
@@ -232,6 +232,31 @@
 <li><a href="#sui-ji-bian-liang-han-shu-de-fen-bu">随机变量函数的分布：</a></li>
 </ul>
 </li>
+<li><a href="#di-san-zhang-duo-wei-sui-ji-bian-liang-ji-qi-fen-bu">第三章 多维随机变量及其分布</a><ul>
+<li><a href="#er-wei-chi-san-xing-sui-ji-bian-liang">二维离散型随机变量：</a></li>
+</ul>
+</li>
+<li><a href="#di-si-zhang-sui-ji-bian-liang-de-shu-zi-te-zheng">第四章 随机变量的数字特征</a><ul>
+<li><a href="#shu-xue-qi-wang">数学期望</a><ul>
+<li><a href="#ji-ben-gai-nian">基本概念</a></li>
+<li><a href="#sui-ji-bian-liang-han-shu-de-shu-xue-qi-wang">随机变量函数的数学期望</a></li>
+<li><a href="#shu-xue-qi-wang-de-xing-zhi">数学期望的性质：</a></li>
+<li><a href="#tiao-jian-shu-xue-qi-wang">条件数学期望：</a></li>
+</ul>
+</li>
+<li><a href="#fang-chai-bian-yi-xi-shu">方差、变异系数</a><ul>
+<li><a href="#ji-ben-nei-rong">基本内容：</a></li>
+<li><a href="#biao-zhun-hua-sui-ji-bian-liang-yu-bian-yi-xi-shu">标准化随机变量与变异系数：</a></li>
+</ul>
+</li>
+<li><a href="#xie-fang-chai-yu-xiang-guan-xi-shu">协方差与相关系数：</a><ul>
+<li><a href="#xie-fang-chai">协方差:</a></li>
+<li><a href="#xiang-guan-xi-shu">相关系数：</a></li>
+<li><a href="#bu-xiang-guan">不相关：</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
@@ -413,11 +438,191 @@
 <p>总之，求随机变量函数的分布问题实际上就是找等价事件问题。</p>
 </blockquote>
 <p>例：<br><img src="/./Probability-Theory/%E7%AD%89%E4%BB%B7%E4%BA%8B%E4%BB%B6.png" alt="alt text"></p>
+<h1><span id="di-san-zhang-duo-wei-sui-ji-bian-liang-ji-qi-fen-bu">第三章 多维随机变量及其分布</span><a href="#di-san-zhang-duo-wei-sui-ji-bian-liang-ji-qi-fen-bu" class="header-anchor">#</a></h1><p>引入：</p>
+<blockquote>
+<p>在第 2 章中, 我们研究了单个随机变量的概率分布问题, 但在实际问题中, 对有些随机现象的研究, 需引入 <strong>两个甚至多个随机变量来描述随机试验的结果</strong> . 例如, 要分析某射手平面靶射击情况, 弹着点的位置需用离开靶心的水平距离和垂直距离两个变量来刻画; 再如, 要分析某地区居民的生活状况, 常需同时考虑居民的收入、 支出、 住房面积等多个变量及这些变量之间的关系, 在本章中,我们将着重研究二维随机变量及其概率分布, 对于n(n &gt; 2) 维随机变量的定义及性质, 可由二维情形类似推广而得</p>
+</blockquote>
+<ul>
+<li><strong>二维随机变量&#x2F;二维随机向量</strong>：设随机试验的样本空间为$S$，$X&#x3D;X(e),Y&#x3D;Y(e)$为定义在样本空间$S$上的两个实值单值函数，则称 <strong>有序二元整体$(X(e),Y(e))$</strong> 为 <strong>二维随机变量</strong> 或 <strong>二维随机向量</strong>。常简记为$(X,Y)$，并称$X,Y$为$(X,Y)$的两个分量。</li>
+</ul>
+<h2><span id="er-wei-chi-san-xing-sui-ji-bian-liang">二维离散型随机变量：</span><a href="#er-wei-chi-san-xing-sui-ji-bian-liang" class="header-anchor">#</a></h2><h1><span id="di-si-zhang-sui-ji-bian-liang-de-shu-zi-te-zheng">第四章 随机变量的数字特征</span><a href="#di-si-zhang-sui-ji-bian-liang-de-shu-zi-te-zheng" class="header-anchor">#</a></h1><h2><span id="shu-xue-qi-wang">数学期望</span><a href="#shu-xue-qi-wang" class="header-anchor">#</a></h2><p>随机变量的 <strong>数学期望</strong> 又称为 <strong>均值</strong>，简称期望，可以理解为随机变量在平均意义上的代表。</p>
+<p>这种代表实际上是执行了无穷多次相同随机试验的平均结果。</p>
+<h3><span id="ji-ben-gai-nian">基本概念</span><a href="#ji-ben-gai-nian" class="header-anchor">#</a></h3><ul>
+<li><strong>离散型随机变量的数学期望&#x2F;均值</strong>：称级数$\sum_{i&#x3D;1}^{+\infty}x_ip_i$在 <strong>绝对收敛</strong> 时，为对应离散型随机变量的 <strong>数学期望&#x2F;均值</strong>，否则称随机变量的数学期望 <strong>不存在</strong>。<ul>
+<li><blockquote>
+<p>为什么需要绝对收敛？因为离散型随机变量的数学期望应当于其概率分布律中的各项 <strong>排列次序无关</strong>，这需要绝对收敛的约束。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>连续型随机变量的数学期望&#x2F;均值</strong>：$\int_{-\infty}^{+\infty}xf(x)dx$。存在条件为$\int_{-\infty}^{+\infty}|x|f(x)dx$有界；<ul>
+<li><blockquote>
+<p>事实上，若$\int_{-\infty}^{+\infty}|x|f(x)dx$有界，实际上意味着此积分收敛。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>常见分布的期望</strong><table>
+<thead>
+<tr>
+<th>分布名称</th>
+<th>期望值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$P(\lambda)$</td>
+<td>$\lambda$</td>
+</tr>
+<tr>
+<td>$E(\lambda)$</td>
+<td>$\frac{1}{\lambda}$</td>
+</tr>
+<tr>
+<td>$N(0,1)$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>$N(\mu,\sigma^2)$</td>
+<td>$\mu$</td>
+</tr>
+<tr>
+<td>$B(n,p)$</td>
+<td>$np$</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3><span id="sui-ji-bian-liang-han-shu-de-shu-xue-qi-wang">随机变量函数的数学期望</span><a href="#sui-ji-bian-liang-han-shu-de-shu-xue-qi-wang" class="header-anchor">#</a></h3><p>本节内容计算$Y&#x3D;g(X)$的数学期望，也即$E(Y)$。核心计算方法为$$E(g(X))&#x3D;\int_{-\infty}^{+\infty}g(x)f(x)dx$$，期望存在条件为$E(g(X))&#x3D;\int_{-\infty}^{+\infty}|g(x)|f(x)dx$有界。</p>
+<p>上述计算方法也可以拓展到多维随机变量函数。</p>
+<h3><span id="shu-xue-qi-wang-de-xing-zhi">数学期望的性质：</span><a href="#shu-xue-qi-wang-de-xing-zhi" class="header-anchor">#</a></h3><p>总结为</p>
+<ul>
+<li><strong>线性</strong>：$E(c_0+\sum_{i&#x3D;1}^nc_iX_i)&#x3D;c_0+\sum_{i&#x3D;1}^nc_iE(X_i)$</li>
+<li><strong>独立可乘性</strong>：$E(\prod_{i&#x3D;1}^nX_i)&#x3D;\prod_{i&#x3D;1}^nE(X_i)$，当且仅当这$n$个随机变量相互独立。<ul>
+<li><blockquote>
+<p>本质上是联合密度函数的独立可拆分性。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="tiao-jian-shu-xue-qi-wang">条件数学期望：</span><a href="#tiao-jian-shu-xue-qi-wang" class="header-anchor">#</a></h3><blockquote>
+<p>本节内容不做要求</p>
+</blockquote>
+<p>由于条件分布函数也是分布函数，因而它也有数学期望，简称为 <strong>条件期望</strong>。但由于条件期望的 <strong>条件</strong> 是变量，从而条件期望不是一个数，而是跟条件相关的函数。</p>
+<h2><span id="fang-chai-bian-yi-xi-shu">方差、变异系数</span><a href="#fang-chai-bian-yi-xi-shu" class="header-anchor">#</a></h2><p><strong>方差</strong> 刻画了随机变量取值分散程度。我们用$$E((X-E(X))^2)$$来表示，记为$Var(X)&#x2F;D(X)&#x2F;V(X)$，其正平方根称为 <strong>标准差</strong>。</p>
+<p>也就是说，方差是随机变量 <strong>分散程度的平均</strong>，也是 <strong>一种期望</strong>。</p>
+<blockquote>
+<p>方差存在的条件可以用期望的条件来推导。</p>
+</blockquote>
+<h3><span id="ji-ben-nei-rong">基本内容：</span><a href="#ji-ben-nei-rong" class="header-anchor">#</a></h3><ul>
+<li><strong>基本公式</strong>：$D(X)&#x3D;E(X^2)-E(X)^2$</li>
+<li><strong>常见分布的方差</strong>：<table>
+<thead>
+<tr>
+<th>分布名称</th>
+<th>方差</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$P(\lambda)$</td>
+<td>$\lambda$</td>
+</tr>
+<tr>
+<td>$E(\lambda)$</td>
+<td>$\frac{1}{\lambda^2}$</td>
+</tr>
+<tr>
+<td>$N(0,1)$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$N(\mu,\sigma^2)$</td>
+<td>$\sigma^2$</td>
+</tr>
+<tr>
+<td>$B(n,p)$</td>
+<td>$np(1-p)$</td>
+</tr>
+</tbody></table>
+</li>
+<li><strong>方差的性质</strong>：（都是我自己起的名字）<ul>
+<li><strong>倍乘平方性</strong>：$Var(cX)&#x3D;c^2Var(X)$</li>
+<li><strong>平移不变性</strong>：$Var(X+c)&#x3D;Var(X)$</li>
+<li><strong>2-norm最值性</strong>：$Var(X)\le E[(X-c)^2]$</li>
+<li><strong>独立可分性</strong>：$Var(\sum_{i&#x3D;1}^nVar(X_i))&#x3D;\sum_{i&#x3D;1}^nVar(X_i)$<ul>
+<li><blockquote>
+<p>本质上还是期望的独立可分性。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>边界条件</strong>：$Var(X)&#x3D;0\iff E(X)&#x3D;c$</li>
+<li><blockquote>
+<p>第三条性质实际上反映了 <strong>均值$E(X)$是2-范数意义下，点集（随机变量）的最优代表元</strong>。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="biao-zhun-hua-sui-ji-bian-liang-yu-bian-yi-xi-shu">标准化随机变量与变异系数：</span><a href="#biao-zhun-hua-sui-ji-bian-liang-yu-bian-yi-xi-shu" class="header-anchor">#</a></h3><p>根据随机变量的方差和期望，可以构造 <strong>标准化随机变量</strong> 为$$X^*&#x3D;\frac{X-E(X)}{\sqrt{Var(X)} }$$此变量的方差为1，均值为0。</p>
+<blockquote>
+<p>事实上, 引入标准化变量主要是为了消除由于计量单位的不同而给随机变量带来的一些影响,例如: 进行精密测量时, 对于某物长度的考察当然可以用cm 作为单位, 得到随机变量 $X$, 也可以用 mm 作为单位, 得到随机变量$Y$, 那么 $Y &#x3D; 10X$, 从而 $X$ 与 $Y$ 的分布有所不同. 这显然不太合理. 但通过标准化变换, 就可以消除这种不合理性. 之前常用的标准正态变量也是一般正态变量经标准化变换得到的.</p>
+</blockquote>
+<blockquote>
+<p>类似地, 度量分布离散性的数字特征——方差,也会由于这种量纲上的不同而不同, 如上例中, 若 $X$ 的方差为 $\sigma^2$,则$Y$的方差为 $100\sigma^2$, 若以此认为 $Y$较之 $X$ 更为分散, 显然是不合理的</p>
+</blockquote>
+<p>为了消除量纲及取值大小(包含单位不同)的影响, 常用无量纲的 <strong>变异系数</strong>$$Cv&#x3D;\frac{\sqrt{Var(X)}}{E(X)}$$作为衡量指标。它反映了 <strong>随机变量$X$在以它的中心位置为标准时,其值的离散程度</strong></p>
+<h2><span id="xie-fang-chai-yu-xiang-guan-xi-shu">协方差与相关系数：</span><a href="#xie-fang-chai-yu-xiang-guan-xi-shu" class="header-anchor">#</a></h2><blockquote>
+<p>对于多维随机变量,人们除考虑每一个分量的中心位置和离散程度,并由此来了解各个分量各自的部分特性外,还常常对<strong>它们之间的关系</strong>产生兴趣,在本节我们将介绍反映两个变量间线性关系的两个数字特征——协方差与相关系数</p>
+</blockquote>
+<h3><span id="xie-fang-chai">协方差:</span><a href="#xie-fang-chai" class="header-anchor">#</a></h3><p>由于独立时$$E[(X– E(X))(Y– E(Y))] &#x3D; 0$从而我们认为此式可以反应$X,Y$的某种关系，因而我们有</p>
+<ul>
+<li><strong>协方差</strong>：$Cov(X,Y)&#x3D;E[(X– E(X))(Y– E(Y))] $也即协方差是二元随机变量函数$(X– E(X))(Y– E(Y))$的 <strong>期望</strong>。<ul>
+<li><blockquote>
+<p>直接使用定义计算协方差往往比较麻烦，而我们可以使用 <strong>$E(XY)-E(X)E(Y)$</strong> 来作为替代公式进行计算。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>协方差是一种 <strong>角度</strong>。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>协方差的性质</strong>：<ul>
+<li><strong>自反性</strong>：$Cov(X,Y)&#x3D;Cov(Y,X)$</li>
+<li><strong>正定性</strong>：$Cov(X,X)&#x3D;Var(X)$</li>
+<li><strong>倍乘性</strong>：$Cov(aX,bY)&#x3D;abCov(X,Y)$</li>
+<li><strong>线性</strong>：$Cov(X_1+X_2,Y)&#x3D;Cov(X_1,Y)+Cov(X_2,Y)$</li>
+<li><strong>向量&#x2F;柯西不等式</strong>：$Cov(X,Y)^2\le Var(X)Var(Y)$取等条件为两随机变量严格线性相关。</li>
+<li><blockquote>
+<p>协方差就是 <strong>内积</strong></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="xiang-guan-xi-shu">相关系数：</span><a href="#xiang-guan-xi-shu" class="header-anchor">#</a></h3><p>显然协方差也是有量纲的，取值依赖于单位，因而我们需要将其标准化，这就是 <strong>相关系数</strong></p>
+<ul>
+<li><strong>相关系数</strong>：记 <strong>$$\rho_{XY}&#x3D;\frac{Cov(X,Y)}{\sqrt{Var(X)}\sqrt{Var(Y)}}$$</strong> 为$X$与$Y$的 <strong>相关系数</strong>。有时也简记为$\rho$,等价于两标准化变量的协方差。</li>
+</ul>
+<h3><span id="bu-xiang-guan">不相关：</span><a href="#bu-xiang-guan" class="header-anchor">#</a></h3><blockquote>
+<p>这里的 “不相关”, 实质上指的是 “不线性相关”，表示的是两个随机变量之间不存在线性关系，但可以存在非线性的函数关系。</p>
+</blockquote>
+<p>从而有如下定理：</p>
+<ul>
+<li><strong>独立性定理</strong>：对于两个相互独立的随机变量，若其方差存在，则一定不相关；但若其不相关，则未必独立.反之，若相关则一定不独立。<ul>
+<li><blockquote>
+<p>条件中的 <strong>若其方差存在</strong> 保证了两随机变量不全是常数。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/09/12/Probability-Theory/" data-id="cm3llxvep0001tcr81ctl5uph" data-title="Probability-Theory" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/09/12/Probability-Theory/" data-id="cm3qz7v9r0001bkr8cuje9sb5" data-title="Probability-Theory" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
