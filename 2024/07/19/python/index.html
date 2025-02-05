@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>Python &amp; Data | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="这篇博客来速成以下python的数据处理。      涉及的内容：   正式开始： pandas： numpy matplotlib：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python &amp; Data">
+<meta property="og:url" content="https://hebown.github.io/2024/07/19/python/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="这篇博客来速成以下python的数据处理。      涉及的内容：   正式开始： pandas： numpy matplotlib：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hebown.github.io/python/image.png">
+<meta property="og:image" content="https://hebown.github.io/python/image2.png">
+<meta property="article:published_time" content="2024-07-19T00:52:59.000Z">
+<meta property="article:modified_time" content="2024-08-10T04:05:58.412Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="dataProcessing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hebown.github.io/python/image.png">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/07/19/python/" class="article-date">
+  <time class="dt-published" datetime="2024-07-19T00:52:59.000Z" itemprop="datePublished">2024-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Python &amp; Data
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这篇博客来速成以下python的数据处理。</p>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#she-ji-de-nei-rong">涉及的内容：</a></li>
+</ul>
+<ul>
+<li><a href="#zheng-shi-kai-shi">正式开始：</a><ul>
+<li><a href="#pandas">pandas：</a></li>
+<li><a href="#numpy">numpy</a></li>
+<li><a href="#matplotlib">matplotlib：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+</div>
+<span id="more"></span>
+
+<p>主要讲讲一些回顾性的知识。博主是出于上可视化这门课程才要学习这一部分的。不知道以后能不能用的到。</p>
+<h3><span id="she-ji-de-nei-rong">涉及的内容：</span><a href="#she-ji-de-nei-rong" class="header-anchor">#</a></h3><ul>
+<li>pandas(用来处理数据的模块)</li>
+<li>matplotlib(一般使用内部的pyplot来绘制图形)</li>
+<li>os(你的操作系统给python的接口)</li>
+<li>numpy(用来进行科学计算 <del>虽然这个课程我没主动地用</del>)</li>
+<li>基本的python工具。</li>
+</ul>
+<h2><span id="zheng-shi-kai-shi">正式开始：</span><a href="#zheng-shi-kai-shi" class="header-anchor">#</a></h2><p>我们做数据处理，一般涉及到这样的流程：数据获取(寻址)-选择感兴趣的数据-筛选其中的数据-数据再生产(计算)-展示数据体现的内涵&#x2F;将数据保存输出。</p>
+<p>下面我们就来根据这个框架来分析以上python模块为我们提供了什么样的帮助；</p>
+<h3><span id="pandas">pandas：</span><a href="#pandas" class="header-anchor">#</a></h3><p>pandas是对数据做非可视化处理的一个非常强力的工具。在python中，如果你想用pandas来进行对数据的处理，只需要在你的脚本文件中导入pandas模块（前提是你的对应的python环境已经添加了pandas模块）即可，也就是</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<h4><span id="chu-shi-pandas">初识pandas：</span><a href="#chu-shi-pandas" class="header-anchor">#</a></h4><p>在pandas中，我们可以用很多种方式来表现我们的数据，最常见&#x2F;基础的就是dataframe，这个对象可以通过如下方式来创建</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">df_0 = pd.DataFrame() <span class="comment"># 创建一个空的dataframe，简写为df</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从字典创建</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;Name&#x27;</span>: [<span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Charlie&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Age&#x27;</span>: [<span class="number">25</span>, <span class="number">30</span>, <span class="number">35</span>],</span><br><span class="line">    <span class="string">&#x27;City&#x27;</span>: [<span class="string">&#x27;New York&#x27;</span>, <span class="string">&#x27;Los Angeles&#x27;</span>, <span class="string">&#x27;Chicago&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line">df_1 = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用列表创建</span></span><br><span class="line">data = [</span><br><span class="line">    [<span class="string">&#x27;Alice&#x27;</span>, <span class="number">25</span>, <span class="string">&#x27;New York&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;Bob&#x27;</span>, <span class="number">30</span>, <span class="string">&#x27;Los Angeles&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;Charlie&#x27;</span>, <span class="number">35</span>, <span class="string">&#x27;Chicago&#x27;</span>]</span><br><span class="line">]</span><br><span class="line">df = pd.DataFrame(data, columns=[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>, <span class="string">&#x27;City&#x27;</span>]) <span class="comment"># 字典中每一个数组有名字，这里没有，所以要指定其名称</span></span><br><span class="line"><span class="comment"># 也可以创建无名df，会默认提供一个索引，然后再指定</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用NumPy数组创建</span></span><br><span class="line">data = np.array([</span><br><span class="line">    [<span class="string">&#x27;Alice&#x27;</span>, <span class="number">25</span>, <span class="string">&#x27;New York&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;Bob&#x27;</span>, <span class="number">30</span>, <span class="string">&#x27;Los Angeles&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;Charlie&#x27;</span>, <span class="number">35</span>, <span class="string">&#x27;Chicago&#x27;</span>]</span><br><span class="line">])</span><br><span class="line">df = pd.DataFrame(data, columns=[<span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>, <span class="string">&#x27;City&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后面我们还会提到，可以使用pandas提供的series(以及其他的内嵌数据集)来创建dataframe/从文件中导出数据为dataframe</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果你想知道numpy数组有什么不同，<a href="#numpy">点这里</a></p>
+</blockquote>
+<p>创建完数据对象之后，我们可以使用类似于python中使用字典&#x2F;列表的方式，来对数据进行访问，例如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h4><span id></span><a href="#" class="header-anchor">#</a></h4><h3><span id="numpy">numpy</span><a href="#numpy" class="header-anchor">#</a></h3><p>在深度学习的实现中。在深度学习的实现中，经常出现数组和矩阵的计算。NumPy 的数组类（numpy.array ）中提供了很多便捷的方法。</p>
+<h4><span id="chu-shi">初识：</span><a href="#chu-shi" class="header-anchor">#</a></h4><p>创建numpy array 并进行简单的操作。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x=np.array([<span class="number">1.0</span>,<span class="number">2.0</span>,<span class="number">3.0</span>]) <span class="comment"># 使用这个方法来生成numpy array，这个数组接受list作为参数。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">type</span>(x)</span><br><span class="line"></span><br><span class="line">y=np.array([<span class="number">2.0</span>,<span class="number">4.0</span>,<span class="number">6.0</span>])</span><br><span class="line"></span><br><span class="line">z=x+y <span class="comment"># 结果：z=array([3.,6.,9.])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 类似的还有x-y,x/y,x*y;全部都是element-wise的操作。</span></span><br><span class="line"></span><br><span class="line">q=np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]]) <span class="comment"># 这是一个二维数组。也称为矩阵。</span></span><br><span class="line">                          <span class="comment"># numpy支持任意维数组。三维及以上数组称为张量/多维数组。</span></span><br><span class="line"></span><br><span class="line">q.shape <span class="comment"># 显示矩阵的形状，这里显示(2,2)是一个2*2的矩阵。</span></span><br><span class="line">q.dtype <span class="comment"># 显示元素的数据类型(dtype ~ datatype)，这里显示&#x27;int64&#x27;</span></span><br><span class="line"></span><br><span class="line">q[<span class="number">0</span>][<span class="number">0</span>] <span class="comment"># 类似数组索引器；</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> q:</span><br><span class="line">    <span class="built_in">print</span>(row) <span class="comment"># 打印每行</span></span><br></pre></td></tr></table></figure>
+
+<h4><span id="guang-bo-gong-neng">广播功能：</span><a href="#guang-bo-gong-neng" class="header-anchor">#</a></h4><p>形状不同的数组之间也可以进行运算,numpy会做出相应处理：<br><img src="/./python/image.png" alt="例子1"><br><img src="/./python/image2.png" alt="例子2"><br>这种自动适应的行为称之为<code>broadcast</code>.<br>比如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])&gt;<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>将会得到一个<code>np.array</code>，其内容是<code>[false,false,true,true]</code>，这里相当于将标量<code>2</code>扩展称为$(1*4)$的矩阵，然后进行element-wise的比较</p>
+<h4><span id="fang-qiu-shu-ju">访求数据：</span><a href="#fang-qiu-shu-ju" class="header-anchor">#</a></h4><p><code>np.array</code>为我们筛选数据提供了很方便的<code>api</code>，一方面，我们可以在索引器中写一个<code>index数组</code>，里面放置我们想要访问的数据的<code>index</code>，就像这样：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">X[ np.array[<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>] ]</span><br><span class="line"><span class="comment"># 将会获取索引为0，2，3的元素，也即array([1,3,4])</span></span><br></pre></td></tr></table></figure>
+<p>或者是使用一个和原数组等长的<code>布尔数组</code>，来决定每一个数据是否被访求。就像这样</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">X[X&gt;<span class="number">2</span>] <span class="comment"># 利用之前的广播+算数操作的特性，这里比较之后就能产生一个等长的array([false,false,true,true])</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="matplotlib">matplotlib：</span><a href="#matplotlib" class="header-anchor">#</a></h3><p>Matplotlib 是用于绘制图形的库，使用 Matplotlib 可以轻松地绘制图形和<br>实现数据的可视化。<br>一般都使用<code>matplotlib.pyplot</code></p>
+<h4><span id="chu-shi">初识：</span><a href="#chu-shi" class="header-anchor">#</a></h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成数据</span></span><br><span class="line">x=np.arange(<span class="number">0</span>,<span class="number">6</span>,<span class="number">0.1</span>) <span class="comment"># 以 0.1 为单位，生成 0 到 6 的数据</span></span><br><span class="line">y=np.sin(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制图形：根据已有数据进行简单的图形绘制</span></span><br><span class="line">plt.plot(x,y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4><span id="zai-hua-yi-dian">再画一点：</span><a href="#zai-hua-yi-dian" class="header-anchor">#</a></h4><p>可以添加很多其他的功能，比如标签名称&#x2F;图形标题之类的：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x=np.arange(<span class="number">0</span>,<span class="number">6</span>,<span class="number">0.1</span>)</span><br><span class="line">y1=np.sin(x)</span><br><span class="line">y2=np.cos(x)</span><br><span class="line"></span><br><span class="line">plt.plot(x,y1,label=<span class="string">&#x27;sin&#x27;</span>)</span><br><span class="line">plt.plot(x,y2,linestyle=<span class="string">&#x27;--&#x27;</span>,label=<span class="string">&#x27;cos&#x27;</span>) <span class="comment"># 使用虚线绘制。</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;x&#x27;</span>) <span class="comment"># x轴的标签</span></span><br><span class="line">plt.ylabel(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;sin &amp; cos&#x27;</span>) <span class="comment"># 标题</span></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>plt还有很多其他的功能，比如，读取图像<code>imread()</code>，显示图像<code>imshow()</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/07/19/python/" data-id="cm6rz00fv0013uwr8hd3ie947" data-title="Python &amp; Data" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dataProcessing/" rel="tag">dataProcessing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Hexo从入门到入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/07/16/tableau/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Tableau</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+

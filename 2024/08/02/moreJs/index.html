@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>进一步了解Js | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。      什么是javascript？ 开始正式的总结： 语法和数据类型： 注释： 声明与变量： 数据类型： 字面量： 1. 基本的模板字面量字符串创建 2. 多行字符串 3. 字符串插值 (String Interpolation) 4. 标签模板 (Tagged Templates) 标签模板函数的工作原理 总结   流程控制与错误处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进一步了解Js">
+<meta property="og:url" content="https://hebown.github.io/2024/08/02/moreJs/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="本文作为系统学习js的笔记。主要参考了这篇文档中的内容。      什么是javascript？ 开始正式的总结： 语法和数据类型： 注释： 声明与变量： 数据类型： 字面量： 1. 基本的模板字面量字符串创建 2. 多行字符串 3. 字符串插值 (String Interpolation) 4. 标签模板 (Tagged Templates) 标签模板函数的工作原理 总结   流程控制与错误处理">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-02T10:31:43.095Z">
+<meta property="article:modified_time" content="2024-08-30T08:02:03.157Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-moreJs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/08/02/moreJs/" class="article-date">
+  <time class="dt-published" datetime="2024-08-02T10:31:43.095Z" itemprop="datePublished">2024-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      进一步了解Js
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文作为系统学习<code>js</code>的笔记。主要参考了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">这篇文档</a>中的内容。</p>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#shi-me-shi-javascript">什么是javascript？</a></li>
+<li><a href="#kai-shi-zheng-shi-de-zong-jie">开始正式的总结：</a><ul>
+<li><a href="#yu-fa-he-shu-ju-lei-xing">语法和数据类型：</a><ul>
+<li><a href="#zhu-shi">注释：</a></li>
+<li><a href="#sheng-ming-yu-bian-liang">声明与变量：</a></li>
+<li><a href="#shu-ju-lei-xing">数据类型：</a></li>
+<li><a href="#zi-mian-liang">字面量：</a></li>
+<li><a href="#1-ji-ben-de-mo-ban-zi-mian-liang-zi-fu-chuan-chuang-jian">1. 基本的模板字面量字符串创建</a></li>
+<li><a href="#2-duo-xing-zi-fu-chuan">2. 多行字符串</a></li>
+<li><a href="#3-zi-fu-chuan-cha-zhi-string-interpolation">3. 字符串插值 (String Interpolation)</a></li>
+<li><a href="#4-biao-qian-mo-ban-tagged-templates">4. 标签模板 (Tagged Templates)</a></li>
+<li><a href="#biao-qian-mo-ban-han-shu-de-gong-zuo-yuan-li">标签模板函数的工作原理</a></li>
+<li><a href="#zong-jie">总结</a></li>
+</ul>
+</li>
+<li><a href="#liu-cheng-kong-zhi-yu-cuo-wu-chu-li">流程控制与错误处理：</a><ul>
+<li><a href="#if">if：</a></li>
+<li><a href="#switch">switch：</a></li>
+<li><a href="#yi-chang">异常：</a></li>
+</ul>
+</li>
+<li><a href="#xun-huan-yu-die-dai">循环与迭代：</a><ul>
+<li><a href="#label"><code>label</code>：</a></li>
+<li><a href="#for-in"><code>for...in</code>:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+</div>
+<span id="more"></span>
+
+<h1><span id="shi-me-shi-javascript">什么是javascript？</span><a href="#shi-me-shi-javascript" class="header-anchor">#</a></h1><p>js是</p>
+<ul>
+<li>一门脚本语言：js 可以作为用来编写 <strong>自动执行某些任务</strong> 或 <strong>控制其他对象</strong> 的脚本的 <strong>语言</strong>。</li>
+<li>一门 <strong>面向对象的语言</strong>；</li>
+<li>一门 <strong>跨平台的语言</strong>：在浏览器中，JavaScript 可以改变网页（DOM）的外观与样式。同样地，在服务器上，Node.js 中的 JavaScript 可以对浏览器上编写的代码发出的客户端请求做出响应。</li>
+</ul>
+<p>但js和java没有必然的联系。<del>最初好像是创始者蹭java的热度？</del></p>
+<p>此外，js也有规范：<strong>ECMAScript</strong>规范。</p>
+<h1><span id="kai-shi-zheng-shi-de-zong-jie">开始正式的总结：</span><a href="#kai-shi-zheng-shi-de-zong-jie" class="header-anchor">#</a></h1><p>推荐使用 <strong>严格模式</strong> 。也即在代码开头加一句<code>&quot;use strict&quot;;</code></p>
+<h2><span id="yu-fa-he-shu-ju-lei-xing">语法和数据类型：</span><a href="#yu-fa-he-shu-ju-lei-xing" class="header-anchor">#</a></h2><p>js是</p>
+<ul>
+<li>大小写敏感的；</li>
+<li>使用unicode字符集的：可以支持法文等等，你甚至可以写<code>const 按钮 = document.getElementById(&#39;certain-button&#39;);</code>，不过保留字都是英文的，这样反而不方便。</li>
+</ul>
+<h3><span id="zhu-shi">注释：</span><a href="#zhu-shi" class="header-anchor">#</a></h3><p>支持</p>
+<ul>
+<li><strong>单行注释</strong>：<code>// 这是一段单行注释</code>；</li>
+<li><strong>多行注释</strong>：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    这是多行注释</span></span><br><span class="line"><span class="comment">    这是多行注</span></span><br><span class="line"><span class="comment">    这是多行</span></span><br><span class="line"><span class="comment">    这是多</span></span><br><span class="line"><span class="comment">    这是</span></span><br><span class="line"><span class="comment">    这</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+并且不能 <strong>嵌套注释</strong>；</li>
+</ul>
+<h3><span id="sheng-ming-yu-bian-liang">声明与变量：</span><a href="#sheng-ming-yu-bian-liang" class="header-anchor">#</a></h3><p>支持</p>
+<ul>
+<li><strong>var</strong>：声明一个变量，可选初始化一个值；</li>
+<li><strong>let</strong>：声明一个块作用域的局部变量，可选初始化一个值；</li>
+<li><strong>const</strong>：声明一个块作用域的只读常量。</li>
+</ul>
+<p>同时也可以像 <strong>python</strong> 那样直接赋值，例如 <code>x = 42</code>，但这（如果在函数外声明的话）是一个全局变量，容易造成混乱（在严格模式下会产生错误）。</p>
+<p>支持 <strong>解构赋值</strong>。</p>
+<h4><span id="bian-liang-zhi">变量值：</span><a href="#bian-liang-zhi" class="header-anchor">#</a></h4><p><code>var</code>或<code>let</code>声明的变量，如果没有赋初始值，则其值为<code>undefined</code>。</p>
+<p>如果访问一个未声明的变量会导致抛出 <code>ReferenceError</code> 异常.</p>
+<p>可以使用<code>input === undefined</code>来判断某个变量是否已经赋值。特别的，<code>undefined</code>在布尔类型环境中会被当做<code>false</code>；在数值类型环境中会被当作<code>NaN</code>；</p>
+<blockquote>
+<p>而与之对应的<code>null</code>变量在数值类型环境中会被当作 <code>0</code> 来对待，而布尔类型环境中会被当作 <code>false</code>。</p>
+</blockquote>
+<h4><span id="bian-liang-de-zuo-yong-yu">变量的作用域：</span><a href="#bian-liang-de-zuo-yong-yu" class="header-anchor">#</a></h4><ul>
+<li>函数之外声明的变量叫做 <strong>全局变量</strong>，可以被任何其他代码访问（但需要一定方法）；</li>
+<li>函数内部声明的变量叫做 <strong>局部变量</strong>，只能在当前函数的内部访问。</li>
+</ul>
+<blockquote>
+<p>事实上，全局变量是 <strong>全局对象</strong> 的属性。在网页中，默认的全局对象是<code>window</code>。</p>
+</blockquote>
+<h4><span id="bian-liang-ti-sheng">变量提升：</span><a href="#bian-liang-ti-sheng" class="header-anchor">#</a></h4><p>你可以先使用变量，稍后再声明变量；同时注意，每个函数都有独立的作用域，即使函数内部使用了相同名称的变量，还是会创建一个新的变量。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 例子 1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x === <span class="literal">undefined</span>); <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 例子 2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// will return a value of undefined</span></span><br><span class="line"><span class="keyword">var</span> myvar = <span class="string">&quot;my value&quot;</span>;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(myvar); <span class="comment">// undefined</span></span><br><span class="line">  <span class="keyword">var</span> myvar = <span class="string">&quot;local value&quot;</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对于函数（在js中也是一种变量）而言，只有函数声明会被提升，而函数表达式不会。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 函数声明 */</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">foo</span>(); <span class="comment">// &quot;bar&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bar&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数表达式 */</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">baz</span>(); <span class="comment">// 类型错误：baz 不是一个函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baz = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bar2&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="chang-liang">常量：</span><a href="#chang-liang" class="header-anchor">#</a></h4><p>可以使用<code>const</code>创建一个只读的常量。必须赋初值。作用域和<code>let</code>变量相同。</p>
+<p>然而，<strong>对象</strong>或<strong>数组</strong> 被赋值为常量却不受保护。</p>
+<h3><span id="shu-ju-lei-xing">数据类型：</span><a href="#shu-ju-lei-xing" class="header-anchor">#</a></h3><p>七种基本数据类型：</p>
+<ul>
+<li><strong>boolean</strong></li>
+<li><strong>null</strong></li>
+<li><strong>undefined</strong></li>
+<li><strong>Number</strong>：整数或者浮点数，js中没有专门的 <strong>int</strong> 或者 <strong>float</strong>；</li>
+<li><strong>BigInt</strong>：任意精度的整数，可以安全地存储和操作大整数。</li>
+<li><strong>String</strong></li>
+<li><strong>Symbol</strong>:其实例唯一且不可改变的数据类型；</li>
+</ul>
+<p>和 <strong>对象</strong>。</p>
+<h4><span id="shu-ju-lei-xing-de-zhuan-huan">数据类型的转换：</span><a href="#shu-ju-lei-xing-de-zhuan-huan" class="header-anchor">#</a></h4><p>js是一门<strong>动态类型语言</strong>，因此声明变量的时候可以不必指定数据类型，在代码执行的时候会根据需要进行自动转换。</p>
+<blockquote>
+<p>在包含的数字和字符串的表达式中使用加法运算符（+），JavaScript 会把数字转换成字符串。在涉及其他运算符时，JavaScript 语言不会把数字变为字符串。前者会被解释为<code>strcat</code>；</p>
+</blockquote>
+<p>使用</p>
+<ul>
+<li><code>parseInt()</code></li>
+<li><code>parseFloat()</code></li>
+</ul>
+<p>来将字符串转换数字，但这个转换比较抽象。</p>
+<p>或者也可以使用 <strong>一元加法运算符</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;1.1&quot;</span> + <span class="string">&quot;1.1&quot;</span> = <span class="string">&quot;1.11.1&quot;</span></span><br><span class="line">(+<span class="string">&quot;1.1&quot;</span>) + (+<span class="string">&quot;1.1&quot;</span>) = <span class="number">2.2</span></span><br><span class="line"><span class="comment">// 注意：加入括号为清楚起见，不是必需的。</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="zi-mian-liang">字面量：</span><a href="#zi-mian-liang" class="header-anchor">#</a></h3><blockquote>
+<p>在 JavaScript 中，你可以使用各种字面量。这些字面量是脚本中按字面意思给出的固定的值，而不是变量。</p>
+</blockquote>
+<p>常见的有：</p>
+<ul>
+<li>数组字面量</li>
+<li>布尔字面量</li>
+<li>数字字面量</li>
+<li>对象字面量</li>
+<li>RegExp 字面量</li>
+<li>字符串字面量</li>
+</ul>
+<h4><span id="shu-zu">数组：</span><a href="#shu-zu" class="header-anchor">#</a></h4><blockquote>
+<p>数组字面值是一个封闭在方括号对 ([]) 中的包含有零个或多个表达式的列表，其中每个表达式代表数组的一个元素。</p>
+</blockquote>
+<p>例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> coffees = [<span class="string">&quot;French Roast&quot;</span>, <span class="string">&quot;Colombian&quot;</span>, <span class="string">&quot;Kona&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">length</span>); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a[<span class="number">0</span>]); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>这里的数组字面值也是一种 <strong>对象初始化器</strong>；此外，你不必列举数组字面值中的所有元素，可以 <strong>连写两个逗号</strong> 来产生一个没有指定的元素，初始值为<code>undefined</code>；同时，（只有）元素列表的结尾的逗号将会被忽略。</p>
+<p>建议将缺失元素直接写成<code>undefined</code>，提高代码清晰度。</p>
+<p>数组字面值具有类似变量那样的作用域。</p>
+<h4><span id="bu-er">布尔：</span><a href="#bu-er" class="header-anchor">#</a></h4><p>布尔对象是对布尔类型的包装。布尔类型包括<code>true</code>&#x2F;<code>false</code>；</p>
+<h4><span id="shu-zi">数字：</span><a href="#shu-zi" class="header-anchor">#</a></h4><p>多种基数的 <strong>整数字面量</strong> 和以10为基数的 <strong>浮点数字面量</strong>；<br>其形式完全类似于 C语言。</p>
+<h4><span id="dui-xiang">对象：</span><a href="#dui-xiang" class="header-anchor">#</a></h4><p>封闭在花括号对中的一个对象的零个或多个 <strong>键值对</strong> 的列表。</p>
+<p>合法属性名可以使用<code>.</code>来获取；非法属性名则要使用 <strong>方括号表示法</strong> ，其实也就是使用字符串作为下标。</p>
+<p>一些比较新的特性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="comment">// 设定对象的原型为 `theProtoObj`</span></span><br><span class="line">  <span class="attr">__proto__</span>: theProtoObj,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 属性 `handler` 的值来自外部同名变量 `handler`</span></span><br><span class="line">  handler,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 对象方法 `toString`，调用 `super.toString()` 来获取父类的 `toString` 结果</span></span><br><span class="line">  <span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;d &quot;</span> + <span class="variable language_">super</span>.<span class="title function_">toString</span>();</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 动态计算属性名 `prop_42`，其值为 `42`</span></span><br><span class="line">  [<span class="string">&quot;prop_&quot;</span> + (<span class="function">() =&gt;</span> <span class="number">42</span>)()]: <span class="number">42</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="regexp">RegExp:</span><a href="#regexp" class="header-anchor">#</a></h4><p><code>regular-expression</code>，也即常说的 <strong>正则表达式</strong> ，是字符被 <strong>正斜杠</strong> 围起来的表达式，类如<code>var re=/ab+c/;</code></p>
+<h4><span id="zi-fu-chuan-zi-mian-liang">字符串字面量：</span><a href="#zi-fu-chuan-zi-mian-liang" class="header-anchor">#</a></h4><p>使用<code>&#39;&#39;</code>&#x2F;<code>&quot;&quot;</code>括起来的字面量。</p>
+<p>在<code>ES2015</code>中还提供了一种 <strong>模板字面量</strong> ，可以帮你构造字符串，类似于 <strong>字符串插值</strong>。</p>
+<blockquote>
+<p>除此之外，你可以在通过模板字符串前添加一个 tag 来自定义模板字符串的解析过程，这可以用来防止注入攻击，或者用来建立基于字符串的高级数据抽象。</p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Basic literal string creation</span></span><br><span class="line"><span class="string">`In JavaScript &#x27;\n&#x27; is a line-feed.`</span> <span class="comment">// Multiline strings</span></span><br><span class="line"><span class="string">`In JavaScript this is</span></span><br><span class="line"><span class="string"> not legal.`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// String interpolation</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">  time = <span class="string">&quot;today&quot;</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Construct an HTTP request prefix is used to interpret the replacements and construction</span></span><br><span class="line"><span class="variable constant_">POST</span><span class="string">`http://foo.org/bar?a=<span class="subst">$&#123;a&#125;</span>&amp;b=<span class="subst">$&#123;b&#125;</span></span></span><br><span class="line"><span class="string">     Content-Type: application/json</span></span><br><span class="line"><span class="string">     X-Credentials: <span class="subst">$&#123;credentials&#125;</span></span></span><br><span class="line"><span class="string">     &#123; &quot;foo&quot;: <span class="subst">$&#123;foo&#125;</span>,</span></span><br><span class="line"><span class="string">       &quot;bar&quot;: <span class="subst">$&#123;bar&#125;</span>&#125;(myOnReadyStateChangeHandler)`</span>;</span><br></pre></td></tr></table></figure>
+
+
+      <div class="expand-container">
+        <script>
+            function toggleExpand(id) {
+                const content = document.getElementById(id);
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            }
+        </script>
+
+        <button class="expand-button" onclick="toggleExpand('expand-n9sviuiqf')">对上述代码的解释</button>
+        <div id="expand-n9sviuiqf" class="expand-content" style="display:none;">
+          <p>这段代码展示了 ES6 中的模板字面量（Template Literals）在 JavaScript 中的使用方式。模板字面量提供了一种更加灵活的字符串创建方式，包括多行字符串、字符串插值（String Interpolation），以及用于构建复杂字符串的标签模板（Tagged Templates）。下面详细解释每一部分：</p>
+<h3><span id="1-ji-ben-de-mo-ban-zi-mian-liang-zi-fu-chuan-chuang-jian">1. 基本的模板字面量字符串创建</span><a href="#1-ji-ben-de-mo-ban-zi-mian-liang-zi-fu-chuan-chuang-jian" class="header-anchor">#</a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`In JavaScript &#x27;\n&#x27; is a line-feed.`</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这是一个使用模板字面量创建的字符串。模板字面量用反引号 <code>`</code> 包裹，而不是传统的单引号 <code>&#39;</code> 或双引号 <code>&quot;</code>.</li>
+<li>在这个例子中，字符串内容是 <code>In JavaScript &#39;\n&#39; is a line-feed.</code>，其中 <code>\n</code> 被解释为一个普通的文本，而不是换行符。</li>
+</ul>
+<h3><span id="2-duo-xing-zi-fu-chuan">2. 多行字符串</span><a href="#2-duo-xing-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`In JavaScript this is</span></span><br><span class="line"><span class="string"> not legal.`</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模板字面量允许在字符串中直接使用换行符，创建多行字符串。</li>
+<li>在这个例子中，字符串包含了一个换行符，内容为：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In JavaScript this is</span><br><span class="line"> not legal.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="3-zi-fu-chuan-cha-zhi-string-interpolation">3. 字符串插值 (String Interpolation)</span><a href="#3-zi-fu-chuan-cha-zhi-string-interpolation" class="header-anchor">#</a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">  time = <span class="string">&quot;today&quot;</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模板字面量支持字符串插值，即可以在字符串中嵌入 JavaScript 表达式，表达式的值会被计算并插入到字符串中。</li>
+<li><code>${}</code> 是插值表达式的语法，花括号 <code>{}</code> 中的内容是有效的 JavaScript 表达式。</li>
+<li>在这个例子中，<code>name</code> 的值是 <code>&quot;Bob&quot;</code>，<code>time</code> 的值是 <code>&quot;today&quot;</code>，所以这段代码生成的字符串是：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Hello Bob, how are you today?&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="4-biao-qian-mo-ban-tagged-templates">4. 标签模板 (Tagged Templates)</span><a href="#4-biao-qian-mo-ban-tagged-templates" class="header-anchor">#</a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">POST</span><span class="string">`http://foo.org/bar?a=<span class="subst">$&#123;a&#125;</span>&amp;b=<span class="subst">$&#123;b&#125;</span></span></span><br><span class="line"><span class="string">     Content-Type: application/json</span></span><br><span class="line"><span class="string">     X-Credentials: <span class="subst">$&#123;credentials&#125;</span></span></span><br><span class="line"><span class="string">     &#123; &quot;foo&quot;: <span class="subst">$&#123;foo&#125;</span>,</span></span><br><span class="line"><span class="string">       &quot;bar&quot;: <span class="subst">$&#123;bar&#125;</span>&#125;`</span>(myOnReadyStateChangeHandler);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个例子展示了标签模板的用法。标签模板允许在模板字面量前面加上一个函数名，这个函数会被调用并处理模板字符串。</li>
+<li>在这个例子中，<code>POST</code> 是一个函数，模板字面量中的字符串和插值部分会被传递给这个函数进行处理。</li>
+<li>模板字面量中的插值表达式 <code>${a}</code>、<code>${b}</code>、<code>${credentials}</code>、<code>${foo}</code>、<code>${bar}</code> 分别会被计算，并将它们的值插入到字符串中。</li>
+<li><code>POST</code> 函数会接收到模板字面量分割后的字符串数组以及插值表达式的值，然后可以根据这些数据执行某些操作，例如发送 HTTP 请求。</li>
+<li>最后的 <code>(myOnReadyStateChangeHandler)</code> 可能表示将 <code>POST</code> 函数的返回值作为参数传递给 <code>myOnReadyStateChangeHandler</code> 函数，或者 <code>POST</code> 函数返回一个新的函数，并将 <code>myOnReadyStateChangeHandler</code> 作为参数调用该新函数。</li>
+</ul>
+<h3><span id="biao-qian-mo-ban-han-shu-de-gong-zuo-yuan-li">标签模板函数的工作原理</span><a href="#biao-qian-mo-ban-han-shu-de-gong-zuo-yuan-li" class="header-anchor">#</a></h3><p>当你使用标签模板时，实际上是调用了一个函数，并将模板字面量中的字符串和插值作为参数传递给这个函数。对于如下标签模板调用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tag<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br></pre></td></tr></table></figure>
+<p>JavaScript 引擎会把它转换为如下的函数调用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">tag</span>([<span class="string">&#x27;Hello &#x27;</span>, <span class="string">&#x27;, how are you &#x27;</span>, <span class="string">&#x27;?&#x27;</span>], name, time);</span><br></pre></td></tr></table></figure>
+<p>其中，第一个参数是字符串数组，数组的元素是模板字面量中插值之间的文本。之后的参数是每个插值表达式的值。</p>
+<h3><span id="zong-jie">总结</span><a href="#zong-jie" class="header-anchor">#</a></h3><ul>
+<li><strong>模板字面量</strong> 是一种增强的字符串表示法，支持多行文本、插值和标签模板。</li>
+<li><strong>标签模板</strong> 可以通过函数处理模板字面量，用于更灵活的字符串构造或其他特殊用途，如构建动态 SQL 查询、构建 HTTP 请求、或者国际化处理。</li>
+</ul>
+
+        </div>
+      </div>
+    
+
+
+<h4><span id="zi-fu-chuan">字符串：</span><a href="#zi-fu-chuan" class="header-anchor">#</a></h4><p>略</p>
+<h2><span id="liu-cheng-kong-zhi-yu-cuo-wu-chu-li">流程控制与错误处理：</span><a href="#liu-cheng-kong-zhi-yu-cuo-wu-chu-li" class="header-anchor">#</a></h2><p>最基本的语句是用于组合语句的 <strong>语句块</strong> 。该块由一对大括号<code>&#123;&#125;</code>界定；</p>
+<p>块语句不会特别产生一个作用域，如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(x); </span><br></pre></td></tr></table></figure>
+<p>输出结果是 <strong>2</strong>，因为括号内声明的变量和之前的变量在同一个作用域内。并且还因为js<strong>允许重复声明变量</strong>，后声明的变量会覆盖之前声明的。</p>
+<h3><span id="if">if：</span><a href="#if" class="header-anchor">#</a></h3><p>形式和C语言相同。</p>
+<p>这些值：</p>
+<ul>
+<li>false</li>
+<li>undefined</li>
+<li>null</li>
+<li>0</li>
+<li>NaN</li>
+<li>“”</li>
+</ul>
+<p>作为判断条件的时候视为<code>false</code>。其他为真。</p>
+<p>不要混淆布尔值和<code>Boolean</code>对象。</p>
+<h3><span id="switch">switch：</span><a href="#switch" class="header-anchor">#</a></h3><p>和C语言完全相同。</p>
+<h3><span id="yi-chang">异常：</span><a href="#yi-chang" class="header-anchor">#</a></h3><h2><span id="xun-huan-yu-die-dai">循环与迭代：</span><a href="#xun-huan-yu-die-dai" class="header-anchor">#</a></h2><p>支持和C语言形式上完全相同的<code>for</code>,<code>while</code>,<code>do</code>,<code>break</code>,<code>continue</code>;以及新的<code>label</code>,<code>for...in</code> and <code>for...of</code>。</p>
+<h3><span id="label"><code>label</code>：</span><a href="#label" class="header-anchor">#</a></h3><p><code>label</code>语法相当于<code>goto</code>的语法糖。方便进行多层循环的控制。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="attr">outPoint</span>: <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span> outPoint; <span class="comment">// 在 i = 5，j = 5 时，跳出所有循环，</span></span><br><span class="line">      <span class="comment">// 返回到整个 outPoint 下方，继续执行</span></span><br><span class="line">    &#125;</span><br><span class="line">    num++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(num); <span class="comment">// 输出 55</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="attr">outPoint</span>: <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span>) &#123;</span><br><span class="line">      <span class="keyword">continue</span> outPoint;</span><br><span class="line">    &#125;</span><br><span class="line">    num++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(num); <span class="comment">// 95</span></span><br></pre></td></tr></table></figure>
+
+<p>注意这里的<code>break</code> and <code>continue</code>的用法，其可以对某循环直接操作。</p>
+<h3><span id="for-in"><code>for...in</code>:</span><a href="#for-in" class="header-anchor">#</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/08/02/moreJs/" data-id="cm6rz00fr000ruwr8gfa7exbn" data-title="进一步了解Js" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/08/06/cpp-useful-operations/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Cpp-Useful-Operations
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hexo从入门到入门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+

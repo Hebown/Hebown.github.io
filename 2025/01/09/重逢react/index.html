@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>重逢React | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言#react是我非常喜欢的一个前端框架。我打算继续学习一下相关内容，并新做一个自己的博客？ 创建一个react项目#参见react教程中的 启动一个新的react项目。我个人使用的是其中的next.js框架。 react基础# 这一部分我是参照着next.js教程中的React部分学习的。每一章的内容都很简单。基本就是一两句话，因此我就只写一些简单的记录。   什么是react和next.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重逢React">
+<meta property="og:url" content="https://hebown.github.io/2025/01/09/%E9%87%8D%E9%80%A2react/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="前言#react是我非常喜欢的一个前端框架。我打算继续学习一下相关内容，并新做一个自己的博客？ 创建一个react项目#参见react教程中的 启动一个新的react项目。我个人使用的是其中的next.js框架。 react基础# 这一部分我是参照着next.js教程中的React部分学习的。每一章的内容都很简单。基本就是一两句话，因此我就只写一些简单的记录。   什么是react和next.js">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-09T10:14:32.000Z">
+<meta property="article:modified_time" content="2025-01-12T14:19:22.587Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="front-end">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-重逢react" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/" class="article-date">
+  <time class="dt-published" datetime="2025-01-09T10:14:32.000Z" itemprop="datePublished">2025-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      重逢React
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2><span id="qian-yan">前言</span><a href="#qian-yan" class="header-anchor">#</a></h2><p>react是我非常喜欢的一个前端框架。我打算继续学习一下相关内容，并新做一个自己的博客？</p>
+<h2><span id="chuang-jian-yi-ge-react-xiang-mu">创建一个react项目</span><a href="#chuang-jian-yi-ge-react-xiang-mu" class="header-anchor">#</a></h2><p>参见react教程中的 <a target="_blank" rel="noopener" href="https://zh-hans.react.dev/learn/start-a-new-react-project">启动一个新的<code>react</code>项目</a>。我个人使用的是其中的<code>next.js</code>框架。</p>
+<h2><span id="react-ji-chu"><code>react</code>基础</span><a href="#react-ji-chu" class="header-anchor">#</a></h2><blockquote>
+<p>这一部分我是参照着<code>next.js</code>教程中的<a target="_blank" rel="noopener" href="https://nextjs.org/learn/react-foundations/what-is-react-and-nextjs"><code>React</code>部分</a>学习的。每一章的内容都很简单。基本就是一两句话，因此我就只写一些简单的记录。</p>
+</blockquote>
+<ol>
+<li>什么是react和next.js:react是构建web应用的一个框架，而next.js则是方便你使用react的一个框架。一个web应用包括了很多方面，比如ui、路由、数据存储、渲染界面等等，react框架就为这些方面提供了很多支持。进一步的，next.js则是react上的一个框架，设计了很多便于开发者使用react的功能。</li>
+<li>网页结构：网页结构决定于dom，通过dom我们可以实现对任意元素的访问和操作，从而动态改变网页结果。</li>
+<li>原始js可以动态改变dom、渲染结果：dom是动态的网页结构，会随着网页内容的变化而变化。使用原始js对dom的改变需要开发者详尽地编写修改逻辑，这种编程方式称为命令式编程（imperative）。而使用react库则可以跳过这些细节，只需要告诉react，我们的希望文档做出什么样的改变，react就可以帮助我们完成。这种编程方式称为声明式编程(declarative programming)。<br>声明式编程不关心底层逻辑是如何实现的，只关心最终的结果是怎么样的。这样就将功能实现转交给了底层模块，提高了可复用性。而指令式编程则集成化了实现代码，使模块更紧凑。<blockquote>
+<p>举例来说，如果你想吃锅包肉，你可以按照菜谱，一步一步地做，这是imperative programming。或者，你可以下馆子，给服务员说，我要吃锅包，然后就可以等锅包肉上桌了。这就是declaractive programming。</p>
+</blockquote>
+</li>
+<li>使用react：说到底，react只是js代码，因此如果想在工程中使用react库，可以有两种方法。一种就是直接在html代码中使用<code>&lt;script&gt;&lt;/script&gt;</code>标签动态链接js代码。另一种之后我们会说到。我们先通过第一种方法来简单看看react是如何工作的。<br>假如说我们有如下原始三件套：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@18/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> <span class="comment">&lt;!-- react库引入--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@18/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> <span class="comment">&lt;!-- react库引入 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> app = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;app&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> header = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;h1&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> text = <span class="string">&#x27;Develop. Preview. Ship.&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> headerContent = <span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(text);</span></span><br><span class="line"><span class="language-javascript">            header.<span class="title function_">appendChild</span>(headerContent);</span></span><br><span class="line"><span class="language-javascript">            app.<span class="title function_">appendChild</span>(header);</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="comment">&lt;!-- 使用js修改文档的逻辑 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+可以看到内含一段使用js来修改文档内容的代码，我们如果想用react来替换这一段js的话，可以用下面这段来稍作修改<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const app = document.getElementById(&#x27;app&#x27;);</span><br><span class="line">  const root = ReactDOM.createRoot(app);</span><br><span class="line">  root.render(&lt;h1&gt;Develop. Preview. Ship.&lt;/h1&gt;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+首先还是获得我们希望的添加元素的对象，然后通过<code>reactdom.createRoot(app)</code>来告诉react，我们要往这个元素上添加新的元素，最后则将要添加的内容，传给成员函数来完成渲染。<br>可以看到，这种代码非常的简洁易读。不过，如果你真的让浏览器解析修改后的html代码，你会得到一个报错。这是因为，js不支持 <strong>html语法解析</strong>，或者说，js中 <strong>不能写html代码</strong>。因此这种传参方式是错误的。<br>这种允许你编写含有<code>html in js</code>语法的js代码的代码格式，称之为 <strong>jsx代码格式</strong>。不仅如此，你还可以在html中写js代码，只需要给js代码加上<code>&#123;&#125;</code>即可。总而言之，jsx格式完全只是为了便于描述ui之间的交互方式而做的，因此你不必担心是否需要额外了解这些内容。<br>jsx代码会在构建阶段被转译器转换为标准的js代码，从而正常执行。babel就是这样的一个jsx转译器。它还是一个js库，因而可以按照之前js动态链接的方式链接该js库。为了让babel知道需要转译什么样的脚本，开发者需要将对应的script标签的type属性改为<code>&quot;text/jsx&quot;</code>。之后，babel就会自动寻找script中含有该标记的脚本，并将其转译为一般js代码。<br>不过动态链接一般是比较慢的。你可以自己试一试。</li>
+<li>react核心概念：react核心概念包括三个：组件（components），属性（props）和状态（states）。<ol>
+<li><strong>组件</strong>：在react中，组件就是函数，其返回值是html标签。调用方式和普通html标签相同，用<code>&lt;/&gt;</code>或者<code>&lt;&gt;&lt;/&gt;</code>来调用这样做有一个要求，就是为了让转译器区分react写的标签和html标准标签，react写的标签应当以 <strong>大写字母开头</strong>，比如<code>Image</code>，<code>Homepage</code>。<br>组件支持嵌套，这和我们的预期是相同的。 </li>
+<li><strong>属性</strong>：属性（props）实际上就是组件的参数，所有传入参数作为一个json对象整体。比如下述代码:<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Header</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">HomePage</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Header</span> <span class="attr">title</span>=<span class="string">&quot;React&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+传入的props支持对象解析，也即可以使用<code>function Header(&#123;title&#125;)</code>的方式来获取props中的title成员。<br>下面是另一个例子：<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">HomePage</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="keyword">const</span> names = [<span class="string">&#x27;Ada Lovelace&#x27;</span>, <span class="string">&#x27;Grace Hopper&#x27;</span>, <span class="string">&#x27;Margaret Hamilton&#x27;</span>];</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">return</span> (</span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;<span class="name">Header</span> <span class="attr">title</span>=<span class="string">&quot;Develop. Preview. Ship.&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">         &#123;names.map((name) =&gt; (</span></span><br><span class="line"><span class="language-xml">         <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;name&#125;</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">         ))&#125;</span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"> );</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+此外，react需要一个id来唯一标记标签，这也是<code>key</code>的作用。</li>
+<li><strong>状态</strong>：状态是为事件处理而生的。没有状态，系统对外界的响应只能是单一策略的。如下所示<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">HomePage</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="comment">// 	...</span></span><br><span class="line"> <span class="keyword">function</span> <span class="title function_">handleClick</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;increment like count&#x27;</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">return</span> (</span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">     &#123;/* ... */&#125;</span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>Like<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"> );</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+如果我们希望计算like的次数（实际上就是计算点击次数），我们就需要一个状态来记录。之所以不能用局部变量来保存，是因为事件响应会触发渲染，局部变量会在每一次渲染时初始化，导致结果被清除。<br>在原生 JavaScript 中，如果我们希望实现记录 like 数量的功能，通常需要依赖一个全局变量 count 来保存点赞次数，并将其与响应函数关联。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>; <span class="comment">// 全局变量</span></span><br><span class="line"></span><br><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    count++;</span><br><span class="line">    button.<span class="property">textContent</span> = <span class="string">`Likes: <span class="subst">$&#123;count&#125;</span>`</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+虽然这种方法可以工作，但在设计上并不美观。按钮的逻辑和状态依赖于全局变量，这违背了封装性和模块化的设计原则。组件（如按钮）应该具有独立管理状态和响应事件的能力，而不是依赖于更高层级或外部的结构。为了解决这些问题，react引入了state概念。允许组件拥有自己的状态，并在状态改变的时候自动触发界面更新，而不需要手动操作dom<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">LikeButton</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [count, setCount] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(count + 1)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">            Likes: &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+通过这种方式，按钮的逻辑和状态被封装到了组件的内部，并且界面渲染和组建的状态绑定在了一起。既美观又自然。<br>与state密切相关的一个技术是hook。英文里的hook可以指墙上用来挂东西的钩子。在编程中，hook指的是系统为本地化编程&#x2F;功能扩展 预留的接口。<br>比如说上面说到的usestate，就是系统的一个hook。它允许你访问react的状态管理系统，对当前元素的状态进行有限的管理。</li>
+</ol>
+</li>
+<li>服务器端和客户端环境：web应用一般分为客户端和服务器端两端。客户端处理用户的种种原始需求，转化成为对对应资源的请求。服务器端处理请求，返回种种服务（比如最常见的http）。<br>react支持对上述内容的模拟，将应用中的所有组件划分为 <strong>服务器端组件（server components）</strong> 和 <strong>客户端组件（client components）</strong>。服务器端组件负责静态工作，客户端则需要对客户交互做出响应。</li>
+<li>从react到next.js：前面说了next是react的一个框架，在使用react的时候，我们就不要动态链接了，而是将react脚本下载到本地。这种方式非常快捷。<br>   我们如何下载呢？答案是使用node.js。只需要用npm就可以实现各种流行js库的下载与使用。下载后，本地的package.json文件内会保留有项目依赖库的信息。<br>   next.js为我们使用react提供了很多方面的便利，比如样式设计、路由、数据存储等等。我们接下来还会见到它们。</li>
+</ol>
+<h2><span id="nextjs-ji-chu">nextjs基础</span><a href="#nextjs-ji-chu" class="header-anchor">#</a></h2><h3><span id="qi-bu">起步</span><a href="#qi-bu" class="header-anchor">#</a></h3><p>按照<a target="_blank" rel="noopener" href="https://nextjs.org/learn/dashboard-app/getting-started#creating-a-new-project">教程</a>中的叙述下载好项目，我们接下来的笔记都基于这个项目。</p>
+<p>一般的nextjs&#x2F;react项目结构如下：</p>
+<ul>
+<li><code>/app</code>：内含所有组件、路由、逻辑实现，相当于src文件夹的地位；<ul>
+<li><code>/lib</code>：内含通用工具函数、数据获取函数等可复用的函数；</li>
+<li><code>/ui</code>：内含客户端组件，比如各种卡片、表单之类的；</li>
+</ul>
+</li>
+<li><code>/public</code>：内含图片等其他资源。</li>
+<li><code>config</code>文件：项目信息描述文件。</li>
+</ul>
+<p>现代项目中更多用ts，因为ts有类型检查便于纠错。</p>
+<p>next使用 文件系统路由 来支持网页应用的路由。所谓路由(route)，指的是资源&#x2F;服务的位置。网页应用需要处理用户的请求，根据路由进行服务。</p>
+<p>在我们的项目中，page.tsx文件会被next.js自动作为网页资源的根目录（假如整个项目放在<code>https://project/</code>地址，那么page.tsx文件就是<code>https://project/</code>）。如果我们希望在新的地址上放上资源，那么只需要在page.tsx的同级文件中创建新的文件夹，next.js就会将其转化为新的地址（比如<code>https://project/folder/</code>）。</p>
+<p>在每一层目录中，都至少有一个page.tsx文件和layout.tsx文件，前者是描述页面内容的，后者则描述了该目录下所有页面的外观。也就是说，layout是逐层递进的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2025/01/09/%E9%87%8D%E9%80%A2react/" data-id="cm6rz00g0001ruwr819uc0j2y" data-title="重逢React" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/14/pytorch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Pytorch
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/08/regular-expressions/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Regular-Expressions</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>计算机组成设计 | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文作为计组的学习记录。 绪论：#之前学习的 数字逻辑设计 课程，简单介绍了计算机组成相关部件的设计，比如组合电路设计，时序电路设计。这些模块都很简单，比如加法器，选择器，编码器，解码器。而计算机组成这门课，就要利用这些简单的模块，设计计算机中更加复杂的元件，比如处理器，处理系统等等。最重要的是设计简单的 RISC（精简指令集）**-CPU核**。涉及到ALU、单周期流水线CPU和简单的系统。 之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成设计">
+<meta property="og:url" content="https://hebown.github.io/2024/09/19/coNote/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="本文作为计组的学习记录。 绪论：#之前学习的 数字逻辑设计 课程，简单介绍了计算机组成相关部件的设计，比如组合电路设计，时序电路设计。这些模块都很简单，比如加法器，选择器，编码器，解码器。而计算机组成这门课，就要利用这些简单的模块，设计计算机中更加复杂的元件，比如处理器，处理系统等等。最重要的是设计简单的 RISC（精简指令集）**-CPU核**。涉及到ALU、单周期流水线CPU和简单的系统。 之">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hebown.github.io/coNote/image.png">
+<meta property="og:image" content="https://hebown.github.io/coNote/image2.png">
+<meta property="og:image" content="https://hebown.github.io/coNote/ins-structure.png">
+<meta property="article:published_time" content="2024-09-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-28T08:52:37.163Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="log">
+<meta property="article:tag" content="major">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hebown.github.io/coNote/image.png">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-coNote" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/09/19/coNote/" class="article-date">
+  <time class="dt-published" datetime="2024-09-18T16:00:00.000Z" itemprop="datePublished">2024-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      计算机组成设计
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文作为计组的学习记录。</p>
+<h2><span id="xu-lun">绪论：</span><a href="#xu-lun" class="header-anchor">#</a></h2><p>之前学习的 <strong>数字逻辑设计</strong> 课程，简单介绍了计算机组成相关部件的设计，比如组合电路设计，时序电路设计。这些模块都很简单，比如加法器，选择器，编码器，解码器。而计算机组成这门课，就要利用这些简单的模块，设计计算机中更加复杂的元件，比如处理器，处理系统等等。最重要的是设计简单的 <strong>RISC</strong>（<strong>精简指令集</strong>）**-CPU核**。涉及到ALU、单周期流水线CPU和简单的系统。</p>
+<p>之后我们还会学到另外一门课 <strong>计算机体系结构</strong>，那里我们会学到有关处理器的更高级的技术（比如如何优化性能）。</p>
+<p>实验一般很难在课上做完。</p>
+<h2><span id="jiao-cai-nei-rong">教材内容：</span><a href="#jiao-cai-nei-rong" class="header-anchor">#</a></h2><h3><span id="di-yi-zhang-yin-yan">第一章 引言：</span><a href="#di-yi-zhang-yin-yan" class="header-anchor">#</a></h3><p>这一章内容介绍什么是计算机，以及计算机中相关的内容。</p>
+<p>计算机在二十世纪中叶开始迅速发展，从非电子，到电子管、晶体管、集成电路、大规模集成微处理器的出现，都引起了计算机发展的一个高潮。</p>
+<ul>
+<li>早期计数方式很原始；</li>
+<li>后来帕斯卡发明了机械式计数器；</li>
+<li>再后来，图灵提出了图灵机模型，指出计算的过程和算法可以公式化表示；</li>
+<li>第一台电子计算设备；</li>
+<li>第一台计算机ENIAC（通用指令集、十进制，可编程、图灵完全）；</li>
+<li>冯诺依曼（计算与存储分离-&gt;编程的产生）（现在还有存算一体，因为计算性能很高，但是访存太费劲）（数据和指令放在一个存储器）；</li>
+<li>晶体管代替电子管，减小体积，速度加快。以前靠卡片进行编程，这段时间就出现了汇编。</li>
+<li>集成电路代替晶体管，出现操作系统-时分复用。 </li>
+<li>微处理器替代集成电路；</li>
+<li>便携电脑与平板电脑的原型设计；首台现代个人电脑。</li>
+<li>1982年个人电脑开始兴起，IBM PC，内含inter芯片和微软DOS系统；1984年乔布斯发明了MACOS（with GUI），之前的操作系统是没有GUI的。</li>
+<li>RISC（精简指令集计算机）&#x2F;CISC（复杂指令集计算机）；前者指令执行使用尽量少的时钟周期、指令编码长度定长等等，这些都是为了提高cpu性能的。</li>
+</ul>
+<p>计算机发展受芯片的约束，关于芯片发展的规律有一个 <strong>摩尔定律</strong>：集成电路单位面积上可容纳的晶体管，约每两年会翻一番。</p>
+<p>计算机的类别：</p>
+<ul>
+<li>个人电脑：通用性，性价比较高；</li>
+<li>服务器电脑：基于网络的，容量大，用作若干功能的代理，比如计算。</li>
+<li>超级计算机：高精度&#x2F;科学计算需求。</li>
+<li>嵌入式计算机：作为系统中的一部分存在，比如电瓶车中驱动的芯片（两三块钱）。</li>
+<li>个人移动设备：</li>
+<li>云计算。</li>
+</ul>
+<p>之后的计算机会是什么样子呢？</p>
+<hr>
+<p>计算机组成：</p>
+<ul>
+<li>硬件：<ul>
+<li>cpu:<ul>
+<li>controler:</li>
+<li>datapath:</li>
+</ul>
+</li>
+<li>memory:</li>
+<li>i&#x2F;o interface:</li>
+</ul>
+</li>
+<li>软件<ul>
+<li>系统软件：操作系统&#x2F;编译器&#x2F;驱动（专为某些硬件设计的软件）；</li>
+<li>应用软件：各类app；</li>
+</ul>
+</li>
+</ul>
+<p>下面是一个框架：<br><img src="/./coNote/image.png" alt="alt text"></p>
+<h4><span id="ru-he-gou-jian-yi-ge-chu-li-qi">如何构建一个处理器：</span><a href="#ru-he-gou-jian-yi-ge-chu-li-qi" class="header-anchor">#</a></h4><p>构建一个处理器，实际上就是将集成电路&#x2F;芯片 进一步集成的过程。</p>
+<p>单晶硅-晶圆-带有功能的晶圆（网格化）-去掉坏的得到 裸片-封装成为芯片-测试</p>
+<p>早期的芯片设计就是用晶体管搭 积木；后面出现了hdl；芯片上的连线是需要设计的，这就是版图（layout）设计；然后使用掩膜板来成型。</p>
+<h3><span id="di-er-zhang-zhi-ling">第二章 指令</span><a href="#di-er-zhang-zhi-ling" class="header-anchor">#</a></h3><p>指令 是一堆声明，让机器能够做什么。</p>
+<p>指令的意义，就是将机器内部的实现隐藏起来，而对外界暴露出了固定的、可以实现无穷多种功能的接口。这种接口就是指令。</p>
+<p>指令集就是一堆指令的集合；</p>
+<p>指令结构就是 <strong>指令的结构</strong>，指令由哪些部分组成。</p>
+<p>risc-v指令集的指令特点是:</p>
+<ul>
+<li>每条指令只对应一个操作；</li>
+<li>逻辑简单，指令形状规则</li>
+</ul>
+<p>比如我们在高级语言中写下：<br><code>f=(a+b)-(c+d)</code>，那么在底层实现上，就要使用计算部件对这些内容进行处理。</p>
+<h4><span id="ji-cun-qi">寄存器</span><a href="#ji-cun-qi" class="header-anchor">#</a></h4><p>我们先来看看寄存器，这些寄存器是供各种数字计算需要而设计的。<br><img src="/./coNote/image2.png" alt="alt text"><br>简单而言：</p>
+<ul>
+<li>0寄存器；</li>
+<li>四个结构寄存器（返回指针、栈顶指针、全局变量指针、进程指针）</li>
+<li>中间变量寄存器（5-7，28-31）</li>
+<li>保留寄存器（函数调用前后保持不变的）（8-9,18-27）一共12个</li>
+<li>传参寄存器（传入和传出）(10-17)一共八个</li>
+</ul>
+<h4><span id="shu-cong-na-li-lai-cun-chu-qi">数从哪里来？存储器：</span><a href="#shu-cong-na-li-lai-cun-chu-qi" class="header-anchor">#</a></h4><p>为了获取数，我们需要加载&#x2F;存储指令，这就是lw,sw等等指令的来源；由于risc-v指令集的位宽是64位，因而所有的指令都是按doubleword来讲的。</p>
+<p>risc-v的存储有以下特性：</p>
+<ul>
+<li>内存是以字节编码的，只能访问整字节数据，而不能是更小的位数。</li>
+<li>小（低）端存储：低位放在低地址。大端反之，大端比较符合我们的读数习惯，小端比较符合我们的访存习惯</li>
+<li>不要求字节对齐，但一般都要字节对齐。<ul>
+<li>有很多指令集都同时支持大小端。</li>
+</ul>
+</li>
+</ul>
+<p>接下来我们就来讲内存相关的指令。其实也就是ld&#x2F;sd&#x2F;lw&#x2F;sw，其形式为：<code>ld rs offset(base)/sd rd offset(base)</code></p>
+<h4><span id="wei-chang-shu-er-she-ji-de-zhi-ling-immediate">为常数而设计的指令：immediate</span><a href="#wei-chang-shu-er-she-ji-de-zhi-ling-immediate" class="header-anchor">#</a></h4><p>例如偏移地址的计算。所谓 <strong>立即数</strong>以我的理解就是非存储形式的、直接使用的数，而不是放在寄存器或内存中。</p>
+<h4><span id="wei-cao-zuo-zhi-ling-shi-xian">位操作指令实现：</span><a href="#wei-cao-zuo-zhi-ling-shi-xian" class="header-anchor">#</a></h4><p>I-format下的指令，因为移位操作最多移64位，从而imm可以压缩到6位，最后留下一部分func6供判断。</p>
+<p>主要的指令有<code>sll/srl/slli/srli/and/or/xor</code>，<code>xor</code>可以实现<code>not</code>的功能。</p>
+<p>或者当移位的立即数就在寄存器中时，也有<code>srl x5 x6 x7</code></p>
+<h4><span id="liu-cheng-kong-zhi">流程控制：</span><a href="#liu-cheng-kong-zhi" class="header-anchor">#</a></h4><p><code>beq rs1 rs2 L</code>，若相等跳转到L，因而可能需要</p>
+<h4><span id="zhi-ling-bian-ma">指令编码：</span><a href="#zhi-ling-bian-ma" class="header-anchor">#</a></h4><p>参照下面这个图：<br><img src="/./coNote/ins-structure.png" alt="alt text"><br>最基本的指令结构就是r型指令；</p>
+<p>I型指令既可以是addi也可以是ld指令，都涉及两个寄存器和一个立即数。这个立即数是2’complement，有符号数。</p>
+<p>但store指令没有rd，因为要往存储器中存，从而将imm的rd改为imm的低五位。 </p>
+<h2><span id="di-si-zhang-chu-li-qi">第四章 处理器</span><a href="#di-si-zhang-chu-li-qi" class="header-anchor">#</a></h2><p>cpu组成：</p>
+<ul>
+<li>控制单元：阀门，控制数据流向；</li>
+<li>数据通路：河床，数据流的载体；</li>
+</ul>
+<h2><span id="cache">cache</span><a href="#cache" class="header-anchor">#</a></h2><h2><span id="shi-yan-ke">实验课：</span><a href="#shi-yan-ke" class="header-anchor">#</a></h2><p>实验为我们准备了一个测试平台soc，我们可以写好自己的组件，然后放到这个平台上检测是否正常运行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/09/19/coNote/" data-id="cm6rz00fj0008uwr821z3cwau" data-title="计算机组成设计" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/major/" rel="tag">major</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/10/07/%E5%8E%A6%E9%97%A8%E5%9B%9E%E5%BF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          厦门回忆
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/09/12/Probability-Theory/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Probability-Theory</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+

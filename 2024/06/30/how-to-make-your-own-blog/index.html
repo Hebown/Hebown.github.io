@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>How to Make Your Own Blog? | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="part0：什么是博客(blog): part1：我实现博客的原理： part2：初识hexo： part3: hexo怎么用： 1. 框架准备: 2. 修改网站基本内容： 1. 找个主题(theme): 2. 找个家: 3. 改文件:   3. 系列操作: 4. 后面没了：     7&#x2F;11更改：      这篇文章是来讲述一下，如何创建一个属于自己的(较为简单的)博客。也是自己创建博">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Make Your Own Blog?">
+<meta property="og:url" content="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="part0：什么是博客(blog): part1：我实现博客的原理： part2：初识hexo： part3: hexo怎么用： 1. 框架准备: 2. 修改网站基本内容： 1. 找个主题(theme): 2. 找个家: 3. 改文件:   3. 系列操作: 4. 后面没了：     7&#x2F;11更改：      这篇文章是来讲述一下，如何创建一个属于自己的(较为简单的)博客。也是自己创建博">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-30T09:03:06.000Z">
+<meta property="article:modified_time" content="2024-07-31T04:04:59.096Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="draft-how-to-make-your-own-blog" class="h-entry article article-type-draft" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/06/30/how-to-make-your-own-blog/" class="article-date">
+  <time class="dt-published" datetime="2024-06-30T09:03:06.000Z" itemprop="datePublished">2024-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      How to Make Your Own Blog?
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#part0-shi-me-shi-bo-ke-blog">part0：什么是博客(blog):</a></li>
+<li><a href="#part1-wo-shi-xian-bo-ke-de-yuan-li">part1：我实现博客的原理：</a></li>
+<li><a href="#part2-chu-shi-hexo">part2：初识<code>hexo</code>：</a></li>
+<li><a href="#part3-hexo-zen-me-yong">part3: <code>hexo</code>怎么用：</a><ul>
+<li><a href="#1-kuang-jia-zhun-bei">1. 框架准备:</a></li>
+<li><a href="#2-xiu-gai-wang-zhan-ji-ben-nei-rong">2. 修改网站基本内容：</a><ul>
+<li><a href="#1-zhao-ge-zhu-ti-theme">1. 找个主题(theme):</a></li>
+<li><a href="#2-zhao-ge-jia">2. 找个家:</a></li>
+<li><a href="#3-gai-wen-jian">3. 改文件:</a></li>
+</ul>
+</li>
+<li><a href="#3-xi-lie-cao-zuo">3. 系列操作:</a><ul>
+<li><a href="#4-hou-mian-mei-liao">4. 后面没了：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#7-11-geng-gai">7/11更改：</a></li>
+</ul>
+<!-- tocstop -->
+
+</div>
+
+<p>这篇文章是来讲述一下，如何创建一个属于自己的(较为简单的)博客。<br>也是自己创建博客过程中的经历和感想。</p>
+<span id="more"></span>
+<p>首先说明，我的电脑是windows的，其次，在你遇到任何本篇博客无法解决的事情，你可以尝试参考<a target="_blank" rel="noopener" href="https://hexo.nodejs.cn/docs/index.html">开发文档</a><br>好的，我们现在开始：</p>
+<h1><span id="part0-shi-me-shi-bo-ke-blog">part0：什么是博客(blog):</span><a href="#part0-shi-me-shi-bo-ke-blog" class="header-anchor">#</a></h1><p>就我的理解而言，博客是一个用来展示自己生活/记录学习经历/分享有用知识的平台，里面包含了很多文章。虽然有点像朋友圈，但是往往会更加有条理。</p>
+<h1><span id="part1-wo-shi-xian-bo-ke-de-yuan-li">part1：我实现博客的原理：</span><a href="#part1-wo-shi-xian-bo-ke-de-yuan-li" class="header-anchor">#</a></h1><p>我的博客是以静态网页的形式存在的。所谓静态网页，就是说，这些内容是已经提前写好的了，就好像正常的网页一样，你发出申请（点击链接）的时候，服务端返回给你有关这个网页的资源，通过browser解析，然后就可以显示出来博客的界面了。因此我们可以撰写这样的一个网站，然后托管在服务器上，我们要做的只是更新网站的具体内容。</p>
+<p>当然，这么做对于缺少web基本技术的同学来说还是太过于抽象。幸好这样的需求不止我们有，我们的前人已经做出了不少工作，因而我们只需要用轮子即可。</p>
+<p>这样的<code>轮子</code>，我们称之为<code>框架</code>。常见的框架有很多，比如这个博客所用的<code>hexo</code>，还有Gatsby等等。这些框架存在的意义，就是简化了<code>接口</code>，使得我们能够更加简便的完成自己的工作。</p>
+<p>鉴于我使用的是<code>hexo</code>，就讲讲这个</p>
+<h1><span id="part2-chu-shi-hexo">part2：初识<code>hexo</code>：</span><a href="#part2-chu-shi-hexo" class="header-anchor">#</a></h1><p>gpt是这么说的：</p>
+<blockquote>
+<p><code>hexo</code> 是一款基于<code>node.js</code>开发的静态博客框架，它使用 Markdown（或其他渲染引擎）解析文章，通过几条命令即可生成静态网页并发布，非常适合开发者、博客作者和技术爱好者使用。</p>
+</blockquote>
+<p>这么看起来还是挺绕的，让我来<code>breakdown</code>一下：</p>
+<ol>
+<li><code>hexo</code> 是一款基于<code>node.js</code>开发的静态博客框架:<ul>
+<li>这句话是说：如果你想使用hexo，你需要下载<code>node.js</code>作为其运行的环境。对于<code>node.js</code>，暂时不需要知道更多的细节。<del>我之后也许会写点有关于这个东西的博客</del></li>
+</ul>
+</li>
+<li>它使用 Markdown（或其他渲染引擎）解析文章:<ul>
+<li>这是<code>hexo</code>的一大优势，<code>md</code>是大家喜闻乐见的写文章的方式，这句话就是说，在<code>hexo</code>中写博客，你只需要写<code>md</code>文档，<code>hexo</code>会根据你的文件来进行解析，生成能够在网络上展示的文章。</li>
+</ul>
+</li>
+<li>通过几条命令即可生成静态网页并发布，非常适合开发者、博客作者和技术爱好者使用:<ul>
+<li>这句话是说，<code>hexo</code>生成静态网页只需要输入一些命令即可完成静态网页的生成和发布。</li>
+</ul>
+</li>
+</ol>
+<p>有了以上概念，我们就可以开始着手建立自己的博客了。</p>
+<h1><span id="part3-hexo-zen-me-yong">part3: <code>hexo</code>怎么用：</span><a href="#part3-hexo-zen-me-yong" class="header-anchor">#</a></h1><h2><span id="1-kuang-jia-zhun-bei">1. 框架准备:</span><a href="#1-kuang-jia-zhun-bei" class="header-anchor">#</a></h2><p>首先确保你已经下载好了node.js，并且将命令所在的文件夹添加到环境变量之中。</p>
+<p>在你的<code>cmd</code>中的输入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure>
+<p>来检测是否已经配置好环境。</p>
+<p>node.js下的npm包管理系统为我们提供了简便的文件管理操作，一般来说，安装好了node.js后npm也安装好了。</p>
+<p>然后，我们输入以下命令来安装hexo</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装好了之后，我们需要一个新的文件夹来存放自己的博客。hexo只是一个工具，还是需要建立在文件系统之上的。</p>
+<p>使用如下命令来创建自己的博客文件夹：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br></pre></td></tr></table></figure>
+
+<p>然后进行hexo的初始化，这会在当前文件夹建立hexo框架：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install </span><br></pre></td></tr></table></figure>
+<p>后面的<code>npm install</code>是用来安装hexo依赖的，<del>这一点我不是很清楚</del></p>
+<p>做完以上内容后，我们的网站框架就已经有了，但是我们还需要做出一些个性化的操作：</p>
+<h2><span id="2-xiu-gai-wang-zhan-ji-ben-nei-rong">2. 修改网站基本内容：</span><a href="#2-xiu-gai-wang-zhan-ji-ben-nei-rong" class="header-anchor">#</a></h2><p>在这一步之前，我们先来做一点其他的准备工作。</p>
+<h3><span id="1-zhao-ge-zhu-ti-theme">1. 找个主题(theme):</span><a href="#1-zhao-ge-zhu-ti-theme" class="header-anchor">#</a></h3><p>主题决定了你的博客的界面和结构，选取一个好的主题会为你的博客增添不少色彩。</p>
+<p>然而我比较懒，于是只用了给定的默认主题<code>landscape</code></p>
+<p>一般来说hexo会自动安装好这个包的，如果这个主题包没有下载，那么使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hexojs/hexo-theme-landscape.git themes/landscape</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，这个命令使用了<code>git</code>，如果你的电脑没有<code>git</code>，请安装。如果你想对git有一个初步的理解，可以我的参照这篇<a href="./git.md">博客</a></p>
+</blockquote>
+<h3><span id="2-zhao-ge-jia">2. 找个家:</span><a href="#2-zhao-ge-jia" class="header-anchor">#</a></h3><p>有了这个主题之后，我们还需要为我们的网站找一个安身立命之所。</p>
+<blockquote>
+<p>我觉得，hexo实现博客的原理是准备一个静态的网页供浏览，如果我们不找托管平台的话，我们就需要自己准备服务器，接入互联网，这是比较麻烦的。</p>
+</blockquote>
+<p>这里我使用的是GitHub pages用来放置自己的网站。我们需要的只是一个github账户。</p>
+<p>在你的github账户上创建一个新的库，库的名称为：<code>你的github账户名称.github.io</code>,例如我的github账户名称是Hebown，那么这个库就叫<code>Hebown.github.io</code></p>
+<h3><span id="3-gai-wen-jian">3. 改文件:</span><a href="#3-gai-wen-jian" class="header-anchor">#</a></h3><p>创建完成之后，我们就可以修改<code>_config.yml</code>文件了。</p>
+<p>修改网站的基本内容，只需要打开_config.yml文件进行编写，这里由于我已经把vscode的exe文件所在的文件夹放到了环境变量之中，我只需要使用</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code _config.yml</span><br></pre></td></tr></table></figure>
+<p>就可以使用vscode打开这个文件进行编写。</p>
+<p>然后，在你的文件中找到Site，url，deploy，我们需要修改的内容是这些：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hebown's</span> <span class="string">small</span> <span class="string">world</span> <span class="comment"># 这里编写你的网站主标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">'tech and life'</span> <span class="comment"># 这里编写你的网站副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">"This is Hebown's small world, where he will put his thoughts and experiences down."</span> <span class="comment"># 这里的内容为浏览器提供你的网站的介绍。</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">Hexo,</span> <span class="string">blog,</span> <span class="string">tech,</span> <span class="string">life</span> <span class="comment"># 这里是你的博客的关键字。</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Hebown</span> <span class="comment"># 这是作者名称</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span> <span class="comment"># 这里是你的博客使用的语言的类型，如果你想使用英语，改为en；如果你想混用中英，就使用zh-CN,en</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">''</span> <span class="comment"># 这个无所谓。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># url</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://hebown.github.io</span> <span class="comment"># 这里填写你的博客的网址</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># deploy</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/Hebown/Hebown.github.io.git</span> <span class="comment"># 这里修改成你的库所在地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">blog_change</span></span><br></pre></td></tr></table></figure>
+
+<p>完成之后，我们就可以生成网站的静态文件，上传到github库了。</p>
+<h2><span id="3-xi-lie-cao-zuo">3. 系列操作:</span><a href="#3-xi-lie-cao-zuo" class="header-anchor">#</a></h2><p>在你的博客所在文件夹中，使用</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>来清除之前生成的静态页面、生成新的静态页面、将新的静态页面部署到github pages上。</p>
+<p>如果想访问你的网页，即可以使用之前设置好的url，也可以在本地使用</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>在本机创建一个端口服务，用来指向你的网站，对外的域名一般是localhost:4000，或者阅读你的cmd返回给你的信息。你可以进行修改，然后在这个本地上的网站去检查你的修改，这样比deploy要方便和省事。</p>
+<h3><span id="4-hou-mian-mei-liao">4. 后面没了：</span><a href="#4-hou-mian-mei-liao" class="header-anchor">#</a></h3><p>建立网站的过程到这里就结束了，如果你有任何问题，欢迎在评论区留言。</p>
+<h1><span id="7-11-geng-gai">7/11更改：</span><a href="#7-11-geng-gai" class="header-anchor">#</a></h1><p>更新了<a href>这篇博客</a>作为对hexo框架使用的更多理解的记录。如果没有跳转说明我还没更()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/" data-id="cm6rz00fp000huwr85va8dabe" data-title="How to Make Your Own Blog?" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/07/02/git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          小白的Git初学经历
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/06/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+

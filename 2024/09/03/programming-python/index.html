@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>Programming-Python | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文作为 programming python(4th edition) 的读书笔记。 system programming:#here is the nav of the following 5 chapters:  In this chapter, I’ll introduce the main system-related modules in overview fashion. We’ll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming-Python">
+<meta property="og:url" content="https://hebown.github.io/2024/09/03/programming-python/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="本文作为 programming python(4th edition) 的读书笔记。 system programming:#here is the nav of the following 5 chapters:  In this chapter, I’ll introduce the main system-related modules in overview fashion. We’ll">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-03T01:11:38.000Z">
+<meta property="article:modified_time" content="2024-09-03T07:08:13.750Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-programming-python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/09/03/programming-python/" class="article-date">
+  <time class="dt-published" datetime="2024-09-03T01:11:38.000Z" itemprop="datePublished">2024-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Programming-Python
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文作为 <strong>programming python(4th edition)</strong> 的读书笔记。</p>
+<h2><span id="system-programming"><code>system programming</code>:</span><a href="#system-programming" class="header-anchor">#</a></h2><p>here is the nav of the following 5 chapters:</p>
+<ul>
+<li>In this chapter, I’ll introduce the main system-related modules in overview fashion. We’ll meet some of the most commonly used system tools here for the first time.</li>
+<li>In Chapter 3, we continue exploring the basic system interfaces by studying their role in core system programming concepts: streams, command-line arguments, environment variables, and so on.</li>
+<li>Chapter 4 focuses on the tools Python provides for processing files, directories, and directory trees.</li>
+<li>In Chapter 5, we’ll move on to cover Python’s standard tools for parallel processing—processes, threads, queues, pipes, signals, and more.</li>
+<li>Chapter 6 wraps up by presenting a collection of complete system-oriented programs. The examples here are larger and more realistic, and they use the tools introduced in the prior four chapters to perform real, pratical tasks. This collection includes both general system scripts, as well as scripts for processing directories of files.</li>
+</ul>
+<h3><span id="system-scripting-overview">system scripting overview:</span><a href="#system-scripting-overview" class="header-anchor">#</a></h3><p>Most system-level interfaces in python are shipped in two modules: <code>sys</code> and <code>os</code>. There are also some other modules belonging to this domain too. Such as <code>glob</code>(for filename expansion),<code>socket</code>(for network connections and Inter-Process Communication),<code>threading</code>+<code>_thread</code>+<code>queue</code>(for running and synchronizing concurrent threads),<code>time</code>+<code>timeit</code>(for accessing system time details),<code>subprocess</code>+<code>multiprocessing</code>(for lauching and controlling parallel processes)…</p>
+<p>Some built-in functions, such as the open function, serve as interfaces to the underlying system (e.g., the file system). When we want to learn about these functions or modules, Python provides tools to interactively fetch their attributes and documentation strings. Here is a clarification:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(sys)</span><br><span class="line">[<span class="string">&#x27;__breakpointhook__&#x27;</span>, <span class="string">&#x27;__displayhook__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__excepthook__&#x27;</span>, <span class="string">&#x27;__interactivehook__&#x27;</span>, <span class="string">&#x27;__loader__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;__package__&#x27;</span>, <span class="string">&#x27;__spec__&#x27;</span>, <span class="string">&#x27;__stderr__&#x27;</span>, <span class="string">&#x27;__stdin__&#x27;</span>, <span class="string">&#x27;__stdout__&#x27;</span>, <span class="string">&#x27;__unraisablehook__&#x27;</span>, <span class="string">&#x27;_base_executable&#x27;</span>, <span class="string">&#x27;_clear_type_cache&#x27;</span>, <span class="string">&#x27;_current_frames&#x27;</span>, <span class="string">&#x27;_debugmallocstats&#x27;</span>, <span class="string">&#x27;_enablelegacywindowsfsencoding&#x27;</span>, <span class="string">&#x27;_framework&#x27;</span>, <span class="string">&#x27;_getframe&#x27;</span>, <span class="string">&#x27;_git&#x27;</span>, <span class="string">&#x27;_home&#x27;</span>, <span class="string">&#x27;_xoptions&#x27;</span>, <span class="string">&#x27;addaudithook&#x27;</span>, <span class="string">&#x27;api_version&#x27;</span>, <span class="string">&#x27;argv&#x27;</span>, <span class="string">&#x27;audit&#x27;</span>, <span class="string">&#x27;base_exec_prefix&#x27;</span>, <span class="string">&#x27;base_prefix&#x27;</span>, <span class="string">&#x27;breakpointhook&#x27;</span>, <span class="string">&#x27;builtin_module_names&#x27;</span>, <span class="string">&#x27;byteorder&#x27;</span>, <span class="string">&#x27;call_tracing&#x27;</span>, <span class="string">&#x27;copyright&#x27;</span>, <span class="string">&#x27;displayhook&#x27;</span>, <span class="string">&#x27;dllhandle&#x27;</span>, <span class="string">&#x27;dont_write_bytecode&#x27;</span>, <span class="string">&#x27;exc_info&#x27;</span>, <span class="string">&#x27;excepthook&#x27;</span>, <span class="string">&#x27;exec_prefix&#x27;</span>, <span class="string">&#x27;executable&#x27;</span>, <span class="string">&#x27;exit&#x27;</span>, <span class="string">&#x27;flags&#x27;</span>, <span class="string">&#x27;float_info&#x27;</span>, <span class="string">&#x27;float_repr_style&#x27;</span>, <span class="string">&#x27;get_asyncgen_hooks&#x27;</span>, <span class="string">&#x27;get_coroutine_origin_tracking_depth&#x27;</span>, <span class="string">&#x27;getallocatedblocks&#x27;</span>, <span class="string">&#x27;getdefaultencoding&#x27;</span>, <span class="string">&#x27;getfilesystemencodeerrors&#x27;</span>, <span class="string">&#x27;getfilesystemencoding&#x27;</span>, <span class="string">&#x27;getprofile&#x27;</span>, <span class="string">&#x27;getrecursionlimit&#x27;</span>, <span class="string">&#x27;getrefcount&#x27;</span>, <span class="string">&#x27;getsizeof&#x27;</span>, <span class="string">&#x27;getswitchinterval&#x27;</span>, <span class="string">&#x27;gettrace&#x27;</span>, <span class="string">&#x27;getwindowsversion&#x27;</span>, <span class="string">&#x27;hash_info&#x27;</span>, <span class="string">&#x27;hexversion&#x27;</span>, <span class="string">&#x27;implementation&#x27;</span>, <span class="string">&#x27;int_info&#x27;</span>, <span class="string">&#x27;intern&#x27;</span>, <span class="string">&#x27;is_finalizing&#x27;</span>, <span class="string">&#x27;maxsize&#x27;</span>, <span class="string">&#x27;maxunicode&#x27;</span>, <span class="string">&#x27;meta_path&#x27;</span>, <span class="string">&#x27;modules&#x27;</span>, <span class="string">&#x27;path&#x27;</span>, <span class="string">&#x27;path_hooks&#x27;</span>, <span class="string">&#x27;path_importer_cache&#x27;</span>, <span class="string">&#x27;platform&#x27;</span>, <span class="string">&#x27;platlibdir&#x27;</span>, <span class="string">&#x27;prefix&#x27;</span>, <span class="string">&#x27;ps1&#x27;</span>, <span class="string">&#x27;ps2&#x27;</span>, <span class="string">&#x27;pycache_prefix&#x27;</span>, <span class="string">&#x27;set_asyncgen_hooks&#x27;</span>, <span class="string">&#x27;set_coroutine_origin_tracking_depth&#x27;</span>, <span class="string">&#x27;setprofile&#x27;</span>, <span class="string">&#x27;setrecursionlimit&#x27;</span>, <span class="string">&#x27;setswitchinterval&#x27;</span>, <span class="string">&#x27;settrace&#x27;</span>, <span class="string">&#x27;stderr&#x27;</span>, <span class="string">&#x27;stdin&#x27;</span>, <span class="string">&#x27;stdout&#x27;</span>, <span class="string">&#x27;thread_info&#x27;</span>, <span class="string">&#x27;unraisablehook&#x27;</span>, <span class="string">&#x27;version&#x27;</span>, <span class="string">&#x27;version_info&#x27;</span>, <span class="string">&#x27;warnoptions&#x27;</span>, <span class="string">&#x27;winver&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>The <code>__doc__</code> built-in attribute contains the documentation of a modules. And <code>help()</code> function is also useful to learn new modules.</p>
+<p>In system programming, string methods are widely used. For example,</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">split and interactively page a string or file of text</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">more</span>(<span class="params">text,numlines=<span class="number">15</span></span>):</span><br><span class="line">    lines=text.splitlines()</span><br><span class="line">    <span class="keyword">while</span>(lines):</span><br><span class="line">        chunk=lines[:numlines]</span><br><span class="line">        lines=lines[numslines:]</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> chunk: <span class="built_in">print</span>(line)</span><br><span class="line">        <span class="keyword">if</span> line <span class="keyword">and</span> <span class="built_in">input</span>(<span class="string">&#x27;More?&#x27;</span>) <span class="keyword">not</span> <span class="keyword">in</span> [<span class="string">&#x27;y&#x27;</span>,<span class="string">&#x27;Y&#x27;</span>]:<span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> sys</span><br><span class="line">    more(<span class="built_in">open</span>(sys.argv[<span class="number">1</span>]).read(),<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p>We use <code>splitlines()</code> to split text by line. It is very similar when compared with <code>split(&#39;\n&#39;)</code>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/09/03/programming-python/" data-id="cm6rz00ft000yuwr82n12clqm" data-title="Programming-Python" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/09/09/ads-here/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Ads_here
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/30/%E5%B7%A6%E5%8F%B3%E6%B5%81%E4%B9%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">参差荇菜，左右流之。</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+

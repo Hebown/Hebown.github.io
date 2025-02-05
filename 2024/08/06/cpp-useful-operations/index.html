@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>Cpp-Useful-Operations | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本博客用来记录基础且好用的cpp功能。      字符串: 1. 创建和初始化字符串 2. 获取字符串长度 3. 访问和修改字符 4. 拼接字符串 5. 子字符串 6. 查找字符或子字符串 7. 替换子字符串 8. 插入和删除字符 9. 比较字符串 10. 转换为 C 字符串 11. 迭代字符串 12. 转换大小写 13. 去除空白字符   排序： C++中的std::sort:   io: 字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cpp-Useful-Operations">
+<meta property="og:url" content="https://hebown.github.io/2024/08/06/cpp-useful-operations/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="本博客用来记录基础且好用的cpp功能。      字符串: 1. 创建和初始化字符串 2. 获取字符串长度 3. 访问和修改字符 4. 拼接字符串 5. 子字符串 6. 查找字符或子字符串 7. 替换子字符串 8. 插入和删除字符 9. 比较字符串 10. 转换为 C 字符串 11. 迭代字符串 12. 转换大小写 13. 去除空白字符   排序： C++中的std::sort:   io: 字符">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-06T02:25:59.000Z">
+<meta property="article:modified_time" content="2024-08-08T08:19:21.005Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="cpp">
+<meta property="article:tag" content="basicTools">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-cpp-useful-operations" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/08/06/cpp-useful-operations/" class="article-date">
+  <time class="dt-published" datetime="2024-08-06T02:25:59.000Z" itemprop="datePublished">2024-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Cpp-Useful-Operations
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本博客用来记录基础且好用的cpp功能。</p>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#zi-fu-chuan">字符串:</a><ul>
+<li><a href="#1-chuang-jian-he-chu-shi-hua-zi-fu-chuan">1. 创建和初始化字符串</a></li>
+<li><a href="#2-huo-qu-zi-fu-chuan-chang-du">2. 获取字符串长度</a></li>
+<li><a href="#3-fang-wen-he-xiu-gai-zi-fu">3. 访问和修改字符</a></li>
+<li><a href="#4-pin-jie-zi-fu-chuan">4. 拼接字符串</a></li>
+<li><a href="#5-zi-zi-fu-chuan">5. 子字符串</a></li>
+<li><a href="#6-cha-zhao-zi-fu-huo-zi-zi-fu-chuan">6. 查找字符或子字符串</a></li>
+<li><a href="#7-ti-huan-zi-zi-fu-chuan">7. 替换子字符串</a></li>
+<li><a href="#8-cha-ru-he-shan-chu-zi-fu">8. 插入和删除字符</a></li>
+<li><a href="#9-bi-jiao-zi-fu-chuan">9. 比较字符串</a></li>
+<li><a href="#10-zhuan-huan-wei-c-zi-fu-chuan">10. 转换为 C 字符串</a></li>
+<li><a href="#11-die-dai-zi-fu-chuan">11. 迭代字符串</a></li>
+<li><a href="#12-zhuan-huan-da-xiao-xie">12. 转换大小写</a></li>
+<li><a href="#13-qu-chu-kong-bai-zi-fu">13. 去除空白字符</a></li>
+</ul>
+</li>
+<li><a href="#pai-xu">排序：</a><ul>
+<li><a href="#c-zhong-de-std-sort">C++中的<code>std::sort</code>:</a></li>
+</ul>
+</li>
+<li><a href="#io">io:</a><ul>
+<li><a href="#zi-fu-chuan">字符串：</a></li>
+</ul>
+</li>
+<li><a href="#fan-xing-suan-fa">泛型算法：</a><ul>
+<li><a href="#zi-ding-yi">自定义：</a></li>
+</ul>
+</li>
+<li><a href="#qi-ta">其他：</a><ul>
+<li><a href="#chuan-can-xiao-ji-qiao">传参小技巧：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+</div>
+<span id="more"></span>
+
+<h2><span id="zi-fu-chuan">字符串:</span><a href="#zi-fu-chuan" class="header-anchor">#</a></h2><p>在 C++ 中，字符串处理操作非常丰富，主要依赖于标准库中的 <code>std::string</code> 类。以下是一些常用的字符串处理操作：</p>
+<h3><span id="1-chuang-jian-he-chu-shi-hua-zi-fu-chuan">1. 创建和初始化字符串</span><a href="#1-chuang-jian-he-chu-shi-hua-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::string s1;              <span class="comment">// 默认构造函数</span></span><br><span class="line">    <span class="function">std::string <span class="title">s2</span><span class="params">(<span class="string">&quot;Hello&quot;</span>)</span></span>;     <span class="comment">// 从 C 字符串构造</span></span><br><span class="line">    <span class="function">std::string <span class="title">s3</span><span class="params">(s2)</span></span>;          <span class="comment">// 拷贝构造函数</span></span><br><span class="line">    <span class="function">std::string <span class="title">s4</span><span class="params">(<span class="number">5</span>, <span class="string">&#x27;a&#x27;</span>)</span></span>;      <span class="comment">// 重复字符构造</span></span><br><span class="line">    std::string s5 = <span class="string">&quot;World&quot;</span>;    <span class="comment">// 拷贝赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="2-huo-qu-zi-fu-chuan-chang-du">2. 获取字符串长度</span><a href="#2-huo-qu-zi-fu-chuan-chang-du" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">size_t</span> length = s.<span class="built_in">length</span>();  <span class="comment">// 或者 s.size()</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="3-fang-wen-he-xiu-gai-zi-fu">3. 访问和修改字符</span><a href="#3-fang-wen-he-xiu-gai-zi-fu" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">char</span> ch = s[<span class="number">1</span>];    <span class="comment">// 访问第二个字符</span></span><br><span class="line">s[<span class="number">1</span>] = <span class="string">&#x27;a&#x27;</span>;        <span class="comment">// 修改第二个字符</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="4-pin-jie-zi-fu-chuan">4. 拼接字符串</span><a href="#4-pin-jie-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std::string s1 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">std::string s2 = <span class="string">&quot;World&quot;</span>;</span><br><span class="line">std::string s3 = s1 + <span class="string">&quot; &quot;</span> + s2;  <span class="comment">// 使用 + 操作符拼接</span></span><br><span class="line">s1 += <span class="string">&quot; World&quot;</span>;                  <span class="comment">// 使用 += 操作符拼接</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="5-zi-zi-fu-chuan">5. 子字符串</span><a href="#5-zi-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello, World&quot;</span>;</span><br><span class="line">std::string sub = s.<span class="built_in">substr</span>(<span class="number">7</span>, <span class="number">5</span>);  <span class="comment">// 从第7个位置开始取5个字符</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="6-cha-zhao-zi-fu-huo-zi-zi-fu-chuan">6. 查找字符或子字符串</span><a href="#6-cha-zhao-zi-fu-huo-zi-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello, World&quot;</span>;</span><br><span class="line"><span class="type">size_t</span> pos = s.<span class="built_in">find</span>(<span class="string">&quot;World&quot;</span>);      <span class="comment">// 查找子字符串 &quot;World&quot;</span></span><br><span class="line">pos = s.<span class="built_in">find</span>(<span class="string">&#x27;o&#x27;</span>);                 <span class="comment">// 查找字符 &#x27;o&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="7-ti-huan-zi-zi-fu-chuan">7. 替换子字符串</span><a href="#7-ti-huan-zi-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello, World&quot;</span>;</span><br><span class="line">s.<span class="built_in">replace</span>(<span class="number">7</span>, <span class="number">5</span>, <span class="string">&quot;Universe&quot;</span>);  <span class="comment">// 将 &quot;World&quot; 替换为 &quot;Universe&quot;,从index==7的字符开始五个字符被替换</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="8-cha-ru-he-shan-chu-zi-fu">8. 插入和删除字符</span><a href="#8-cha-ru-he-shan-chu-zi-fu" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello, World&quot;</span>;</span><br><span class="line">s.<span class="built_in">insert</span>(<span class="number">5</span>, <span class="string">&quot;, beautiful&quot;</span>);  <span class="comment">// 在位置5插入子字符串</span></span><br><span class="line">s.<span class="built_in">erase</span>(<span class="number">5</span>, <span class="number">10</span>);              <span class="comment">// 从位置5开始删除10个字符</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="9-bi-jiao-zi-fu-chuan">9. 比较字符串</span><a href="#9-bi-jiao-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::string s1 = <span class="string">&quot;abc&quot;</span>;<span class="comment">//自动按照字典序排列</span></span><br><span class="line">std::string s2 = <span class="string">&quot;xyz&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (s1 == s2) &#123;</span><br><span class="line">    <span class="comment">// 字符串相等</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (s1 &lt; s2) &#123;</span><br><span class="line">    <span class="comment">// s1 小于 s2</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// s1 大于 s2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="10-zhuan-huan-wei-c-zi-fu-chuan">10. 转换为 C 字符串</span><a href="#10-zhuan-huan-wei-c-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* cstr = s.<span class="built_in">c_str</span>();  <span class="comment">// 返回 C 字符串指针</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="11-die-dai-zi-fu-chuan">11. 迭代字符串</span><a href="#11-die-dai-zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">    std::cout &lt;&lt; c &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="12-zhuan-huan-da-xiao-xie">12. 转换大小写</span><a href="#12-zhuan-huan-da-xiao-xie" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span></span></span><br><span class="line"></span><br><span class="line">std::string s = <span class="string">&quot;Hello, World&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换为大写</span></span><br><span class="line">std::<span class="built_in">transform</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>(), s.<span class="built_in">begin</span>(), ::toupper);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换为小写</span></span><br><span class="line">std::<span class="built_in">transform</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>(), s.<span class="built_in">begin</span>(), ::tolower);</span><br></pre></td></tr></table></figure>
+
+<h3><span id="13-qu-chu-kong-bai-zi-fu">13. 去除空白字符</span><a href="#13-qu-chu-kong-bai-zi-fu" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cctype&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;locale&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// trim from start (in place)</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="keyword">inline</span> <span class="type">void</span> <span class="title">ltrim</span><span class="params">(std::string &amp;s)</span> </span>&#123;</span><br><span class="line">    s.<span class="built_in">erase</span>(s.<span class="built_in">begin</span>(), std::<span class="built_in">find_if</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>(), [](<span class="type">unsigned</span> <span class="type">char</span> ch) &#123;</span><br><span class="line">        <span class="keyword">return</span> !std::<span class="built_in">isspace</span>(ch);</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// trim from end (in place)</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="keyword">inline</span> <span class="type">void</span> <span class="title">rtrim</span><span class="params">(std::string &amp;s)</span> </span>&#123;</span><br><span class="line">    s.<span class="built_in">erase</span>(std::<span class="built_in">find_if</span>(s.<span class="built_in">rbegin</span>(), s.<span class="built_in">rend</span>(), [](<span class="type">unsigned</span> <span class="type">char</span> ch) &#123;</span><br><span class="line">        <span class="keyword">return</span> !std::<span class="built_in">isspace</span>(ch);</span><br><span class="line">    &#125;).<span class="built_in">base</span>(), s.<span class="built_in">end</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// trim from both ends (in place)</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="keyword">inline</span> <span class="type">void</span> <span class="title">trim</span><span class="params">(std::string &amp;s)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">ltrim</span>(s);</span><br><span class="line">    <span class="built_in">rtrim</span>(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这些是一些常见的字符串操作，C++ 标准库还提供了许多其他有用的函数和方法，可以根据需要进行使用。</p>
+<h2><span id="pai-xu">排序：</span><a href="#pai-xu" class="header-anchor">#</a></h2><h3><span id="c-zhong-de-std-sort">C++中的<code>std::sort</code>:</span><a href="#c-zhong-de-std-sort" class="header-anchor">#</a></h3><p>在 C++ 中，标准库提供了<code>std::sort</code>函数用于排序。<code>std::sort</code> 是一个泛型算法，可以用于排序任何支持随机访问迭代器的容器。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">5</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 std::sort 进行排序</span></span><br><span class="line">    std::<span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), [=](<span class="type">int</span> a,<span class="type">int</span> b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a&lt;b;<span class="comment">//输入你希望排序的顺序</span></span><br><span class="line">    &#125;);<span class="comment">// 一个lambda表达式；</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : vec) &#123;</span><br><span class="line">        std::cout &lt;&lt; num &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后更新一个有关<code>c++</code>技术的<a href="./cpp-tech%E6%9C%AD%E8%AE%B0.md">理解</a>。</p>
+<h2><span id="io">io:</span><a href="#io" class="header-anchor">#</a></h2><h3><span id="zi-fu-chuan">字符串：</span><a href="#zi-fu-chuan" class="header-anchor">#</a></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::string str;</span><br><span class="line">    <span class="type">int</span> num;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输入字符串</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Enter a string: &quot;</span>;</span><br><span class="line">    std::<span class="built_in">getline</span>(std::cin, str); <span class="comment">// getline阅读一整行文本，丢弃换行符</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输入数字</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Enter a number: &quot;</span>;</span><br><span class="line">    std::cin &gt;&gt; num;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;You entered: &quot;</span> &lt;&lt; str &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;You entered number: &quot;</span> &lt;&lt; num &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="fan-xing-suan-fa">泛型算法：</span><a href="#fan-xing-suan-fa" class="header-anchor">#</a></h2><h3><span id="zi-ding-yi">自定义：</span><a href="#zi-ding-yi" class="header-anchor">#</a></h3><p>在自定义泛型算法的使用时，C++标准库提供了一些方式来扩展和定制算法的功能。你可以通过自定义比较函数、操作函数、和谓词来改变算法的行为。以下是如何自定义这些算法的具体示例：</p>
+<h4><span id="1-std-sort-zi-ding-yi-pai-xu">1. <code>std::sort</code> 自定义排序</span><a href="#1-std-sort-zi-ding-yi-pai-xu" class="header-anchor">#</a></h4><p><code>std::sort</code> 允许你提供一个自定义比较函数来指定排序的顺序。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义比较函数：降序排序</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">descending</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用自定义比较函数进行排序</span></span><br><span class="line">    std::<span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), descending);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : vec) &#123;</span><br><span class="line">        std::cout &lt;&lt; num &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出：5 4 3 2 1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2-std-find-zi-ding-yi-cha-zhao-tiao-jian">2. <code>std::find</code> 自定义查找条件</span><a href="#2-std-find-zi-ding-yi-cha-zhao-tiao-jian" class="header-anchor">#</a></h4><p><code>std::find</code> 查找第一个匹配的元素，但你可以使用 <code>std::find_if</code> 提供自定义条件。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义谓词：查找大于3的第一个元素</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isGreaterThanThree</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &gt; <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用自定义谓词查找</span></span><br><span class="line">    <span class="keyword">auto</span> it = std::<span class="built_in">find_if</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), isGreaterThanThree);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (it != vec.<span class="built_in">end</span>()) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Found: &quot;</span> &lt;&lt; *it &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;  <span class="comment">// 输出：Found: 4</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Not found\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3-std-transform-zi-ding-yi-cao-zuo">3. <code>std::transform</code> 自定义操作</span><a href="#3-std-transform-zi-ding-yi-cao-zuo" class="header-anchor">#</a></h4><p><code>std::transform</code> 可以接受一个自定义操作函数，将其应用于容器中的每个元素。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义操作函数：计算平方</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">square</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">squared</span><span class="params">(vec.size())</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用自定义操作函数进行变换</span></span><br><span class="line">    std::<span class="built_in">transform</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), squared.<span class="built_in">begin</span>(), square);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : squared) &#123;</span><br><span class="line">        std::cout &lt;&lt; num &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出：1 4 9 16 25</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4-std-accumulate-zi-ding-yi-lei-jia-cao-zuo">4. <code>std::accumulate</code> 自定义累加操作</span><a href="#4-std-accumulate-zi-ding-yi-lei-jia-cao-zuo" class="header-anchor">#</a></h4><p><code>std::accumulate</code> 可以接受一个自定义二元操作函数来替代默认的加法操作。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义累加操作函数：计算乘积</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用自定义操作函数计算累积乘积</span></span><br><span class="line">    <span class="type">int</span> product = std::<span class="built_in">accumulate</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="number">1</span>, multiply);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Product: &quot;</span> &lt;&lt; product &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="comment">// 输出：Product: 120</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5-std-remove-if-zi-ding-yi-shan-chu-tiao-jian">5. <code>std::remove_if</code> 自定义删除条件</span><a href="#5-std-remove-if-zi-ding-yi-shan-chu-tiao-jian" class="header-anchor">#</a></h4><p><code>std::remove_if</code> 需要一个自定义谓词来决定哪些元素应被移除。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义谓词：移除所有小于3的元素</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">lessThanThree</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &lt; <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用自定义谓词进行移除</span></span><br><span class="line">    <span class="keyword">auto</span> it = std::<span class="built_in">remove_if</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), lessThanThree);</span><br><span class="line">    vec.<span class="built_in">erase</span>(it, vec.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : vec) &#123;</span><br><span class="line">        std::cout &lt;&lt; num &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出：3 4 5</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="6-std-for-each-zi-ding-yi-cao-zuo">6. <code>std::for_each</code> 自定义操作</span><a href="#6-std-for-each-zi-ding-yi-cao-zuo" class="header-anchor">#</a></h4><p><code>std::for_each</code> 可以接受一个自定义操作函数来对每个元素执行操作。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义操作函数：打印元素</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用自定义操作函数</span></span><br><span class="line">    std::for_each(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), print);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="7-std-min-element-he-std-max-element-zi-ding-yi-bi-jiao">7. <code>std::min_element</code> 和 <code>std::max_element</code> 自定义比较</span><a href="#7-std-min-element-he-std-max-element-zi-ding-yi-bi-jiao" class="header-anchor">#</a></h4><p><code>std::min_element</code> 和 <code>std::max_element</code> 允许你提供自定义比较函数来决定最小或最大元素。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义比较函数：绝对值比较</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">compareAbs</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> std::<span class="built_in">abs</span>(a) &lt; std::<span class="built_in">abs</span>(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">-10</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">-2</span>, <span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用自定义比较函数找到绝对值最小的元素</span></span><br><span class="line">    <span class="keyword">auto</span> min_it = std::<span class="built_in">min_element</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), compareAbs);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Element with minimum absolute value: &quot;</span> &lt;&lt; *min_it &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="comment">// 输出：Element with minimum absolute value: -2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2><span id="qi-ta">其他：</span><a href="#qi-ta" class="header-anchor">#</a></h2><h3><span id="chuan-can-xiao-ji-qiao">传参小技巧：</span><a href="#chuan-can-xiao-ji-qiao" class="header-anchor">#</a></h3><p>当你需要限制传入的数组参数的长度时，可以这样写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">func</span><span class="params">(<span class="type">int</span>(&amp;arr)[<span class="number">10</span>])</span></span>&#123;</span><br><span class="line">    <span class="comment">/* details */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>声明成为引用会强制进行长度上的类型检查。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/08/06/cpp-useful-operations/" data-id="cm6rz00fj0009uwr832xk7fm2" data-title="Cpp-Useful-Operations" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basicTools/" rel="tag">basicTools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Cpp札记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/02/moreJs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">进一步了解Js</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+

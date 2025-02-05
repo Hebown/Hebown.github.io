@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  <title>拥抱伟大的Ssh | Hebown&#39;s small world</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="用 Windows SSH 解决 HTTPS 协议访问 GitHub 总是失败的问题      什么是 SSH？ 用 SSH 访问 GitHub 在 Windows 下使用 SSH 访问 GitHub 解决端口问题 使用 ssh-agent 管理密钥">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拥抱伟大的Ssh">
+<meta property="og:url" content="https://hebown.github.io/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/index.html">
+<meta property="og:site_name" content="Hebown&#39;s small world">
+<meta property="og:description" content="用 Windows SSH 解决 HTTPS 协议访问 GitHub 总是失败的问题      什么是 SSH？ 用 SSH 访问 GitHub 在 Windows 下使用 SSH 访问 GitHub 解决端口问题 使用 ssh-agent 管理密钥">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-05T03:48:09.000Z">
+<meta property="article:modified_time" content="2025-02-05T06:18:58.457Z">
+<meta property="article:author" content="Hebown">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="light-mode not-index">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-inner" class="inner">
+    <div id="text-block">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/null">Log</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+        
+        <a class="nav-icon"><span class="fa fa-moon" id="changeButton"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hebown.github.io"></form>
+      </div>
+    </div>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hebown&#39;s small world</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> 你好 </a>
+        </h2>
+      
+    </div>
+    
+  </div>
+  <script>
+    const changeButton = document.getElementById('changeButton');
+    const body =document.body;
+    changeButton.addEventListener('click', function() {
+      if (changeButton.classList.contains('fa-moon')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        changeButton.classList.remove('fa-moon');
+        changeButton.classList.add('fa-sun');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        changeButton.classList.remove('fa-sun');
+        changeButton.classList.add('fa-moon');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      changeButton.classList.add('fa-moon');
+    } else {
+      body.classList.add('light-mode');
+      changeButton.classList.add('fa-sun');
+    }
+
+    changeButton.addEventListener('click', function() {
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <script>
+    const headerInner = document.getElementById('header-inner');
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        headerInner.style.top = '-60px';      
+      } else {
+        headerInner.style.top = '0';
+      }
+      lastScrollY = window.scrollY;
+    });
+    
+    headerInner.addEventListener('mouseenter',()=>{
+      headerInner.style.top='0';
+    });
+    headerInner.addEventListener('mouseleave',()=>{
+      headerInner.style.top='-60px';
+    })
+    
+    let threshold=60;
+
+    window.addEventListener('mousemove',(e)=>{
+      if(e.clientY<threshold){
+        headerInner.style.top='0';
+      }else{
+        headerInner.style.top='-60px';
+      }
+    });
+
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{
+      const logo=document.getElementById('logo');
+      const subtitle=document.getElementById('subtitle');
+
+      const logoText=logo.textContent;
+      const subtitleText=subtitle.textContent;
+
+      logo.textContent=subtitle.textContent='';
+
+      function typeEffect(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+          } else {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      typeEffect(logo, logoText, 100, () => {
+      setTimeout(()=>{
+          if (subtitleText) {
+          typeEffect(subtitle, subtitleText, 120);
+        }
+      },1000)
+    });
+    })
+
+  </script>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-拥抱伟大的ssh" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/" class="article-date">
+  <time class="dt-published" datetime="2025-02-05T03:48:09.000Z" itemprop="datePublished">2025-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      拥抱伟大的Ssh
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>用 Windows SSH 解决 HTTPS 协议访问 GitHub 总是失败的问题</p>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#shi-me-shi-ssh">什么是 SSH？</a></li>
+<li><a href="#yong-ssh-fang-wen-github">用 SSH 访问 GitHub</a><ul>
+<li><a href="#zai-windows-xia-shi-yong-ssh-fang-wen-github">在 Windows 下使用 SSH 访问 GitHub</a></li>
+<li><a href="#jie-jue-duan-kou-wen-ti">解决端口问题</a></li>
+<li><a href="#shi-yong-ssh-agent-guan-li-mi-yao">使用 <code>ssh-agent</code> 管理密钥</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+</div>
+<span id="more"></span>
+
+<h2><span id="shi-me-shi-ssh">什么是 SSH？</span><a href="#shi-me-shi-ssh" class="header-anchor">#</a></h2><p>SSH（全称 Secure Shell）是一种网络协议，用于通过加密方式安全地访问远程计算机。就像常见的 shell（如 bash、zsh）一样，SSH 允许用户在远程机器上执行命令，然而它比传统的 shell 更加 <strong>安全</strong>。</p>
+<p>SSH 使用非对称加密，公开密钥（公钥）用于远程验证连接是否合法，私钥则用于本地验证身份。由于 SSH 具有高度的安全性和便捷性，现在几乎所有平台都支持 SSH，而且平台间的差异也不大（尽管在某些特定场景下可能会有差异）。</p>
+<h2><span id="yong-ssh-fang-wen-github">用 SSH 访问 GitHub</span><a href="#yong-ssh-fang-wen-github" class="header-anchor">#</a></h2><p>在 GitHub 上使用 HTTPS 协议时，可能会遇到各种连接问题。为了解决这些问题，可以通过 SSH 协议替代 HTTPS 来访问 GitHub，这样既能避免 HTTPS 的复杂性，也能提高安全性。</p>
+<p>通过 SSH，我们首先需要生成一对公私钥，将公钥上传到 GitHub，这样每次访问时就可以通过公钥验证身份，而无需频繁输入密码。</p>
+<h3><span id="zai-windows-xia-shi-yong-ssh-fang-wen-github">在 Windows 下使用 SSH 访问 GitHub</span><a href="#zai-windows-xia-shi-yong-ssh-fang-wen-github" class="header-anchor">#</a></h3><p>Windows 已经集成了 OpenSSH 客户端，可以直接在 CMD 或 PowerShell 中使用 SSH。我们首先需要确保已安装并启用 OpenSSH 客户端。</p>
+<h4><span id="1-jian-cha-ssh-shi-fou-yi-an-zhuang">1. 检查 SSH 是否已安装</span><a href="#1-jian-cha-ssh-shi-fou-yi-an-zhuang" class="header-anchor">#</a></h4><p>打开 <strong>CMD</strong> 或 <strong>PowerShell</strong>，输入以下命令检查 SSH 是否可用：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh</span><br></pre></td></tr></table></figure>
+
+<p>如果看到类似以下的信息，说明 SSH 已经安装并可以使用：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">usage: <span class="title">ssh</span> [-46<span class="title">AaCfGgKkMNnqsTtVvXxYy</span>] [-<span class="title">B</span> <span class="title">bind_interface</span>] [-<span class="title">b</span> <span class="title">bind_address</span>]</span></span><br><span class="line"><span class="function">           [-<span class="title">c</span> <span class="title">cipher_spec</span>] [-<span class="title">D</span> [<span class="title">bind_address</span>:]<span class="title">port</span>] [-<span class="title">E</span> <span class="title">log_file</span>]</span></span><br><span class="line"><span class="function">           [-<span class="title">e</span> <span class="title">escape_char</span>] [-<span class="title">F</span> <span class="title">configfile</span>] [-<span class="title">I</span> <span class="title">pkcs11</span>] [-<span class="title">i</span> <span class="title">identity_file</span>]</span></span><br><span class="line"><span class="function">           [-<span class="title">J</span> <span class="title">destination</span>] [-<span class="title">L</span> <span class="title">address</span>] [-<span class="title">l</span> <span class="title">login_name</span>] [-<span class="title">m</span> <span class="title">mac_spec</span>]</span></span><br><span class="line"><span class="function">           [-<span class="title">O</span> <span class="title">ctl_cmd</span>] [-<span class="title">o</span> <span class="title">option</span>] [-<span class="title">P</span> <span class="title">tag</span>] [-<span class="title">p</span> <span class="title">port</span>] [-<span class="title">Q</span> <span class="title">query_option</span>]</span></span><br><span class="line"><span class="function">           [-<span class="title">R</span> <span class="title">address</span>] [-<span class="title">S</span> <span class="title">ctl_path</span>] [-<span class="title">W</span> <span class="title">host:port</span>] [-<span class="title">w</span> <span class="title">local_tun</span>[:<span class="title">remote_tun</span>]]</span></span><br><span class="line"><span class="function">           <span class="title">destination</span> [<span class="title">command</span> [<span class="title">argument</span> ...]]</span></span><br></pre></td></tr></table></figure>
+
+<h4><span id="2-sheng-cheng-ssh-mi-yao-dui">2. 生成 SSH 密钥对</span><a href="#2-sheng-cheng-ssh-mi-yao-dui" class="header-anchor">#</a></h4><p>接下来，我们需要生成一对 SSH 密钥（公钥和私钥）。在 <strong>CMD</strong> 或 <strong>PowerShell</strong> 中输入以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span></span><br></pre></td></tr></table></figure>
+
+<p>这里参数的意思是：</p>
+<ul>
+<li><code>-t rsa</code>：指定密钥类型为 RSA（也可以使用 <code>dsa</code>、<code>ecdsa</code> 等，但 RSA 是最常用的）。</li>
+<li><code>-b 4096</code>：指定密钥长度为 4096 位，密钥可以是256，512等等。</li>
+</ul>
+<p>生成密钥时，系统会提示你选择保存位置（默认是 <code>C:\Users\&lt;username&gt;\.ssh\id_rsa</code>）以及是否为密钥设置密码。如果你不希望每次使用时都输入密码，可以直接按 <strong>回车</strong> 跳过设置密码。</p>
+<h4><span id="3-cha-kan-bing-fu-zhi-gong-yao">3. 查看并复制公钥</span><a href="#3-cha-kan-bing-fu-zhi-gong-yao" class="header-anchor">#</a></h4><p>生成完密钥对后，公钥保存在 <code>C:\Users\&lt;username&gt;\.ssh\id_rsa.pub</code> 文件中。你可以使用以下命令查看并复制公钥：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> .ssh\id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>将公钥内容复制下来，接下来我们要将它添加到 GitHub。</p>
+<h4><span id="4-jiang-gong-yao-tian-jia-dao-github">4. 将公钥添加到 GitHub</span><a href="#4-jiang-gong-yao-tian-jia-dao-github" class="header-anchor">#</a></h4><p>在浏览器中打开 <a target="_blank" rel="noopener" href="https://github.com/settings/keys">GitHub SSH 密钥管理页面</a>，点击 <strong>New SSH key</strong>，在 <strong>Title</strong> 输入框中填入一个描述（例如：<code>My Windows Machine</code>），然后将刚刚复制的公钥粘贴到 <strong>Key</strong> 输入框中，点击 <strong>Add SSH key</strong>。</p>
+<h4><span id="5-ce-shi-ssh-lian-jie">5. 测试 SSH 连接</span><a href="#5-ce-shi-ssh-lian-jie" class="header-anchor">#</a></h4><p>完成公钥添加后，可以通过以下命令测试 SSH 连接是否成功：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>如果连接成功，你将看到类似下面的欢迎信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi &lt;your-username&gt;! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<h3><span id="jie-jue-duan-kou-wen-ti">解决端口问题</span><a href="#jie-jue-duan-kou-wen-ti" class="header-anchor">#</a></h3><p>有时，由于网络或防火墙的原因，默认的 SSH 端口（22）可能无法正常连接。为了绕过这个问题，你可以将 SSH 连接的端口设置为 GitHub 的备用端口 443。</p>
+<p>在 <code>.ssh\config</code> 文件中添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以通过端口 443 进行连接，而不是默认的端口 22。</p>
+<h3><span id="shi-yong-ssh-agent-guan-li-mi-yao">使用 <code>ssh-agent</code> 管理密钥</span><a href="#shi-yong-ssh-agent-guan-li-mi-yao" class="header-anchor">#</a></h3><p>如果不使用 <code>ssh-agent</code>，每次重启计算机或关闭会话后，你都需要重新加载 SSH 密钥。<code>ssh-agent</code> 可以帮助你在一个会话中缓存和管理密钥，无需每次手动加载。</p>
+<h4><span id="1-qi-dong-ssh-agent">1. 启动 <code>ssh-agent</code></span><a href="#1-qi-dong-ssh-agent" class="header-anchor">#</a></h4><p>在 管理员<strong>PowerShell</strong> 中，运行以下命令启动 <code>ssh-agent</code>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Start-Service</span> ssh<span class="literal">-agent</span></span><br></pre></td></tr></table></figure>
+
+<h4><span id="2-jiang-ssh-mi-yao-tian-jia-dao-ssh-agent">2. 将 SSH 密钥添加到 <code>ssh-agent</code></span><a href="#2-jiang-ssh-mi-yao-tian-jia-dao-ssh-agent" class="header-anchor">#</a></h4><p>然后，将你的私钥添加到 <code>ssh-agent</code>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/" data-id="cm6rz00g0001tuwr82x04a78b" data-title="拥抱伟大的Ssh" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/01/14/pytorch/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Pytorch</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Complex-Analysis/" style="font-size: 10px;">Complex-Analysis</a> <a href="/tags/ads/" style="font-size: 10px;">ads</a> <a href="/tags/algos/" style="font-size: 10px;">algos</a> <a href="/tags/basicTools/" style="font-size: 10px;">basicTools</a> <a href="/tags/cmake/" style="font-size: 10px;">cmake</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/cpp/" style="font-size: 12.5px;">cpp</a> <a href="/tags/dataProcessing/" style="font-size: 12.5px;">dataProcessing</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep-learning</a> <a href="/tags/front-end/" style="font-size: 10px;">front-end</a> <a href="/tags/gdb/" style="font-size: 10px;">gdb</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/intro/" style="font-size: 10px;">intro</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/log/" style="font-size: 20px;">log</a> <a href="/tags/major/" style="font-size: 10px;">major</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/ml/" style="font-size: 10px;">ml</a> <a href="/tags/ode/" style="font-size: 10px;">ode</a> <a href="/tags/physics/" style="font-size: 10px;">physics</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python-lib/" style="font-size: 10px;">python-lib</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/requests/" style="font-size: 10px;">requests</a> <a href="/tags/scripts/" style="font-size: 10px;">scripts</a> <a href="/tags/sketch/" style="font-size: 10px;">sketch</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/thoughts/" style="font-size: 10px;">thoughts</a> <a href="/tags/typst/" style="font-size: 10px;">typst</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/pytorch/">Pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/09/%E9%87%8D%E9%80%A2react/">重逢React</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <script src="https://giscus.app/client.js"
+          data-repo="Hebown/Hebown.github.io"
+          data-repo-id="R_kgDOMP_x4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMP_x4s4CgkFz"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+    </script>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hebown<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/null" class="mobile-nav-link">Log</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+
+</body>
+</html>
+
