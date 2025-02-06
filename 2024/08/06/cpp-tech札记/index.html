@@ -8,12 +8,12 @@
   
   <title>Cpp札记 | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文主要记录一些使用过程中对语法的理解。      lambda表达式： Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）   cin: 1. cin的基本规则 2. cin的常见问题 3. 其他输入方法 4. 注意事项 5. 总结   stl实用入门：">
+  <meta name="description" content="本文主要记录一些使用过程中对语法的理解。    lambda表达式：  Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）   cin:  1. cin的基本规则 2. cin的常见问题 3. 其他输入方法 4. 注意事项 5. 总结   stl实用入门：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cpp札记">
 <meta property="og:url" content="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="本文主要记录一些使用过程中对语法的理解。      lambda表达式： Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）   cin: 1. cin的基本规则 2. cin的常见问题 3. 其他输入方法 4. 注意事项 5. 总结   stl实用入门：">
+<meta property="og:description" content="本文主要记录一些使用过程中对语法的理解。    lambda表达式：  Lambda 表达式的基本语法 示例 捕获方式 函数闭包 捕获所有外部变量（C++14 引入）   cin:  1. cin的基本规则 2. cin的常见问题 3. 其他输入方法 4. 注意事项 5. 总结   stl实用入门：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-06T08:19:26.000Z">
 <meta property="article:modified_time" content="2024-09-07T13:07:45.165Z">
@@ -206,11 +206,10 @@
       
         <p>本文主要记录一些使用过程中对语法的理解。</p>
 <div class="toc">
-
 <!-- toc -->
-
 <ul>
-<li><a href="#lambda-biao-da-shi">lambda表达式：</a><ul>
+<li><a href="#lambda-biao-da-shi">lambda表达式：</a>
+<ul>
 <li><a href="#lambda-biao-da-shi-de-ji-ben-yu-fa">Lambda 表达式的基本语法</a></li>
 <li><a href="#shi-li">示例</a></li>
 <li><a href="#bu-huo-fang-shi">捕获方式</a></li>
@@ -218,7 +217,8 @@
 <li><a href="#bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru">捕获所有外部变量（C++14 引入）</a></li>
 </ul>
 </li>
-<li><a href="#cin">cin:</a><ul>
+<li><a href="#cin">cin:</a>
+<ul>
 <li><a href="#1-cin-de-ji-ben-gui-ze">1. <strong><code>cin</code>的基本规则</strong></a></li>
 <li><a href="#2-cin-de-chang-jian-wen-ti">2. <strong><code>cin</code>的常见问题</strong></a></li>
 <li><a href="#3-qi-ta-shu-ru-fang-fa">3. <strong>其他输入方法</strong></a></li>
@@ -229,30 +229,28 @@
 <li><a href="#stl-shi-yong-ru-men">stl实用入门：</a></li>
 </ul>
 <!-- tocstop -->
-
 </div>
 <span id="more"></span>
-
-<h2><span id="lambda-biao-da-shi">lambda表达式：</span><a href="#lambda-biao-da-shi" class="header-anchor">#</a></h2><p>Lambda 表达式是 C++11 引入的一种新特性，它使得编写内联匿名函数更加简洁和灵活。Lambda 表达式不仅能捕获局部变量，还能创建函数闭包。以下是 Lambda 表达式的语法和功能的详细解释。</p>
-<h3><span id="lambda-biao-da-shi-de-ji-ben-yu-fa">Lambda 表达式的基本语法</span><a href="#lambda-biao-da-shi-de-ji-ben-yu-fa" class="header-anchor">#</a></h3><p>Lambda 表达式的基本形式如下：</p>
+<h2><span id="lambda-biao-da-shi">lambda表达式：</span><a href="#lambda-biao-da-shi" class="header-anchor">#</a></h2>
+<p>Lambda 表达式是 C++11 引入的一种新特性，它使得编写内联匿名函数更加简洁和灵活。Lambda 表达式不仅能捕获局部变量，还能创建函数闭包。以下是 Lambda 表达式的语法和功能的详细解释。</p>
+<h3><span id="lambda-biao-da-shi-de-ji-ben-yu-fa">Lambda 表达式的基本语法</span><a href="#lambda-biao-da-shi-de-ji-ben-yu-fa" class="header-anchor">#</a></h3>
+<p>Lambda 表达式的基本形式如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[capture](parameters) -&gt; return_type &#123;</span><br><span class="line">    <span class="comment">// function body</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li>**<code>capture</code>**：捕获列表，用于捕获作用域中的变量。</li>
-<li>**<code>parameters</code>**：参数列表，与普通函数的参数列表相同。</li>
-<li>**<code>return_type</code>**：返回类型，可以省略，如果编译器能自动推断返回类型。</li>
-<li>**<code>function body</code>**：函数体，包含 Lambda 表达式执行的代码。</li>
+<li><strong><code>capture</code></strong>：捕获列表，用于捕获作用域中的变量。</li>
+<li><strong><code>parameters</code></strong>：参数列表，与普通函数的参数列表相同。</li>
+<li><strong><code>return_type</code></strong>：返回类型，可以省略，如果编译器能自动推断返回类型。</li>
+<li><strong><code>function body</code></strong>：函数体，包含 Lambda 表达式执行的代码。</li>
 </ul>
-<h3><span id="shi-li">示例</span><a href="#shi-li" class="header-anchor">#</a></h3><p><strong>基本 Lambda 表达式</strong></p>
+<h3><span id="shi-li">示例</span><a href="#shi-li" class="header-anchor">#</a></h3>
+<p><strong>基本 Lambda 表达式</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; numbers = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 Lambda 表达式打印每个数字</span></span><br><span class="line">    std::for_each(numbers.<span class="built_in">begin</span>(), numbers.<span class="built_in">end</span>(), [](<span class="type">int</span> n) &#123;</span><br><span class="line">        std::cout &lt;&lt; n &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>带捕获列表的 Lambda 表达式</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; numbers = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="type">int</span> factor = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 捕获局部变量 factor 并将其用于乘法</span></span><br><span class="line">    std::for_each(numbers.<span class="built_in">begin</span>(), numbers.<span class="built_in">end</span>(), [factor](<span class="type">int</span> &amp;n) &#123;</span><br><span class="line">        n *= factor;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n : numbers) &#123;</span><br><span class="line">        std::cout &lt;&lt; n &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>带返回类型的 Lambda 表达式</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> add = [](<span class="type">int</span> a, <span class="type">int</span> b) -&gt; <span class="type">int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;5 + 3 = &quot;</span> &lt;&lt; <span class="built_in">add</span>(<span class="number">5</span>, <span class="number">3</span>) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="bu-huo-fang-shi">捕获方式</span><a href="#bu-huo-fang-shi" class="header-anchor">#</a></h3><p>捕获列表可以包含局部变量，通过以下几种方式捕获：</p>
+<h3><span id="bu-huo-fang-shi">捕获方式</span><a href="#bu-huo-fang-shi" class="header-anchor">#</a></h3>
+<p>捕获列表可以包含局部变量，通过以下几种方式捕获：</p>
 <ul>
 <li><strong>按值捕获（默认）</strong>：捕获外部变量的副本。</li>
 <li><strong>按引用捕获</strong>：捕获外部变量的引用。</li>
@@ -260,85 +258,99 @@
 </ul>
 <p><strong>示例：按值捕获</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">auto</span> lambda = [x]() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Captured by value: &quot;</span> &lt;&lt; x &lt;&lt; std::endl;</span><br><span class="line">    &#125;;</span><br><span class="line">    x = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">lambda</span>(); <span class="comment">// 输出: Captured by value: 10</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>示例：按引用捕获</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">auto</span> lambda = [&amp;x]() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Captured by reference: &quot;</span> &lt;&lt; x &lt;&lt; std::endl;</span><br><span class="line">    &#125;;</span><br><span class="line">    x = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">lambda</span>(); <span class="comment">// 输出: Captured by reference: 20</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>示例：隐式捕获</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> y = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 隐式按值捕获</span></span><br><span class="line">    <span class="keyword">auto</span> lambda_by_value = [=]() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;x: &quot;</span> &lt;&lt; x &lt;&lt; <span class="string">&quot;, y: &quot;</span> &lt;&lt; y &lt;&lt; std::endl;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 隐式按引用捕获</span></span><br><span class="line">    <span class="keyword">auto</span> lambda_by_reference = [&amp;]() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;x: &quot;</span> &lt;&lt; x &lt;&lt; <span class="string">&quot;, y: &quot;</span> &lt;&lt; y &lt;&lt; std::endl;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    x = <span class="number">30</span>;</span><br><span class="line">    y = <span class="number">40</span>;</span><br><span class="line">    <span class="built_in">lambda_by_value</span>(); <span class="comment">// 输出: x: 10, y: 20</span></span><br><span class="line">    <span class="built_in">lambda_by_reference</span>(); <span class="comment">// 输出: x: 30, y: 40</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="han-shu-bi-bao">函数闭包</span><a href="#han-shu-bi-bao" class="header-anchor">#</a></h3><p>Lambda 表达式可以捕获外部变量，并在 Lambda 表达式生命周期内保持其状态，这就形成了函数闭包。函数闭包在一些高级编程场景中非常有用，如回调函数、事件处理等。</p>
+<h3><span id="han-shu-bi-bao">函数闭包</span><a href="#han-shu-bi-bao" class="header-anchor">#</a></h3>
+<p>Lambda 表达式可以捕获外部变量，并在 Lambda 表达式生命周期内保持其状态，这就形成了函数闭包。函数闭包在一些高级编程场景中非常有用，如回调函数、事件处理等。</p>
 <p><strong>示例：创建函数闭包</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;functional&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">std::function&lt;<span class="title">int</span><span class="params">(<span class="type">int</span>)</span>&gt; <span class="title">create_multiplier</span><span class="params">(<span class="type">int</span> factor)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [factor](<span class="type">int</span> value) &#123;</span><br><span class="line">        <span class="keyword">return</span> value * factor;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> multiplier = <span class="built_in">create_multiplier</span>(<span class="number">5</span>);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;5 * 3 = &quot;</span> &lt;&lt; <span class="built_in">multiplier</span>(<span class="number">3</span>) &lt;&lt; std::endl; <span class="comment">// 输出: 5 * 3 = 15</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru">捕获所有外部变量（C++14 引入）</span><a href="#bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru" class="header-anchor">#</a></h3><p>在 C++14 中，可以使用 <code>[=]</code> 或 <code>[&amp;]</code> 捕获所有外部变量，或者使用 <code>[*this]</code> 捕获当前对象：</p>
+<h3><span id="bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru">捕获所有外部变量（C++14 引入）</span><a href="#bu-huo-suo-you-wai-bu-bian-liang-c-14-yin-ru" class="header-anchor">#</a></h3>
+<p>在 C++14 中，可以使用 <code>[=]</code> 或 <code>[&amp;]</code> 捕获所有外部变量，或者使用 <code>[*this]</code> 捕获当前对象：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; numbers = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="type">int</span> factor = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 捕获所有外部变量（按值捕获）</span></span><br><span class="line">    <span class="keyword">auto</span> multiply = [=](<span class="type">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> n * factor;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n : numbers) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="built_in">multiply</span>(n) &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2><span id="cin">cin:</span><a href="#cin" class="header-anchor">#</a></h2><p>在C++中，<code>cin</code>是标准输入流，用于从控制台读取输入数据。理解<code>cin</code>的使用规则以及其他输入方法的细节，对写出健壮的C++程序至关重要。下面将详细讲解<code>cin</code>的规则以及其他常用的输入方法。</p>
-<h3><span id="1-cin-de-ji-ben-gui-ze">1. <strong><code>cin</code>的基本规则</strong></span><a href="#1-cin-de-ji-ben-gui-ze" class="header-anchor">#</a></h3><ul>
-<li><p><strong>按空白字符分割输入：</strong> <code>cin</code>会自动跳过空白字符（如空格、换行符、制表符），并将输入内容按空白字符分割。每次读取的内容是一个“词”（word），即一段不包含空白字符的连续字符序列。</p>
+<h2><span id="cin">cin:</span><a href="#cin" class="header-anchor">#</a></h2>
+<p>在C++中，<code>cin</code>是标准输入流，用于从控制台读取输入数据。理解<code>cin</code>的使用规则以及其他输入方法的细节，对写出健壮的C++程序至关重要。下面将详细讲解<code>cin</code>的规则以及其他常用的输入方法。</p>
+<h3><span id="1-cin-de-ji-ben-gui-ze">1. <strong><code>cin</code>的基本规则</strong></span><a href="#1-cin-de-ji-ben-gui-ze" class="header-anchor">#</a></h3>
+<ul>
+<li>
+<p><strong>按空白字符分割输入：</strong> <code>cin</code>会自动跳过空白字符（如空格、换行符、制表符），并将输入内容按空白字符分割。每次读取的内容是一个“词”（word），即一段不包含空白字符的连续字符序列。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a, b;</span><br><span class="line">cin &gt;&gt; a &gt;&gt; b;</span><br></pre></td></tr></table></figure>
-
 <p>如果输入为 <code>3 4</code>，则 <code>a</code> 得到 <code>3</code>，<code>b</code> 得到 <code>4</code>。</p>
 </li>
-<li><p><strong>处理换行符：</strong> 当用户按下<code>Enter</code>键后，输入结束。<code>cin</code>会处理到换行符前的输入，换行符本身会被保留在输入缓冲区中。</p>
+<li>
+<p><strong>处理换行符：</strong> 当用户按下<code>Enter</code>键后，输入结束。<code>cin</code>会处理到换行符前的输入，换行符本身会被保留在输入缓冲区中。</p>
 </li>
-<li><p><strong>读取字符串：</strong> 当用 <code>cin &gt;&gt;</code> 读取字符串时，<code>cin</code>会读取直到第一个空白字符为止的内容。例如：</p>
+<li>
+<p><strong>读取字符串：</strong> 当用 <code>cin &gt;&gt;</code> 读取字符串时，<code>cin</code>会读取直到第一个空白字符为止的内容。例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">cin &gt;&gt; str;</span><br></pre></td></tr></table></figure>
-
 <p>如果输入为 <code>Hello World</code>，则 <code>str</code> 得到 <code>Hello</code>，<code>World</code> 会留在输入缓冲区。</p>
 </li>
 </ul>
-<h3><span id="2-cin-de-chang-jian-wen-ti">2. <strong><code>cin</code>的常见问题</strong></span><a href="#2-cin-de-chang-jian-wen-ti" class="header-anchor">#</a></h3><ul>
-<li><p><strong>处理剩余的输入：</strong> 如果读取整数、浮点数或字符后输入缓冲区中还有未处理的内容（如换行符），可能会影响后续的输入操作。可以使用 <code>cin.ignore()</code> 或 <code>cin.get()</code> 来清空缓冲区。</p>
+<h3><span id="2-cin-de-chang-jian-wen-ti">2. <strong><code>cin</code>的常见问题</strong></span><a href="#2-cin-de-chang-jian-wen-ti" class="header-anchor">#</a></h3>
+<ul>
+<li>
+<p><strong>处理剩余的输入：</strong> 如果读取整数、浮点数或字符后输入缓冲区中还有未处理的内容（如换行符），可能会影响后续的输入操作。可以使用 <code>cin.ignore()</code> 或 <code>cin.get()</code> 来清空缓冲区。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x;</span><br><span class="line">cin &gt;&gt; x;</span><br><span class="line">cin.<span class="built_in">ignore</span>(); <span class="comment">// 忽略缓冲区中剩余的字符，通常是换行符</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>输入验证：</strong> <code>cin</code>不会自动验证输入的有效性。若输入的类型不匹配，<code>cin</code>会进入错误状态，无法继续读取输入，必须清除错误状态并清空输入缓冲区。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> num;</span><br><span class="line">cin &gt;&gt; num;</span><br><span class="line"><span class="keyword">if</span> (cin.<span class="built_in">fail</span>()) &#123; <span class="comment">// 检查是否发生错误</span></span><br><span class="line">    cin.<span class="built_in">clear</span>(); <span class="comment">// 清除错误状态</span></span><br><span class="line">    cin.<span class="built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>); <span class="comment">// 丢弃当前行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>
+<p><strong>输入验证：</strong> <code>cin</code>不会自动验证输入的有效性。若输入的类型不匹配，<code>cin</code>会进入错误状态，无法继续读取输入，必须清除错误状态并清空输入缓冲区。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> num;</span><br><span class="line">cin &gt;&gt; num;</span><br><span class="line"><span class="keyword">if</span> (cin.<span class="built_in">fail</span>()) &#123; <span class="comment">// 检查是否发生错误</span></span><br><span class="line">    cin.<span class="built_in">clear</span>(); <span class="comment">// 清除错误状态</span></span><br><span class="line">    cin.<span class="built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>); <span class="comment">// 丢弃当前行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3><span id="3-qi-ta-shu-ru-fang-fa">3. <strong>其他输入方法</strong></span><a href="#3-qi-ta-shu-ru-fang-fa" class="header-anchor">#</a></h3><ul>
-<li><p><strong><code>cin.get()</code>：</strong> 读取单个字符，包括空白字符。常用于读取字符或者处理输入缓冲区中的换行符。</p>
+<h3><span id="3-qi-ta-shu-ru-fang-fa">3. <strong>其他输入方法</strong></span><a href="#3-qi-ta-shu-ru-fang-fa" class="header-anchor">#</a></h3>
+<ul>
+<li>
+<p><strong><code>cin.get()</code>：</strong> 读取单个字符，包括空白字符。常用于读取字符或者处理输入缓冲区中的换行符。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> ch;</span><br><span class="line">cin.<span class="built_in">get</span>(ch);</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><strong>读取一行字符：</strong> 可以使用 <code>cin.getline()</code> 读取一整行输入，包括空格。</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> line[<span class="number">100</span>];</span><br><span class="line">cin.<span class="built_in">getline</span>(line, <span class="number">100</span>); <span class="comment">// 从输入读取最多100个字符，遇到换行符结束</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong><code>getline(cin, string)</code>：</strong> 读取一行输入并存入字符串对象<code>string</code>中，读取直到换行符。</p>
+<li>
+<p><strong><code>getline(cin, string)</code>：</strong> 读取一行输入并存入字符串对象<code>string</code>中，读取直到换行符。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string line;</span><br><span class="line"><span class="built_in">getline</span>(cin, line);</span><br></pre></td></tr></table></figure>
-
 <p>与<code>cin &gt;&gt;</code>相比，<code>getline</code>不会忽略空格，适用于读取整行的输入。</p>
 </li>
-<li><p><strong><code>scanf</code>：</strong> C语言的输入函数，提供了更灵活的格式化输入控制。常用于精确控制输入格式。</p>
+<li>
+<p><strong><code>scanf</code>：</strong> C语言的输入函数，提供了更灵活的格式化输入控制。常用于精确控制输入格式。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a, b;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br></pre></td></tr></table></figure>
-
 <p>使用<code>scanf</code>时需要特别注意匹配输入的格式符。</p>
 </li>
-<li><p><strong><code>fgets</code>：</strong> C语言函数，读取一行输入并存储在字符数组中，常用于读取较长或者包含空格的输入。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line"><span class="built_in">fgets</span>(buffer, <span class="number">100</span>, stdin); <span class="comment">// 从标准输入读取最多100个字符</span></span><br></pre></td></tr></table></figure></li>
+<li>
+<p><strong><code>fgets</code>：</strong> C语言函数，读取一行输入并存储在字符数组中，常用于读取较长或者包含空格的输入。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line"><span class="built_in">fgets</span>(buffer, <span class="number">100</span>, stdin); <span class="comment">// 从标准输入读取最多100个字符</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3><span id="4-zhu-yi-shi-xiang">4. <strong>注意事项</strong></span><a href="#4-zhu-yi-shi-xiang" class="header-anchor">#</a></h3><ul>
-<li><p><strong>混用<code>cin</code>和<code>getline</code>：</strong> 在使用<code>cin</code>读取数据后再用<code>getline</code>读取字符串时，可能需要先调用<code>cin.ignore()</code>来清除输入缓冲区中残留的换行符。</p>
+<h3><span id="4-zhu-yi-shi-xiang">4. <strong>注意事项</strong></span><a href="#4-zhu-yi-shi-xiang" class="header-anchor">#</a></h3>
+<ul>
+<li>
+<p><strong>混用<code>cin</code>和<code>getline</code>：</strong> 在使用<code>cin</code>读取数据后再用<code>getline</code>读取字符串时，可能需要先调用<code>cin.ignore()</code>来清除输入缓冲区中残留的换行符。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> num;</span><br><span class="line">cin &gt;&gt; num;</span><br><span class="line">cin.<span class="built_in">ignore</span>(); <span class="comment">// 清除换行符</span></span><br><span class="line">string line;</span><br><span class="line"><span class="built_in">getline</span>(cin, line); <span class="comment">// 现在可以正确读取整行输入</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>处理输入错误</strong>：当<code>cin</code>遇到类型不匹配时，会进入错误状态，必须调用<code>cin.clear()</code>清除错误状态并使用<code>cin.ignore()</code>清除缓冲区中的无效输入。</p>
+<li>
+<p><strong>处理输入错误</strong>：当<code>cin</code>遇到类型不匹配时，会进入错误状态，必须调用<code>cin.clear()</code>清除错误状态并使用<code>cin.ignore()</code>清除缓冲区中的无效输入。</p>
 </li>
-<li><p><strong>使用循环读取输入：</strong> 在某些情况下，可以使用循环不断读取输入，直到遇到特定条件（如EOF或特定字符）为止。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string input;</span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">getline</span>(cin, input)) &#123;</span><br><span class="line">    <span class="comment">// 处理每一行输入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>
+<p><strong>使用循环读取输入：</strong> 在某些情况下，可以使用循环不断读取输入，直到遇到特定条件（如EOF或特定字符）为止。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string input;</span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">getline</span>(cin, input)) &#123;</span><br><span class="line">    <span class="comment">// 处理每一行输入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3><span id="5-zong-jie">5. <strong>总结</strong></span><a href="#5-zong-jie" class="header-anchor">#</a></h3><ul>
+<h3><span id="5-zong-jie">5. <strong>总结</strong></span><a href="#5-zong-jie" class="header-anchor">#</a></h3>
+<ul>
 <li><strong><code>cin</code>主要用于基本的格式化输入</strong>，而<code>getline</code>适用于读取整行文本。使用<code>cin.get()</code>或<code>cin.ignore()</code>可以处理输入缓冲区中的字符和换行符。</li>
 <li>**<code>scanf</code>和<code>fgets</code>**是C语言中的输入方法，提供了更加灵活的输入控制，但在C++中通常优先使用<code>cin</code>和<code>getline</code>。</li>
 <li><strong>混合使用输入方法时</strong>，需要注意缓冲区的管理，避免意外的行为。</li>
 </ul>
 <p>通过理解这些输入方法及其细节，可以更好地处理用户输入，写出更加健壮和高效的C++程序。</p>
-<h2><span id="stl-shi-yong-ru-men">stl实用入门：</span><a href="#stl-shi-yong-ru-men" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/158850">点这里</a></p>
+<h2><span id="stl-shi-yong-ru-men">stl实用入门：</span><a href="#stl-shi-yong-ru-men" class="header-anchor">#</a></h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/158850">点这里</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" data-id="cm6rz00fh0004uwr8hs8vflmx" data-title="Cpp札记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/08/06/cpp-tech%E6%9C%AD%E8%AE%B0/" data-id="cm6spgvu3000n2kr80c47cmrj" data-title="Cpp札记" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

@@ -8,12 +8,12 @@
   
   <title>Python_io Log | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这篇博客是作为自己学习python_io功能的记录博客。 我所学习的io内容包括：基本io&#x2F;文件操作&#x2F;流操作&#x2F;网络通信&#x2F;序列化与反序列化&#x2F;错误处理和异常&#x2F;格式化输出&#x2F;安全性和最佳实践。      基本io： 文件io: 打开和关闭文件： 读取和写入文件：   序列化和反序列化： 网络通信：">
+  <meta name="description" content="这篇博客是作为自己学习python_io功能的记录博客。 我所学习的io内容包括：基本io&#x2F;文件操作&#x2F;流操作&#x2F;网络通信&#x2F;序列化与反序列化&#x2F;错误处理和异常&#x2F;格式化输出&#x2F;安全性和最佳实践。    基本io： 文件io:  打开和关闭文件： 读取和写入文件：   序列化和反序列化： 网络通信：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python_io Log">
 <meta property="og:url" content="https://hebown.github.io/2024/07/06/python-io/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="这篇博客是作为自己学习python_io功能的记录博客。 我所学习的io内容包括：基本io&#x2F;文件操作&#x2F;流操作&#x2F;网络通信&#x2F;序列化与反序列化&#x2F;错误处理和异常&#x2F;格式化输出&#x2F;安全性和最佳实践。      基本io： 文件io: 打开和关闭文件： 读取和写入文件：   序列化和反序列化： 网络通信：">
+<meta property="og:description" content="这篇博客是作为自己学习python_io功能的记录博客。 我所学习的io内容包括：基本io&#x2F;文件操作&#x2F;流操作&#x2F;网络通信&#x2F;序列化与反序列化&#x2F;错误处理和异常&#x2F;格式化输出&#x2F;安全性和最佳实践。    基本io： 文件io:  打开和关闭文件： 读取和写入文件：   序列化和反序列化： 网络通信：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-06T03:45:54.000Z">
 <meta property="article:modified_time" content="2024-07-08T08:23:31.427Z">
@@ -207,14 +207,13 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>这篇博客是作为自己学习python_io功能的记录博客。</p>
-<p>我所学习的io内容包括：基本io&#x2F;文件操作&#x2F;流操作&#x2F;网络通信&#x2F;序列化与反序列化&#x2F;错误处理和异常&#x2F;格式化输出&#x2F;安全性和最佳实践。</p>
+<p>我所学习的io内容包括：基本io/文件操作/流操作/网络通信/序列化与反序列化/错误处理和异常/格式化输出/安全性和最佳实践。</p>
 <div class="toc">
-
 <!-- toc -->
-
 <ul>
 <li><a href="#ji-ben-io">基本io：</a></li>
-<li><a href="#wen-jian-io">文件io:</a><ul>
+<li><a href="#wen-jian-io">文件io:</a>
+<ul>
 <li><a href="#da-kai-he-guan-bi-wen-jian">打开和关闭文件：</a></li>
 <li><a href="#du-qu-he-xie-ru-wen-jian">读取和写入文件：</a></li>
 </ul>
@@ -223,20 +222,16 @@
 <li><a href="#wang-luo-tong-xin">网络通信：</a></li>
 </ul>
 <!-- tocstop -->
-
 </div>
 <span id="more"></span>
-
-<h2><span id="ji-ben-io">基本io：</span><a href="#ji-ben-io" class="header-anchor">#</a></h2><p>最基本的方式是使用<code>print()</code>函数输出，例如</p>
+<h2><span id="ji-ben-io">基本io：</span><a href="#ji-ben-io" class="header-anchor">#</a></h2>
+<p>最基本的方式是使用<code>print()</code>函数输出，例如</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">name=<span class="string">&quot;Hebown&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;I&#x27;m &quot;</span>,name) <span class="comment"># print &quot;I&#x27;m Hebown&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>使用<code>help()</code>方法查询<code>print()</code>的使用方法，得到</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(...)</span><br><span class="line">    <span class="built_in">print</span>(value, ..., sep=<span class="string">&#x27; &#x27;</span>, end=<span class="string">&#x27;\n&#x27;</span>, file=sys.stdout, flush=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    Prints the values to a stream, <span class="keyword">or</span> to sys.stdout by default.</span><br><span class="line">    <span class="type">Optional</span> keyword arguments:</span><br><span class="line">    file:  a file-like <span class="built_in">object</span> (stream); defaults to the current sys.stdout. <span class="comment"># 选择输出方向，默认标准输出。</span></span><br><span class="line">    sep:   string inserted between values, default a space. <span class="comment"># 分割符</span></span><br><span class="line">    end:   string appended after the last value, default a newline. <span class="comment"># 结尾符</span></span><br><span class="line">    flush: whether to forcibly flush the stream. <span class="comment"># 控制输出是否立即刷新到流中，而不是等待缓冲区满或者遇到换行符才进行写入操作，一般用于实时日志记录</span></span><br></pre></td></tr></table></figure>
 <p><code>print()</code>函数还支持格式化输出，例如</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;Alice&quot;</span></span><br><span class="line">age = <span class="number">30</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Name: %s, Age: %d&quot;</span> % (name, age))</span><br></pre></td></tr></table></figure>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;Bob&quot;</span></span><br><span class="line">age = <span class="number">25</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Name: &#123;&#125;, Age: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(name, age))</span><br></pre></td></tr></table></figure>
-
-
 <p>使用<code>input()</code>函数获取用户输入。例如</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;Enter your name: &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello,&quot;</span>, name)</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -244,12 +239,11 @@
 </blockquote>
 <p><code>help()</code>得到</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">input</span>(prompt=<span class="literal">None</span>, /)</span><br><span class="line">    Read a string <span class="keyword">from</span> standard <span class="built_in">input</span>.  The trailing newline <span class="keyword">is</span> stripped. <span class="comment"># 末尾的回车被省略</span></span><br><span class="line"></span><br><span class="line">    The prompt string, <span class="keyword">if</span> given, <span class="keyword">is</span> printed to standard output without a</span><br><span class="line">    trailing newline before reading <span class="built_in">input</span>. <span class="comment"># prompt是一个提示字符串，默认没有。</span></span><br><span class="line"></span><br><span class="line">    If the user hits EOF (*nix: Ctrl-D, Windows: Ctrl-Z+Return), <span class="keyword">raise</span> EOFError. <span class="comment"># 触发eof错误</span></span><br><span class="line">    On *nix systems, readline <span class="keyword">is</span> used <span class="keyword">if</span> available. </span><br></pre></td></tr></table></figure>
-
 <p>如果你的输入是一个列表，可以使用如下方法：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入一个包含数字的字符串，例如 &quot;1 2 3 4&quot;</span></span><br><span class="line">input_string = <span class="built_in">input</span>(<span class="string">&quot;Please enter numbers separated by spaces: &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 split() 方法将字符串分割成列表，然后使用 map() 和 int() 将每个元素转换为整数</span></span><br><span class="line">numbers_list = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, input_string.split()))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出转换后的列表</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;List of numbers:&quot;</span>, numbers_list)</span><br></pre></td></tr></table></figure>
-
-<h2><span id="wen-jian-io">文件io:</span><a href="#wen-jian-io" class="header-anchor">#</a></h2><h3><span id="da-kai-he-guan-bi-wen-jian">打开和关闭文件：</span><a href="#da-kai-he-guan-bi-wen-jian" class="header-anchor">#</a></h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file=<span class="built_in">open</span>(<span class="string">&quot;file.txt&quot;</span>,<span class="string">&quot;r&quot;</span>) </span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
-
+<h2><span id="wen-jian-io">文件io:</span><a href="#wen-jian-io" class="header-anchor">#</a></h2>
+<h3><span id="da-kai-he-guan-bi-wen-jian">打开和关闭文件：</span><a href="#da-kai-he-guan-bi-wen-jian" class="header-anchor">#</a></h3>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file=<span class="built_in">open</span>(<span class="string">&quot;file.txt&quot;</span>,<span class="string">&quot;r&quot;</span>) </span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -257,7 +251,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>r</td>
 <td>只读(read)模式</td>
 </tr>
@@ -277,45 +272,52 @@
 <td>wb</td>
 <td>二进制写入</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>二进制写入写出一般用在处理图像文件、处理音频文件、处理视频文件、网络数据传输(文件下载上传)等需要以其原始二进制形式存储和处理的数据时。</p>
 <p>更常用的是类似于<code>with open(&quot;output.txt&quot;,&quot;w&quot;) as file:</code>这样的打开文件的形式。原因有：</p>
 <ul>
 <li>with代码块在结束的时候会自动关闭，即使在处理过程中发生了异常也会自动关闭，可以确保资源的正确释放。</li>
 <li>还可以操作其他类型的对象。比如网络会话，with语句可以确保在推出代码块的时候正确关闭网络连接。这个放在socket再唠。</li>
 </ul>
-<h3><span id="du-qu-he-xie-ru-wen-jian">读取和写入文件：</span><a href="#du-qu-he-xie-ru-wen-jian" class="header-anchor">#</a></h3><p>文件的读取和写入使用的是文件对象的方法。</p>
-<h4><span id="1-shi-yong-read-han-shu-du-qu-zheng-ge-wen-jian-nei-rong">1. 使用 <code>read()</code> 函数读取整个文件内容</span><a href="#1-shi-yong-read-han-shu-du-qu-zheng-ge-wen-jian-nei-rong" class="header-anchor">#</a></h4><p>这种方法适用于文件较小且可以一次性读取到内存中的情况。</p>
+<h3><span id="du-qu-he-xie-ru-wen-jian">读取和写入文件：</span><a href="#du-qu-he-xie-ru-wen-jian" class="header-anchor">#</a></h3>
+<p>文件的读取和写入使用的是文件对象的方法。</p>
+<h4><span id="1-shi-yong-read-han-shu-du-qu-zheng-ge-wen-jian-nei-rong">1. 使用 <code>read()</code> 函数读取整个文件内容</span><a href="#1-shi-yong-read-han-shu-du-qu-zheng-ge-wen-jian-nei-rong" class="header-anchor">#</a></h4>
+<p>这种方法适用于文件较小且可以一次性读取到内存中的情况。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以只读方式打开文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.read()</span><br><span class="line">    <span class="built_in">print</span>(content)</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2-zhu-xing-du-qu-wen-jian-nei-rong">2. 逐行读取文件内容</span><a href="#2-zhu-xing-du-qu-wen-jian-nei-rong" class="header-anchor">#</a></h4><p>逐行读取适用于处理大文件或需要逐行处理的情况。</p>
+<h4><span id="2-zhu-xing-du-qu-wen-jian-nei-rong">2. 逐行读取文件内容</span><a href="#2-zhu-xing-du-qu-wen-jian-nei-rong" class="header-anchor">#</a></h4>
+<p>逐行读取适用于处理大文件或需要逐行处理的情况。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以只读方式打开文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line.strip())  <span class="comment"># strip() 方法用于去除行末的换行符</span></span><br></pre></td></tr></table></figure>
 <p>这里，文件对象是一种可迭代对象，每次迭代中自动从文件读取下一行，直到文件末尾。从而我们使用line作为媒介来获取文件内容</p>
-<h4><span id="3-shi-yong-readlines-fang-fa-du-qu-suo-you-xing-dao-lie-biao-zhong">3. 使用 <code>readlines()</code> 方法读取所有行到列表中</span><a href="#3-shi-yong-readlines-fang-fa-du-qu-suo-you-xing-dao-lie-biao-zhong" class="header-anchor">#</a></h4><p>这种方法会将文件的每一行作为列表中的一个字符串元素。</p>
+<h4><span id="3-shi-yong-readlines-fang-fa-du-qu-suo-you-xing-dao-lie-biao-zhong">3. 使用 <code>readlines()</code> 方法读取所有行到列表中</span><a href="#3-shi-yong-readlines-fang-fa-du-qu-suo-you-xing-dao-lie-biao-zhong" class="header-anchor">#</a></h4>
+<p>这种方法会将文件的每一行作为列表中的一个字符串元素。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以只读方式打开文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        <span class="built_in">print</span>(line.strip())</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4-shi-yong-readline-fang-fa-zhu-xing-du-qu-wen-jian-nei-rong">4. 使用 <code>readline()</code> 方法逐行读取文件内容</span><a href="#4-shi-yong-readline-fang-fa-zhu-xing-du-qu-wen-jian-nei-rong" class="header-anchor">#</a></h4><p>可以使用 <code>readline()</code> 方法逐行读取文件内容，直到文件末尾。</p>
+<h4><span id="4-shi-yong-readline-fang-fa-zhu-xing-du-qu-wen-jian-nei-rong">4. 使用 <code>readline()</code> 方法逐行读取文件内容</span><a href="#4-shi-yong-readline-fang-fa-zhu-xing-du-qu-wen-jian-nei-rong" class="header-anchor">#</a></h4>
+<p>可以使用 <code>readline()</code> 方法逐行读取文件内容，直到文件末尾。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以只读方式打开文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    line = f.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        <span class="built_in">print</span>(line.strip())</span><br><span class="line">        line = f.readline()</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5-shi-yong-seek-he-tell-kong-zhi-wen-jian-zhi-zhen-wei-zhi">5. 使用 <code>seek()</code> 和 <code>tell()</code> 控制文件指针位置</span><a href="#5-shi-yong-seek-he-tell-kong-zhi-wen-jian-zhi-zhen-wei-zhi" class="header-anchor">#</a></h4><p>可以使用 <code>seek()</code> 方法来移动文件指针的位置，并使用 <code>tell()</code> 方法获取当前文件指针的位置。</p>
+<h4><span id="5-shi-yong-seek-he-tell-kong-zhi-wen-jian-zhi-zhen-wei-zhi">5. 使用 <code>seek()</code> 和 <code>tell()</code> 控制文件指针位置</span><a href="#5-shi-yong-seek-he-tell-kong-zhi-wen-jian-zhi-zhen-wei-zhi" class="header-anchor">#</a></h4>
+<p>可以使用 <code>seek()</code> 方法来移动文件指针的位置，并使用 <code>tell()</code> 方法获取当前文件指针的位置。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以只读方式打开文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 移动文件指针到指定位置</span></span><br><span class="line">    f.seek(<span class="number">10</span>)</span><br><span class="line">    content = f.read()</span><br><span class="line">    <span class="built_in">print</span>(content)</span><br><span class="line">    <span class="comment"># 获取当前文件指针位置</span></span><br><span class="line">    position = f.tell()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Current position:&quot;</span>, position)</span><br></pre></td></tr></table></figure>
-
-<h4><span id="6-shi-yong-with-yu-ju-jie-he-er-jin-zhi-du-qu">6. 使用 <code>with</code> 语句结合二进制读取</span><a href="#6-shi-yong-with-yu-ju-jie-he-er-jin-zhi-du-qu" class="header-anchor">#</a></h4><p>适用于需要处理二进制文件的情况，如图像、音频、视频等。</p>
+<h4><span id="6-shi-yong-with-yu-ju-jie-he-er-jin-zhi-du-qu">6. 使用 <code>with</code> 语句结合二进制读取</span><a href="#6-shi-yong-with-yu-ju-jie-he-er-jin-zhi-du-qu" class="header-anchor">#</a></h4>
+<p>适用于需要处理二进制文件的情况，如图像、音频、视频等。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以二进制读取模式打开文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;image.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    image_data = f.read()</span><br><span class="line">    <span class="comment"># 处理二进制数据，例如解码、显示等操作</span></span><br></pre></td></tr></table></figure>
-<h4><span id="7-xie-ru-wen-jian">7. 写入文件：</span><a href="#7-xie-ru-wen-jian" class="header-anchor">#</a></h4><p>使用文件对象的<code>write()</code>方法直接写入数据；</p>
+<h4><span id="7-xie-ru-wen-jian">7. 写入文件：</span><a href="#7-xie-ru-wen-jian" class="header-anchor">#</a></h4>
+<p>使用文件对象的<code>write()</code>方法直接写入数据；</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&#x27;Hello, world!\n&#x27;</span>)</span><br><span class="line">    f.write(<span class="string">&#x27;This is a new line.&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>使用<code>writelines()</code>方法写入多行数据。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lines = [<span class="string">&#x27;Line 1\n&#x27;</span>, <span class="string">&#x27;Line 2\n&#x27;</span>, <span class="string">&#x27;Line 3\n&#x27;</span>]</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.writelines(lines)<span class="comment"># 这里输入的是一个字符串列表。writelines不自动换行</span></span><br></pre></td></tr></table></figure>
 <p>使用<code>print()</code>的重定向输入到想要的文件里面。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello, world!&#x27;</span>, file=f)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;This is another line.&#x27;</span>, file=f)</span><br></pre></td></tr></table></figure>
-<h2><span id="xu-lie-hua-he-fan-xu-lie-hua">序列化和反序列化：</span><a href="#xu-lie-hua-he-fan-xu-lie-hua" class="header-anchor">#</a></h2><p>所谓序列化和反序列化，是指讲原始的数据结构或对象转换为存储或者传输的的数据、和这个过程的逆过程。通常转化成为字节流或者字符串。</p>
+<h2><span id="xu-lie-hua-he-fan-xu-lie-hua">序列化和反序列化：</span><a href="#xu-lie-hua-he-fan-xu-lie-hua" class="header-anchor">#</a></h2>
+<p>所谓序列化和反序列化，是指讲原始的数据结构或对象转换为存储或者传输的的数据、和这个过程的逆过程。通常转化成为字节流或者字符串。</p>
 <p>使用pickle或者json模块来完成上述操作，限于目前水瓶，略过；</p>
-<h2><span id="wang-luo-tong-xin">网络通信：</span><a href="#wang-luo-tong-xin" class="header-anchor">#</a></h2><p>详见之后的博客。</p>
+<h2><span id="wang-luo-tong-xin">网络通信：</span><a href="#wang-luo-tong-xin" class="header-anchor">#</a></h2>
+<p>详见之后的博客。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/06/python-io/" data-id="cm6rz00fu0011uwr83yb42ihm" data-title="Python_io Log" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/06/python-io/" data-id="cm6spgvu900172kr8epuia1tm" data-title="Python_io Log" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

@@ -206,14 +206,18 @@
       
         <p>这个文章我们来学一学在vscode中如何使用正则表达式。</p>
 <p>正则表达式，顾名思义，是一个表达式。它表达的是 <strong>字符串匹配规则</strong>，也就是规定 <strong>什么样的字符串可以被匹配到</strong> 。比如<code>\d</code>表示匹配 <strong>单个数字</strong> 的规则，<code>\w</code>表示匹配单个字母、数字或者下划线等等。</p>
-<h2><span id="ru-he-qi-yong-zheng-ze-biao-da-shi">如何启用正则表达式</span><a href="#ru-he-qi-yong-zheng-ze-biao-da-shi" class="header-anchor">#</a></h2><p>在vscode中，快捷键<code>ctrl+F</code>可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 <code>使用正则表达式(Alt+R)</code>，当然你也可以使用快捷键<code>ctrl+H</code>的方式打开查询窗口，再用快捷键<code>Alt+R</code>来决定是否启用正则表达式。</p>
+<h2><span id="ru-he-qi-yong-zheng-ze-biao-da-shi">如何启用正则表达式</span><a href="#ru-he-qi-yong-zheng-ze-biao-da-shi" class="header-anchor">#</a></h2>
+<p>在vscode中，快捷键<code>ctrl+F</code>可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 <code>使用正则表达式(Alt+R)</code>，当然你也可以使用快捷键<code>ctrl+H</code>的方式打开查询窗口，再用快捷键<code>Alt+R</code>来决定是否启用正则表达式。</p>
 <p>启用之后，就可以在输入框中输入正则表达式来匹配字符串了。</p>
-<h2><span id="ji-ben-de-zheng-ze-biao-da-shi-gui-ze">基本的正则表达式规则：</span><a href="#ji-ben-de-zheng-ze-biao-da-shi-gui-ze" class="header-anchor">#</a></h2><p>这一节我们先来讲讲基础的正则表达式编写方式，旨在初步介绍如何使用正则表达式来匹配字符串。</p>
+<h2><span id="ji-ben-de-zheng-ze-biao-da-shi-gui-ze">基本的正则表达式规则：</span><a href="#ji-ben-de-zheng-ze-biao-da-shi-gui-ze" class="header-anchor">#</a></h2>
+<p>这一节我们先来讲讲基础的正则表达式编写方式，旨在初步介绍如何使用正则表达式来匹配字符串。</p>
 <p>正则表达式主要由以下几部分组成：</p>
 <ol>
 <li><strong>基本字符</strong> ：字母(<code>abc</code>)，数字和一些英文符号(<code>@,_</code>)等等。例如正则表达式<code>abc</code>将会直接匹配字符串<code>abc</code>，包括<code>abcdhfue</code>中的<code>abc</code>（如果你没有启用了全字匹配<code>Alt+W</code>）。</li>
-<li><strong>元字符</strong>：元字符是正则表达式中用来表达抽象匹配规则的字符。可以分为字符类、量词类、边界、分组等若干内容。<ol>
-<li><strong>字符类</strong>：表示一类或若干类字符，常见的字符类<ul>
+<li><strong>元字符</strong>：元字符是正则表达式中用来表达抽象匹配规则的字符。可以分为字符类、量词类、边界、分组等若干内容。
+<ol>
+<li><strong>字符类</strong>：表示一类或若干类字符，常见的字符类
+<ul>
 <li><code>.</code>：匹配任意单个字符（换行符除外）。</li>
 <li><code>\d</code>：匹配任意数字（<code>0-9</code>）(<code>digital</code>)。</li>
 <li><code>\D</code>：匹配任意非数字。</li>
@@ -238,20 +242,23 @@
 </ul>
 </li>
 </ol>
-<h4><span id="3-bian-jie">（3）边界</span><a href="#3-bian-jie" class="header-anchor">#</a></h4><p>用于匹配字符串的开头或结尾：</p>
+<h4><span id="3-bian-jie">（3）边界</span><a href="#3-bian-jie" class="header-anchor">#</a></h4>
+<p>用于匹配字符串的开头或结尾：</p>
 <ul>
 <li><code>^</code>：匹配字符串开头。</li>
 <li><code>$</code>：匹配字符串结尾。</li>
 <li><code>\b</code>：匹配单词边界。</li>
 <li><code>\B</code>：匹配非单词边界。</li>
 </ul>
-<h4><span id="4-fen-zu-yu-bu-huo">（4）分组与捕获</span><a href="#4-fen-zu-yu-bu-huo" class="header-anchor">#</a></h4><p>将部分正则表达式组合在一起，并捕获匹配结果：</p>
+<h4><span id="4-fen-zu-yu-bu-huo">（4）分组与捕获</span><a href="#4-fen-zu-yu-bu-huo" class="header-anchor">#</a></h4>
+<p>将部分正则表达式组合在一起，并捕获匹配结果：</p>
 <ul>
 <li><code>()</code>：捕获分组。</li>
 <li><code>(?:...)</code>：非捕获分组。</li>
 <li><code>|</code>：表示逻辑“或”，如 <code>a|b</code> 匹配 <code>a</code> 或 <code>b</code>。</li>
 </ul>
-<h4><span id="5-zhuan-yi-zi-fu">（5）转义字符</span><a href="#5-zhuan-yi-zi-fu" class="header-anchor">#</a></h4><p>用于匹配元字符本身或特殊字符：</p>
+<h4><span id="5-zhuan-yi-zi-fu">（5）转义字符</span><a href="#5-zhuan-yi-zi-fu" class="header-anchor">#</a></h4>
+<p>用于匹配元字符本身或特殊字符：</p>
 <ul>
 <li><code>\</code>：转义符，如 <code>\.</code> 匹配字符 <code>.</code>。</li>
 </ul>
@@ -259,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2025/01/08/regular-expressions/" data-id="cm6rz00fv0016uwr8g2oqdr9z" data-title="Regular-Expressions" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2025/01/08/regular-expressions/" data-id="cm6spgvud001k2kr8chqpe1j0" data-title="Regular-Expressions" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -311,18 +318,21 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2><span id="qian-yan">前言：</span><a href="#qian-yan" class="header-anchor">#</a></h2><p>虽然用md写了不少报告，而且自己其实也搞了一些和md相关的工作流，但其实，如果想要扩展md的功能的话，就要改md的渲染逻辑或者使用html标签。</p>
+        <h2><span id="qian-yan">前言：</span><a href="#qian-yan" class="header-anchor">#</a></h2>
+<p>虽然用md写了不少报告，而且自己其实也搞了一些和md相关的工作流，但其实，如果想要扩展md的功能的话，就要改md的渲染逻辑或者使用html标签。</p>
 <p>不过确实有比md更好用的文档标记语言，这就是typst。typst拥有非常强大的 <strong>排版</strong> 功能，比如字体格式修改、段落缩进等等，</p>
-<h2><span id="huan-jing">环境：</span><a href="#huan-jing" class="header-anchor">#</a></h2><p>在vscode中安装两个插件：<code>tinymist typst</code> 和 <code>Typst companion</code>。前者会支持实时预览，后者会支持一些简单的语法高亮。</p>
+<h2><span id="huan-jing">环境：</span><a href="#huan-jing" class="header-anchor">#</a></h2>
+<p>在vscode中安装两个插件：<code>tinymist typst</code> 和 <code>Typst companion</code>。前者会支持实时预览，后者会支持一些简单的语法高亮。</p>
 <p>你可能还需要下载<code>typst</code>编译器来导出pdf。</p>
-<h2><span id="kai-shi">开始：</span><a href="#kai-shi" class="header-anchor">#</a></h2><p>我们首先创建一个<code>.typ</code>文件，这是typst编辑器可以识别并编译生成pdf的文件的后缀。</p>
+<h2><span id="kai-shi">开始：</span><a href="#kai-shi" class="header-anchor">#</a></h2>
+<p>我们首先创建一个<code>.typ</code>文件，这是typst编辑器可以识别并编译生成pdf的文件的后缀。</p>
 <p>一般文章分为标题、段落、数学公式、图表等。在typst中，文段就像md中那样简单。typst会自动将 <strong>分段</strong> 的纯文本识别为 <strong>自然段落</strong>。参见<code>template.typ</code>的解释。</p>
 <p>typst的基础语法非常简单，比如用<code>=</code>表示一级标题，<code>==</code>就是二级标题（以此类推），</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2025/01/08/md-to-typst/" data-id="cm6rz00fq000juwr8ak3zdhni" data-title="从Md走向typst" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2025/01/08/md-to-typst/" data-id="cm6spgvu5000r2kr8excgg529" data-title="从Md走向typst" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -376,19 +386,21 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3><span id="shuo-dian-xian-hua">说点闲话</span><a href="#shuo-dian-xian-hua" class="header-anchor">#</a></h3><p>所谓<code>ps1</code>，全称为<code>Windows Powershell</code>。顾名思义，这是一种用在win平台上的shell。而shell是用户与操作系统内核进行交互的接口。一般而言，shell可以执行各种命令，运行脚本，控制系统环境等等。</p>
+        <h3><span id="shuo-dian-xian-hua">说点闲话</span><a href="#shuo-dian-xian-hua" class="header-anchor">#</a></h3>
+<p>所谓<code>ps1</code>，全称为<code>Windows Powershell</code>。顾名思义，这是一种用在win平台上的shell。而shell是用户与操作系统内核进行交互的接口。一般而言，shell可以执行各种命令，运行脚本，控制系统环境等等。</p>
 <p>几乎所有常见的平台都会给出shell接口，比如赫赫有名的<code>sh</code>，<code>bash</code>，<code>zsh</code>。而powershell则是用于win平台上的shell，也就是说，powershell为win用户提供了和操作系统交互的深层接口。</p>
 <p>图形化界面难以自动化，这是为了便用性而做的牺牲。但是如果为了追求效率，那么就有必要用脚本来代替重复的工作。可以编写<code>.ps1</code>脚本来取代一些重复性的命令输入，并在终端中采用<code>.\scriptName.ps1</code>的形式来调用。</p>
 <blockquote>
 <p>需要注意的是，windows本身限制<code>.ps1</code>脚本的运行，你需要修改当前终端的脚本运行权限才能运行写好的脚本，这可以算是一种保护。</p>
 </blockquote>
 <p>以上为一些闲话。</p>
-<h2><span id="wo-de-ps1-bian-xie-huan-jing">我的ps1编写环境</span><a href="#wo-de-ps1-bian-xie-huan-jing" class="header-anchor">#</a></h2><p>我使用vscode作为ps1的编辑器。vscode上微软也写好了供ps1编写的插件，可以让你方便地写相关的脚本。直接在插件中搜索<code>PowerShell</code>就行。</p>
+<h2><span id="wo-de-ps1-bian-xie-huan-jing">我的ps1编写环境</span><a href="#wo-de-ps1-bian-xie-huan-jing" class="header-anchor">#</a></h2>
+<p>我使用vscode作为ps1的编辑器。vscode上微软也写好了供ps1编写的插件，可以让你方便地写相关的脚本。直接在插件中搜索<code>PowerShell</code>就行。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2025/01/07/write-script/" data-id="cm6rz00fx001guwr8d2bi9e8t" data-title="Ps1历险记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2025/01/07/write-script/" data-id="cm6spgvuf001r2kr8e35jd5tq" data-title="Ps1历险记" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -444,10 +456,13 @@
       
         <p>在笔者还在上数逻课程的时候，vivado的sim就已经似掉了。。。</p>
 <p>吃了一年的时后我决定复活xsim,但是由于vivado 的操性这事实在太难。</p>
-<p>所以我选择 <del>续弦</del> 使用vscode+modelsim的方式替换原来的vivado仿真工作流。</p>
-<h2><span id="jiao-cheng">教程：</span><a href="#jiao-cheng" class="header-anchor">#</a></h2><p>我参考的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/586927434">教程</a></p>
-<h2><span id="q-amp-a">Q&amp;A:</span><a href="#q-amp-a" class="header-anchor">#</a></h2><ul>
-<li>环境配置过程中出现报错：<code>VsCode联合Modelsim进行自动编译，蓝色波浪线，Error: (vlog-66) Execution of vlib.exe failed.</code><ul>
+<p>所以我选择 <s>续弦</s> 使用vscode+modelsim的方式替换原来的vivado仿真工作流。</p>
+<h2><span id="jiao-cheng">教程：</span><a href="#jiao-cheng" class="header-anchor">#</a></h2>
+<p>我参考的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/586927434">教程</a></p>
+<h2><span id="q-amp-a">Q&amp;A:</span><a href="#q-amp-a" class="header-anchor">#</a></h2>
+<ul>
+<li>环境配置过程中出现报错：<code>VsCode联合Modelsim进行自动编译，蓝色波浪线，Error: (vlog-66) Execution of vlib.exe failed.</code>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43828944/article/details/127574409?spm=1001.2014.3001.5502%E3%80%82%20%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%20%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E%EF%BC%9A%E6%9C%AC%E6%96%87%E4%B8%BA%E5%8D%9A%E4%B8%BB%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0%EF%BC%8C%E9%81%B5%E5%BE%AA%20CC%204.0%20BY-SA%20%E7%89%88%E6%9D%83%E5%8D%8F%E8%AE%AE%EF%BC%8C%E8%BD%AC%E8%BD%BD%E8%AF%B7%E9%99%84%E4%B8%8A%E5%8E%9F%E6%96%87%E5%87%BA%E5%A4%84%E9%93%BE%E6%8E%A5%E5%92%8C%E6%9C%AC%E5%A3%B0%E6%98%8E%E3%80%82%20%E5%8E%9F%E6%96%87%E9%93%BE%E6%8E%A5%EF%BC%9Ahttps://blog.csdn.net/qq_56013416/article/details/131856179">解决方案</a></li>
 </ul>
 </li>
@@ -456,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/11/10/modelsim/" data-id="cm6rz00fq000ouwr8duao4c46" data-title="复活吧我的Xsim， 但变成了Vscode+modelsim的形状力" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/11/10/modelsim/" data-id="cm6spgvu800132kr87p5d01q0" data-title="复活吧我的Xsim， 但变成了Vscode+modelsim的形状力" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

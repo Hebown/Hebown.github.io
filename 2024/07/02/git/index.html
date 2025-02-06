@@ -207,98 +207,133 @@
       
         <p>这篇博客用来记录自己学习git体系的经历.</p>
 <div class="toc">
-
 <!-- toc -->
-
 <ul>
 <li><a href="#shou-xian-tan-tan-dui-git-de-li-jie">首先谈谈对<code>git</code>的理解：</a></li>
 <li><a href="#qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng">其次总括一下<code>git</code>的工作流程：</a></li>
 <li><a href="#ji-ben-cao-zuo-he-gong-zuo-liu">基本操作和工作流：</a></li>
 <li><a href="#yuan-cheng-cang-ku-cao-zuo">远程仓库操作：</a></li>
 <li><a href="#fen-zhi-guan-li-he-dai-ma-he-bing">分支管理和代码合并：</a></li>
-<li><a href="#qi-ta-zhu-ti">其他主题：</a><ul>
+<li><a href="#qi-ta-zhu-ti">其他主题：</a>
+<ul>
 <li><a href="#chu-li-dai-ma-chong-tu">处理代码冲突：</a></li>
 </ul>
 </li>
 <li><a href="#git-gong-ju-lian-he-hook">git工具链和hook：</a></li>
 </ul>
 <!-- tocstop -->
-
 </div>
 <span id="more"></span>
-
-<h2><span id="shou-xian-tan-tan-dui-git-de-li-jie">首先谈谈对<code>git</code>的理解：</span><a href="#shou-xian-tan-tan-dui-git-de-li-jie" class="header-anchor">#</a></h2><p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
+<h2><span id="shou-xian-tan-tan-dui-git-de-li-jie">首先谈谈对<code>git</code>的理解：</span><a href="#shou-xian-tan-tan-dui-git-de-li-jie" class="header-anchor">#</a></h2>
+<p><code>git</code>是一个版本控制系统，简而言之，是为了方便程序员维护和更改自己的代码。<br>
+假设你有一个没修好的bug，某一天，你突然想到了这个解决的方案，于是你大改特改，快改完的时候，你发现你的想法是错误的。。。<br>
+这个时候，有一个<code>git</code>就很方便你回到之前的代码，这样能够节省你的操作，尤其是当文件很大的时候，这种改动尤为明显。<br>
+当然，<code>git</code>的功能远超于此，上面只是一个我自己的感受。以下内容来源于gpt:</p>
 <hr>
 <ol>
-<li><p><strong>版本控制系统</strong>：Git是一个分布式版本控制系统，不仅仅是为了方便程序员维护和更改代码，还可以跟踪代码的历史记录，允许多人协作开发，管理不同版本的代码。</p>
+<li>
+<p><strong>版本控制系统</strong>：Git是一个分布式版本控制系统，不仅仅是为了方便程序员维护和更改代码，还可以跟踪代码的历史记录，允许多人协作开发，管理不同版本的代码。</p>
 </li>
-<li><p><strong>回滚和撤销更改</strong>：Git的一个主要功能是可以轻松地回滚到之前的代码状态，特别是在发现错误或者不正确的更改时，这样可以避免对项目造成不必要的破坏。</p>
+<li>
+<p><strong>回滚和撤销更改</strong>：Git的一个主要功能是可以轻松地回滚到之前的代码状态，特别是在发现错误或者不正确的更改时，这样可以避免对项目造成不必要的破坏。</p>
 </li>
-<li><p><strong>分支管理</strong>：分支允许开发者在不影响主干稳定版本的情况下开展工作。通过合并（merge）或者重整（rebase），可以将不同的分支整合到一起，确保代码的整洁和稳定性。</p>
+<li>
+<p><strong>分支管理</strong>：分支允许开发者在不影响主干稳定版本的情况下开展工作。通过合并（merge）或者重整（rebase），可以将不同的分支整合到一起，确保代码的整洁和稳定性。</p>
 </li>
-<li><p><strong>工作流程</strong>：Git的工作流程通常包括工作目录（Working Directory）、暂存区（Staging Area）和版本库（Repository）。工作目录是你实际操作和修改代码的地方，暂存区用来准备提交到版本库的更改，版本库则保存着项目的完整历史记录和所有版本的代码。</p>
+<li>
+<p><strong>工作流程</strong>：Git的工作流程通常包括工作目录（Working Directory）、暂存区（Staging Area）和版本库（Repository）。工作目录是你实际操作和修改代码的地方，暂存区用来准备提交到版本库的更改，版本库则保存着项目的完整历史记录和所有版本的代码。</p>
 </li>
 </ol>
 <hr>
-<h2><span id="qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng">其次总括一下<code>git</code>的工作流程：</span><a href="#qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng" class="header-anchor">#</a></h2><p><code>git</code>的基本工作原理包括三个主要区域：</p>
+<h2><span id="qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng">其次总括一下<code>git</code>的工作流程：</span><a href="#qi-ci-zong-gua-yi-xia-git-de-gong-zuo-liu-cheng" class="header-anchor">#</a></h2>
+<p><code>git</code>的基本工作原理包括三个主要区域：</p>
 <ul>
 <li>工作目录：实际操作和修改代码的地方。<code>git</code>是管理这个工作项目的，相当于基于这个project 整体之上建立了一个系统来帮助程序员更好地管理。</li>
 <li>版本库： 这个库一般被认为是经过仔细审查和测试的稳定版本，可以直接投入使用或或者部署到生产环境的内容。这部分内容最好不要多次改动，保障客户端的正常使用。</li>
 <li>暂存区： 这个区域试介于版本库和工作目录之间的区域。像之前说的，当你在工作目录中完成了自己的代码修改之后，就需要进行审查和测试，只有经过审查和测试的代码才可以上传到版本库中。也就是说，这是你试错的地方。</li>
 </ul>
 <p>接下来我们来看看<code>git</code>的基本操作和工作流：</p>
-<h2><span id="ji-ben-cao-zuo-he-gong-zuo-liu">基本操作和工作流：</span><a href="#ji-ben-cao-zuo-he-gong-zuo-liu" class="header-anchor">#</a></h2><ol>
-<li><p>创建仓库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化新的 Git 仓库</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者将已有项目初始化为 Git 仓库</span></span><br><span class="line">git init path\to\your\project <span class="comment">#这是windows的地址写法。 </span></span><br></pre></td></tr></table></figure></li>
-<li><p>添加文件到暂存区：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment"># 显示当前工作目录中被修改但尚未添加到暂存区的文件列表</span></span><br><span class="line">git add file.txt <span class="comment"># 根据上述 status 的显示结果确定要添加到暂存区的文件或者目录</span></span><br><span class="line">git add project1\folder</span><br><span class="line">git add . <span class="comment"># 添加所有修改的文件和新文件（不包括被删除的文件）</span></span><br><span class="line"></span><br><span class="line">git status <span class="comment"># 确认已经提交到暂存区</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提交到版本库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Commit message&quot;</span> <span class="comment"># 提交的时候需要给出修改的部分信息，比如修改细节，改动内容之类的，方便管理。</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2><span id="yuan-cheng-cang-ku-cao-zuo">远程仓库操作：</span><a href="#yuan-cheng-cang-ku-cao-zuo" class="header-anchor">#</a></h2><p>连接远程仓库是为了实现项目的远程备份、团队协作和跨设备的同步，也就是使用一个平台进行共享之类的。常见的远程仓库位于<code>github</code>\ <code>gitlab</code>\ <code>bitbucket</code>上。</p>
+<h2><span id="ji-ben-cao-zuo-he-gong-zuo-liu">基本操作和工作流：</span><a href="#ji-ben-cao-zuo-he-gong-zuo-liu" class="header-anchor">#</a></h2>
 <ol>
-<li><p>连接远程仓库：<br>首先在github上创建一个仓库，这个仓库就是你在当前平台上用来托管的仓库。<br>我有一个个人仓库<a target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.git%EF%BC%8C%E5%AD%98%E6%94%BE%E7%9A%84%E6%98%AF%E6%88%91%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D%E3%80%82">https://github.com/Hebown/Hebown.git，存放的是我的个人介绍。</a><br>这里我们就可以利用这个，将本地仓库连接到这个仓库中；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/Hebown/Hebown.git</span><br><span class="line"><span class="comment"># 这里origin是远程仓库的别名，你也可以使用任何合适的名字来代表远程仓库，例如PROFILE</span></span><br><span class="line"><span class="comment"># git remote add PROFILE https://github.com/Hebown/Hebown.git</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>克隆远程仓库：<br>上述内容是将本地内容上传到平台上，当然也可以将平台内容下载到本地.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Hebown/Hebown.git my-project <span class="comment"># 指定clone的文件位置是my-project.</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>push 和 pull:<br>一旦本地仓库与远程仓库关联成功，你可以使用<code>git push</code>命令将本地的提交推送到远程仓库，使用<code>git pull</code>命令从远程仓库拉去最新的更新到本地。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master <span class="comment"># origin是远程仓库的别名，master是主分支的名称（或者是main）</span></span><br><span class="line">git pull origin master <span class="comment"># 从远程仓库拉取内容，保证远程和本地仓库同步</span></span><br></pre></td></tr></table></figure></li>
+<li>创建仓库：</li>
 </ol>
-<h2><span id="fen-zhi-guan-li-he-dai-ma-he-bing">分支管理和代码合并：</span><a href="#fen-zhi-guan-li-he-dai-ma-he-bing" class="header-anchor">#</a></h2><p>分支(branch)是<code>git</code>中非常关键的概念，它允许开发开发者在不影响主线的情况下进行并行开发和试验性工作。</p>
-<p>创建一个新的分支，意味着创建了一个和父级分支完全相同的副本，包括文件、代码修改、提交记录等等内容。<br>我的理解是，相当于你继承了别人的工作，那么这个工作的内容和你的工具什么的必然全部都是相同的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化新的 Git 仓库</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者将已有项目初始化为 Git 仓库</span></span><br><span class="line">git init path\to\your\project <span class="comment">#这是windows的地址写法。 </span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>添加文件到暂存区：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status <span class="comment"># 显示当前工作目录中被修改但尚未添加到暂存区的文件列表</span></span><br><span class="line">git add file.txt <span class="comment"># 根据上述 status 的显示结果确定要添加到暂存区的文件或者目录</span></span><br><span class="line">git add project1\folder</span><br><span class="line">git add . <span class="comment"># 添加所有修改的文件和新文件（不包括被删除的文件）</span></span><br><span class="line"></span><br><span class="line">git status <span class="comment"># 确认已经提交到暂存区</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>提交到版本库：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Commit message&quot;</span> <span class="comment"># 提交的时候需要给出修改的部分信息，比如修改细节，改动内容之类的，方便管理。</span></span><br></pre></td></tr></table></figure>
+<h2><span id="yuan-cheng-cang-ku-cao-zuo">远程仓库操作：</span><a href="#yuan-cheng-cang-ku-cao-zuo" class="header-anchor">#</a></h2>
+<p>连接远程仓库是为了实现项目的远程备份、团队协作和跨设备的同步，也就是使用一个平台进行共享之类的。常见的远程仓库位于<code>github</code>\ <code>gitlab</code>\ <code>bitbucket</code>上。</p>
+<ol>
+<li>连接远程仓库：<br>
+首先在github上创建一个仓库，这个仓库就是你在当前平台上用来托管的仓库。<br>
+我有一个个人仓库<a target="_blank" rel="noopener" href="https://github.com/Hebown/Hebown.git%EF%BC%8C%E5%AD%98%E6%94%BE%E7%9A%84%E6%98%AF%E6%88%91%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D%E3%80%82">https://github.com/Hebown/Hebown.git，存放的是我的个人介绍。</a><br>
+这里我们就可以利用这个，将本地仓库连接到这个仓库中；</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/Hebown/Hebown.git</span><br><span class="line"><span class="comment"># 这里origin是远程仓库的别名，你也可以使用任何合适的名字来代表远程仓库，例如PROFILE</span></span><br><span class="line"><span class="comment"># git remote add PROFILE https://github.com/Hebown/Hebown.git</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>克隆远程仓库：<br>
+上述内容是将本地内容上传到平台上，当然也可以将平台内容下载到本地.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Hebown/Hebown.git my-project <span class="comment"># 指定clone的文件位置是my-project.</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>push 和 pull:<br>
+一旦本地仓库与远程仓库关联成功，你可以使用<code>git push</code>命令将本地的提交推送到远程仓库，使用<code>git pull</code>命令从远程仓库拉去最新的更新到本地。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master <span class="comment"># origin是远程仓库的别名，master是主分支的名称（或者是main）</span></span><br><span class="line">git pull origin master <span class="comment"># 从远程仓库拉取内容，保证远程和本地仓库同步</span></span><br></pre></td></tr></table></figure>
+<h2><span id="fen-zhi-guan-li-he-dai-ma-he-bing">分支管理和代码合并：</span><a href="#fen-zhi-guan-li-he-dai-ma-he-bing" class="header-anchor">#</a></h2>
+<p>分支(branch)是<code>git</code>中非常关键的概念，它允许开发开发者在不影响主线的情况下进行并行开发和试验性工作。</p>
+<p>创建一个新的分支，意味着创建了一个和父级分支完全相同的副本，包括文件、代码修改、提交记录等等内容。<br>
+我的理解是，相当于你继承了别人的工作，那么这个工作的内容和你的工具什么的必然全部都是相同的。</p>
 <p>以下是分支的操作方法：</p>
 <ol>
-<li><p>创建分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch feature-branch <span class="comment"># 在当前提交的基础上创建一个`feature-branch`的新分支，但不会自动切换到当前分支上</span></span><br></pre></td></tr></table></figure></li>
-<li><p>切换分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature-branch</span><br><span class="line"><span class="comment"># 或者,你的git版本是2.23以上的，可以使用 git switch feature-branch</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 你还可以一次性创建并切换到新分支，如下所示，(对于 checkout)使用 -b 参数</span></span><br><span class="line">git checkout -b new-feature-branch</span><br><span class="line"><span class="comment"># (对于 switch)使用 -c 参数: git switch -c new-feature-branch</span></span><br></pre></td></tr></table></figure></li>
-<li><p>查看分支：</p>
+<li>创建分支：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch feature-branch <span class="comment"># 在当前提交的基础上创建一个`feature-branch`的新分支，但不会自动切换到当前分支上</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>切换分支：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature-branch</span><br><span class="line"><span class="comment"># 或者,你的git版本是2.23以上的，可以使用 git switch feature-branch</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 你还可以一次性创建并切换到新分支，如下所示，(对于 checkout)使用 -b 参数</span></span><br><span class="line">git checkout -b new-feature-branch</span><br><span class="line"><span class="comment"># (对于 switch)使用 -c 参数: git switch -c new-feature-branch</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看分支：</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
 <p>这条命令会展示本地所有分支及当前所在的分支(当前所在分支会有一个*)</p>
-</li>
-<li><p>合并分支：<br>首先切换到接受更改的目标分支（通常是主分支），然后执行合并命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br><span class="line">git merge feature-branch</span><br></pre></td></tr></table></figure></li>
+<ol start="4">
+<li>合并分支：<br>
+首先切换到接受更改的目标分支（通常是主分支），然后执行合并命令</li>
 </ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br><span class="line">git merge feature-branch</span><br></pre></td></tr></table></figure>
 <p>(合并是依照一个模板来进行合并的，所以如果分支之间都做出了改变，那么合并的时候<code>git</code>就不知道依照哪一个来进行合并，导致合并冲突)</p>
 <ol start="5">
 <li>删除分支：</li>
 </ol>
 <p>如下所示：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d feature-branch <span class="comment"># 删除本地的分支</span></span><br><span class="line">git push origin --delete feature-branch <span class="comment"># 删除远程仓库分支</span></span><br></pre></td></tr></table></figure>
-
-<h2><span id="qi-ta-zhu-ti">其他主题：</span><a href="#qi-ta-zhu-ti" class="header-anchor">#</a></h2><h3><span id="chu-li-dai-ma-chong-tu">处理代码冲突：</span><a href="#chu-li-dai-ma-chong-tu" class="header-anchor">#</a></h3><p>当两个分支都中的同一文件的同一部分时候，<code>git</code>不能自动合并这些修改，需要手动解决冲突。</p>
-<h2><span id="git-gong-ju-lian-he-hook">git工具链和hook：</span><a href="#git-gong-ju-lian-he-hook" class="header-anchor">#</a></h2><p>git 提供了很多的工具和hooks,所谓hook，我认为可以理解成在完成某项工作之后，与之相关联的流程，比如代码检测、自动化测试、格式化、发送通知等等。</p>
+<h2><span id="qi-ta-zhu-ti">其他主题：</span><a href="#qi-ta-zhu-ti" class="header-anchor">#</a></h2>
+<h3><span id="chu-li-dai-ma-chong-tu">处理代码冲突：</span><a href="#chu-li-dai-ma-chong-tu" class="header-anchor">#</a></h3>
+<p>当两个分支都中的同一文件的同一部分时候，<code>git</code>不能自动合并这些修改，需要手动解决冲突。</p>
+<h2><span id="git-gong-ju-lian-he-hook">git工具链和hook：</span><a href="#git-gong-ju-lian-he-hook" class="header-anchor">#</a></h2>
+<p>git 提供了很多的工具和hooks,所谓hook，我认为可以理解成在完成某项工作之后，与之相关联的流程，比如代码检测、自动化测试、格式化、发送通知等等。</p>
 <p>以下是一些内容：</p>
-<h4><span id="chang-jian-de-git-gong-ju-he-gou-zi-bao-gua">常见的 Git 工具和钩子包括：</span><a href="#chang-jian-de-git-gong-ju-he-gou-zi-bao-gua" class="header-anchor">#</a></h4><ul>
-<li><p><strong>Git 命令别名：</strong><br>可以通过配置 Git 别名来简化常用命令，提高工作效率。例如，将 <code>git status</code> 设置为 <code>git st</code>：</p>
+<h4><span id="chang-jian-de-git-gong-ju-he-gou-zi-bao-gua">常见的 Git 工具和钩子包括：</span><a href="#chang-jian-de-git-gong-ju-he-gou-zi-bao-gua" class="header-anchor">#</a></h4>
+<ul>
+<li>
+<p><strong>Git 命令别名：</strong><br>
+可以通过配置 Git 别名来简化常用命令，提高工作效率。例如，将 <code>git status</code> 设置为 <code>git st</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Git 扩展（git-extras）：</strong><br>Git 扩展提供了许多额外的命令和功能，使得 Git 更强大和便捷。你可以通过安装和配置 Git 扩展来扩展 Git 的功能。</p>
+<li>
+<p><strong>Git 扩展（git-extras）：</strong><br>
+Git 扩展提供了许多额外的命令和功能，使得 Git 更强大和便捷。你可以通过安装和配置 Git 扩展来扩展 Git 的功能。</p>
 </li>
-<li><p><strong>Git 钩子（Git hooks）：</strong><br>Git 钩子是在特定 Git 操作时自动执行的脚本。常见的 Git 钩子包括：</p>
+<li>
+<p><strong>Git 钩子（Git hooks）：</strong><br>
+Git 钩子是在特定 Git 操作时自动执行的脚本。常见的 Git 钩子包括：</p>
 <ul>
 <li><code>pre-commit</code>：在提交前执行，用于执行代码格式化、静态分析等。</li>
 <li><code>post-commit</code>：在提交后执行，用于发送通知、执行自动化测试等。</li>
@@ -321,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cm6rz00fl000buwr800ozhp4e" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cm6spgvu5000t2kr84h6vdo5r" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

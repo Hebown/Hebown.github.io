@@ -8,20 +8,20 @@
   
   <title>Tableau | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="总结我的数据可视化哲学： tableau介绍： 安装教程： 开始学习： 数据连接： 数据处理：   数据可视化： 数据类型： 映射的规则：">
+  <meta name="description" content="总结我的数据可视化哲学： tableau介绍： 安装教程： 开始学习：  数据连接：  数据处理：   数据可视化：  数据类型： 映射的规则：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tableau">
 <meta property="og:url" content="https://hebown.github.io/2024/07/16/tableau/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="总结我的数据可视化哲学： tableau介绍： 安装教程： 开始学习： 数据连接： 数据处理：   数据可视化： 数据类型： 映射的规则：">
+<meta property="og:description" content="总结我的数据可视化哲学： tableau介绍： 安装教程： 开始学习：  数据连接：  数据处理：   数据可视化：  数据类型： 映射的规则：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hebown.github.io/tableau%5CwordCloud.png">
+<meta property="og:image" content="https://hebown.github.io/2024/07/16/tableau/tableau%5CwordCloud.png">
 <meta property="article:published_time" content="2024-07-16T00:02:54.000Z">
 <meta property="article:modified_time" content="2024-11-18T06:34:26.747Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="dataProcessing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hebown.github.io/tableau%5CwordCloud.png">
+<meta name="twitter:image" content="https://hebown.github.io/2024/07/16/tableau/tableau%5CwordCloud.png">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -207,19 +207,20 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <div class="toc">
-
 <!-- toc -->
-
 <ul>
 <li><a href="#zong-jie-wo-de-shu-ju-ke-shi-hua-zhe-xue">总结我的数据可视化哲学：</a></li>
 <li><a href="#tableau-jie-shao">tableau介绍：</a></li>
 <li><a href="#an-zhuang-jiao-cheng">安装教程：</a></li>
-<li><a href="#kai-shi-xue-xi">开始学习：</a><ul>
-<li><a href="#shu-ju-lian-jie">数据连接：</a><ul>
+<li><a href="#kai-shi-xue-xi">开始学习：</a>
+<ul>
+<li><a href="#shu-ju-lian-jie">数据连接：</a>
+<ul>
 <li><a href="#shu-ju-chu-li">数据处理：</a></li>
 </ul>
 </li>
-<li><a href="#shu-ju-ke-shi-hua">数据可视化：</a><ul>
+<li><a href="#shu-ju-ke-shi-hua">数据可视化：</a>
+<ul>
 <li><a href="#shu-ju-lei-xing">数据类型：</a></li>
 <li><a href="#ying-she-de-gui-ze">映射的规则：</a></li>
 </ul>
@@ -228,27 +229,30 @@
 </li>
 </ul>
 <!-- tocstop -->
-
 </div>
 <span id="more"></span>
-
-
-<h1><span id="zong-jie-wo-de-shu-ju-ke-shi-hua-zhe-xue">总结我的数据可视化哲学：</span><a href="#zong-jie-wo-de-shu-ju-ke-shi-hua-zhe-xue" class="header-anchor">#</a></h1><p>从整体上讲，数据可视化的哲学是，将你的数据用最直观的组织形式表现出来，从而方便人的研究。这其中涉及的对象是：数据&#x2F;结构（？）<br>数据一般分为两类，度量和维度。这都是从生活中总结出来的结果，比如人的名字，每个人的都不一样，我们可以使用名字来映射和管理不同人身上的相同类型的数据，比如身高、体重、年龄。人的名字就偏向于<code>dimension</code>这个性质，而后者这些数据，则表示了人的某些特征的量度，因而称之为<code>度量</code>。</p>
+<h1><span id="zong-jie-wo-de-shu-ju-ke-shi-hua-zhe-xue">总结我的数据可视化哲学：</span><a href="#zong-jie-wo-de-shu-ju-ke-shi-hua-zhe-xue" class="header-anchor">#</a></h1>
+<p>从整体上讲，数据可视化的哲学是，将你的数据用最直观的组织形式表现出来，从而方便人的研究。这其中涉及的对象是：数据/结构（？）<br>
+数据一般分为两类，度量和维度。这都是从生活中总结出来的结果，比如人的名字，每个人的都不一样，我们可以使用名字来映射和管理不同人身上的相同类型的数据，比如身高、体重、年龄。人的名字就偏向于<code>dimension</code>这个性质，而后者这些数据，则表示了人的某些特征的量度，因而称之为<code>度量</code>。</p>
 <p>这样我们就有了一个初步的感受：用维度来管理度量，从而迈出构型数据的第一步。</p>
 <p>而从整体上来说，我们探索数据可视化的最优解，实际上就是寻找更加直观的数据表现形式，也就是如何用生活中人们容易接受的元素、标记等等来体现数据本质和数据之间的关系。（当然，tableau很好地实现了这个功能，为我们提供了很多浅显直观的元素供我们选择。）</p>
-<p>人们逐渐在以上的数据结构摸索中，总结出了一些比较好用地数据表现形式，比如条形图、折线图、扇形图、地图、热力图等等，有了这些内容只是更加方便我们去理解数据、构造新的数据结构，而非局限在这些结构之中，从结构的角度出发（比如依赖于智能绘图），而忽略了数据的特征。<del>换言之，走进结构是为了走出结构(笑</del></p>
-<h1><span id="tableau-jie-shao">tableau介绍：</span><a href="#tableau-jie-shao" class="header-anchor">#</a></h1><p>tableau主要有以下风格：</p>
+<p>人们逐渐在以上的数据结构摸索中，总结出了一些比较好用地数据表现形式，比如条形图、折线图、扇形图、地图、热力图等等，有了这些内容只是更加方便我们去理解数据、构造新的数据结构，而非局限在这些结构之中，从结构的角度出发（比如依赖于智能绘图），而忽略了数据的特征。<s>换言之，走进结构是为了走出结构(笑</s></p>
+<h1><span id="tableau-jie-shao">tableau介绍：</span><a href="#tableau-jie-shao" class="header-anchor">#</a></h1>
+<p>tableau主要有以下风格：</p>
 <ul>
 <li>艺术流：</li>
 <li>分析流：针对某一主题进行鲜明的分析</li>
-<li>实战流：<ul>
-<li>为实际的业务场景服务，一般不会做美化。<blockquote>
+<li>实战流：
+<ul>
+<li>为实际的业务场景服务，一般不会做美化。
+<blockquote>
 <p>tableau-public是一个tableau的社区，可以参考其中的优质案例。</p>
 </blockquote>
 </li>
 </ul>
 </li>
-<li>垃圾流：<ul>
+<li>垃圾流：
+<ul>
 <li>杂乱无章、毫无艺术和实战意义。</li>
 </ul>
 </li>
@@ -261,42 +265,56 @@
 <p>在数据源的右上角处有一个数据连接（link）的形式，可以选择实时和数据提取，前者相当于数据保存在原来的数据库之中，每次想要计算的时候就需要提取后再计算；后者相当于将数据取出来保存了一份比较近的副本，不过当你的数据源做出修改的时候，副本也需要修改。</p>
 <p>tableau支持线上修改，业务人员可以不需要下载软件直接进行修改</p>
 <ul>
-<li>数据探索：支持大量数据的连接和处理。<ul>
+<li>数据探索：支持大量数据的连接和处理。
+<ul>
 <li>支持数据下潜，也就是层次的风度。</li>
 </ul>
 </li>
 </ul>
-<h1><span id="an-zhuang-jiao-cheng">安装教程：</span><a href="#an-zhuang-jiao-cheng" class="header-anchor">#</a></h1><p>略</p>
-<h1><span id="kai-shi-xue-xi">开始学习：</span><a href="#kai-shi-xue-xi" class="header-anchor">#</a></h1><h2><span id="shu-ju-lian-jie">数据连接：</span><a href="#shu-ju-lian-jie" class="header-anchor">#</a></h2><p>选择文件类型-选择文件目标（连接到本地文件）</p>
+<h1><span id="an-zhuang-jiao-cheng">安装教程：</span><a href="#an-zhuang-jiao-cheng" class="header-anchor">#</a></h1>
+<p>略</p>
+<h1><span id="kai-shi-xue-xi">开始学习：</span><a href="#kai-shi-xue-xi" class="header-anchor">#</a></h1>
+<h2><span id="shu-ju-lian-jie">数据连接：</span><a href="#shu-ju-lian-jie" class="header-anchor">#</a></h2>
+<p>选择文件类型-选择文件目标（连接到本地文件）</p>
 <p>连接到数据库（需要安装数据库驱动）</p>
 <p>同一文件夹之中的数据可以相互连接；默认使用只能连接。</p>
-<p>合并表的时候需要给出合并的依据，也就是平行<br>有的数据原表没有，需要<code>计算</code></p>
-<p><code>计算</code>的数据来源有两种，一种是原来的数据库，一种是tableau本地的”数据库”，也就是暂存的意思。一般对于变动频率不大的数据选择<code>数据提取</code>这样会将使用的数据拿的更近一点，提高性能。</p>
+<p>合并表的时候需要给出合并的依据，也就是平行<br>
+有的数据原表没有，需要<code>计算</code></p>
+<p><code>计算</code>的数据来源有两种，一种是原来的数据库，一种是tableau本地的&quot;数据库&quot;，也就是暂存的意思。一般对于变动频率不大的数据选择<code>数据提取</code>这样会将使用的数据拿的更近一点，提高性能。</p>
 <p>数据提取的时候提取为hyper文件。</p>
-<p>保存工作簿的时候可以保存为twbx&#x2F;twb，后者不包括hyper文件，也就是数据源需要重新提取。</p>
+<p>保存工作簿的时候可以保存为twbx/twb，后者不包括hyper文件，也就是数据源需要重新提取。</p>
 <p>数据源部分也可以进行筛选，方便后面的计算。</p>
-<h3><span id="shu-ju-chu-li">数据处理：</span><a href="#shu-ju-chu-li" class="header-anchor">#</a></h3><p>就是对数据进行一些初步的操作，只涉及表格阶段的简单操作。</p>
-<h2><span id="shu-ju-ke-shi-hua">数据可视化：</span><a href="#shu-ju-ke-shi-hua" class="header-anchor">#</a></h2><p>总的来说，数据可视化的目的就是，将你想要表现出的数据的关系，使用更加明显直白的方式表示出来，也就是使用下面的元素。而我们要做的就是，思考应该用什么表现当前的数据最为合适。</p>
+<h3><span id="shu-ju-chu-li">数据处理：</span><a href="#shu-ju-chu-li" class="header-anchor">#</a></h3>
+<p>就是对数据进行一些初步的操作，只涉及表格阶段的简单操作。</p>
+<h2><span id="shu-ju-ke-shi-hua">数据可视化：</span><a href="#shu-ju-ke-shi-hua" class="header-anchor">#</a></h2>
+<p>总的来说，数据可视化的目的就是，将你想要表现出的数据的关系，使用更加明显直白的方式表示出来，也就是使用下面的元素。而我们要做的就是，思考应该用什么表现当前的数据最为合适。</p>
 <p>给出一个我自己做的词云图。</p>
-<p><img src="/tableau%5CwordCloud.png" alt="alt text"></p>
+<p><img src="tableau%5CwordCloud.png" alt="alt text"></p>
 <p>这个表现的是疫情以来各个国家确诊人数的总和。</p>
-<h3><span id="shu-ju-lei-xing">数据类型：</span><a href="#shu-ju-lei-xing" class="header-anchor">#</a></h3><ol>
-<li>度量：<br>由数字组成的变量；<ul>
+<h3><span id="shu-ju-lei-xing">数据类型：</span><a href="#shu-ju-lei-xing" class="header-anchor">#</a></h3>
+<ol>
+<li>度量：<br>
+由数字组成的变量；
+<ul>
 <li>映射到图形</li>
 <li>比如角度（360）</li>
 </ul>
 </li>
-<li>维度：<br>由类别组成的变量；<ul>
+<li>维度：<br>
+由类别组成的变量；
+<ul>
 <li>不能进行大小计算。</li>
 <li>球员id，本质是映射，是维度。</li>
 <li>对图形区分。</li>
 </ul>
 </li>
 </ol>
-<h4><span id="ying-she-lei-xing">映射类型：</span><a href="#ying-she-lei-xing" class="header-anchor">#</a></h4><p>位置、长度、方向、形状、角度、面积、体积、颜色和深浅（比如热力图）</p>
+<h4><span id="ying-she-lei-xing">映射类型：</span><a href="#ying-she-lei-xing" class="header-anchor">#</a></h4>
+<p>位置、长度、方向、形状、角度、面积、体积、颜色和深浅（比如热力图）</p>
 <p>还有可视化词典。</p>
 <p>优先使用影响力较强的元素。</p>
-<h3><span id="ying-she-de-gui-ze">映射的规则：</span><a href="#ying-she-de-gui-ze" class="header-anchor">#</a></h3><ul>
+<h3><span id="ying-she-de-gui-ze">映射的规则：</span><a href="#ying-she-de-gui-ze" class="header-anchor">#</a></h3>
+<ul>
 <li>度量默认聚合；</li>
 <li>度量值会形成图形标记，可以切换图形标记来进行不同的样式选择。</li>
 <li>维度会对度量进行剖分，增加信息的“维度”</li>
@@ -307,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/16/tableau/" data-id="cm6rz00g1001yuwr8gxua8r7c" data-title="Tableau" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/16/tableau/" data-id="cm6spgvue001p2kr8eismg9lu" data-title="Tableau" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

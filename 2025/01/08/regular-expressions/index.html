@@ -8,12 +8,12 @@
   
   <title>Regular-Expressions | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这个文章我们来学一学在vscode中如何使用正则表达式。 正则表达式，顾名思义，是一个表达式。它表达的是 字符串匹配规则，也就是规定 什么样的字符串可以被匹配到 。比如\d表示匹配 单个数字 的规则，\w表示匹配单个字母、数字或者下划线等等。 如何启用正则表达式#在vscode中，快捷键ctrl+F可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 使用正则表达式(Alt">
+  <meta name="description" content="这个文章我们来学一学在vscode中如何使用正则表达式。 正则表达式，顾名思义，是一个表达式。它表达的是 字符串匹配规则，也就是规定 什么样的字符串可以被匹配到 。比如\d表示匹配 单个数字 的规则，\w表示匹配单个字母、数字或者下划线等等。 如何启用正则表达式# 在vscode中，快捷键ctrl+F可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 使用正则表达式(Al">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Regular-Expressions">
 <meta property="og:url" content="https://hebown.github.io/2025/01/08/regular-expressions/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="这个文章我们来学一学在vscode中如何使用正则表达式。 正则表达式，顾名思义，是一个表达式。它表达的是 字符串匹配规则，也就是规定 什么样的字符串可以被匹配到 。比如\d表示匹配 单个数字 的规则，\w表示匹配单个字母、数字或者下划线等等。 如何启用正则表达式#在vscode中，快捷键ctrl+F可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 使用正则表达式(Alt">
+<meta property="og:description" content="这个文章我们来学一学在vscode中如何使用正则表达式。 正则表达式，顾名思义，是一个表达式。它表达的是 字符串匹配规则，也就是规定 什么样的字符串可以被匹配到 。比如\d表示匹配 单个数字 的规则，\w表示匹配单个字母、数字或者下划线等等。 如何启用正则表达式# 在vscode中，快捷键ctrl+F可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 使用正则表达式(Al">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-08T12:07:00.000Z">
 <meta property="article:modified_time" content="2025-01-09T09:36:51.512Z">
@@ -206,14 +206,18 @@
       
         <p>这个文章我们来学一学在vscode中如何使用正则表达式。</p>
 <p>正则表达式，顾名思义，是一个表达式。它表达的是 <strong>字符串匹配规则</strong>，也就是规定 <strong>什么样的字符串可以被匹配到</strong> 。比如<code>\d</code>表示匹配 <strong>单个数字</strong> 的规则，<code>\w</code>表示匹配单个字母、数字或者下划线等等。</p>
-<h2><span id="ru-he-qi-yong-zheng-ze-biao-da-shi">如何启用正则表达式</span><a href="#ru-he-qi-yong-zheng-ze-biao-da-shi" class="header-anchor">#</a></h2><p>在vscode中，快捷键<code>ctrl+F</code>可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 <code>使用正则表达式(Alt+R)</code>，当然你也可以使用快捷键<code>ctrl+H</code>的方式打开查询窗口，再用快捷键<code>Alt+R</code>来决定是否启用正则表达式。</p>
+<h2><span id="ru-he-qi-yong-zheng-ze-biao-da-shi">如何启用正则表达式</span><a href="#ru-he-qi-yong-zheng-ze-biao-da-shi" class="header-anchor">#</a></h2>
+<p>在vscode中，快捷键<code>ctrl+F</code>可以快速打开使用正则表达式匹配字符串的窗口，此时会自动打开输入框旁第三个选项 <code>使用正则表达式(Alt+R)</code>，当然你也可以使用快捷键<code>ctrl+H</code>的方式打开查询窗口，再用快捷键<code>Alt+R</code>来决定是否启用正则表达式。</p>
 <p>启用之后，就可以在输入框中输入正则表达式来匹配字符串了。</p>
-<h2><span id="ji-ben-de-zheng-ze-biao-da-shi-gui-ze">基本的正则表达式规则：</span><a href="#ji-ben-de-zheng-ze-biao-da-shi-gui-ze" class="header-anchor">#</a></h2><p>这一节我们先来讲讲基础的正则表达式编写方式，旨在初步介绍如何使用正则表达式来匹配字符串。</p>
+<h2><span id="ji-ben-de-zheng-ze-biao-da-shi-gui-ze">基本的正则表达式规则：</span><a href="#ji-ben-de-zheng-ze-biao-da-shi-gui-ze" class="header-anchor">#</a></h2>
+<p>这一节我们先来讲讲基础的正则表达式编写方式，旨在初步介绍如何使用正则表达式来匹配字符串。</p>
 <p>正则表达式主要由以下几部分组成：</p>
 <ol>
 <li><strong>基本字符</strong> ：字母(<code>abc</code>)，数字和一些英文符号(<code>@,_</code>)等等。例如正则表达式<code>abc</code>将会直接匹配字符串<code>abc</code>，包括<code>abcdhfue</code>中的<code>abc</code>（如果你没有启用了全字匹配<code>Alt+W</code>）。</li>
-<li><strong>元字符</strong>：元字符是正则表达式中用来表达抽象匹配规则的字符。可以分为字符类、量词类、边界、分组等若干内容。<ol>
-<li><strong>字符类</strong>：表示一类或若干类字符，常见的字符类<ul>
+<li><strong>元字符</strong>：元字符是正则表达式中用来表达抽象匹配规则的字符。可以分为字符类、量词类、边界、分组等若干内容。
+<ol>
+<li><strong>字符类</strong>：表示一类或若干类字符，常见的字符类
+<ul>
 <li><code>.</code>：匹配任意单个字符（换行符除外）。</li>
 <li><code>\d</code>：匹配任意数字（<code>0-9</code>）(<code>digital</code>)。</li>
 <li><code>\D</code>：匹配任意非数字。</li>
@@ -238,20 +242,23 @@
 </ul>
 </li>
 </ol>
-<h4><span id="3-bian-jie">（3）边界</span><a href="#3-bian-jie" class="header-anchor">#</a></h4><p>用于匹配字符串的开头或结尾：</p>
+<h4><span id="3-bian-jie">（3）边界</span><a href="#3-bian-jie" class="header-anchor">#</a></h4>
+<p>用于匹配字符串的开头或结尾：</p>
 <ul>
 <li><code>^</code>：匹配字符串开头。</li>
 <li><code>$</code>：匹配字符串结尾。</li>
 <li><code>\b</code>：匹配单词边界。</li>
 <li><code>\B</code>：匹配非单词边界。</li>
 </ul>
-<h4><span id="4-fen-zu-yu-bu-huo">（4）分组与捕获</span><a href="#4-fen-zu-yu-bu-huo" class="header-anchor">#</a></h4><p>将部分正则表达式组合在一起，并捕获匹配结果：</p>
+<h4><span id="4-fen-zu-yu-bu-huo">（4）分组与捕获</span><a href="#4-fen-zu-yu-bu-huo" class="header-anchor">#</a></h4>
+<p>将部分正则表达式组合在一起，并捕获匹配结果：</p>
 <ul>
 <li><code>()</code>：捕获分组。</li>
 <li><code>(?:...)</code>：非捕获分组。</li>
 <li><code>|</code>：表示逻辑“或”，如 <code>a|b</code> 匹配 <code>a</code> 或 <code>b</code>。</li>
 </ul>
-<h4><span id="5-zhuan-yi-zi-fu">（5）转义字符</span><a href="#5-zhuan-yi-zi-fu" class="header-anchor">#</a></h4><p>用于匹配元字符本身或特殊字符：</p>
+<h4><span id="5-zhuan-yi-zi-fu">（5）转义字符</span><a href="#5-zhuan-yi-zi-fu" class="header-anchor">#</a></h4>
+<p>用于匹配元字符本身或特殊字符：</p>
 <ul>
 <li><code>\</code>：转义符，如 <code>\.</code> 匹配字符 <code>.</code>。</li>
 </ul>
@@ -259,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2025/01/08/regular-expressions/" data-id="cm6rz00fv0016uwr8g2oqdr9z" data-title="Regular-Expressions" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2025/01/08/regular-expressions/" data-id="cm6spgvud001k2kr8chqpe1j0" data-title="Regular-Expressions" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
