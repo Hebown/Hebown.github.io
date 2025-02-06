@@ -8,12 +8,12 @@
   
   <title>Ads_here | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文是ads的个人学习提要。    第一节课：  AVL: splay tree: 摊还分析： 作业：   第二节课：  B+树：   第三节课：  左式堆： 斜堆： 二项队列： 斐波那契堆：   第五节课：">
+  <meta name="description" content="本文是ads的个人学习提要。      第一节课： AVL: splay tree: 摊还分析： 作业：   第二节课： B+树：   第三节课： 左式堆： 斜堆： 二项队列： 斐波那契堆：   第五节课：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ads_here">
 <meta property="og:url" content="https://hebown.github.io/2024/09/09/ads-here/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="本文是ads的个人学习提要。    第一节课：  AVL: splay tree: 摊还分析： 作业：   第二节课：  B+树：   第三节课：  左式堆： 斜堆： 二项队列： 斐波那契堆：   第五节课：">
+<meta property="og:description" content="本文是ads的个人学习提要。      第一节课： AVL: splay tree: 摊还分析： 作业：   第二节课： B+树：   第三节课： 左式堆： 斜堆： 二项队列： 斐波那契堆：   第五节课：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-09T05:24:27.000Z">
 <meta property="article:modified_time" content="2024-10-16T00:06:56.858Z">
@@ -207,23 +207,22 @@
       
         <p>本文是<code>ads</code>的个人学习提要。</p>
 <div class="toc">
+
 <!-- toc -->
+
 <ul>
-<li><a href="#di-yi-jie-ke">第一节课：</a>
-<ul>
+<li><a href="#di-yi-jie-ke">第一节课：</a><ul>
 <li><a href="#avl">AVL:</a></li>
 <li><a href="#splay-tree">splay tree:</a></li>
 <li><a href="#tan-huan-fen-xi">摊还分析：</a></li>
 <li><a href="#zuo-ye">作业：</a></li>
 </ul>
 </li>
-<li><a href="#di-er-jie-ke">第二节课：</a>
-<ul>
+<li><a href="#di-er-jie-ke">第二节课：</a><ul>
 <li><a href="#b-shu">B+树：</a></li>
 </ul>
 </li>
-<li><a href="#di-san-jie-ke">第三节课：</a>
-<ul>
+<li><a href="#di-san-jie-ke">第三节课：</a><ul>
 <li><a href="#zuo-shi-dui">左式堆：</a></li>
 <li><a href="#xie-dui">斜堆：</a></li>
 <li><a href="#er-xiang-dui-lie">二项队列：</a></li>
@@ -233,22 +232,23 @@
 <li><a href="#di-wu-jie-ke">第五节课：</a></li>
 </ul>
 <!-- tocstop -->
+
 </div>
 <span id="more"></span>
-<h2><span id="di-yi-jie-ke">第一节课：</span><a href="#di-yi-jie-ke" class="header-anchor">#</a></h2>
-<p>心理准备：多做题；</p>
+
+
+<h2><span id="di-yi-jie-ke">第一节课：</span><a href="#di-yi-jie-ke" class="header-anchor">#</a></h2><p>心理准备：多做题；</p>
 <p>提前约课堂展示。</p>
 <p>可以看看<a target="_blank" rel="noopener" href="https://zju-turing.github.io/">zju-turing.github.io</a></p>
 <p>要记得给别人打分。认真打分。评价打分打得好有加分。</p>
 <p>记得做诚信守则。</p>
-<h3><span id="avl">AVL:</span><a href="#avl" class="header-anchor">#</a></h3>
-<p>二叉搜索树的进一步优化（提高搜索效率），核心思想是减小树高，使其 <strong>平衡</strong>。</p>
+<h3><span id="avl">AVL:</span><a href="#avl" class="header-anchor">#</a></h3><p>二叉搜索树的进一步优化（提高搜索效率），核心思想是减小树高，使其 <strong>平衡</strong>。</p>
 <blockquote>
 <p>树高的定义取决于 <strong>空树的树高是多少</strong> ，这里统一为：</p>
 </blockquote>
 <ul>
-<li>Height(NULL)=-1;</li>
-<li>Height(0)=0;</li>
+<li>Height(NULL)&#x3D;-1;</li>
+<li>Height(0)&#x3D;0;</li>
 </ul>
 <p>AVL树的平衡策略是减小左子树和右子树的树高距离，保持左右子树树高的距离小于1；</p>
 <p>其基本定义为：</p>
@@ -261,13 +261,11 @@
 <p>不仅要理解其本质旋转原型是什么样的，还要学会辨别需要什么类型的旋转。</p>
 <p>考试不考删除。</p>
 <p>书上的单旋转将旋转后的新根返回，我个人的实现中没有实现这一点，所以有所差异。</p>
-<h3><span id="splay-tree">splay tree:</span><a href="#splay-tree" class="header-anchor">#</a></h3>
-<p>涉及到 <strong>均摊分析</strong>，也就是说，我们对序列操作的时间消耗总和进行更细致的分析。</p>
+<h3><span id="splay-tree">splay tree:</span><a href="#splay-tree" class="header-anchor">#</a></h3><p>涉及到 <strong>均摊分析</strong>，也就是说，我们对序列操作的时间消耗总和进行更细致的分析。</p>
 <p>我们对序列操作的相互影响进行分析，主要思想是：在一次查询后为下一次查询做铺垫。</p>
 <p>因为得到资源地址是困难的，因而我们最好能在获得了资源地址后，多做一些尽量有用的操作。这些操作在独立实现的时候是非常费事的。</p>
 <p>从而，splay tree的核心思想就是，对那些可能需要多次查询的资源，提高他们的位置，这样方便后面的寻找。</p>
-<h3><span id="tan-huan-fen-xi">摊还分析：</span><a href="#tan-huan-fen-xi" class="header-anchor">#</a></h3>
-<p>核心思想是：对连续操作来说，我们希望总体上减少这些操作的耗时，一个显而易见的思路是 <strong>省时间的操作时多做一点工作，减少耗时间的操作的时间</strong>。</p>
+<h3><span id="tan-huan-fen-xi">摊还分析：</span><a href="#tan-huan-fen-xi" class="header-anchor">#</a></h3><p>核心思想是：对连续操作来说，我们希望总体上减少这些操作的耗时，一个显而易见的思路是 <strong>省时间的操作时多做一点工作，减少耗时间的操作的时间</strong>。</p>
 <p>比如上面的splay tree。</p>
 <p>计算摊还总代价有两个方面：</p>
 <ul>
@@ -276,10 +274,8 @@
 </ul>
 <p>第一种方法就是最简单的 <strong>aggregate method</strong>，也即 <strong>聚合分析</strong>；后者则有两种形式，一种是 <strong>accounting method</strong>，一种是 <strong>potential methods</strong>。</p>
 <p>势能法分析实际上是将核算法（我喜欢叫数钱法）从离散形式拓展到可离散可连续的形式。</p>
-<h3><span id="zuo-ye">作业：</span><a href="#zuo-ye" class="header-anchor">#</a></h3>
-<ul>
-<li>计算某一高度的avl树的最小节点数：注意高度的定义；递归计算。
-<ul>
+<h3><span id="zuo-ye">作业：</span><a href="#zuo-ye" class="header-anchor">#</a></h3><ul>
+<li>计算某一高度的avl树的最小节点数：注意高度的定义；递归计算。<ul>
 <li>这个计算结果告诉我们，只有节点数充足才能构建相应的avl树。</li>
 </ul>
 </li>
@@ -287,37 +283,32 @@
 <li>均摊分析，势能法。</li>
 <li>program：avl树的实现</li>
 </ul>
-<h2><span id="di-er-jie-ke">第二节课：</span><a href="#di-er-jie-ke" class="header-anchor">#</a></h2>
-<p>本节课讲红黑树/B+树。</p>
-<p>avl树的删除不好/插入的时候往下遍历（还要往上遍历）</p>
+<h2><span id="di-er-jie-ke">第二节课：</span><a href="#di-er-jie-ke" class="header-anchor">#</a></h2><p>本节课讲红黑树&#x2F;B+树。</p>
+<p>avl树的删除不好&#x2F;插入的时候往下遍历（还要往上遍历）</p>
 <p>看完了网上的教程和历史后，我可以负责的写下：红黑树的来源是B树。因此对插入和删除的理解都可以从B树出发。</p>
 <p>红黑的定义：</p>
 <ul>
 <li>每个节点要么黑要么红；</li>
-<li>根/叶子是红的，空指针也算叶子，称为nil；</li>
+<li>根&#x2F;叶子是红的，空指针也算叶子，称为nil；</li>
 <li>红节点的孩子必须是黑的；</li>
-<li>从节点到所有子叶子上黑色的节点数量完全相同。可以定义为黑高。
-<ul>
+<li>从节点到所有子叶子上黑色的节点数量完全相同。可以定义为黑高。<ul>
 <li>黑高不数根，但数nil。</li>
 </ul>
 </li>
 </ul>
 <p>红色节点数显然是少于黑色节点数的。这个树想要越高（但是节点数不随之增加太多），就要有更多的红色节点，这样会不增加黑高。所以全是黑色节点的树高度是最小的。</p>
-<p>黑高和树高有很近的关系，树高最多是黑高的两倍，否则必然有两个红节点相遇。所以我们根据这一个关系得到一个不等式：<br>
-若红黑树的节点数总数为$n$，则其树高最多为$2log_2(n+1)$;</p>
+<p>黑高和树高有很近的关系，树高最多是黑高的两倍，否则必然有两个红节点相遇。所以我们根据这一个关系得到一个不等式：<br>若红黑树的节点数总数为$n$，则其树高最多为$2log_2(n+1)$;</p>
 <p>老师说的有一点乱，我觉得上面这个就是比较好理解得一点。</p>
 <p>进一步的说，红黑树的约束就体现在这个地方： <strong>约束了搜索的最大上限：到达每个节点都有着不错的平均耗时（黑高）；</strong></p>
 <p>删除操作：</p>
 <ul>
 <li>首先保持二叉搜索树特性，这是正常删除操作；</li>
-<li>删除的时候，如果删除要改变某子树的黑高，肯定是减少，那么有这样的解决思路：减少隔壁子树的黑高，然后在共同路径上增加一个黑色的，这样整体黑高就不会变。
-<ul>
+<li>删除的时候，如果删除要改变某子树的黑高，肯定是减少，那么有这样的解决思路：减少隔壁子树的黑高，然后在共同路径上增加一个黑色的，这样整体黑高就不会变。<ul>
 <li>这种做法有一些handy的操作，比如旋转，可以将一个黑的从子树间调整；比如直接把所有的路径上的黑高全部都减1；比如把要删除节点的邻子树变个颜色，然后再旋转。不过想要真正运用出来，需要</li>
 </ul>
 </li>
 </ul>
-<h3><span id="b-shu">B+树：</span><a href="#b-shu" class="header-anchor">#</a></h3>
-<p>出现失衡的一种直观表现是，有的子树存的多，有的子树存的少。必加树就是为了解决这个问题。</p>
+<h3><span id="b-shu">B+树：</span><a href="#b-shu" class="header-anchor">#</a></h3><p>出现失衡的一种直观表现是，有的子树存的多，有的子树存的少。必加树就是为了解决这个问题。</p>
 <p>必加树规定：</p>
 <ul>
 <li>根要么是叶子，要么含有2-M个子节点。</li>
@@ -344,32 +335,24 @@
 <li>如果根是空的，那么直接创建一个新叶子作为根，然后往里面添加key，直到满；</li>
 <li>如果叶子满了，那么将叶子分裂成为两半，然后插入到其父节点（内部节点上）；</li>
 </ol>
-<h2><span id="di-san-jie-ke">第三节课：</span><a href="#di-san-jie-ke" class="header-anchor">#</a></h2>
-<p>本节课讲述一个搜索引擎如何实现。</p>
+<h2><span id="di-san-jie-ke">第三节课：</span><a href="#di-san-jie-ke" class="header-anchor">#</a></h2><p>本节课讲述一个搜索引擎如何实现。</p>
 <p>将超链接视为节点，我们就可以实现一个图。</p>
-<p>根据搜索关键词，我们先找出现了该词的文章，然后再找每个词对应文章的交集。称之为 <strong>term-document incidence matrix</strong>。其中找交集的方法称为布尔查询/布尔检索。</p>
+<p>根据搜索关键词，我们先找出现了该词的文章，然后再找每个词对应文章的交集。称之为 <strong>term-document incidence matrix</strong>。其中找交集的方法称为布尔查询&#x2F;布尔检索。</p>
 <p>然而直接使用矩阵来存还是太占空间了，于是我们使用邻接表来存。</p>
 <p>我们不仅要看到文章标题，还要相互匹配，给出上下文，以便进一步分析。</p>
-<h3><span id="zuo-shi-dui">左式堆：</span><a href="#zuo-shi-dui" class="header-anchor">#</a></h3>
-<p>左式堆对应avl。</p>
+<h3><span id="zuo-shi-dui">左式堆：</span><a href="#zuo-shi-dui" class="header-anchor">#</a></h3><p>左式堆对应avl。</p>
 <p>堆是具有最值性质的完全二叉树。但是堆进行合并的时候没有完全利用堆的性质。于是我们希望修改这个内容。</p>
-<p>首先定义零路径，也就是到 <strong>没有两个子节点</strong>的节点的路径长度。定义NPL(NULL)=-1;</p>
-<p>左式堆：根的左子节点零路径大于右子节点零路径。这保证了树会沿着左走。<br>
-（第四节课）<br>
-这个性质保证了，右零路径如果长度是r，那么整棵树的节点数不会少于$2^r-1$个;</p>
+<p>首先定义零路径，也就是到 <strong>没有两个子节点</strong>的节点的路径长度。定义NPL(NULL)&#x3D;-1;</p>
+<p>左式堆：根的左子节点零路径大于右子节点零路径。这保证了树会沿着左走。<br>（第四节课）<br>这个性质保证了，右零路径如果长度是r，那么整棵树的节点数不会少于$2^r-1$个;</p>
 <p>其关键函数是合并，插入和删除都可以看成合并。</p>
-<h3><span id="xie-dui">斜堆：</span><a href="#xie-dui" class="header-anchor">#</a></h3>
-<h3><span id="er-xiang-dui-lie">二项队列：</span><a href="#er-xiang-dui-lie" class="header-anchor">#</a></h3>
-<p>二项队列是由二项树组成的，二项树是一种</p>
-<h3><span id="fei-bo-na-qi-dui">斐波那契堆：</span><a href="#fei-bo-na-qi-dui" class="header-anchor">#</a></h3>
-<h2><span id="di-wu-jie-ke">第五节课：</span><a href="#di-wu-jie-ke" class="header-anchor">#</a></h2>
-<p>数据结构从这里就基本讲完了，后面都是算法的事情。</p>
+<h3><span id="xie-dui">斜堆：</span><a href="#xie-dui" class="header-anchor">#</a></h3><h3><span id="er-xiang-dui-lie">二项队列：</span><a href="#er-xiang-dui-lie" class="header-anchor">#</a></h3><p>二项队列是由二项树组成的，二项树是一种</p>
+<h3><span id="fei-bo-na-qi-dui">斐波那契堆：</span><a href="#fei-bo-na-qi-dui" class="header-anchor">#</a></h3><h2><span id="di-wu-jie-ke">第五节课：</span><a href="#di-wu-jie-ke" class="header-anchor">#</a></h2><p>数据结构从这里就基本讲完了，后面都是算法的事情。</p>
 <p>算法</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/09/09/ads-here/" data-id="cm6spgvtm00042kr83w7l5x2z" data-title="Ads_here" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/09/09/ads-here/" data-id="cm6spmp8z0002dwr85r2c3mfc" data-title="Ads_here" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

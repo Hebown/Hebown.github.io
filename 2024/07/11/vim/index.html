@@ -8,12 +8,12 @@
   
   <title>Vim | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这篇博客来学习vim。    环境： 我对vim好处的理解： vim结构： 在vscode中使用vim：">
+  <meta name="description" content="这篇博客来学习vim。      环境： 我对vim好处的理解： vim结构： 在vscode中使用vim：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vim">
 <meta property="og:url" content="https://hebown.github.io/2024/07/11/vim/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="这篇博客来学习vim。    环境： 我对vim好处的理解： vim结构： 在vscode中使用vim：">
+<meta property="og:description" content="这篇博客来学习vim。      环境： 我对vim好处的理解： vim结构： 在vscode中使用vim：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-11T13:42:31.000Z">
 <meta property="article:modified_time" content="2025-02-06T02:15:18.181Z">
@@ -206,7 +206,9 @@
       
         <p>这篇博客来学习vim。</p>
 <div class="toc">
+
 <!-- toc -->
+
 <ul>
 <li><a href="#huan-jing">环境：</a></li>
 <li><a href="#wo-dui-vim-hao-chu-de-li-jie">我对vim好处的理解：</a></li>
@@ -214,44 +216,28 @@
 <li><a href="#zai-vscode-zhong-shi-yong-vim">在vscode中使用vim：</a></li>
 </ul>
 <!-- tocstop -->
+
 </div>
 <span id="more"></span>
-<h1><span id="huan-jing">环境：</span><a href="#huan-jing" class="header-anchor">#</a></h1>
-<p>使用vscode上的vim即可完成对vim的全部功能的使用。vscode甚至有插件还可以帮助你学习。不过我使用的学习的教程是vim官方给出的教程，如果你是linux，使用包管理下载完vim后只需要在终端输入vimtutor即可开始长为七节的教程；如果你是windows，你需要先安装vim，然后添加到环境变量之中，</p>
-<h1><span id="wo-dui-vim-hao-chu-de-li-jie">我对vim好处的理解：</span><a href="#wo-dui-vim-hao-chu-de-li-jie" class="header-anchor">#</a></h1>
-<ul>
+
+<h1><span id="huan-jing">环境：</span><a href="#huan-jing" class="header-anchor">#</a></h1><p>使用vscode上的vim即可完成对vim的全部功能的使用。vscode甚至有插件还可以帮助你学习。不过我使用的学习的教程是vim官方给出的教程，如果你是linux，使用包管理下载完vim后只需要在终端输入vimtutor即可开始长为七节的教程；如果你是windows，你需要先安装vim，然后添加到环境变量之中，</p>
+<h1><span id="wo-dui-vim-hao-chu-de-li-jie">我对vim好处的理解：</span><a href="#wo-dui-vim-hao-chu-de-li-jie" class="header-anchor">#</a></h1><ul>
 <li>vim能够利用你在不同输入模式下的无关按键，帮助你实现更快捷的操作。</li>
 </ul>
-<h1><span id="vim-jie-gou">vim结构：</span><a href="#vim-jie-gou" class="header-anchor">#</a></h1>
-<blockquote>
+<h1><span id="vim-jie-gou">vim结构：</span><a href="#vim-jie-gou" class="header-anchor">#</a></h1><blockquote>
 <p>vim采用模式编辑的理念，即它提供了多种模式，按键在不同的模式下作用不同：在<strong>普通模式</strong>下浏览文件、在<strong>插入模式</strong>下插入文本，在<strong>可视模式</strong>下选择行，在<strong>命令模式</strong>下执行命令等。</p>
 </blockquote>
 <p>使用vimtutor即可对vim有一个大致的了解，一般能够满足大部分的使用，这里不再赘述；以及你可以使用<a target="_blank" rel="noopener" href="https://github.com/wsdjeg/vim-galore-zh_cn?tab=readme-ov-file#windows-%E7%B3%BB%E7%BB%9F">这个教程</a></p>
 <p>知道和熟练使用是两回事，练习vim还需要一个很长的时间。</p>
-<h1><span id="zai-vscode-zhong-shi-yong-vim">在vscode中使用vim：</span><a href="#zai-vscode-zhong-shi-yong-vim" class="header-anchor">#</a></h1>
-<p>在vscode中使用vim，既可以享受vim的快捷编辑功能，也可以使用vscode本身丰富的功能来提高自己的工作效率。</p>
+<h1><span id="zai-vscode-zhong-shi-yong-vim">在vscode中使用vim：</span><a href="#zai-vscode-zhong-shi-yong-vim" class="header-anchor">#</a></h1><p>在vscode中使用vim，既可以享受vim的快捷编辑功能，也可以使用vscode本身丰富的功能来提高自己的工作效率。</p>
 <p>vscode中有一个vim插件，这个插件下的vim多了一个DISABLED模式，这个模式下，vim不会起作用，而是换回了正常的vscode编辑功能。我们可以设置一个快捷键来完成这种转化</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ctrl+k ctrl+v&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;toggleVim&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>每次只需要按下这个快捷键，就可以实现vim编辑器的启用或者关闭。</p>
-<p>如何结合vscode的快捷键来使用呢？这里特别说几个好用的快捷键操作。</p>
-<ul>
-<li>ctrl+tab:可以切换已经打开的文件窗口，对不同的文件进行编辑，加上<code>shift</code>就可以倒着走。</li>
-<li>ctrl+shift+e:可以打开左侧的文件列表。这里特别说到一点就是，按下这个快捷键之后，vscode会聚焦到当前打开的文件，此时按下hjkl可以跳转到不同文件夹：
-<ul>
-<li><code>h</code>导航到上一层文件夹，</li>
-<li><code>j</code>向下一项；</li>
-<li><code>k</code>向上一项；</li>
-<li><code>l</code>打开/收起当前打开的文件夹/文件。相当于进入。<br>
-这个操作实际上和vim相当类似，左右替换成了退出/进入文件/文件夹，上下替换成了切换选中的文件/文件夹</li>
-</ul>
-</li>
-<li></li>
-</ul>
-
+<h2><span id="ru-he-jie-he-vscode-de-kuai-jie-jian-lai-shi-yong-ni-zhe-li-te-bie-shuo-ji-ge-hao-yong-de-kuai-jie-jian-cao-zuo-ctrl-tab-ke-yi-qie-huan-yi-jing-da-kai-de-wen-jian-chuang-kou-dui-bu-tong-de-wen-jian-jin-xing-bian-ji-jia-shang-shift-jiu-ke-yi-dao-zhao-zou-ctrl-shift-e-ke-yi-da-kai-zuo-ce-de-wen-jian-lie-biao-zhe-li-te-bie-shuo-dao-yi-dian-jiu-shi-an-xia-zhe-ge-kuai-jie-jian-zhi-hou-vscode-hui-ju-jiao-dao-dang-qian-da-kai-de-wen-jian-ci-shi-an-xia-hjkl-ke-yi-tiao-zhuan-dao-bu-tong-wen-jian-jia-h-dao-hang-dao-shang-yi-ceng-wen-jian-jia-j-xiang-xia-yi-xiang-k-xiang-shang-yi-xiang-l-da-kai-x2f-shou-qi-dang-qian-da-kai-de-wen-jian-jia-x2f-wen-jian-xiang-dang-yu-jin-ru-zhe-ge-cao-zuo-shi-ji-shang-he-vim-xiang-dang-lei-si-zuo-you-ti-huan-cheng-liao-tui-chu-x2f-jin-ru-wen-jian-x2f-wen-jian-jia-shang-xia-ti-huan-cheng-liao-qie-huan-xuan-zhong-de-wen-jian-x2f-wen-jian-jia">如何结合vscode的快捷键来使用呢？这里特别说几个好用的快捷键操作。<br>- ctrl+tab:可以切换已经打开的文件窗口，对不同的文件进行编辑，加上<code>shift</code>就可以倒着走。<br>- ctrl+shift+e:可以打开左侧的文件列表。这里特别说到一点就是，按下这个快捷键之后，vscode会聚焦到当前打开的文件，此时按下hjkl可以跳转到不同文件夹：<br>  - <code>h</code>导航到上一层文件夹，<br>  - <code>j</code>向下一项；<br>  - <code>k</code>向上一项；<br>  - <code>l</code>打开&#x2F;收起当前打开的文件夹&#x2F;文件。相当于进入。<br>  这个操作实际上和vim相当类似，左右替换成了退出&#x2F;进入文件&#x2F;文件夹，上下替换成了切换选中的文件&#x2F;文件夹 </span><a href="#ru-he-jie-he-vscode-de-kuai-jie-jian-lai-shi-yong-ni-zhe-li-te-bie-shuo-ji-ge-hao-yong-de-kuai-jie-jian-cao-zuo-ctrl-tab-ke-yi-qie-huan-yi-jing-da-kai-de-wen-jian-chuang-kou-dui-bu-tong-de-wen-jian-jin-xing-bian-ji-jia-shang-shift-jiu-ke-yi-dao-zhao-zou-ctrl-shift-e-ke-yi-da-kai-zuo-ce-de-wen-jian-lie-biao-zhe-li-te-bie-shuo-dao-yi-dian-jiu-shi-an-xia-zhe-ge-kuai-jie-jian-zhi-hou-vscode-hui-ju-jiao-dao-dang-qian-da-kai-de-wen-jian-ci-shi-an-xia-hjkl-ke-yi-tiao-zhuan-dao-bu-tong-wen-jian-jia-h-dao-hang-dao-shang-yi-ceng-wen-jian-jia-j-xiang-xia-yi-xiang-k-xiang-shang-yi-xiang-l-da-kai-x2f-shou-qi-dang-qian-da-kai-de-wen-jian-jia-x2f-wen-jian-xiang-dang-yu-jin-ru-zhe-ge-cao-zuo-shi-ji-shang-he-vim-xiang-dang-lei-si-zuo-you-ti-huan-cheng-liao-tui-chu-x2f-jin-ru-wen-jian-x2f-wen-jian-jia-shang-xia-ti-huan-cheng-liao-qie-huan-xuan-zhong-de-wen-jian-x2f-wen-jian-jia" class="header-anchor">#</a></h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/11/vim/" data-id="cm6spgvuh001w2kr864dogo8c" data-title="Vim" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/11/vim/" data-id="cm6spmp9o002kdwr8crajbsxb" data-title="Vim" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

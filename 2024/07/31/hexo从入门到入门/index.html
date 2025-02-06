@@ -320,11 +320,12 @@ mjx-container[display="true"] + br {
 <p>主要阅读材料/引用来源:<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs">hexo文档</a>，下文使用<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs">1</a>来引用。</p>
 <span id="more"></span>
 <div class="toc">
+
 <!-- toc -->
+
 <ul>
 <li><a href="#can-kao-gong-neng">参考功能：</a></li>
-<li><a href="#tian-jia-de-dong-hua">添加的动画：</a>
-<ul>
+<li><a href="#tian-jia-de-dong-hua">添加的动画：</a><ul>
 <li><a href="#wei-hexo-zeng-jia-liao-hei-bai-mo-shi">为hexo增加了黑白模式：</a></li>
 <li><a href="#diao-zheng-bu-tong-ye-mian-xia-banner-de-da-xiao">调整不同页面下banner的大小：</a></li>
 <li><a href="#tian-jia-ding-bu-xuan-gua-dao-hang-lan">添加顶部悬挂导航栏：</a></li>
@@ -332,78 +333,66 @@ mjx-container[display="true"] + br {
 </li>
 <li><a href="#zhu-yao-shi-diao-zheng-header-inner">主要是调整header-inner。</a></li>
 <li><a href="#gai-gua-hexo">概括hexo:</a></li>
-<li><a href="#an-zhuang-hexo-hou-ni-de-dao-liao-shi-me">安装hexo后你得到了什么：</a>
-<ul>
+<li><a href="#an-zhuang-hexo-hou-ni-de-dao-liao-shi-me">安装hexo后你得到了什么：</a><ul>
 <li><a href="#config-yml">_config.yml:</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
+
 </div>
-<h2><span id="can-kao-gong-neng">参考功能：</span><a href="#can-kao-gong-neng" class="header-anchor">#</a></h2>
-<ul>
+
+
+<h2><span id="can-kao-gong-neng">参考功能：</span><a href="#can-kao-gong-neng" class="header-anchor">#</a></h2><ul>
 <li><strong>为hexo添加评论</strong>：使用 <strong>giscus</strong>;</li>
 <li><strong>在你的文章中引用其他文章</strong>：使用 <strong>post_link</strong>；</li>
 <li><strong>在文章中使用katex编写公式</strong>：下载 <strong>hexo-filter-mathjax</strong> 插件，根据说明使用即可。</li>
 <li><strong>修改你的博客的背景</strong>：一般找到其对应的图片文件，然后使用同名文件替换即可。</li>
 <li><strong>为你的文章增加目录/<code>more</code>按钮</strong>：前者使用 <strong>hexo-toc</strong>，按照说明书使用即可；后者可以使用类似<code>&lt;!-- more --&gt;</code>的结构来生成，但我不确定是什么插件提供了这样的帮助。</li>
 </ul>
-<h2><span id="tian-jia-de-dong-hua">添加的动画：</span><a href="#tian-jia-de-dong-hua" class="header-anchor">#</a></h2>
-<h3><span id="wei-hexo-zeng-jia-liao-hei-bai-mo-shi">为hexo增加了黑白模式：</span><a href="#wei-hexo-zeng-jia-liao-hei-bai-mo-shi" class="header-anchor">#</a></h3>
-<p>总的来说，添加黑白模式涉及到以下几个方面：</p>
+<h2><span id="tian-jia-de-dong-hua">添加的动画：</span><a href="#tian-jia-de-dong-hua" class="header-anchor">#</a></h2><h3><span id="wei-hexo-zeng-jia-liao-hei-bai-mo-shi">为hexo增加了黑白模式：</span><a href="#wei-hexo-zeng-jia-liao-hei-bai-mo-shi" class="header-anchor">#</a></h3><p>总的来说，添加黑白模式涉及到以下几个方面：</p>
 <ol>
 <li>在sub-nav中添加一个toggle，用来作为事件接收者。</li>
 <li>在layout.ejs中添加js代码，旨在为toggle提供事件处理器；</li>
 <li>调整对应模式下的stylus。</li>
 </ol>
-<h3><span id="diao-zheng-bu-tong-ye-mian-xia-banner-de-da-xiao">调整不同页面下banner的大小：</span><a href="#diao-zheng-bu-tong-ye-mian-xia-banner-de-da-xiao" class="header-anchor">#</a></h3>
-<p>在layout.ejs中标记index.html，然后对应调整stylus；</p>
-<h3><span id="tian-jia-ding-bu-xuan-gua-dao-hang-lan">添加顶部悬挂导航栏：</span><a href="#tian-jia-ding-bu-xuan-gua-dao-hang-lan" class="header-anchor">#</a></h3>
-<h2><span id="zhu-yao-shi-diao-zheng-header-inner">主要是调整header-inner。</span><a href="#zhu-yao-shi-diao-zheng-header-inner" class="header-anchor">#</a></h2>
-<p>之后则是对hexo本身的简单介绍。</p>
-<h2><span id="gai-gua-hexo">概括hexo:</span><a href="#gai-gua-hexo" class="header-anchor">#</a></h2>
-<blockquote>
+<h3><span id="diao-zheng-bu-tong-ye-mian-xia-banner-de-da-xiao">调整不同页面下banner的大小：</span><a href="#diao-zheng-bu-tong-ye-mian-xia-banner-de-da-xiao" class="header-anchor">#</a></h3><p>在layout.ejs中标记index.html，然后对应调整stylus；</p>
+<h3><span id="tian-jia-ding-bu-xuan-gua-dao-hang-lan">添加顶部悬挂导航栏：</span><a href="#tian-jia-ding-bu-xuan-gua-dao-hang-lan" class="header-anchor">#</a></h3><h2><span id="zhu-yao-shi-diao-zheng-header-inner">主要是调整header-inner。</span><a href="#zhu-yao-shi-diao-zheng-header-inner" class="header-anchor">#</a></h2><p>之后则是对hexo本身的简单介绍。</p>
+<h2><span id="gai-gua-hexo">概括hexo:</span><a href="#gai-gua-hexo" class="header-anchor">#</a></h2><blockquote>
 <p>Hexo 是一个快速、简洁且高效的博客框架。 Hexo 使用 Markdown（或其他标记语言）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs">1</a></p>
 </blockquote>
 <p>hexo依赖于<code>node.js</code>和<code>git</code>。</p>
-<h2><span id="an-zhuang-hexo-hou-ni-de-dao-liao-shi-me">安装hexo后你得到了什么：</span><a href="#an-zhuang-hexo-hou-ni-de-dao-liao-shi-me" class="header-anchor">#</a></h2>
-<p>首先你的文件结构如下所示：</p>
+<h2><span id="an-zhuang-hexo-hou-ni-de-dao-liao-shi-me">安装hexo后你得到了什么：</span><a href="#an-zhuang-hexo-hou-ni-de-dao-liao-shi-me" class="header-anchor">#</a></h2><p>首先你的文件结构如下所示：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml </span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
 <ul>
 <li>_config.yml:用来告诉hexo你想要给你的网站配置什么功能。</li>
 <li>package.json:应用程序的信息，用这个文件来告诉hexo你都安装了什么应用/插件。</li>
 <li>scaffolds:存放模板的文件夹，用这个来告诉hexo怎么根据你/系统创建的文件来生成页面。</li>
-<li>source： 资源文件夹，是存放用户资源的地方。 除<code>_posts</code>文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。 Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。
-<ul>
-<li>
-<blockquote>
+<li>source： 资源文件夹，是存放用户资源的地方。 除<code>_posts</code>文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。 Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。<ul>
+<li><blockquote>
 <p>因而可以给生成的文件写一些装饰的文件。</p>
 </blockquote>
 </li>
 </ul>
 </li>
-<li>themes: 主题文件夹，hexo会根据主题来生成静态界面。如果你还没下载任何主题，那么这个文件夹就是空的，hexo自动加载默认主题landscape，你可以在node_modules中找到这个主题的模块文件夹。</li>
-</ul>
-<blockquote>
+<li>themes: 主题文件夹，hexo会根据主题来生成静态界面。如果你还没下载任何主题，那么这个文件夹就是空的，hexo自动加载默认主题landscape，你可以在node_modules中找到这个主题的模块文件夹。<blockquote>
 <p>这里没有介绍node_modules，因为这个是node用来管理安装包的文件夹，并非hexo特有的</p>
 </blockquote>
+</li>
+</ul>
 <hr>
 <p>接下来我们就会沿着这几部分慢慢地介绍其内容。</p>
-<h3><span id="config-yml">_config.yml:</span><a href="#config-yml" class="header-anchor">#</a></h3>
-<p>在这个文件中，我们可以配置网站的基本属性，比如网站的标题/描述/关键词等等。<br>
-yml配置起来和md语法非常像，同时采用键值对的形式来进行信息的储存，比如：</p>
+<h3><span id="config-yml">_config.yml:</span><a href="#config-yml" class="header-anchor">#</a></h3><p>在这个文件中，我们可以配置网站的基本属性，比如网站的标题/描述/关键词等等。<br>yml配置起来和md语法非常像，同时采用键值对的形式来进行信息的储存，比如：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p>我们最常用的几个功能分别是：</p>
-<h4><span id="wang-zhan">网站</span><a href="#wang-zhan" class="header-anchor">#</a></h4>
-<table>
+<h4><span id="wang-zhan">网站</span><a href="#wang-zhan" class="header-anchor">#</a></h4><table>
 <thead>
 <tr>
 <th>设置</th>
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>title</code></td>
 <td>网站标题</td>
 </tr>
@@ -415,19 +404,16 @@ yml配置起来和md语法非常像，同时采用键值对的形式来进行信
 <td><code>language</code></td>
 <td>网站使用的语言，使用ISO-639-1代码或者其变体，默认为<code>en</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E7%BD%91%E7%AB%99">详见</a></p>
-<h4><span id="wang-zhi">网址：</span><a href="#wang-zhi" class="header-anchor">#</a></h4>
-<table>
+<h4><span id="wang-zhi">网址：</span><a href="#wang-zhi" class="header-anchor">#</a></h4><table>
 <thead>
 <tr>
 <th>设置</th>
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>url</code></td>
 <td>你的网站的网址，必须以<code>http://</code>或者<code>https://</code>开头</td>
 </tr>
@@ -439,31 +425,21 @@ yml配置起来和md语法非常像，同时采用键值对的形式来进行信
 <td><code>permalink</code></td>
 <td>为你的网站内容的网址增加一些格式</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E7%BD%91%E5%9D%80">详见</a></p>
-<h4><span id="mu-lu">目录：</span><a href="#mu-lu" class="header-anchor">#</a></h4>
-<p>这一部分是对你的博客中边栏的配置，比如<code>tags</code>,<code>archive</code>,<code>category</code>等等，<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E7%9B%AE%E5%BD%95">详见</a></p>
-<h4><span id="wen-zhang">文章：</span><a href="#wen-zhang" class="header-anchor">#</a></h4>
-<p>这部分是对你的写作过程进行系统配置，比如创建文章/文章内容布局/文章外链等等。<br>
-最常见的是<code>post_asset_folder</code>，这个布尔值如果设置为<code>true</code>将会为每一个md文件创建一个同名称的文件夹。</p>
-<h4><span id="shou-ye-she-zhi">首页设置：</span><a href="#shou-ye-she-zhi" class="header-anchor">#</a></h4>
-<p>这部分内容和你的首页设置有关系，包括首页显示多少篇文章/如何排列这些文章等等。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E9%A6%96%E9%A1%B5%E8%AE%BE%E7%BD%AE">详见</a></p>
-<h4><span id="fen-lei-amp-biao-qian">分类 &amp; 标签:</span><a href="#fen-lei-amp-biao-qian" class="header-anchor">#</a></h4>
-<p>这部分内容决定了你的分类的时候将会把你在每篇文章中标记的<code>tags/categories</code>映射为什么标签。不是非常重要。</p>
-<h4><span id="ri-qi-shi-jian-ge-shi">日期/时间格式：</span><a href="#ri-qi-shi-jian-ge-shi" class="header-anchor">#</a></h4>
-<p>规定hexo如何解析/显示时间。不太重要。</p>
-<h4><span id="kuo-zhan">扩展：</span><a href="#kuo-zhan" class="header-anchor">#</a></h4>
-<p>规定你的页面使用的主题及其配置。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%89%A9%E5%B1%95">详见</a></p>
-<h4><span id="zi-ding-yi-nei-rong">自定义内容：</span><a href="#zi-ding-yi-nei-rong" class="header-anchor">#</a></h4>
-<p>可以自定义配置文件的位置，也就是用你习惯的配置文件格式来对你的网站进行配置。<br>
-<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E4%BD%BF%E7%94%A8%E4%BB%A3%E6%9B%BF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">详见</a></p>
+<h4><span id="mu-lu">目录：</span><a href="#mu-lu" class="header-anchor">#</a></h4><p>这一部分是对你的博客中边栏的配置，比如<code>tags</code>,<code>archive</code>,<code>category</code>等等，<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E7%9B%AE%E5%BD%95">详见</a></p>
+<h4><span id="wen-zhang">文章：</span><a href="#wen-zhang" class="header-anchor">#</a></h4><p>这部分是对你的写作过程进行系统配置，比如创建文章/文章内容布局/文章外链等等。<br>最常见的是<code>post_asset_folder</code>，这个布尔值如果设置为<code>true</code>将会为每一个md文件创建一个同名称的文件夹。</p>
+<h4><span id="shou-ye-she-zhi">首页设置：</span><a href="#shou-ye-she-zhi" class="header-anchor">#</a></h4><p>这部分内容和你的首页设置有关系，包括首页显示多少篇文章/如何排列这些文章等等。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E9%A6%96%E9%A1%B5%E8%AE%BE%E7%BD%AE">详见</a></p>
+<h4><span id="fen-lei-amp-biao-qian">分类 &amp; 标签:</span><a href="#fen-lei-amp-biao-qian" class="header-anchor">#</a></h4><p>这部分内容决定了你的分类的时候将会把你在每篇文章中标记的<code>tags/categories</code>映射为什么标签。不是非常重要。</p>
+<h4><span id="ri-qi-shi-jian-ge-shi">日期/时间格式：</span><a href="#ri-qi-shi-jian-ge-shi" class="header-anchor">#</a></h4><p>规定hexo如何解析/显示时间。不太重要。</p>
+<h4><span id="kuo-zhan">扩展：</span><a href="#kuo-zhan" class="header-anchor">#</a></h4><p>规定你的页面使用的主题及其配置。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%89%A9%E5%B1%95">详见</a></p>
+<h4><span id="zi-ding-yi-nei-rong">自定义内容：</span><a href="#zi-ding-yi-nei-rong" class="header-anchor">#</a></h4><p>可以自定义配置文件的位置，也就是用你习惯的配置文件格式来对你的网站进行配置。<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E4%BD%BF%E7%94%A8%E4%BB%A3%E6%9B%BF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">详见</a></p>
 <p>也可以使用主题配置文件来对主题进一步配置</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/" data-id="cm6spgvu2000l2kr8082u31z1" data-title="Hexo从入门到入门" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/31/hexo%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/" data-id="cm6spmp99000hdwr86ulr5hpm" data-title="Hexo从入门到入门" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
