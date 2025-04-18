@@ -118,6 +118,10 @@ body,
 body {
   font: 14px 28px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-text-size-adjust: 100%;
+  -webkit-transition: background-color 0.5s ease, color 0.5s ease;
+  -moz-transition: background-color 0.5s ease, color 0.5s ease;
+  -ms-transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 body.light-mode {
   background-color: rgba(255,255,255,0.801);
@@ -142,6 +146,23 @@ body.light-mode .article-inner {
   background-color: rgba(255,255,255,0.801);
   color: rgba(42,41,41,0.748);
   border: 1px solid #ddd;
+}
+body.light-mode .article-entry {
+  color: rgba(42,41,41,0.748);
+}
+body.light-mode .article-entry code {
+  background: #ececec;
+  color: #333;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+body.light-mode .article-entry blockquote {
+  border-left: 4px solid #ddd;
+  background-color: rgba(0,0,0,0.05);
+  color: rgba(42,41,41,0.748);
+  padding-left: 10px;
+  margin: 1em 0;
+  text-align: left;
 }
 body.dark-mode {
   background-color: #272727;
@@ -184,8 +205,19 @@ body.dark-mode .article-inner {
 body.dark-mode .article-entry {
   color: #fff;
 }
-body.dark-mode .article-title {
+body.dark-mode .article-entry code {
+  background: rgba(255,255,255,0.1);
+  color: #fc6;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+body.dark-mode .article-entry blockquote {
+  border-left: 4px solid #444;
+  background-color: rgba(0,0,0,0.1);
   color: #fff;
+  padding-left: 10px;
+  margin: 1em 0;
+  text-align: left;
 }
 body.dark-mode .widget {
   background-color: #272727;
@@ -197,20 +229,6 @@ body.dark-mode .widget-title {
   color: #fff;
   text-shadow: 1px 1px 2px rgba(47,45,45,0.8);
 }
-body.dark-mode .article-inner code {
-  background-color: rgba(255,255,255,0.1);
-  color: #fc6;
-  border-radius: 3px;
-  padding: 2px 4px;
-}
-body.dark-mode .article-inner blockquote {
-  border-left: 4px solid #444;
-  background-color: rgba(0,0,0,0.1);
-  color: #fff;
-  padding-left: 10px;
-  margin: 1em 0;
-  text-align: left;
-}
 body.index #banner,
 body.index #header {
   height: 900px;
@@ -218,14 +236,6 @@ body.index #header {
 body:not(.index) #banner,
 body:not(.index) #header {
   height: 300px;
-}
-body {
-  font: 14px 28px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-text-size-adjust: 100%;
-  -webkit-transition: background-color 0.5s ease, color 0.5s ease;
-  -moz-transition: background-color 0.5s ease, color 0.5s ease;
-  -ms-transition: background-color 0.5s ease, color 0.5s ease;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 body.light-mode #banner,
 body.dark-mode #banner,
@@ -236,11 +246,19 @@ body.dark-mode .article-inner,
 body.light-mode .widget,
 body.dark-mode .widget,
 body.light-mode .widget-title,
-body.dark-mode .widget-title {
-  -webkit-transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border 0.5s ease;
-  -moz-transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border 0.5s ease;
-  -ms-transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border 0.5s ease;
-  transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border 0.5s ease;
+body.dark-mode .widget-title,
+body.light-mode .highlight,
+body.dark-mode .highlight,
+body.light-mode .gist,
+body.dark-mode .gist,
+body.light-mode pre,
+body.dark-mode pre,
+body.light-mode code,
+body.dark-mode code {
+  -webkit-transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border-color 0.5s ease;
+  -ms-transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border-color 0.5s ease;
+  transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease, border-color 0.5s ease;
 }
 .header,
 .footer,
@@ -320,7 +338,7 @@ body.dark-mode .widget-title {
   -moz-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
-  justify-content: space-between; /* 根据需要调整对齐方式 */
+  justify-content: space-between;
   -webkit-box-align: center;
   -moz-box-align: center;
   -ms-flex-align: center;
@@ -329,15 +347,15 @@ body.dark-mode .widget-title {
 }
 #main-nav,
 #sub-nav {
-  position: fixed; /* 使其悬浮在页面上 */
+  position: fixed;
   top: 0;
-  z-index: 1000; /* 确保导航栏在其他元素之上 */
+  z-index: 1000;
 }
 #main-nav {
-  left: 30; /* 主导航栏靠左 */
+  left: 30;
 }
 #sub-nav {
-  right: 30; /* 子导航栏靠右 */
+  right: 30;
 }
 @media (max-width: 768px) {
   #main-nav,
@@ -351,7 +369,7 @@ body.dark-mode .widget-title {
     -moz-box-ordinal-group: 1;
     -ms-flex-order: 1;
     -webkit-order: 1;
-    order: 1; /* 根据需要调整顺序 */
+    order: 1;
   }
   #sub-nav {
     -webkit-box-ordinal-group: 2;
@@ -359,7 +377,7 @@ body.dark-mode .widget-title {
     -ms-flex-order: 2;
     -webkit-order: 2;
     order: 2;
-    top: auto; /* 重置顶部位置 */
+    top: auto;
   }
 }
 .article-date,
@@ -1316,69 +1334,65 @@ a.article-title:hover {
   line-height: 1.6em;
   font-size: 0.85em;
 }
-.article-entry pre,
-.article-entry .highlight {
-  background: #2d2d2d;
+body.light-mode .highlight,
+body.light-mode pre,
+body.dark-mode .highlight,
+body.dark-mode pre {
   margin: 0 0px;
   border-radius: 10px;
   padding: 15px 20px;
   border-style: solid;
-  border-color: #ddd;
   border-width: 1px 0;
   overflow: auto;
-  color: #ccc;
   line-height: 22.400000000000002px;
+  -webkit-transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  -ms-transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
-.article-entry .highlight .gutter pre,
-.article-entry .gist .gist-file .gist-data .line-numbers {
-  color: #666;
+body.light-mode .highlight .gutter pre,
+body.light-mode .gist .gist-file .gist-data .line-numbers,
+body.dark-mode .highlight .gutter pre,
+body.dark-mode .gist .gist-file .gist-data .line-numbers {
   font-size: 0.85em;
 }
-.article-entry pre,
-.article-entry code {
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+body.light-mode .highlight,
+body.light-mode pre {
+  background: #f5f5f5;
+  color: #333;
+  border-color: #ddd;
 }
-.article-entry code {
-  background: #eee;
-  text-shadow: 0 1px #fff;
-  padding: 0 0.3em;
-}
-.article-entry pre code {
-  background: none;
-  text-shadow: none;
-  padding: 0;
-}
-.article-entry .highlight pre {
+body.light-mode .highlight pre {
   border: none;
   margin: 0;
   padding: 0;
 }
-.article-entry .highlight table {
+body.light-mode .highlight table {
   margin: 0;
   width: auto;
 }
-.article-entry .highlight td {
+body.light-mode .highlight td {
   border: none;
   padding: 0;
 }
-.article-entry .highlight figcaption {
+body.light-mode .highlight figcaption {
   font-size: 0.85em;
-  color: #999;
+  color: #666;
   line-height: 1em;
   margin-bottom: 1em;
 }
-.article-entry .highlight figcaption:before,
-.article-entry .highlight figcaption:after {
+body.light-mode .highlight figcaption:before,
+body.light-mode .highlight figcaption:after {
   content: "";
   display: table;
 }
-.article-entry .highlight figcaption:after {
+body.light-mode .highlight figcaption:after {
   clear: both;
 }
-.article-entry .highlight figcaption a {
+body.light-mode .highlight figcaption a {
   float: right;
 }
-.article-entry .highlight .gutter {
+body.light-mode .highlight .gutter {
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
@@ -1387,17 +1401,188 @@ a.article-title:hover {
   -ms-user-select: none;
   user-select: none;
 }
-.article-entry .highlight .gutter pre {
+body.light-mode .highlight .gutter pre {
+  color: #666;
   text-align: right;
   padding-right: 20px;
 }
-.article-entry .highlight .line {
+body.light-mode .highlight .line {
   height: 22.400000000000002px;
 }
-.article-entry .highlight .line.marked {
+body.light-mode .highlight .line.marked {
+  background: #d5d5d5;
+}
+body.light-mode .gist {
+  margin: 0 -20px;
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 1px 0;
+  background: #f5f5f5;
+  padding: 15px 20px 15px 0;
+}
+body.light-mode .gist .gist-file {
+  border: none;
+  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  margin: 0;
+}
+body.light-mode .gist .gist-file .gist-data {
+  background: none;
+  border: none;
+}
+body.light-mode .gist .gist-file .gist-data .line-numbers {
+  color: #666;
+  background: none;
+  border: none;
+  padding: 0 20px 0 0;
+}
+body.light-mode .gist .gist-file .gist-data .line-data {
+  padding: 0 !important;
+}
+body.light-mode .gist .gist-file .highlight {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+body.light-mode .gist .gist-file .gist-meta {
+  background: #f5f5f5;
+  color: #666;
+  font: 0.85em -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  padding: 0;
+  margin-top: 1em;
+  margin-left: 20px;
+}
+body.light-mode .gist .gist-file .gist-meta a {
+  color: #258fb8;
+  font-weight: normal;
+}
+body.light-mode .gist .gist-file .gist-meta a:hover {
+  text-decoration: underline;
+}
+body.light-mode pre .comment,
+body.light-mode pre .title {
+  color: #666;
+}
+body.light-mode pre .variable,
+body.light-mode pre .attribute,
+body.light-mode pre .tag,
+body.light-mode pre .regexp,
+body.light-mode pre .ruby .constant,
+body.light-mode pre .xml .tag .title,
+body.light-mode pre .xml .pi,
+body.light-mode pre .xml .doctype,
+body.light-mode pre .html .doctype,
+body.light-mode pre .css .id,
+body.light-mode pre .css .class,
+body.light-mode pre .css .pseudo {
+  color: #d70000;
+}
+body.light-mode pre .number,
+body.light-mode pre .preprocessor,
+body.light-mode pre .built_in,
+body.light-mode pre .literal,
+body.light-mode pre .params,
+body.light-mode pre .constant {
+  color: #ff6200;
+}
+body.light-mode pre .class,
+body.light-mode pre .ruby .class .title,
+body.light-mode pre .css .rules .attribute {
+  color: #070;
+}
+body.light-mode pre .string,
+body.light-mode pre .value,
+body.light-mode pre .inheritance,
+body.light-mode pre .header,
+body.light-mode pre .ruby .symbol,
+body.light-mode pre .xml .cdata {
+  color: #070;
+}
+body.light-mode pre .css .hexcolor {
+  color: #008080;
+}
+body.light-mode pre .function,
+body.light-mode pre .python .decorator,
+body.light-mode pre .python .title,
+body.light-mode pre .ruby .function .title,
+body.light-mode pre .ruby .title .keyword,
+body.light-mode pre .perl .sub,
+body.light-mode pre .javascript .title,
+body.light-mode pre .coffeescript .title {
+  color: #0047ab;
+}
+body.light-mode pre .keyword,
+body.light-mode pre .javascript .function {
+  color: #800080;
+}
+body.light-mode .article-entry pre,
+body.light-mode .article-entry code {
+  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+}
+body.light-mode .article-entry code {
+  background: #ececec;
+  padding: 0 0.3em;
+}
+body.light-mode .article-entry pre code {
+  background: none;
+  padding: 0;
+}
+body.dark-mode .highlight,
+body.dark-mode pre {
+  background: #2d2d2d;
+  color: #ccc;
+  border-color: #ddd;
+}
+body.dark-mode .highlight pre {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+body.dark-mode .highlight table {
+  margin: 0;
+  width: auto;
+}
+body.dark-mode .highlight td {
+  border: none;
+  padding: 0;
+}
+body.dark-mode .highlight figcaption {
+  font-size: 0.85em;
+  color: #999;
+  line-height: 1em;
+  margin-bottom: 1em;
+}
+body.dark-mode .highlight figcaption:before,
+body.dark-mode .highlight figcaption:after {
+  content: "";
+  display: table;
+}
+body.dark-mode .highlight figcaption:after {
+  clear: both;
+}
+body.dark-mode .highlight figcaption a {
+  float: right;
+}
+body.dark-mode .highlight .gutter {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body.dark-mode .highlight .gutter pre {
+  color: #999;
+  text-align: right;
+  padding-right: 20px;
+}
+body.dark-mode .highlight .line {
+  height: 22.400000000000002px;
+}
+body.dark-mode .highlight .line.marked {
   background: #515151;
 }
-.article-entry .gist {
+body.dark-mode .gist {
   margin: 0 -20px;
   border-style: solid;
   border-color: #ddd;
@@ -1405,99 +1590,111 @@ a.article-title:hover {
   background: #2d2d2d;
   padding: 15px 20px 15px 0;
 }
-.article-entry .gist .gist-file {
+body.dark-mode .gist .gist-file {
   border: none;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   margin: 0;
 }
-.article-entry .gist .gist-file .gist-data {
+body.dark-mode .gist .gist-file .gist-data {
   background: none;
   border: none;
 }
-.article-entry .gist .gist-file .gist-data .line-numbers {
+body.dark-mode .gist .gist-file .gist-data .line-numbers {
+  color: #999;
   background: none;
   border: none;
   padding: 0 20px 0 0;
 }
-.article-entry .gist .gist-file .gist-data .line-data {
+body.dark-mode .gist .gist-file .gist-data .line-data {
   padding: 0 !important;
 }
-.article-entry .gist .gist-file .highlight {
+body.dark-mode .gist .gist-file .highlight {
   margin: 0;
   padding: 0;
   border: none;
 }
-.article-entry .gist .gist-file .gist-meta {
+body.dark-mode .gist .gist-file .gist-meta {
   background: #2d2d2d;
   color: #999;
   font: 0.85em -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
   margin-left: 20px;
 }
-.article-entry .gist .gist-file .gist-meta a {
+body.dark-mode .gist .gist-file .gist-meta a {
   color: #258fb8;
   font-weight: normal;
 }
-.article-entry .gist .gist-file .gist-meta a:hover {
+body.dark-mode .gist .gist-file .gist-meta a:hover {
   text-decoration: underline;
 }
-pre .comment,
-pre .title {
+body.dark-mode pre .comment,
+body.dark-mode pre .title {
   color: #999;
 }
-pre .variable,
-pre .attribute,
-pre .tag,
-pre .regexp,
-pre .ruby .constant,
-pre .xml .tag .title,
-pre .xml .pi,
-pre .xml .doctype,
-pre .html .doctype,
-pre .css .id,
-pre .css .class,
-pre .css .pseudo {
+body.dark-mode pre .variable,
+body.dark-mode pre .attribute,
+body.dark-mode pre .tag,
+body.dark-mode pre .regexp,
+body.dark-mode pre .ruby .constant,
+body.dark-mode pre .xml .tag .title,
+body.dark-mode pre .xml .pi,
+body.dark-mode pre .xml .doctype,
+body.dark-mode pre .html .doctype,
+body.dark-mode pre .css .id,
+body.dark-mode pre .css .class,
+body.dark-mode pre .css .pseudo {
   color: #f2777a;
 }
-pre .number,
-pre .preprocessor,
-pre .built_in,
-pre .literal,
-pre .params,
-pre .constant {
+body.dark-mode pre .number,
+body.dark-mode pre .preprocessor,
+body.dark-mode pre .built_in,
+body.dark-mode pre .literal,
+body.dark-mode pre .params,
+body.dark-mode pre .constant {
   color: #f99157;
 }
-pre .class,
-pre .ruby .class .title,
-pre .css .rules .attribute {
+body.dark-mode pre .class,
+body.dark-mode pre .ruby .class .title,
+body.dark-mode pre .css .rules .attribute {
   color: #9c9;
 }
-pre .string,
-pre .value,
-pre .inheritance,
-pre .header,
-pre .ruby .symbol,
-pre .xml .cdata {
+body.dark-mode pre .string,
+body.dark-mode pre .value,
+body.dark-mode pre .inheritance,
+body.dark-mode pre .header,
+body.dark-mode pre .ruby .symbol,
+body.dark-mode pre .xml .cdata {
   color: #9c9;
 }
-pre .css .hexcolor {
+body.dark-mode pre .css .hexcolor {
   color: #6cc;
 }
-pre .function,
-pre .python .decorator,
-pre .python .title,
-pre .ruby .function .title,
-pre .ruby .title .keyword,
-pre .perl .sub,
-pre .javascript .title,
-pre .coffeescript .title {
+body.dark-mode pre .function,
+body.dark-mode pre .python .decorator,
+body.dark-mode pre .python .title,
+body.dark-mode pre .ruby .function .title,
+body.dark-mode pre .ruby .title .keyword,
+body.dark-mode pre .perl .sub,
+body.dark-mode pre .javascript .title,
+body.dark-mode pre .coffeescript .title {
   color: #69c;
 }
-pre .keyword,
-pre .javascript .function {
+body.dark-mode pre .keyword,
+body.dark-mode pre .javascript .function {
   color: #c9c;
+}
+body.dark-mode .article-entry pre,
+body.dark-mode .article-entry code {
+  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+}
+body.dark-mode .article-entry code {
+  background: rgba(255,255,255,0.1);
+  padding: 0 0.3em;
+}
+body.dark-mode .article-entry pre code {
+  background: none;
+  padding: 0;
 }
 @media screen and (max-width: 479px) {
   #mobile-nav {

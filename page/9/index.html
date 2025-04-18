@@ -293,6 +293,121 @@ mjx-container[display="true"] + br {
       <div class="outer">
         <section id="main">
   
+    <article id="draft-ode简明学习log" class="h-entry article article-type-draft" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-meta">
+    <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" class="article-date">
+  <time class="dt-published" datetime="2024-07-05T00:45:31.000Z" itemprop="datePublished">2024-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/">Ode学习log</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>博主又来开天坑了。</p>
+<p>这篇博客主要作为自己学习<code>ode</code>的一个<code>学习log</code>，旨在写一些自己学习数学过程中的一些思考和感想。</p>
+<div class="tocStart"></div>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#yi-xie-zhun-bei">一些准备：</a></li>
+</ul>
+<ul>
+<li><a href="#yi-jie-wei-fen-fang-cheng">一阶微分方程：</a><ul>
+<li><a href="#1-yi-jie-xian-xing-wei-fen-fang-cheng">1. 一阶线性微分方程:</a></li>
+<li><a href="#2-yi-jie-xian-xing-wei-fen-fang-cheng-de-bian-ti-he-bo-nu-li-fang-cheng">2. 一阶线性微分方程的变体，和伯努利方程：</a></li>
+<li><a href="#3-yi-jie-wei-fen-fang-cheng-xia-de-qi-ci-fang-cheng">3. 一阶微分方程下的齐次方程：</a><ul>
+<li><a href="#li-ti">例题：</a></li>
+</ul>
+</li>
+<li><a href="#4-quan-wei-fen-fang-cheng">4. 全微分方程：</a><ul>
+<li><a href="#wei-shi-me-yao-yan-jiu-quan-wei-fen-fang-cheng">为什么要研究全微分方程：</a></li>
+<li><a href="#chu-shi">初识：</a></li>
+<li><a href="#jin-yi-bu-liao-jie">进一步了解：</a></li>
+<li><a href="#yi-ge-hui-guo-tou-lai-de-ying-yong">一个回过头来的应用：</a></li>
+</ul>
+</li>
+<li><a href="#5-jin-si-jie-de-qiu-jie">5. 近似解的求解：</a><ul>
+<li><a href="#wei-shi-me-hui-you-zhe-yang-de-xiang-fa">为什么会有这样的想法：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#er-jie-wei-fen-fang-cheng">二阶微分方程：</a><ul>
+<li><a href="#er-jie-xian-xing-wei-fen-fang-cheng">二阶线性微分方程：</a><ul>
+<li><a href="#qi-ci-fang-cheng-xian-xing-de-lai-yuan">齐次方程线性的来源：</a></li>
+<li><a href="#ji-suan-ling-yi-ge-jie">计算另一个解：</a></li>
+<li><a href="#er-jie-qi-ci-chang-xi-shu-fang-cheng">二阶齐次常系数方程：</a></li>
+<li><a href="#er-jie-fei-qi-ci-xian-xing-fang-cheng-de-jie-de-jie-gou">二阶非齐次线性方程的解的结构：</a></li>
+<li><a href="#te-shu-de-er-jie-fei-qi-ci-fang-cheng">特殊的二阶非齐次方程：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#xiang-geng-gao-jie-chu-fa">向更高阶出发：</a><ul>
+<li><a href="#ji-jie-ju-zhen">基解矩阵：</a></li>
+<li><a href="#fei-qi-ci">非齐次：</a></li>
+</ul>
+</li>
+<li><a href="#la-pu-la-si-bian-huan">拉普拉斯变换：</a></li>
+<li><a href="#wen-ding-xing-li-lun">稳定性理论：</a></li>
+<li><a href="#end">end：</a></li>
+</ul>
+<!-- tocstop -->
+
+<div class="tocEnd"></div>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2024/07/05/ode%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0log/" data-id="cm9mj490k000o7wr81fy5gpe3" data-title="Ode学习log" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ode/" rel="tag">ode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+  
     <article id="draft-normal-physics-note" class="h-entry article article-type-draft" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="article-meta">
@@ -326,7 +441,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/04/normal-physics-note/" data-id="cm6spmp9c000tdwr889eke39a" data-title="Normal Physics Note" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/04/normal-physics-note/" data-id="cm9mj490m000x7wr8brsl7f6h" data-title="Normal Physics Note" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -408,7 +523,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cm6spmp95000bdwr8f6qd2x28" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/07/02/git/" data-id="cm9mj490g000b7wr8ai6x37mc" data-title="小白的Git初学经历" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -499,7 +614,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/" data-id="cm6spmp96000ddwr86o2l1zf6" data-title="How to Make Your Own Blog?" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://hebown.github.io/2024/06/30/how-to-make-your-own-blog/" data-id="cm9mj490j000h7wr85ht924so" data-title="How to Make Your Own Blog?" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -530,80 +645,11 @@ mjx-container[display="true"] + br {
 
 
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-  <div class="article-meta">
-    <a href="/2024/06/30/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-06-30T08:53:43.500Z" itemprop="datePublished">2024-06-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/06/30/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hebown.github.io/2024/06/30/hello-world/" data-id="cm6spmp98000gdwr86ptnciyz" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<script src="https://giscus.app/client.js"
-        data-repo="Hebown/Hebown.github.io"
-        data-repo-id="R_kgDOMP_x4g"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMP_x4s4CgkFz"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/8/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -626,7 +672,7 @@ mjx-container[display="true"] + br {
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li></ul>
     </div>
   </div>
 
@@ -637,6 +683,10 @@ mjx-container[display="true"] + br {
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/03/01/typst/">Typst</a>
+          </li>
         
           <li>
             <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
@@ -652,10 +702,6 @@ mjx-container[display="true"] + br {
         
           <li>
             <a href="/2025/01/08/regular-expressions/">Regular-Expressions</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/08/md-to-typst/">从Md走向typst</a>
           </li>
         
       </ul>

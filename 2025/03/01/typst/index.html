@@ -6,15 +6,17 @@
 
   
   
-  <title>标签: windows | Hebown&#39;s small world</title>
+  <title>Typst | Hebown&#39;s small world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="This is Hebown&#39;s small world, where he will put her thoughts and experiences down.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hebown&#39;s small world">
-<meta property="og:url" content="https://hebown.github.io/tags/windows/index.html">
+  <meta name="description" content="本文作为typst的笔记页，参考教程为 官方教程      基本内容： 格式：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typst">
+<meta property="og:url" content="https://hebown.github.io/2025/03/01/typst/index.html">
 <meta property="og:site_name" content="Hebown&#39;s small world">
-<meta property="og:description" content="This is Hebown&#39;s small world, where he will put her thoughts and experiences down.">
+<meta property="og:description" content="本文作为typst的笔记页，参考教程为 官方教程      基本内容： 格式：">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-01T03:51:55.000Z">
+<meta property="article:modified_time" content="2025-04-18T08:18:30.701Z">
 <meta property="article:author" content="Hebown">
 <meta property="article:tag" content="Hexo, blog, tech, life">
 <meta name="twitter:card" content="summary">
@@ -179,39 +181,107 @@
 </header>
 
       <div class="outer">
-        <section id="main">
+        <section id="main"><article id="post-typst" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-02-05T03:48:09.000Z" itemprop="datePublished">2月 5</time>
+  <div class="article-meta">
+    <a href="/2025/03/01/typst/" class="article-date">
+  <time class="dt-published" datetime="2025-03-01T03:51:55.000Z" itemprop="datePublished">2025-03-01</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/">拥抱伟大的Ssh</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Typst
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文作为typst的笔记页，参考教程为 <a target="_blank" rel="noopener" href="https://typst-doc-cn.github.io/docs/tutorial/writing-in-typst/">官方教程</a></p>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#ji-ben-nei-rong">基本内容：</a></li>
+<li><a href="#ge-shi">格式：</a></li>
+</ul>
+<!-- tocstop -->
+
+</div>
+<span id="more"></span>
+
+<h2><span id="ji-ben-nei-rong">基本内容：</span><a href="#ji-ben-nei-rong" class="header-anchor">#</a></h2><ul>
+<li><code>=</code>表示标题</li>
+<li><code>_</code>表示斜体</li>
+<li><code>*</code>表示加粗</li>
+<li><code>-</code>表示无序列表，<code>+</code>表示有序列表</li>
+<li>使用 <code>image</code>函数来插入图像，使用函数时要以<code>#image(params)</code>的形式来调用。<ul>
+<li>更进一步的，使用<code>figure</code>函数来为图表添加说明和标记，如下所示<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#figure(</span><br><span class="line">     image(&quot;glacier.jpg&quot;, width: 70%),</span><br><span class="line">     caption: [</span><br><span class="line">     _Glaciers_ form an important part</span><br><span class="line">     of the earth&#x27;s climate system.</span><br><span class="line">     ],</span><br><span class="line">     label:&#x27;glaciers&#x27; // 可以在原文中通过 @glaciers的方式来引用该图片</span><br><span class="line"> ) </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>使用<code>bibliography</code>函数引入<code>.bib</code>文件，并在原文中通过<code>@引用文章名称</code>的方式添加引用。</li>
+<li>使用<code>$</code>添加行内数学公式，<code>$</code>应当与其中的内容分开。例如<code>$ 3*2 $</code>，这里有几点需要注意：<ul>
+<li>typst中的数学公式很多不必再加反斜杠。例如 <code>$ Q = rho A v + &quot;time offset&quot; $</code>。中的<code>rho</code>即为$\rho$。</li>
+<li>如果上下标由多个部分组成，需要用<code>()</code>来扩起，比如<code>sum_(i=0)</code></li>
+<li>每一个间隔出来的部分将会识别为一个语素，如果希望用一个短语来充当语素，应当添加双引号。</li>
+<li>分号可以直接使用<code>/</code>，这将会给出和<code>\frac</code>等价的效果。</li>
+<li>许多数学结构可以使用函数来生成其样式，此时不需要再使用<code>#</code>来指明调用。</li>
+</ul>
+</li>
+</ul>
+<h2><span id="ge-shi">格式：</span><a href="#ge-shi" class="header-anchor">#</a></h2><p>typst支持通过<code>set</code>函数指定需要设置属性的函数，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#set par(justify:true)</span><br></pre></td></tr></table></figure>
+<p>将会将所有文本段落左右对齐。概念化理解就是：set规则为将来该函数的所有调用设置默认参数值。</p>
+<p>以下是一些常见的<code>set</code>的用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#set text(</span><br><span class="line">  font: &quot;New Computer Modern&quot;,</span><br><span class="line">  size: 10pt</span><br><span class="line">)</span><br><span class="line">#set page(</span><br><span class="line">  paper: &quot;a6&quot;,</span><br><span class="line">  margin: (x: 1.8cm, y: 1.5cm),</span><br><span class="line">)</span><br><span class="line">#set par(</span><br><span class="line">  justify: true,</span><br><span class="line">  leading: 0.52em,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">= Introduction</span><br><span class="line">In this report, we will explore the</span><br><span class="line">various factors that influence fluid</span><br><span class="line">dynamics in glaciers and how they</span><br><span class="line">contribute to the formation and</span><br><span class="line">behavior of these natural structures.</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">#align(center + bottom)[</span><br><span class="line">  #image(&quot;glacier.jpg&quot;, width: 70%)</span><br><span class="line"></span><br><span class="line">  *Glaciers form an important</span><br><span class="line">  part of the earth&#x27;s climate</span><br><span class="line">  system.*</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hebown.github.io/2025/03/01/typst/" data-id="cm9mj490q001f7wr89h4kbk2l" data-title="Typst" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/02/05/%E6%8B%A5%E6%8A%B1%E4%BC%9F%E5%A4%A7%E7%9A%84ssh/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">拥抱伟大的Ssh</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+<script src="https://giscus.app/client.js"
+        data-repo="Hebown/Hebown.github.io"
+        data-repo-id="R_kgDOMP_x4g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMP_x4s4CgkFz"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
 
 
 </section>
